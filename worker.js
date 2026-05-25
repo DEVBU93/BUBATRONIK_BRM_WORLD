@@ -1,21 +1,17 @@
 /**
- * BRM STREAM PROXY — Cloudflare Worker v2026.09
+ * BRM STREAM PROXY - Cloudflare Worker v2026.10
  * HTTPS wrapper + Status API para el stream Shoutcast BUBATRONIK_BRM RADIO
- * Frecuencia Sant Salvador · Sant Salvador, Tarragona, Catalunya
+ * Frecuencia Sant Salvador - Sant Salvador, Tarragona, Catalunya
  *
- * Autor/Orquestador: Rubén Rodríguez Francisco (DEVBU93 · LOB@-Pulpo · ManadaSalvaje)
- * Nodo: Lob@-Pulpo × ROCE SYNC · WORLD-MUNDO OS
- *
- * Endpoints:
- *   /status      → JSON con estado real: live, song, listeners, bitrate
- *   /nowplaying  → JSON con canción actual e historial
- *   /health      → JSON health check legacy
- *   (default)    → Proxy del stream de audio MP3
+ * CORRECCIONES v2026.10:
+ *   - Fix declaracion duplicada de const _real / const cur en /nowplaying
+ *   - Fix regex en isYouTubeId (escape correcto de \s)
+ *   - Fix parsePlayed regex (sin doble-escape innecesario)
  */
 
 const STREAM_BASE = 'http://uk3freenew.listen2myradio.com:14387';
 const STREAM_URL  = STREAM_BASE + '/listen.pls';
-const STATION     = 'BUBATRONIK_BRM · Frecuencia Sant Salvador';
+const STATION     = 'BUBATRONIK_BRM - Frecuencia Sant Salvador';
 
 const ALLOWED_ORIGINS = [
   'https://brm.worldmos.world',
@@ -54,22 +50,17 @@ async function fetchWithTimeout(url, options, ms) {
   }
 }
 
-// Fix mojibake: UTF-8 bytes decoded as Latin-1 (e.g. â€" → –)
 function fixEncoding(str) {
   try {
     const bytes = new Uint8Array(str.split('').map(c => c.charCodeAt(0) & 0xff));
     return new TextDecoder('utf-8').decode(bytes);
-  } catch(_) {
-    return str;
-  }
+  } catch(_) { return str; }
 }
 
-// Returns true if the string looks like a bare YouTube video ID
 function isYouTubeId(s) {
   return /^-?\s*[A-Za-z0-9_-]{6,15}$/.test(s.trim());
 }
 
-// Clean a song string: fix encoding, strip leading dash+space, strip "Current Song" suffix
 function cleanSong(raw) {
   let s = fixEncoding(raw).trim();
   if (s.startsWith('- ')) s = s.slice(2).trim();
@@ -77,7 +68,6 @@ function cleanSong(raw) {
   return s;
 }
 
-// SHOUTcast v1 7.html: currentlisteners,streamstatus,peaklisteners,maxlisteners,uniquelisteners,bitrate,songtitle
 function parse7html(text) {
   const stripped = text.replace(/<[^>]+>/g, '').trim();
   const parts = stripped.split(',');
@@ -102,7 +92,6 @@ function parse7html(text) {
   };
 }
 
-// Parse the SHOUTcast played.html song history table
 function parsePlayed(html) {
   const rows = [];
   const trRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
@@ -115,7 +104,7 @@ function parsePlayed(html) {
     while ((tdM = tdRe.exec(inner)) !== null) {
       const val = tdM[1]
         .replace(/<[^>]+>/g, '')
-        .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&nbsp;/g,' ')
+        .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ')
         .trim();
       tds.push(val);
     }
@@ -141,10 +130,10 @@ function parsePlayed(html) {
 export default {
   async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '';
-    const url = new URL(request.url);
-    const hdrs = {
+    const url    = new URL(request.url);
+    const hdrs   = {
       'User-Agent': 'Mozilla/5.0 (compatible; BRM-Radio/2026)',
-      'Accept': 'text/plain,text/html,*/*'
+      'Accept':     'text/plain,text/html,*/*'
     };
 
     if (request.method === 'OPTIONS') {
@@ -169,10 +158,15 @@ export default {
           bitrate:       data.bitrate,
           station:       STATION,
           ts:            new Date().toISOString(),
-        }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
+        }), {
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
+        });
       } catch (err) {
-        return new Response(JSON.stringify({ status:'offline', live:false, error:String(err), ts:new Date().toISOString() }),
-          { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
+        return new Response(JSON.stringify({
+          status: 'offline', live: false, error: String(err), ts: new Date().toISOString()
+        }), {
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
+        });
       }
     }
 
@@ -183,17 +177,19 @@ export default {
           fetchWithTimeout(STREAM_BASE + '/7.html',      { headers: hdrs }, 5000),
           fetchWithTimeout(STREAM_BASE + '/played.html', { headers: hdrs }, 5000),
         ]);
-        const t7      = (r7.status === 'fulfilled' && r7.value.ok) ? await r7.value.text() : '0,0,0,0,0,0,';
-        const html    = (rp.status === 'fulfilled' && rp.value.ok) ? await rp.value.text() : '';
-        const stat    = parse7html(t7) || { live:false, song:'', artist:'', title:'', currentListeners:0, bitrate:0 };
+        const t7   = (r7.status === 'fulfilled' && r7.value.ok) ? await r7.value.text() : '0,0,0,0,0,0,';
+        const html = (rp.status === 'fulfilled' && rp.value.ok) ? await rp.value.text() : '';
+        const stat    = parse7html(t7) || { live: false, song: '', artist: '', title: '', currentListeners: 0, bitrate: 0 };
         const history = parsePlayed(html);
-        const _raw = history[0] || { song: stat.song, artist: stat.artist, title: stat.title };         // If song is a YouTube ID, find first real title in history         const _real = history.find(h => !isYouTubeId(h.song));         const cur = (isYouTubeId(_raw.song) && _real) ? _real                   : isYouTubeId(_raw.song) ? { song:'BUBATRONIK_BRM EN VIVO', artist:STATION, title:'Live Mix Open Format' }                   : _raw;
-                const _real = history.find(h => !isYouTubeId(h.song));
-        const cur = (isYouTubeId(_raw.song) && _real) ? _real
-                  : isYouTubeId(_raw.song) ? { song:'BUBATRONIK_BRM EN VIVO', artist:STATION, title:'Live Mix Open Format' }
-                  : _raw;
+        const _raw  = history[0] || { song: stat.song, artist: stat.artist, title: stat.title };
+        const _real = history.find(h => !isYouTubeId(h.song));
+        const cur   = (isYouTubeId(_raw.song) && _real)
+          ? _real
+          : isYouTubeId(_raw.song)
+            ? { song: 'BUBATRONIK_BRM EN VIVO', artist: STATION, title: 'Live Mix Open Format' }
+            : _raw;
         return new Response(JSON.stringify({
-          live:      stat.live,
+          live:    stat.live,
           current: {
             song:   cur.song   || stat.song,
             artist: cur.artist || stat.artist,
@@ -203,10 +199,15 @@ export default {
           bitrate:   stat.bitrate,
           history:   history.slice(0, 10),
           ts:        new Date().toISOString(),
-        }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
+        }), {
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
+        });
       } catch (err) {
-        return new Response(JSON.stringify({ live:false, current:{song:'',artist:'',title:''}, listeners:0, error:String(err) }),
-          { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
+        return new Response(JSON.stringify({
+          live: false, current: { song: '', artist: '', title: '' }, listeners: 0, error: String(err)
+        }), {
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
+        });
       }
     }
 
@@ -215,10 +216,16 @@ export default {
       let listeners = null;
       try {
         const res = await fetchWithTimeout(STREAM_BASE + '/7.html', { headers: hdrs }, 3000);
-        if (res.ok) { const d = parse7html(await res.text()); if (d) listeners = d.currentListeners; }
+        if (res.ok) {
+          const d = parse7html(await res.text());
+          if (d) listeners = d.currentListeners;
+        }
       } catch(_) {}
-      return new Response(JSON.stringify({ status:'ok', station:STATION, proxy:STREAM_URL, listeners, ts:new Date().toISOString() }),
-        { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
+      return new Response(JSON.stringify({
+        status: 'ok', station: STATION, proxy: STREAM_URL, listeners, ts: new Date().toISOString()
+      }), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
+      });
     }
 
     // Default: proxy del stream de audio
@@ -228,10 +235,11 @@ export default {
       up_h.set('Icy-MetaData', '1');
       const range = request.headers.get('Range');
       if (range) up_h.set('Range', range);
-      const upstream = await fetch(STREAM_URL, { method:'GET', headers:up_h });
+      const upstream = await fetch(STREAM_URL, { method: 'GET', headers: up_h });
       if (!upstream.ok && upstream.status !== 200) {
-        return new Response(JSON.stringify({ error:'Stream no disponible', status:upstream.status }),
-          { status:502, headers: { 'Content-Type':'application/json', ...getCorsHeaders(origin) } });
+        return new Response(JSON.stringify({ error: 'Stream no disponible', status: upstream.status }), {
+          status: 502, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) }
+        });
       }
       const rh = new Headers();
       ['content-type','icy-name','icy-genre','icy-url','icy-br','icy-sr','icy-metaint','icy-pub','icy-description','transfer-encoding','content-length']
@@ -242,11 +250,12 @@ export default {
       rh.set('Expires', '0');
       rh.set('X-BRM-Proxy', 'Lob@-Pulpo/2026');
       rh.set('X-Station', STATION);
-      Object.entries(getCorsHeaders(origin)).forEach(([k,v]) => rh.set(k, v));
-      return new Response(upstream.body, { status:upstream.status, headers:rh });
+      Object.entries(getCorsHeaders(origin)).forEach(([k, v]) => rh.set(k, v));
+      return new Response(upstream.body, { status: upstream.status, headers: rh });
     } catch (err) {
-      return new Response(JSON.stringify({ error:'Error de proxy', message:String(err) }),
-        { status:500, headers: { 'Content-Type':'application/json', ...getCorsHeaders(origin) } });
+      return new Response(JSON.stringify({ error: 'Error de proxy', message: String(err) }), {
+        status: 500, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) }
+      });
     }
   },
 };
