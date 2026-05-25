@@ -1164,23 +1164,10 @@
 
   // ── STREAM URLS (fallback chain) ─────────────────────────────────────
   const STREAM_URLS = [
-    'https://brm.rubenrodriguez-f-93.workers.dev/listen.pls',
-    'https://brm.rubenrodriguez-f-93.workers.dev/',
-    'https://bubatronik.radiostream321.com/',
-    'https://bubatronik.radio12345.com/',
-    'https://bubatronik.radiostream123.com/',
-    'http://78.129.150.207:14387/',
-    'http://78.129.150.207:14387/index.html',
-    'http://78.129.150.207:14387/played.html',
-    'http://78.129.150.207:14387/listen.pls',
-    'https://brm.rubenrodriguez-f-93.workers.dev/stream',
     'https://bubatronik.radiostream321.com/;stream.mp3',
-    'https://bubatronik.radiostream321.com/stream',
-    'http://uk3freenew.listen2myradio.com:14387/',
-    'http://uk3freenew.listen2myradio.com:14387/index.html',
-    'http://uk3freenew.listen2myradio.com:14387/listen.pls',
-    'http://uk3freenew.listen2myradio.com:14387/played.html',
-    
+  'https://bubatronik.radiostream321.com/stream',
+  'https://brm.rubenrodriguez-f-93.workers.dev/stream',
+  'https://brm.rubenrodriguez-f-93.workers.dev/',
   ];
 
   // ── STATE ─────────────────────────────────────────────────────────────
@@ -1419,7 +1406,7 @@
       toast('⚠️ Stream offline — abriendo player nativo...');
       setOffline();
       setTimeout(openNativePlayer, 2000);
-      streamAttempt = 16;
+      streamAttempt = 0;
     }
   }
 
@@ -1430,7 +1417,7 @@
 
     if (isPlaying) {
       audio.pause();
-      audio.src = 'http://uk3freenew.listen2myradio.com:14387/listen.pls';
+      audio.src = '';
       streamAttempt = 0;
       isSessionMode = false;
       setModeIndicator('idle');
