@@ -1256,7 +1256,7 @@
       analyser.fftSize = 128; analyser.smoothingTimeConstant = 0.75;
       sourceNode = audioCtx.createMediaElementSource(audio);
       sourceNode.connect(analyser); analyser.connect(audioCtx.destination);
-    } catch(e) { console.warn('Web Audio API no disponible'); }
+    } catch(e) { console.warn('Web Audio API no disponible'); openNativePlayer();}
   }
 
   function drawViz() {
@@ -1382,6 +1382,7 @@
         // Arrancar el stream
         isSessionMode = false;
         startLiveStream();
+        
       }
     }
   }
@@ -1393,6 +1394,7 @@
     audio.src = STREAM_URLS[0] + '?t=' + Date.now();
     audio.load();
     audio.play().catch(() => tryNextStream());
+    openNativePlayer();
   }
 
   function tryNextStream() {
