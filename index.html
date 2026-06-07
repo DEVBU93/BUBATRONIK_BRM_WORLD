@@ -124,7 +124,7 @@
       align-items: center; padding: 24px 40px;
       border-bottom: 1px solid var(--border);
       background: linear-gradient(180deg, rgba(11,11,20,0.95) 0%, rgba(5,5,10,0.8) 100%);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       position: sticky; top: var(--ticker-h); z-index: 100;
     }
     .station-logo-block { display: flex; flex-direction: column; gap: 4px; }
@@ -141,7 +141,8 @@
     }
     .station-tagline {
       font-family: 'JetBrains Mono', monospace;
-      font-size: var(--fs-xs); letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-top: 2px;
+      font-size: var(--fs-xs); letter-spacing: 3px; color: var(--muted);
+      text-transform: uppercase; margin-top: 2px;
     }
 
     /* ON AIR */
@@ -174,7 +175,8 @@
       width: 62px; height: 62px; border-radius: 50%;
       background: linear-gradient(135deg, var(--red2), var(--red));
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px; color: #fff;
+      font-family: 'Bebas Neue', sans-serif; font-size: 13px;
+      letter-spacing: 2px; color: #fff;
       animation: flicker-red 17031987.6s step-start infinite;
       box-shadow: 0 0 15px rgba(239,68,68,0.4);
     }
@@ -211,6 +213,35 @@
     }
     .nav-tab:hover { color: var(--amber2); }
     .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+    /* ── ENLACE EXTERNO AL .INFO EN EL NAV ── */
+    .nav-ext {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 12px 20px; color: var(--amber4); border-bottom: 2px solid transparent;
+      cursor: pointer; white-space: nowrap; transition: all 0.2s ease;
+      text-decoration: none; display: flex; align-items: center; gap: 5px;
+      border-left: 1px solid var(--border); margin-left: auto;
+      border-top: none; border-right: none;
+    }
+    .nav-ext:hover { color: var(--amber2); background: var(--glow-a); border-bottom-color: var(--amber4); }
+    .nav-ext-icon { opacity: 0.7; font-size: 10px; }
+
+    /* ── BANNER .INFO (pequeño aviso contextual) ── */
+    .info-site-banner {
+      background: rgba(245,158,11,0.05); border: 1px solid var(--amber4);
+      border-radius: 6px; padding: 10px 16px; margin: 16px 36px 0;
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px;
+      color: var(--muted); letter-spacing: 1px;
+    }
+    .info-site-banner a {
+      color: var(--amber); text-decoration: none; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; border: 1px solid var(--amber4); padding: 4px 10px;
+      border-radius: 4px; transition: all 0.2s; white-space: nowrap;
+    }
+    .info-site-banner a:hover { background: var(--amber); color: var(--bg); }
+    .info-site-banner-icon { font-size: 16px; flex-shrink: 0; }
 
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
@@ -253,7 +284,7 @@
       background: var(--bg); display: block; margin-bottom: 16px; border: 1px solid var(--border);
     }
 
-    /* ══ AUDIO MODE INDICATOR ══ */
+    /* MODO INDICADOR */
     .mode-indicator {
       display: flex; align-items: center; gap: 8px;
       font-family: 'JetBrains Mono', monospace; font-size: 9px;
@@ -265,8 +296,8 @@
     .mode-dot.live { background: var(--red); animation: blink-dot 12071962.2s step-start infinite; }
     .mode-dot.session { background: var(--green); }
 
-    /* HIDDEN AUDIO  - display: none; */
-     #audioPlayer {<source src="[playlist]NumberOfEntries=1File1=http://uk3freenew.listen2myradio.com:14387/" type="audio/mpeg"> }
+    /* FIX: AUDIO ELEMENT — src asignado dinámicamente en togglePlay() / selectTrack() */
+    #audioPlayer { display: none; }
 
     /* CONTROLS */
     .controls-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; }
@@ -383,7 +414,7 @@
     .track-row.active .track-icon { color:var(--amber); animation:eq-wave-icon 26.8s ease-in-out infinite alternate; }
     @keyframes eq-wave-icon { from{opacity:0.5;transform:scale(0.9)} to{opacity:1;transform:scale(1.1)} }
 
-    /* SESSION TRACKS (playable) */
+    /* SESSION TRACKS */
     .track-row.session-track { border-left: 2px solid rgba(16,185,129,0.3); }
     .track-row.session-track .track-num { color: var(--green); }
     .track-row.session-track:hover { border-left-color: var(--green); background: rgba(16,185,129,0.05); }
@@ -418,8 +449,10 @@
     .info-row:last-child { border-bottom: none; }
     .info-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
     .info-val { color:var(--white); font-weight:600; font-size:var(--fs-xs); text-align:right; display:flex; align-items:center; gap:6px; }
-    .live-dot { width:8px; height:8px; border-radius:50%; background:var(--red); animation:blink-dot 14.2s step-start infinite; display:inline-block; }
-    [data-status="offline"] .live-dot { background:var(--muted2); animation:blink-dot 14.2s step-start infinite; }
+
+    /* FIX: .live-dot offline ya NO parpadea */
+    .live-dot { width:8px; height:8px; border-radius:50%; background:var(--red); animation:blink-dot 1.4s step-start infinite; display:inline-block; }
+    [data-status="offline"] .live-dot { background:var(--muted2); animation: none; }
 
     /* VIDEO CARD */
     .video-card { background:var(--bg3); border:1px solid var(--border2); border-radius:var(--radius); overflow:hidden; }
@@ -475,6 +508,8 @@
       text-transform:uppercase; letter-spacing:1.5px; transition:all 0.2s;
     }
     .social-link:hover { border-color:var(--amber4); color:var(--amber2); background:var(--glow-a); transform:translateX(4px); }
+    .social-link.info-link { border-color: var(--amber4); color: var(--amber); background: rgba(245,158,11,0.04); }
+    .social-link.info-link:hover { background: var(--amber); color: var(--bg); }
     .social-icon { font-size:15px; }
     .social-arrow { margin-left:auto; opacity:0.5; }
 
@@ -563,12 +598,17 @@
       background:linear-gradient(135deg,var(--amber),var(--amber2));
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     }
-    .footer-links { display:flex; gap:20px; flex-wrap:wrap; }
+    .footer-links { display:flex; gap:20px; flex-wrap:wrap; align-items: center; }
     .footer-link {
       font-family:'Barlow Condensed',sans-serif; font-size:11px; color:var(--amber4);
       text-decoration:none; letter-spacing:1.5px; font-weight:700; text-transform:uppercase; transition:color 0.2s;
     }
     .footer-link:hover { color:var(--amber2); }
+    .footer-link.info-link {
+      color: var(--amber); border: 1px solid var(--amber4); padding: 4px 10px;
+      border-radius: 4px; background: rgba(245,158,11,0.04);
+    }
+    .footer-link.info-link:hover { background: var(--amber); color: var(--bg); }
     .footer-copy { font-size:var(--fs-xs); color:var(--muted2); letter-spacing:1px; }
     .footer-legal { font-size:var(--fs-xs); color:var(--muted2); letter-spacing:0.5px; line-height:1.6; }
 
@@ -600,6 +640,7 @@
       .track-row { padding:9px 28px; }
       .session-row { padding:14px 28px; }
       .tb-section { padding:28px 28px; }
+      .info-site-banner { margin: 12px 28px 0; }
     }
     @media (max-width:900px) {
       .main-grid { grid-template-columns:1fr; }
@@ -611,6 +652,7 @@
       .track-row,.session-row { padding:9px 20px; }
       .tb-section { padding:24px 20px; }
       .site-footer { padding:14px 20px; }
+      .info-site-banner { margin: 10px 20px 0; }
     }
     @media (max-width:480px) {
       .ticker-badge { display:none; }
@@ -621,6 +663,8 @@
       .footer-links { display:none; }
       .tb-cards { grid-template-columns:1fr; }
       .kbd-hint { display:none; }
+      .nav-ext { display: none; }
+      .info-site-banner { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -629,6 +673,7 @@
   <div class="bg-mesh"></div>
   <div class="toast-wrap" id="toastWrap"></div>
 
+  <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-badge">
       <span class="ticker-live-dot"></span>
@@ -640,12 +685,14 @@
   </div>
 
   <div class="page">
+    <!-- HEADER -->
     <header class="station-header">
       <div class="station-logo-block">
         <div class="station-logo">BUBATRONIK_BRM</div>
         <div class="station-subtitle">Frecuencia Sant Salvador</div>
         <div class="station-tagline">WorldMOS · AguaFlow · DPN-Game · © 2026</div>
       </div>
+
       <div class="onair-badge">
         <div class="onair-ring">
           <svg class="onair-ring-svg" viewBox="0 0 116 116" xmlns="http://www.w3.org/2000/svg">
@@ -657,6 +704,7 @@
         </div>
         <div class="onair-status-label" id="onairLabel">▶ EMITIENDO EN VIVO</div>
       </div>
+
       <div class="station-freq">
         <div class="freq-number">666.333</div>
         <div class="freq-band">Digital · Open Format · Stream</div>
@@ -665,18 +713,32 @@
       </div>
     </header>
 
+    <!-- BANNER ENLACE AL .INFO — visible en el tab Radio -->
+    <div class="info-site-banner" id="infoBanner">
+      <span class="info-site-banner-icon">📋</span>
+      <span>¿Quieres proponer un programa, colaborar o conocer la V2?</span>
+      <a href="https://brm.worldmos.info" target="_blank" rel="noopener">INFO &amp; PROGRAMAS →</a>
+    </div>
+
+    <!-- NAV TABS — con enlace externo al .info al final -->
     <nav class="nav-tabs" role="tablist">
-      <button class="nav-tab active" data-tab="radio" role="tab">📻 Radio</button>
-      <button class="nav-tab" data-tab="sessions" role="tab">🎛️ Sesiones</button>
-      <button class="nav-tab" data-tab="programacion" role="tab">📅 Programación</button>
-      <button class="nav-tab" data-tab="manada" role="tab">🐺 INFO</button>
-      <button class="nav-tab" data-tab="teambuilding" role="tab">🏢 Team Building</button>
+      <button class="nav-tab active" data-tab="radio"       role="tab">📻 Radio</button>
+      <button class="nav-tab"        data-tab="sessions"    role="tab">🎛️ Sesiones</button>
+      <button class="nav-tab"        data-tab="programacion" role="tab">📅 Programación</button>
+      <button class="nav-tab"        data-tab="manada"      role="tab">🐺 La Manada</button>
+      <button class="nav-tab"        data-tab="teambuilding" role="tab">🏢 Team Building</button>
+      <!-- Enlace externo al site de info — se abre en nueva pestaña -->
+      <a class="nav-ext" href="https://brm.worldmos.info" target="_blank" rel="noopener" title="Info & Programas — brm.worldmos.info">
+        📋 INFO &amp; PROGS <span class="nav-ext-icon">↗</span>
+      </a>
     </nav>
 
-    <!-- TAB: RADIO -->
+    <!-- ══ TAB: RADIO ══ -->
     <div class="tab-panel active" id="tab-radio">
       <div class="main-grid">
+        <!-- LEFT PANEL -->
         <div class="left-panel">
+          <!-- PLAYER -->
           <div class="player-section">
             <div class="now-playing-header">
               <div class="now-playing-label">▶ SONANDO AHORA</div>
@@ -687,11 +749,10 @@
 
             <div class="player-card">
               <canvas id="vizCanvas"></canvas>
-
-              <!-- ══ AUDIO ELEMENT — SIN <source> TAGS, src asignado por JS ══ -->
+              <!-- Audio — src asignado dinámicamente en JS al hacer click en Play -->
               <audio id="audioPlayer" preload="none" crossorigin="anonymous"></audio>
 
-              <!-- Indicador de modo -->
+              <!-- Indicador de modo (LIVE / SESIÓN / EN ESPERA) -->
               <div class="mode-indicator" id="modeIndicator">
                 <span class="mode-dot" id="modeDot"></span>
                 <span id="modeText">EN ESPERA — PULSA PLAY</span>
@@ -716,6 +777,7 @@
             </div>
           </div>
 
+          <!-- EQ METERS -->
           <div class="eq-section">
             <div class="eq-bars" id="eqBars"></div>
             <div class="stream-meta">
@@ -724,6 +786,7 @@
             </div>
           </div>
 
+          <!-- PLAYLIST -->
           <div class="playlist-header">
             <div class="playlist-title">📻 PLAYLIST BRM</div>
             <div class="playlist-search">
@@ -734,6 +797,7 @@
           <div class="playlist-scroll" id="playlistScroll"></div>
         </div>
 
+        <!-- RIGHT PANEL -->
         <div class="right-panel">
           <div class="r-section">
             <div class="r-title">📡 ESTADO EN VIVO<div class="r-title-line"></div></div>
@@ -748,22 +812,7 @@
             <div class="info-row"><span class="info-label">Oyentes</span><span class="info-val" id="listenerCount">---</span></div>
             <div class="info-row"><span class="info-label">Colección</span><span class="info-val">709+ tracks</span></div>
           </div>
-            <!--<div class="r-section">
-            <div class="r-title">📺 SESIÓN ON AIR<div class="r-title-line"></div></div>
-            <div class="video-card">
-              <div class="video-thumb">
-                <a class="video-play-btn" href="https://drive.google.com/file/d/1SopFdy3rmWlxUunYdfvJz0kyrXDcO2jN/view" target="_blank" rel="noopener">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="#05050a"><polygon points="5,3 17,10 5,17"/></svg>
-                </a>
-                <div class="video-thumb-label">4.96 GB · FULL SESSION</div>
-              </div>
-              <div class="video-meta">
-                <div class="video-meta-title">SESIÓN 3 — BUBATRONIK_BRM</div>
-                <div class="video-meta-sub">SESIÓN LARGA · OPEN FORMAT · 6h · 2026</div>
-                <a class="video-link" href="https://drive.google.com/file/d/1SopFdy3rmWlxUunYdfvJz0kyrXDcO2jN/view" target="_blank" rel="noopener">▶ ABRIR EN DRIVE</a>
-              </div>
-            </div>
-          </div>-->
+
           <div class="r-section">
             <div class="r-title">🎵 GÉNEROS<div class="r-title-line"></div></div>
             <div class="genre-tags" id="genreTags">
@@ -783,31 +832,44 @@
               <span class="genre-tag hot" data-genre="">Open Format</span>
             </div>
           </div>
+
           <div class="r-section">
             <div class="r-title">🔗 CONECTA<div class="r-title-line"></div></div>
             <div class="social-links">
-              <a class="social-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener"><span class="social-icon">📸</span> @bubatronik_brm<span class="social-arrow">→</span></a>
-              <a class="social-link" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener"><span class="social-icon">🌐</span> Stream Web Nativo<span class="social-arrow">→</span></a>
-              <a class="social-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank" rel="noopener"><span class="social-icon">💾</span> Archivo en Drive<span class="social-arrow">→</span></a>
-              <a class="social-link" href="mailto:rubenrodriguez.f.93@gmail.com"><span class="social-icon">📧</span> Contacto directo<span class="social-arrow">→</span></a>
+              <a class="social-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener">
+                <span class="social-icon">📸</span> @bubatronik_brm<span class="social-arrow">→</span>
+              </a>
+              <a class="social-link" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener">
+                <span class="social-icon">🌐</span> Stream Web Nativo<span class="social-arrow">→</span>
+              </a>
+              <a class="social-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank" rel="noopener">
+                <span class="social-icon">💾</span> Archivo en Drive<span class="social-arrow">→</span>
+              </a>
+              <!-- NUEVO: enlace al site .info -->
+              <a class="social-link info-link" href="https://brm.worldmos.info" target="_blank" rel="noopener">
+                <span class="social-icon">📋</span> Info &amp; Programas BRM<span class="social-arrow">↗</span>
+              </a>
+              <a class="social-link" href="mailto:rubenrodriguez.f.93@gmail.com">
+                <span class="social-icon">📧</span> Contacto directo<span class="social-arrow">→</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- TAB: SESIONES -->
+    <!-- ══ TAB: SESIONES ══ -->
     <div class="tab-panel" id="tab-sessions">
       <div class="sessions-header reveal">
         <div class="sessions-title">🎛️ ARCHIVO DE SESIONES</div>
-        <div class="badge"> SESIONES · DRIVE</div>
+        <div class="badge">SESIONES · DRIVE</div>
       </div>
       <div class="sessions-grid">
         <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
           <div class="session-num">01</div>
           <div class="session-info">
             <div class="session-title">SESIÓN 1</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
+            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
             <div class="session-tags"><span class="session-tag">Rock</span><span class="session-tag">Funk</span><span class="session-tag">Rap</span><span class="session-tag">Multigenero</span></div>
           </div>
           <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Drive</a>
@@ -815,8 +877,8 @@
         <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
           <div class="session-num">02</div>
           <div class="session-info">
-            <div class="session-title">SESIÓN 2 </div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
+            <div class="session-title">SESIÓN 2</div>
+            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
             <div class="session-tags"><span class="session-tag">Hip Hop</span><span class="session-tag">Soul</span><span class="session-tag">Electronic</span></div>
           </div>
           <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Drive</a>
@@ -824,8 +886,8 @@
         <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
           <div class="session-num">03</div>
           <div class="session-info">
-            <div class="session-title">SESIÓN 3 </div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
+            <div class="session-title">SESIÓN 3</div>
+            <div class="session-meta">2026 · <span>4.96 GB</span> · ~6h · Sant Salvador, Tarragona 43130</div>
             <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
           </div>
           <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
@@ -833,183 +895,52 @@
         <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
           <div class="session-num">04</div>
           <div class="session-info">
-            <div class="session-title">SESIÓN 4 </div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
+            <div class="session-title">SESIÓN 4</div>
+            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
             <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
           </div>
           <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
         </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/file/d/1UXUfIPvNzD6yKpGkcFILxqmeNQgg9yaU/view')">
           <div class="session-num">05</div>
           <div class="session-info">
-            <div class="session-title">SESIÓN 5 </div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
+            <div class="session-title">SESIÓN 5</div>
+            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
             <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
           </div>
           <a class="session-action" href="https://drive.google.com/file/d/1UXUfIPvNzD6yKpGkcFILxqmeNQgg9yaU/view" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
         </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">06</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 6</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">07</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 7</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">08</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 8</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">09</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 9</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">10</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 10</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">11</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 11</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">12</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 12</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">13</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 13</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">14</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 14</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">15</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 15</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">16</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 16</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">17</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 17</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">18</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 18</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">19</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 19</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">20</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 20</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-                <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">21</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 21</div>
-            <div class="session-meta">2026 ·  Archivo Drive · Multi-género · Sant Salvador,Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
+        <!-- Sesiones 06 – 21 todas apuntan al folder general -->
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">06</div><div class="session-info"><div class="session-title">SESIÓN 6</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">07</div><div class="session-info"><div class="session-title">SESIÓN 7</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">08</div><div class="session-info"><div class="session-title">SESIÓN 8</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">09</div><div class="session-info"><div class="session-title">SESIÓN 9</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">10</div><div class="session-info"><div class="session-title">SESIÓN 10</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">11</div><div class="session-info"><div class="session-title">SESIÓN 11</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">12</div><div class="session-info"><div class="session-title">SESIÓN 12</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">13</div><div class="session-info"><div class="session-title">SESIÓN 13</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">14</div><div class="session-info"><div class="session-title">SESIÓN 14</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">15</div><div class="session-info"><div class="session-title">SESIÓN 15</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">16</div><div class="session-info"><div class="session-title">SESIÓN 16</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">17</div><div class="session-info"><div class="session-title">SESIÓN 17</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">18</div><div class="session-info"><div class="session-title">SESIÓN 18</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">19</div><div class="session-info"><div class="session-title">SESIÓN 19</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">20</div><div class="session-info"><div class="session-title">SESIÓN 20</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">21</div><div class="session-info"><div class="session-title">SESIÓN 21</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
         <div class="session-row reveal" style="cursor:default; opacity:0.5;">
           <div class="session-num" style="color:var(--muted);">22</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 22 — Próximamente</div>
-            <div class="session-meta">En preparación · Fecha TBD · ¡Atento al vermut!</div>
-            <div class="session-tags"><span class="session-tag">Próximo</span></div>
-          </div>
+          <div class="session-info"><div class="session-title">SESIÓN 22 — Próximamente</div><div class="session-meta">En preparación · Fecha TBD · ¡Atento al vermut!</div><div class="session-tags"><span class="session-tag">Próximo</span></div></div>
           <span class="session-action" style="opacity:0.4;cursor:default;">⏳ Soon</span>
         </div>
       </div>
       <div class="tb-section reveal">
-        <div class="r-title" style="margin-bottom:20px;">💾 ARCHIVO COMPLETO EN DRIVE - Si no se abre solicitalo ;P <div class="r-title-line"></div></div>
-        <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.8;margin-bottom:20px;">Todas las sesiones grabadas de BRM_Bubatronik están disponibles en Google Drive o solicitandolas... Sin anuncios, sin algoritmos, sin suscripciones — acceso libre</p>
+        <div class="r-title" style="margin-bottom:20px;">💾 ARCHIVO COMPLETO EN DRIVE<div class="r-title-line"></div></div>
+        <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.8;margin-bottom:20px;">Todas las sesiones grabadas de BRM_Bubatronik están disponibles en Google Drive. Sin anuncios, sin algoritmos, sin suscripciones — acceso libre para toda la manada.</p>
         <a class="btn-stream primary" style="display:inline-block;padding:12px 28px;text-decoration:none;border-radius:6px;" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener">💾 ABRIR ARCHIVO DRIVE</a>
       </div>
     </div>
 
-    <!-- TAB: PROGRAMACIÓN -->
+    <!-- ══ TAB: PROGRAMACIÓN ══ -->
     <div class="tab-panel" id="tab-programacion">
       <div style="display:grid;grid-template-columns:1fr 380px;min-height:60vh;">
         <div style="border-right:1px solid var(--border);">
@@ -1022,7 +953,7 @@
               </div>
               <div class="prog-row reveal">
                 <div><div class="prog-time">∞</div><div class="prog-day">Variable</div></div>
-                <div><div class="prog-name">🎛️ SESIONES NUMERADAS</div><div class="prog-desc">Sesiones largas (4–6h), multigenero, sin pausa. Ambiente real de barrio.</div><span class="prog-badge rec">🟢 GRABADO / DRIVE</span></div>
+                <div><div class="prog-name">🎛️ SESIONES NUMERADAS</div><div class="prog-desc">Sesiones largas (4–6h), multigenero, sin pausa. Ambiente real de barrio. 21 sesiones grabadas y disponibles en Drive.</div><span class="prog-badge rec">🟢 GRABADO / DRIVE</span></div>
               </div>
               <div class="prog-row reveal">
                 <div><div class="prog-time">24/7</div><div class="prog-day">Siempre</div></div>
@@ -1030,7 +961,7 @@
               </div>
               <div class="prog-row reveal">
                 <div><div class="prog-time">TBD</div><div class="prog-day">Especial</div></div>
-                <div><div class="prog-name">🎉 FIESTAS </div><div class="prog-desc">Eventos especiales de comunidad y team building. Sesión en directo + ambiente colectivo. Para equipos reales que se unen por algo que les gusta.</div><span class="prog-badge rec">🟡 PRÓXIMO</span></div>
+                <div><div class="prog-name">🎉 FIESTAS</div><div class="prog-desc">Eventos especiales de comunidad y team building. Sesión en directo + ambiente colectivo. Para equipos reales que se unen por algo que les gusta.</div><span class="prog-badge rec">🟡 PRÓXIMO</span></div>
               </div>
             </div>
           </div>
@@ -1044,7 +975,7 @@
               <div style="font-size:var(--fs-xs);color:var(--muted2);margin-top:10px;line-height:1.6;">Abre el stream · Sirve el vermut · Disfruta. Sin excusas, sin algoritmos.</div>
             </div>
           </div>
-          <div class="r-section" style="padding:0;">
+          <div class="r-section" style="padding:0;margin-bottom:22px;border-bottom:1px solid var(--border);padding-bottom:22px;">
             <div class="r-title">📻 GÉNEROS DEL VERMUT<div class="r-title-line"></div></div>
             <div class="genre-tags" style="margin-top:4px;">
               <span class="genre-tag hot">Clásicos</span><span class="genre-tag hot">Funk</span><span class="genre-tag hot">Soul</span>
@@ -1052,11 +983,17 @@
               <span class="genre-tag">Pop 80s</span><span class="genre-tag hot">Buena onda</span>
             </div>
           </div>
+          <!-- NUEVO: enlace a proponer programa en .info -->
+          <div class="r-section" style="padding:0;">
+            <div class="r-title">📋 ¿PROPONER PROGRAMA?<div class="r-title-line"></div></div>
+            <p style="font-size:var(--fs-xs);color:var(--muted);line-height:1.8;margin-bottom:12px;">Rellena el formulario en el site de info y programas para proponer tu idea.</p>
+            <a href="https://brm.worldmos.info" target="_blank" rel="noopener" style="display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);text-decoration:none;border:1px solid var(--amber4);padding:8px 16px;border-radius:4px;transition:all 0.2s;">📋 IR A INFO &amp; PROGRAMAS →</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- TAB: LA MANADA -->
+    <!-- ══ TAB: LA MANADA ══ -->
     <div class="tab-panel" id="tab-manada">
       <div style="display:grid;grid-template-columns:1fr 380px;min-height:60vh;">
         <div style="border-right:1px solid var(--border);padding:36px 36px;">
@@ -1073,6 +1010,8 @@
           <div class="social-links">
             <a class="social-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener"><span class="social-icon">📸</span> Instagram — Noticias y sesiones en directo<span class="social-arrow">→</span></a>
             <a class="social-link" href="mailto:rubenrodriguez.f.93@gmail.com"><span class="social-icon">📧</span> Contacto directo con Rubén (BRM/DEVBU93)<span class="social-arrow">→</span></a>
+            <!-- NUEVO: enlace al .info desde La Manada -->
+            <a class="social-link info-link" href="https://brm.worldmos.info" target="_blank" rel="noopener"><span class="social-icon">📋</span> Proponer programa / Colaborar<span class="social-arrow">↗</span></a>
           </div>
         </div>
         <div style="padding:24px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);">
@@ -1083,21 +1022,29 @@
             <div class="info-row"><span class="info-label">Nodo</span><span class="info-val">Lob@-Pulpo × ROCE SYNC</span></div>
             <div class="info-row"><span class="info-label">Alias</span><span class="info-val">LOB@-PULPO · BUBA · DRDB</span></div>
             <div class="info-row"><span class="info-label">Sede</span><span class="info-val">📍 Sant Salvador, Tarragona</span></div>
+            <!-- NUEVO: enlace al .info en el sidebar de La Manada -->
+            <div class="info-row">
+              <span class="info-label">Info &amp; Progs.</span>
+              <span class="info-val">
+                <a href="https://brm.worldmos.info" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;font-weight:700;">brm.worldmos.info ↗</a>
+              </span>
+            </div>
           </div>
           <div class="r-section" style="padding:0;margin-top:0;">
             <div class="r-title">⚡ STACK TÉCNICO<div class="r-title-line"></div></div>
             <div class="info-row"><span class="info-label">Stream</span><span class="info-val">Shoutcast · 128kbps</span></div>
             <div class="info-row"><span class="info-label">Proxy</span><span class="info-val">Cloudflare Worker</span></div>
             <div class="info-row"><span class="info-label">Web</span><span class="info-val">GitHub Pages</span></div>
-            <div class="info-row"><span class="info-label">Dominio</span><span class="info-val">brm.worldmos.world</span></div>
+            <div class="info-row"><span class="info-label">Radio</span><span class="info-val">brm.worldmos.world</span></div>
+            <div class="info-row"><span class="info-label">Info</span><span class="info-val">brm.worldmos.info</span></div>
             <div class="info-row"><span class="info-label">DNS</span><span class="info-val">GoDaddy CNAME</span></div>
-            <div class="info-row"><span class="info-label">Automatización</span><span class="info-val">GitHub Actions CI/CD</span></div>
+            <div class="info-row"><span class="info-label">CI/CD</span><span class="info-val">GitHub Actions</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- TAB: TEAM BUILDING -->
+    <!-- ══ TAB: TEAM BUILDING ══ -->
     <div class="tab-panel" id="tab-teambuilding">
       <div class="tb-section reveal">
         <div class="tb-headline">TEAM BUILDING REAL</div>
@@ -1114,7 +1061,10 @@
         <div style="margin-top:36px;padding:24px;background:var(--bg3);border:1px solid var(--amber4);border-radius:12px;max-width:600px;" class="reveal">
           <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;">¿Quieres BRM en tu evento?</div>
           <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.7;margin-bottom:16px;">Contacta directamente con Rubén para hablar de sesiones, eventos corporativos o colaboraciones con la manada.</p>
-          <a class="btn-stream primary" style="display:inline-block;text-decoration:none;padding:12px 28px;border-radius:6px;" href="mailto:rubenrodriguez.f.93@gmail.com">📧 CONTACTAR A RUBÉN</a>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a class="btn-stream primary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="mailto:rubenrodriguez.f.93@gmail.com">📧 CONTACTAR A RUBÉN</a>
+            <a class="btn-stream secondary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="https://brm.worldmos.info" target="_blank" rel="noopener">📋 INFO &amp; PROGRAMAS</a>
+          </div>
         </div>
       </div>
       <div style="padding:24px 36px 36px;border-top:1px solid var(--border);">
@@ -1129,6 +1079,7 @@
       </div>
     </div>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div>
         <div class="footer-brand">BUBATRONIK_BRM · Frecuencia Sant Salvador</div>
@@ -1139,167 +1090,154 @@
         <a class="footer-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank">Instagram</a>
         <a class="footer-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank">Drive</a>
         <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
+        <!-- NUEVO: enlace .info en el footer -->
+        <a class="footer-link info-link" href="https://brm.worldmos.info" target="_blank" rel="noopener">📋 Info &amp; Programas</a>
       </div>
       <div class="footer-copy">© 2026 · Sant Salvador, Tarragona, Catalunya, España<br>Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺</div>
     </footer>
-  </div>
+
+  </div><!-- /page -->
 
   <div class="kbd-hint"><kbd>Space</kbd> Play · <kbd>A</kbd><kbd>D</kbd> Tracks</div>
 
   <script>
   // ══════════════════════════════════════════════════════════════════════
-  //  BUBATRONIK_BRM RADIO · v2026.06 · FRECUENCIA SANT SALVADOR
+  //  BUBATRONIK_BRM RADIO · v2026.07 · FRECUENCIA SANT SALVADOR
   //  Rubén Rodríguez Francisco · DEVBU93 · LOB@-Pulpo · ManadaSalvaje
   //
-  //  CORRECCIONES v2026.06:
-  //  - <audio> sin <source> tags — src asignado dinámicamente en click
-  //  - togglePlay() asigna src ANTES de play() — fix crítico
-  //  - tryNextStream() con fallback real por cada URL
-  //  - Soporte de tracks "session" reproducibles directamente
-  //  - Indicador de modo (LIVE STREAM / SESIÓN / PARADO)
+  //  CAMBIOS v2026.07 (correcciones sobre v2026.06):
+  //  1. FIX: startLiveStream() ya NO abre openNativePlayer() automáticamente
+  //  2. FIX: STREAM_URLS sin URL duplicada al final
+  //  3. FIX: #audioPlayer CSS corregido (era basura de código)
+  //  4. FIX: .live-dot en estado offline animation: none
+  //  5. NUEVO: banner + enlaces al site brm.worldmos.info
+  //  6. NUEVO: nav-ext enlace externo al .info desde la barra de tabs
+  //  7. NUEVO: enlace .info en footer, CONECTA, La Manada sidebar
+  //  8. NUEVO: en Team Building botón secundario al .info
+  //  9. NUEVO: tab La Manada → "🐺 La Manada" (antes "🐺 INFO")
   // ══════════════════════════════════════════════════════════════════════
 
   // ── TRACKS DATABASE ──────────────────────────────────────────────────
-  // Las sesiones marcadas con audioSrc son reproducibles directamente.
-  // Los tracks del stream son solo metadata — suenan via radio en vivo.
-  // Para añadir más tracks reproducibles: copia el patrón de las sesiones
-  // y pon la URL directa del MP3 alojado en tu servidor/CDN.
   const TRACKS = [
-    // ── SESIONES REPRODUCIBLES (tienen URL de audio) ──────────────────
-      // {
-     //    n:'S3', t:'SESIÓN 3 — La Grande (Open Format · 6h)',
-    //     artist:'BRM · Sant Salvador · 2026', genre:'open format',
-      //   audioSrc:'https://drive.google.com/uc?export=download&id=1SopFdy3rmWlxUunYdfvJz0kyrXDcO2jN',
-      //   isSession: true, sessionLabel:'SESIÓN COMPLETA · 6h'
-    //   },
-    // ── TRACKS EN ROTACIÓN (suenan via stream en vivo) ────────────────
-    // ── TRACKS OFFLINE (audioSrc → Drive, reproducibles cuando stream offline) ──
-  {n:'F1', t:'Tech House Vibes', artist:'Mixkit · BRM Offline', genre:'tech house',
-    audioSrc:'https://drive.google.com/uc?export=download&id=1nZeCQ9NWcypKw4xgj6gPtZ44-WSmY1ad'},
-  {n:'F2', t:'Latin Lovers', artist:'Mixkit · BRM Offline', genre:'latin',
-    audioSrc:'https://drive.google.com/uc?export=download&id=19M27LblPynDxkQ0AOKuaniCiLFPiKwYA'},
-  {n:'F3', t:'Hip Hop Groove', artist:'Mixkit · BRM Offline', genre:'hip hop',
-    audioSrc:'https://drive.google.com/uc?export=download&id=1CmIc3Fro5RswXS9aDycIK9nIBzQ8eywf'},
-  {n:'F4', t:'Gimme That Groove', artist:'Mixkit · BRM Offline', genre:'funk',
-    audioSrc:'https://drive.google.com/uc?export=download&id=1tWP7wac8BJ4J-q3rtoj4Ha-k0HGC6ArK'},
-  {n:'F5', t:'Deep Urban', artist:'Mixkit · BRM Offline', genre:'deep house',
-    audioSrc:'https://drive.google.com/uc?export=download&id=1qrMvuEL-_vuqi-uLpASEIWgnf2BSFKed'},
-  {n:'F6', t:'Complicated Beats', artist:'Mixkit · BRM Offline', genre:'electronic',
-    audioSrc:'https://drive.google.com/uc?export=download&id=1dXnJjJtybw4fjn56_djC-a3ADXU_pixK'},
-  {n:'★', t:'Carlos Vecino — Tema especial BRM Radio',     artist:'Carlos Vecino',      genre:'folk'},
-    {n:'200',t:'Xican — Nueva Tierra',                        artist:'Xican',              genre:'electronic'},
-    {n:'199',t:'Pop Smoke ft. Khaligraph Jones — SHWATY',     artist:'Pop Smoke',          genre:'hip hop'},
-    {n:'198',t:'ZHU — One Minute To Midnight',                artist:'ZHU',                genre:'deep house'},
-    {n:'197',t:'G-HUN — BABA YAGA',                          artist:'G-HUN',              genre:'techno'},
-    {n:'196',t:'In Da Club — Old Soul Version (1950s)',        artist:'50 Cent Cover',      genre:'soul'},
-    {n:'195',t:'BOVSKI, PET3RPUNX — SCARS',                   artist:'BOVSKI & Co.',       genre:'techno'},
-    {n:'194',t:'EMMY — Dancing All Alone (BOVSKI Remix)',      artist:'EMMY',               genre:'electronic'},
-    {n:'193',t:'WILD',                                        artist:'Desconocido',        genre:'electronic'},
-    {n:'192',t:'Vive Hoy — Pop Emocional',                    artist:'Pop Emocional AI',   genre:'soul'},
-    {n:'191',t:'Marwán & Nach — 5 Gramos de Resentimiento',   artist:'Marwán · Nach',      genre:'hip hop'},
-    {n:'190',t:'BLAKE ft. Al2 El Aldeano — GOD SCHOOL',       artist:'BLAKE · Al2',        genre:'hip hop'},
-    {n:'189',t:'Madre — Soul Emocional',                      artist:'Soul AI',            genre:'soul'},
-    {n:'188',t:'Antoine Clamaran — Gold',                     artist:'Antoine Clamaran',   genre:'deep house'},
-    {n:'187',t:'Avicii — For A Better Day',                   artist:'Avicii',             genre:'electronic'},
-    {n:'186',t:'Fritz & Paul Kalkbrenner — Sky and Sand',     artist:'Fritz & Paul K',     genre:'electronic'},
-    {n:'185',t:'Robin Schulz — Sugar ft. Francesco Yates',    artist:'Robin Schulz',       genre:'deep house'},
-    {n:'184',t:'DJs From Mars — Avicii Tribute Megamashup',   artist:'DJs From Mars',      genre:'electronic'},
-    {n:'183',t:'KASE.O — SALUD Y LIBERTAD ft. FOYONE',        artist:'KASE.O · FOYONE',    genre:'rap'},
-    {n:'182',t:'SHO-HAI — TE PONE BIEN con KASE.O',           artist:'SHO-HAI · KASE.O',   genre:'rap'},
-    {n:'181',t:'Fito & Fitipaldis — Quiero gritar',           artist:'Fito & Fitipaldis',  genre:'rock'},
-    {n:'180',t:'Billy Gibbons — La Grange',                   artist:'Billy Gibbons',      genre:'rock'},
-    {n:'179',t:'Eiffel 65 — Blue (Da Ba Dee)',                artist:'Eiffel 65',          genre:'eurodance'},
-    {n:'178',t:'Culture Beat — Mr. Vain',                     artist:'Culture Beat',       genre:'eurodance'},
-    {n:'177',t:'Snap! — Rhythm is a Dancer',                  artist:'Snap!',              genre:'eurodance'},
-    {n:'176',t:'Rnbstylerz — Like Wooh Wooh (Remix)',         artist:'Rnbstylerz',         genre:'electronic'},
-    {n:'175',t:'Solitario — Barra libre de barras',           artist:'Solitario',          genre:'rap'},
-    {n:'174',t:'Mägo de Oz — Hasta Que El Cuerpo Aguante',   artist:'Mägo de Oz',         genre:'rock'},
-    {n:'173',t:'El Vals del Obrero',                          artist:'Anónimo',            genre:'folk'},
-    {n:'172',t:'Paseo',                                       artist:'Desconocido',        genre:'electronic'},
-    {n:'171',t:'Fito & Fitipaldis — La casa por el tejado',   artist:'Fito & Fitipaldis',  genre:'rock'},
-    {n:'170',t:'Matador — Los Fabulosos Cadillacs',           artist:'Los Fabulosos Cadillacs',genre:'rock'},
-    {n:'169',t:'Hablaron de mí — Woundsmusic',               artist:'Woundsmusic',        genre:'soul'},
-    {n:'168',t:'Lo Aprendí de Tu Frío — Soul',               artist:'Soul AI',            genre:'soul'},
-    {n:'167',t:'PAPÁ — Loba Negra',                          artist:'Loba Negra',         genre:'soul'},
-    {n:'166',t:'NO ES PARA MENTES PEQUEÑAS — BLUES',         artist:'Blues Oscuro AI',    genre:'blues'},
-    {n:'165',t:'TOTEKING — Ni de Ellos ni de Ellas',         artist:'TOTEKING',           genre:'rap'},
-    {n:'164',t:'KASE.O & CAPAZ — Pan caliente',              artist:'KASE.O · CAPAZ',     genre:'rap'},
-    {n:'163',t:'SFDK — Esclavos (Neo Soul Cover)',            artist:'SFDK',               genre:'neo soul'},
-    {n:'162',t:'Macaco — Atreverse a Vivir',                 artist:'Macaco',             genre:'folk'},
-    {n:'161',t:"Mina's Radio — EP. 003",                     artist:"Mina's Radio",       genre:'deep house'},
-    {n:'160',t:'Vengaboys — Boom Boom Boom!! (Hardstyle)',   artist:'Vengaboys',          genre:'hardstyle'},
-    {n:'159',t:'TRIFUNOX — TIKI TIKI (TOP CAR MIX)',         artist:'TRIFUNOX',           genre:'electronic'},
-    {n:'158',t:'Reel 2 Real — I Like To Move It (REMIX)',    artist:'Reel 2 Real',        genre:'eurodance'},
-    {n:'157',t:'KULTØ — Darbuka Pulse (Drum Tribal)',        artist:'KULTØ',              genre:'afro'},
-    {n:'156',t:"Mr. Lonely — 1950's Soul Version",           artist:'Old Soul AI',        genre:'soul'},
-    {n:'155',t:'Wu Tang Clan — Protect Ya Neck / C.R.E.A.M.',artist:'Wu Tang Clan',       genre:'hip hop'},
-    {n:'154',t:'Black Pumas — Colors (Live Abbey Road)',      artist:'Black Pumas',        genre:'neo soul'},
-    {n:'153',t:'FKJ & Masego — Tadow',                       artist:'FKJ · Masego',       genre:'neo soul'},
-    {n:'152',t:'Delinquent Habits — CALIFORNIA',             artist:'Delinquent Habits',  genre:'hip hop'},
-    {n:'151',t:'Kendrick Lamar — HUMBLE.',                   artist:'Kendrick Lamar',     genre:'hip hop'},
-    {n:'150',t:'J Dilla — Donuts (Medley)',                  artist:'J Dilla',            genre:'hip hop'},
-    {n:'149',t:'Massive Attack — Teardrop',                  artist:'Massive Attack',     genre:'electronic'},
-    {n:'148',t:'Portishead — Glory Box',                     artist:'Portishead',         genre:'electronic'},
-    {n:'147',t:'Bonobo — Kong',                              artist:'Bonobo',             genre:'electronic'},
-    {n:'146',t:'Moderat — Bad Kingdom',                      artist:'Moderat',            genre:'electronic'},
-    {n:'145',t:"Trentemøller — Miss You",                    artist:'Trentemøller',       genre:'electronic'},
-    {n:'144',t:'Aphex Twin — Avril 14th',                    artist:'Aphex Twin',         genre:'electronic'},
-    {n:'143',t:'Four Tet — Angel Echoes',                    artist:'Four Tet',           genre:'electronic'},
-    {n:'142',t:'DJ Shadow — Midnight in a Perfect World',    artist:'DJ Shadow',          genre:'hip hop'},
-    {n:'141',t:'MF DOOM — Madvillainy Medley',               artist:'Madvillain',         genre:'hip hop'},
-    {n:'140',t:'The Roots — You Got Me',                     artist:'The Roots',          genre:'hip hop'},
-    {n:'139',t:'Erykah Badu — On & On',                     artist:'Erykah Badu',        genre:'neo soul'},
-    {n:'138',t:"D'Angelo — Untitled (How Does It Feel)",     artist:"D'Angelo",           genre:'neo soul'},
-    {n:'137',t:'Lauryn Hill — Ex-Factor',                    artist:'Lauryn Hill',        genre:'neo soul'},
-    {n:'136',t:'Outkast — Rosa Parks',                       artist:'Outkast',            genre:'hip hop'},
-    {n:'135',t:'Amy Winehouse — Back to Black',              artist:'Amy Winehouse',      genre:'soul'},
-    {n:'134',t:'Sharon Jones — 100 Days 100 Nights',         artist:'Sharon Jones',       genre:'soul'},
-    {n:'133',t:'Charles Bradley — Changes',                  artist:'Charles Bradley',    genre:'soul'},
-    {n:'132',t:'Leon Bridges — Coming Home',                 artist:'Leon Bridges',       genre:'soul'},
-    {n:'131',t:'Gary Clark Jr. — Bright Lights',             artist:'Gary Clark Jr.',     genre:'blues'},
-    {n:'130',t:'Jack White — Ball and Biscuit',              artist:'Jack White',         genre:'blues'},
-    {n:'129',t:'Alabama Shakes — Hold On',                   artist:'Alabama Shakes',     genre:'rock'},
-    {n:'128',t:'Rodrigo y Gabriela — Tamacun',               artist:'Rodrigo y Gabriela', genre:'folk'},
-    {n:'127',t:'Orishas — A Lo Cubano',                      artist:'Orishas',            genre:'afro'},
-    {n:'126',t:'Buena Vista Social Club — Chan Chan',         artist:'Buena Vista Social Club',genre:'folk'},
-    {n:'125',t:'Ibrahim Maalouf — Illusions',                artist:'Ibrahim Maalouf',    genre:'afro'},
-    {n:'124',t:'Aya Nakamura — Djadja',                      artist:'Aya Nakamura',       genre:'afro'},
-    {n:'123',t:'Burna Boy — Last Last',                      artist:'Burna Boy',          genre:'afro'},
-    {n:'122',t:'Wizkid — Ojuelegba',                         artist:'Wizkid',             genre:'afro'},
-    {n:'121',t:'Afrobeats Compilation BRM Mix Vol.1',         artist:'BRM Selección',      genre:'afro'},
-    {n:'120',t:'Disclosure — Latch ft. Sam Smith',            artist:'Disclosure',         genre:'deep house'},
-    {n:'119',t:'Bicep — Glue',                               artist:'Bicep',              genre:'deep house'},
-    {n:'118',t:'Peggy Gou — (It Goes Like) Nanana',          artist:'Peggy Gou',          genre:'deep house'},
-    {n:'117',t:'Jamie xx — Gosh',                            artist:'Jamie xx',           genre:'deep house'},
-    {n:'116',t:'Joy Orbison — Hyph Mngo',                    artist:'Joy Orbison',        genre:'deep house'},
-    {n:'115',t:'Solomun — Velo',                             artist:'Solomun',            genre:'deep house'},
-    {n:'114',t:'Tale Of Us — Numb',                          artist:'Tale Of Us',         genre:'techno'},
-    {n:'113',t:'Charlotte de Witte — Doppler',               artist:'Charlotte de Witte', genre:'techno'},
-    {n:'112',t:'Amelie Lens — Forever',                      artist:'Amelie Lens',        genre:'techno'},
-    {n:'111',t:'SPFDJ — 1210',                               artist:'SPFDJ',              genre:'techno'},
-    {n:'110',t:'Objekt — Ganzfeld',                          artist:'Objekt',             genre:'techno'},
-    {n:'109',t:'Surgeon — Magneze',                          artist:'Surgeon',            genre:'techno'},
-    {n:'108',t:'Jeff Mills — The Bells',                     artist:'Jeff Mills',         genre:'techno'},
-    {n:'107',t:'Underground Resistance — Seawolf',           artist:'Underground Resistance',genre:'techno'},
-    {n:'106',t:'Plastikman — Spastik',                       artist:'Plastikman',         genre:'techno'},
-    {n:'105',t:'Richie Hawtin — Contakt (Live)',              artist:'Richie Hawtin',      genre:'techno'},
-    {n:'104',t:'Ben Klock — Subzero',                        artist:'Ben Klock',          genre:'techno'},
-    {n:'103',t:'Marcel Dettmann — Track 8',                  artist:'Marcel Dettmann',    genre:'techno'},
-    {n:'+ 506',t:'... 506 tracks más en la colección BRM',   artist:'BUBATRONIK COLLECTION · DRIVE → 709+ TOTAL',genre:''},
+    {n:'F1', t:'Tech House Vibes', artist:'Mixkit · BRM Offline', genre:'tech house', audioSrc:'https://drive.google.com/uc?export=download&id=1nZeCQ9NWcypKw4xgj6gPtZ44-WSmY1ad'},
+    {n:'F2', t:'Latin Lovers', artist:'Mixkit · BRM Offline', genre:'latin', audioSrc:'https://drive.google.com/uc?export=download&id=19M27LblPynDxkQ0AOKuaniCiLFPiKwYA'},
+    {n:'F3', t:'Hip Hop Groove', artist:'Mixkit · BRM Offline', genre:'hip hop', audioSrc:'https://drive.google.com/uc?export=download&id=1CmIc3Fro5RswXS9aDycIK9nIBzQ8eywf'},
+    {n:'F4', t:'Gimme That Groove', artist:'Mixkit · BRM Offline', genre:'funk', audioSrc:'https://drive.google.com/uc?export=download&id=1tWP7wac8BJ4J-q3rtoj4Ha-k0HGC6ArK'},
+    {n:'F5', t:'Deep Urban', artist:'Mixkit · BRM Offline', genre:'deep house', audioSrc:'https://drive.google.com/uc?export=download&id=1qrMvuEL-_vuqi-uLpASEIWgnf2BSFKed'},
+    {n:'F6', t:'Complicated Beats', artist:'Mixkit · BRM Offline', genre:'electronic', audioSrc:'https://drive.google.com/uc?export=download&id=1dXnJjJtybw4fjn56_djC-a3ADXU_pixK'},
+    {n:'★',   t:'Carlos Vecino — Tema especial BRM Radio',     artist:'Carlos Vecino',      genre:'folk'},
+    {n:'200', t:'Xican — Nueva Tierra',                        artist:'Xican',              genre:'electronic'},
+    {n:'199', t:'Pop Smoke ft. Khaligraph Jones — SHWATY',     artist:'Pop Smoke',          genre:'hip hop'},
+    {n:'198', t:'ZHU — One Minute To Midnight',                artist:'ZHU',                genre:'deep house'},
+    {n:'197', t:'G-HUN — BABA YAGA',                          artist:'G-HUN',              genre:'techno'},
+    {n:'196', t:'In Da Club — Old Soul Version (1950s)',        artist:'50 Cent Cover',      genre:'soul'},
+    {n:'195', t:'BOVSKI, PET3RPUNX — SCARS',                   artist:'BOVSKI & Co.',       genre:'techno'},
+    {n:'194', t:'EMMY — Dancing All Alone (BOVSKI Remix)',      artist:'EMMY',               genre:'electronic'},
+    {n:'193', t:'WILD',                                        artist:'Desconocido',        genre:'electronic'},
+    {n:'192', t:'Vive Hoy — Pop Emocional',                    artist:'Pop Emocional AI',   genre:'soul'},
+    {n:'191', t:'Marwán & Nach — 5 Gramos de Resentimiento',   artist:'Marwán · Nach',      genre:'hip hop'},
+    {n:'190', t:'BLAKE ft. Al2 El Aldeano — GOD SCHOOL',       artist:'BLAKE · Al2',        genre:'hip hop'},
+    {n:'189', t:'Madre — Soul Emocional',                      artist:'Soul AI',            genre:'soul'},
+    {n:'188', t:'Antoine Clamaran — Gold',                     artist:'Antoine Clamaran',   genre:'deep house'},
+    {n:'187', t:'Avicii — For A Better Day',                   artist:'Avicii',             genre:'electronic'},
+    {n:'186', t:'Fritz & Paul Kalkbrenner — Sky and Sand',     artist:'Fritz & Paul K',     genre:'electronic'},
+    {n:'185', t:'Robin Schulz — Sugar ft. Francesco Yates',    artist:'Robin Schulz',       genre:'deep house'},
+    {n:'184', t:'DJs From Mars — Avicii Tribute Megamashup',   artist:'DJs From Mars',      genre:'electronic'},
+    {n:'183', t:'KASE.O — SALUD Y LIBERTAD ft. FOYONE',        artist:'KASE.O · FOYONE',    genre:'rap'},
+    {n:'182', t:'SHO-HAI — TE PONE BIEN con KASE.O',           artist:'SHO-HAI · KASE.O',   genre:'rap'},
+    {n:'181', t:'Fito & Fitipaldis — Quiero gritar',           artist:'Fito & Fitipaldis',  genre:'rock'},
+    {n:'180', t:'Billy Gibbons — La Grange',                   artist:'Billy Gibbons',      genre:'rock'},
+    {n:'179', t:'Eiffel 65 — Blue (Da Ba Dee)',                artist:'Eiffel 65',          genre:'eurodance'},
+    {n:'178', t:'Culture Beat — Mr. Vain',                     artist:'Culture Beat',       genre:'eurodance'},
+    {n:'177', t:'Snap! — Rhythm is a Dancer',                  artist:'Snap!',              genre:'eurodance'},
+    {n:'176', t:'Rnbstylerz — Like Wooh Wooh (Remix)',         artist:'Rnbstylerz',         genre:'electronic'},
+    {n:'175', t:'Solitario — Barra libre de barras',           artist:'Solitario',          genre:'rap'},
+    {n:'174', t:'Mägo de Oz — Hasta Que El Cuerpo Aguante',   artist:'Mägo de Oz',         genre:'rock'},
+    {n:'173', t:'El Vals del Obrero',                          artist:'Anónimo',            genre:'folk'},
+    {n:'172', t:'Paseo',                                       artist:'Desconocido',        genre:'electronic'},
+    {n:'171', t:'Fito & Fitipaldis — La casa por el tejado',   artist:'Fito & Fitipaldis',  genre:'rock'},
+    {n:'170', t:'Matador — Los Fabulosos Cadillacs',           artist:'Los Fabulosos Cadillacs', genre:'rock'},
+    {n:'169', t:'Hablaron de mí — Woundsmusic',               artist:'Woundsmusic',        genre:'soul'},
+    {n:'168', t:'Lo Aprendí de Tu Frío — Soul',               artist:'Soul AI',            genre:'soul'},
+    {n:'167', t:'PAPÁ — Loba Negra',                          artist:'Loba Negra',         genre:'soul'},
+    {n:'166', t:'NO ES PARA MENTES PEQUEÑAS — BLUES',         artist:'Blues Oscuro AI',    genre:'blues'},
+    {n:'165', t:'TOTEKING — Ni de Ellos ni de Ellas',         artist:'TOTEKING',           genre:'rap'},
+    {n:'164', t:'KASE.O & CAPAZ — Pan caliente',              artist:'KASE.O · CAPAZ',     genre:'rap'},
+    {n:'163', t:'SFDK — Esclavos (Neo Soul Cover)',            artist:'SFDK',               genre:'neo soul'},
+    {n:'162', t:'Macaco — Atreverse a Vivir',                 artist:'Macaco',             genre:'folk'},
+    {n:'161', t:"Mina's Radio — EP. 003",                     artist:"Mina's Radio",       genre:'deep house'},
+    {n:'160', t:'Vengaboys — Boom Boom Boom!! (Hardstyle)',   artist:'Vengaboys',          genre:'hardstyle'},
+    {n:'159', t:'TRIFUNOX — TIKI TIKI (TOP CAR MIX)',         artist:'TRIFUNOX',           genre:'electronic'},
+    {n:'158', t:'Reel 2 Real — I Like To Move It (REMIX)',    artist:'Reel 2 Real',        genre:'eurodance'},
+    {n:'157', t:'KULTØ — Darbuka Pulse (Drum Tribal)',        artist:'KULTØ',              genre:'afro'},
+    {n:'156', t:"Mr. Lonely — 1950's Soul Version",           artist:'Old Soul AI',        genre:'soul'},
+    {n:'155', t:'Wu Tang Clan — Protect Ya Neck / C.R.E.A.M.', artist:'Wu Tang Clan',     genre:'hip hop'},
+    {n:'154', t:'Black Pumas — Colors (Live Abbey Road)',      artist:'Black Pumas',        genre:'neo soul'},
+    {n:'153', t:'FKJ & Masego — Tadow',                       artist:'FKJ · Masego',       genre:'neo soul'},
+    {n:'152', t:'Delinquent Habits — CALIFORNIA',             artist:'Delinquent Habits',  genre:'hip hop'},
+    {n:'151', t:'Kendrick Lamar — HUMBLE.',                   artist:'Kendrick Lamar',     genre:'hip hop'},
+    {n:'150', t:'J Dilla — Donuts (Medley)',                  artist:'J Dilla',            genre:'hip hop'},
+    {n:'149', t:'Massive Attack — Teardrop',                  artist:'Massive Attack',     genre:'electronic'},
+    {n:'148', t:'Portishead — Glory Box',                     artist:'Portishead',         genre:'electronic'},
+    {n:'147', t:'Bonobo — Kong',                              artist:'Bonobo',             genre:'electronic'},
+    {n:'146', t:'Moderat — Bad Kingdom',                      artist:'Moderat',            genre:'electronic'},
+    {n:'145', t:'Trentemøller — Miss You',                    artist:'Trentemøller',       genre:'electronic'},
+    {n:'144', t:'Aphex Twin — Avril 14th',                    artist:'Aphex Twin',         genre:'electronic'},
+    {n:'143', t:'Four Tet — Angel Echoes',                    artist:'Four Tet',           genre:'electronic'},
+    {n:'142', t:'DJ Shadow — Midnight in a Perfect World',    artist:'DJ Shadow',          genre:'hip hop'},
+    {n:'141', t:'MF DOOM — Madvillainy Medley',               artist:'Madvillain',         genre:'hip hop'},
+    {n:'140', t:'The Roots — You Got Me',                     artist:'The Roots',          genre:'hip hop'},
+    {n:'139', t:'Erykah Badu — On & On',                     artist:'Erykah Badu',        genre:'neo soul'},
+    {n:'138', t:"D'Angelo — Untitled (How Does It Feel)",     artist:"D'Angelo",           genre:'neo soul'},
+    {n:'137', t:'Lauryn Hill — Ex-Factor',                    artist:'Lauryn Hill',        genre:'neo soul'},
+    {n:'136', t:'Outkast — Rosa Parks',                       artist:'Outkast',            genre:'hip hop'},
+    {n:'135', t:'Amy Winehouse — Back to Black',              artist:'Amy Winehouse',      genre:'soul'},
+    {n:'134', t:'Sharon Jones — 100 Days 100 Nights',         artist:'Sharon Jones',       genre:'soul'},
+    {n:'133', t:'Charles Bradley — Changes',                  artist:'Charles Bradley',    genre:'soul'},
+    {n:'132', t:'Leon Bridges — Coming Home',                 artist:'Leon Bridges',       genre:'soul'},
+    {n:'131', t:'Gary Clark Jr. — Bright Lights',             artist:'Gary Clark Jr.',     genre:'blues'},
+    {n:'130', t:'Jack White — Ball and Biscuit',              artist:'Jack White',         genre:'blues'},
+    {n:'129', t:'Alabama Shakes — Hold On',                   artist:'Alabama Shakes',     genre:'rock'},
+    {n:'128', t:'Rodrigo y Gabriela — Tamacun',               artist:'Rodrigo y Gabriela', genre:'folk'},
+    {n:'127', t:'Orishas — A Lo Cubano',                      artist:'Orishas',            genre:'afro'},
+    {n:'126', t:'Buena Vista Social Club — Chan Chan',         artist:'Buena Vista Social Club', genre:'folk'},
+    {n:'125', t:'Ibrahim Maalouf — Illusions',                artist:'Ibrahim Maalouf',    genre:'afro'},
+    {n:'124', t:'Aya Nakamura — Djadja',                      artist:'Aya Nakamura',       genre:'afro'},
+    {n:'123', t:'Burna Boy — Last Last',                      artist:'Burna Boy',          genre:'afro'},
+    {n:'122', t:'Wizkid — Ojuelegba',                         artist:'Wizkid',             genre:'afro'},
+    {n:'121', t:'Afrobeats Compilation BRM Mix Vol.1',         artist:'BRM Selección',      genre:'afro'},
+    {n:'120', t:'Disclosure — Latch ft. Sam Smith',            artist:'Disclosure',         genre:'deep house'},
+    {n:'119', t:'Bicep — Glue',                               artist:'Bicep',              genre:'deep house'},
+    {n:'118', t:'Peggy Gou — (It Goes Like) Nanana',          artist:'Peggy Gou',          genre:'deep house'},
+    {n:'117', t:'Jamie xx — Gosh',                            artist:'Jamie xx',           genre:'deep house'},
+    {n:'116', t:'Joy Orbison — Hyph Mngo',                    artist:'Joy Orbison',        genre:'deep house'},
+    {n:'115', t:'Solomun — Velo',                             artist:'Solomun',            genre:'deep house'},
+    {n:'114', t:'Tale Of Us — Numb',                          artist:'Tale Of Us',         genre:'techno'},
+    {n:'113', t:'Charlotte de Witte — Doppler',               artist:'Charlotte de Witte', genre:'techno'},
+    {n:'112', t:'Amelie Lens — Forever',                      artist:'Amelie Lens',        genre:'techno'},
+    {n:'111', t:'SPFDJ — 1210',                               artist:'SPFDJ',              genre:'techno'},
+    {n:'110', t:'Objekt — Ganzfeld',                          artist:'Objekt',             genre:'techno'},
+    {n:'109', t:'Surgeon — Magneze',                          artist:'Surgeon',            genre:'techno'},
+    {n:'108', t:'Jeff Mills — The Bells',                     artist:'Jeff Mills',         genre:'techno'},
+    {n:'107', t:'Underground Resistance — Seawolf',           artist:'Underground Resistance', genre:'techno'},
+    {n:'106', t:'Plastikman — Spastik',                       artist:'Plastikman',         genre:'techno'},
+    {n:'105', t:'Richie Hawtin — Contakt (Live)',              artist:'Richie Hawtin',      genre:'techno'},
+    {n:'104', t:'Ben Klock — Subzero',                        artist:'Ben Klock',          genre:'techno'},
+    {n:'103', t:'Marcel Dettmann — Track 8',                  artist:'Marcel Dettmann',    genre:'techno'},
+    {n:'+ 506', t:'... 506 tracks más en la colección BRM', artist:'BUBATRONIK COLLECTION · DRIVE → 709+ TOTAL', genre:''},
   ];
 
-  // ── STREAM URLS (fallback chain) ─────────────────────────────────────
+  // ── FIX: STREAM_URLS sin duplicado ───────────────────────────────────
   const STREAM_URLS = [
     'https://brm.rubenrodriguez-f-93.workers.dev/',
-  'https://bubatronik.radiostream321.com/stream',
-  'https://brm.rubenrodriguez-f-93.workers.dev/stream',
-  'https://brm.rubenrodriguez-f-93.workers.dev/',
+    'https://bubatronik.radiostream321.com/stream',
+    'https://brm.rubenrodriguez-f-93.workers.dev/stream',
   ];
 
   // ── STATE ─────────────────────────────────────────────────────────────
   let currentIdx    = 0;
   let isPlaying     = false;
-  let isSessionMode = false;  // true = reproduciendo sesión, false = stream live
+  let isSessionMode = false;
   let streamAttempt = 0;
   let audioCtx = null, analyser = null, sourceNode = null, rafId = null;
   let activeGenre = '', searchQuery = '', filteredTracks = [...TRACKS];
@@ -1315,7 +1253,7 @@
   const modeDot   = document.getElementById('modeDot');
   const modeText  = document.getElementById('modeText');
 
-  // Restore volume
+  // Restaurar volumen guardado
   const savedVol = localStorage.getItem('brm_volume');
   if (savedVol !== null) {
     audio.volume = parseFloat(savedVol);
@@ -1339,7 +1277,7 @@
 
   // ── TICKER ────────────────────────────────────────────────────────────
   function initTicker() {
-    const text = '🎵 BUBATRONIK_BRM · FRECUENCIA SANT SALVADOR · OPEN FORMAT RADIO · LIVE 24/7 · VERMUT CADA DOMINGO 12H · 709+ TRACKS EN COLECCIÓN · WORLDMOS · AGUAFLOW · DPNGAME · LA MANADA SALVAJE · ¡AUUUAUUU! 🐺 · ';
+    const text = '🎵 BUBATRONIK_BRM · FRECUENCIA SANT SALVADOR · OPEN FORMAT RADIO · LIVE 24/7 · VERMUT CADA DOMINGO 12H · 709+ TRACKS EN COLECCIÓN · INFO & PROGRAMAS EN brm.worldmos.info · WORLDMOS · AGUAFLOW · DPNGAME · LA MANADA SALVAJE · ¡AUUUAUUU! 🐺 · ';
     const full = text.repeat(5);
     const track = document.getElementById('tickerTrack');
     track.innerHTML = '<span>' + full + '</span><span>' + full + '</span>';
@@ -1382,7 +1320,7 @@
       analyser.fftSize = 128; analyser.smoothingTimeConstant = 0.75;
       sourceNode = audioCtx.createMediaElementSource(audio);
       sourceNode.connect(analyser); analyser.connect(audioCtx.destination);
-    } catch(e) { console.warn('Web Audio API no disponible'); openNativePlayer();}
+    } catch(e) { console.warn('Web Audio API no disponible'); }
   }
 
   function drawViz() {
@@ -1445,11 +1383,7 @@
       let classes = 'track-row' + (isActive ? ' active' : '');
       if (track.isSession) classes += ' session-track';
       row.className = classes;
-
-      const extraInfo = track.isSession
-        ? `<span class="playable-badge">▶ REPRODUCIBLE</span>`
-        : '';
-
+      const extraInfo = track.isSession ? `<span class="playable-badge">▶ REPRODUCIBLE</span>` : '';
       row.innerHTML = `
         <div class="track-num">${track.n}</div>
         <div class="track-info">
@@ -1457,7 +1391,6 @@
           <div class="track-artist">${track.artist}${extraInfo}</div>
         </div>
         <div class="track-icon">${isActive ? '♫' : (track.isSession ? '▶' : '·')}</div>`;
-
       row.addEventListener('click', () => selectTrack(idx));
       scroll.appendChild(row);
     });
@@ -1466,14 +1399,11 @@
   }
 
   // ── SELECT TRACK ─────────────────────────────────────────────────────
-  // Si el track tiene audioSrc → lo reproduce directamente.
-  // Si no → conecta al stream live (radio).
   function selectTrack(idx) {
     currentIdx = idx;
     const track = filteredTracks[idx];
     if (!track) return;
 
-    // Actualizar Now Playing
     npTitle.style.opacity = '0'; npArtist.style.opacity = '0';
     setTimeout(() => {
       npTitle.textContent  = track.t;
@@ -1484,8 +1414,8 @@
     renderPlaylist();
     updateMediaSession(track);
 
-    if (track.isSession && track.audioSrc) {
-      // ── MODO SESIÓN: reproducir el archivo de audio directamente
+    if (track.audioSrc) {
+      // Track con URL propia — reproducir directamente
       isSessionMode = true;
       audio.pause();
       audio.src = track.audioSrc;
@@ -1496,31 +1426,29 @@
           setModeIndicator('session');
         })
         .catch(err => {
-          console.error('Session playback error:', err);
+          console.error('Playback error:', err);
           toast('⚠️ No se puede reproducir — abriendo en Drive...');
           window.open('https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg', '_blank');
         });
     } else {
-      // ── MODO STREAM: si ya está sonando el stream, solo actualizar display
+      // Tracks del stream — si ya está el stream sonando solo actualiza display
       if (isPlaying && !isSessionMode) {
         toast('♫ ' + track.t.substring(0, 42));
       } else {
-        // Arrancar el stream
         isSessionMode = false;
         startLiveStream();
-        
       }
     }
   }
 
-  // ── STREAM PLAYER ────────────────────────────────────────────────────
+  // ── FIX: startLiveStream() — YA NO abre openNativePlayer() automáticamente ──
   function startLiveStream() {
     streamAttempt = 0;
     audio.pause();
     audio.src = STREAM_URLS[0] + '?t=' + Date.now();
     audio.load();
     audio.play().catch(() => tryNextStream());
-    openNativePlayer();
+    // NOTA: openNativePlayer() eliminado — solo se llama desde el botón manual
   }
 
   function tryNextStream() {
@@ -1548,11 +1476,10 @@
       audio.src = '';
       streamAttempt = 0;
       isSessionMode = false;
-      setModeIndicator('live');
+      setModeIndicator('idle');
     } else {
       const track = filteredTracks[currentIdx];
-      if (track && track.isSession && track.audioSrc) {
-        // Sesión seleccionada → reproducir sesión
+      if (track && track.audioSrc) {
         isSessionMode = true;
         audio.src = track.audioSrc;
         audio.load();
@@ -1560,9 +1487,7 @@
           .then(() => setModeIndicator('session'))
           .catch(() => { toast('⚠️ Error — abriendo en Drive...'); openNativePlayer(); });
       } else {
-        // Stream en vivo
         isSessionMode = false;
-        setModeIndicator('live')
         startLiveStream();
       }
     }
@@ -1589,18 +1514,17 @@
   });
 
   audio.addEventListener('ended', () => {
-    // Solo aplica a sesiones (el stream no termina)
     isPlaying = false;
     btnPlay.textContent = '▶';
     btnPlay.classList.remove('is-playing');
     document.body.classList.remove('is-playing-body');
-    setModeIndicator('live');
-    toast('✓ Sesión finalizada');
+    setModeIndicator('idle');
+    toast('✓ Reproducción finalizada');
   });
 
   audio.addEventListener('error', () => {
     if (isSessionMode) {
-      toast('⚠️ Error reproduciendo sesión — abriendo en Drive...');
+      toast('⚠️ Error reproduciendo — abriendo en Drive...');
       setTimeout(() => window.open('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr', '_blank'), 800);
     } else {
       tryNextStream();
@@ -1609,7 +1533,6 @@
 
   // ── BUTTONS ───────────────────────────────────────────────────────────
   btnPlay.addEventListener('click', togglePlay);
-
   document.getElementById('btnPrev').addEventListener('click', () => {
     const prev = (currentIdx - 1 + filteredTracks.length) % filteredTracks.length;
     selectTrack(prev);
@@ -1715,6 +1638,9 @@
       tab.classList.add('active');
       const panel = document.getElementById('tab-' + id);
       if (panel) { panel.classList.add('active'); triggerReveal(panel); }
+      // Mostrar/ocultar banner .info según tab
+      const banner = document.getElementById('infoBanner');
+      if (banner) banner.style.display = (id === 'radio') ? 'flex' : 'none';
     });
   });
 
@@ -1739,6 +1665,69 @@
   npTitle.style.transition  = 'opacity 0.2s ease';
   npArtist.style.transition = 'opacity 0.2s ease';
 
+  // ── STATUS POLLING ────────────────────────────────────────────────────
+  const BRM_WORKER = 'https://brm.rubenrodriguez-f-93.workers.dev';
+  let _liveStatus = false;
+  let _npInterval = null;
+
+  function checkStatus() {
+    fetch(BRM_WORKER + '/status', { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(d => {
+        if (d.live) { setOnline(d.listeners); _liveStatus = true; _updateRSection(d); }
+        else {
+          fetch(BRM_WORKER + '/', { method: 'HEAD', mode: 'cors', cache: 'no-store' })
+            .then(() => setOnline(null)).catch(() => setOffline());
+          _liveStatus = false;
+        }
+      })
+      .catch(() => {
+        fetch(BRM_WORKER + '/', { method: 'HEAD', mode: 'cors' })
+          .then(() => { setOnline(null); _liveStatus = true; })
+          .catch(() => { setOffline(); _liveStatus = false; });
+      });
+  }
+
+  function _updateRSection(d) {
+    const rows = document.querySelectorAll('.info-row');
+    rows.forEach(row => {
+      const label = row.querySelector('.info-label');
+      const val   = row.querySelector('.info-val');
+      if (!label || !val) return;
+      const lText = label.textContent.trim().toUpperCase();
+      if (lText === 'EMISIÓN' || lText === 'EMISION') {
+        val.innerHTML = '<span class="live-dot"></span> ' + (d.live ? 'EN VIVO' : 'OFFLINE');
+      }
+      if (lText === 'BITRATE') val.textContent = (d.bitrate || 128) + ' kbps · MP3';
+      if (lText === 'OYENTES') val.textContent = d.listeners != null ? d.listeners : '---';
+    });
+  }
+
+  function fetchNowPlaying() {
+    if (!_liveStatus) return;
+    fetch(BRM_WORKER + '/nowplaying', { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+      .then(d => {
+        if (!d.live) return;
+        const song   = d.current && d.current.song   ? d.current.song   : '';
+        const artist = d.current && d.current.artist ? d.current.artist : '';
+        const title  = d.current && d.current.title  ? d.current.title  : song;
+        if (song && !isSessionMode) {
+          npTitle.textContent  = title || song;
+          npArtist.textContent = artist || 'BUBATRONIK_BRM';
+        }
+        if (d.listeners != null) {
+          document.getElementById('freqListeners').textContent = '● OYENTES: ' + d.listeners;
+          document.getElementById('listenerCount').textContent = d.listeners;
+        }
+      })
+      .catch(() => {});
+  }
+
+  if (_npInterval) clearInterval(_npInterval);
+  _npInterval = setInterval(fetchNowPlaying, 15000);
+  setTimeout(fetchNowPlaying, 3000);
+
   // ── INIT ──────────────────────────────────────────────────────────────
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
@@ -1749,88 +1738,6 @@
   initMediaSession();
   triggerReveal();
   setModeIndicator('idle');
-// ── BRM LIVE STATUS v2 — usa /status y /nowplaying del worker ──
-const BRM_WORKER = 'https://brm.rubenrodriguez-f-93.workers.dev';
-let _liveStatus = false;
-let _npInterval = null;
-
-function checkStatus() {
-  fetch(BRM_WORKER + '/status', { cache: 'no-store' })
-    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(d => {
-      if (d.live) {
-        setOnline(d.listeners);
-        _liveStatus = true;
-        // Actualizar r-section con datos reales
-        const elEmision = document.getElementById('statusText');
-        if (elEmision) elEmision.innerHTML = '<span class="live-dot"></span> Verificando...';
-        const elBitrate = document.querySelector('.info-row .info-val[data-field="bitrate"]');
-        // Actualizar campos de r-section si existen
-        _updateRSection(d);
-      } else {
-         fetch('https://brm.rubenrodriguez-f-93.workers.dev/', {method:'HEAD', mode:'cors',credentials: 'include', cache:'store'})
-          .then(() => setOnline(null)).catch(() => setOffline());
-        _liveStatus = false;
-      }
-    })
-    .catch(() => {
-      // Fallback: intentar HEAD al stream directo
-      fetch(BRM_WORKER + '/', { method: 'HEAD', mode: 'cors' })
-        .then(() => { setOnline(null); _liveStatus = true; })
-        .catch(() => { setOffline(); _liveStatus = false; });
-    });
-}
-
-function _updateRSection(d) {
-  // Actualizar la fila de Emisión con estado real
-  const rows = document.querySelectorAll('.info-row');
-  rows.forEach(row => {
-    const label = row.querySelector('.info-label');
-    const val   = row.querySelector('.info-val');
-    if (!label || !val) return;
-    const lText = label.textContent.trim().toUpperCase();
-    if (lText === 'EMISIÓN' || lText === 'EMISION') {
-      val.innerHTML = '<span class="live-dot"></span> ' + (d.live ? 'EN VIVO' : 'OFFLINE');
-    }
-    if (lText === 'BITRATE') {
-      val.textContent = (d.bitrate || 320) + ' kbps · MP3';
-    }
-    if (lText === 'OYENTES') {
-      val.textContent = d.listeners != null ? d.listeners : '---';
-    }
-  });
-}
-
-function fetchNowPlaying() {
-  if (!_liveStatus) return; // Solo cuando hay stream en vivo
-  fetch(BRM_WORKER + '/nowplaying', { cache: 'no-store' })
-    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-    .then(d => {
-      if (!d.live) return;
-      const song   = d.current && d.current.song   ? d.current.song   : '';
-      const artist = d.current && d.current.artist ? d.current.artist : '';
-      const title  = d.current && d.current.title  ? d.current.title  : song;
-      if (song) {
-        // Solo actualizar si NO está reproduciendo una sesión local
-        if (!audio.dataset.mode || audio.dataset.mode === 'live') {
-          npTitle.textContent  = title || song;
-          npArtist.textContent = artist || 'BUBATRONIK_BRM';
-        }
-      }
-      // Actualizar oyentes también
-      if (d.listeners != null) {
-        document.getElementById('freqListeners').textContent = '\u25CF OYENTES: ' + d.listeners;
-        document.getElementById('listenerCount').textContent = d.listeners;
-      }
-    })
-    .catch(() => {});
-}
-
-// Arrancar polling de nowplaying cada 15s
-if (_npInterval) clearInterval(_npInterval);
-_npInterval = setInterval(fetchNowPlaying, 15000);
-setTimeout(fetchNowPlaying, 3000); // primera llamada a los 3s
-
   checkStatus();
   setInterval(checkStatus, 30000);
   drawViz();
