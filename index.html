@@ -11,21 +11,21 @@
   <meta name="apple-mobile-web-app-title" content="BRM RADIO">
   <meta property="og:type" content="website">
   <meta property="og:title" content="BUBATRONIK_BRM · Frecuencia Sant Salvador 🛰️">
-  <meta property="og:description" content="Radio comunitaria Open Format desde Sant Salvador, Tarragona — Vermut cada domingo 12h · 709+ tracks · ¡AUUUAUUU!">
+  <meta property="og:description" content="Radio comunitaria Open Format desde Sant Salvador, Tarragona — Vermut cada domingo 12h · 1.397 tracks · ¡AUUUAUUU!">
   <meta property="og:url" content="https://brm.worldmos.world">
   <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1iIHeo1qd7j5la5FuIJtj7JzulMcKQRRV">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BUBATRONIK_BRM · Frecuencia Sant Salvador 🛰️">
   <meta name="twitter:description" content="Radio comunitaria Open Format · Tarragona · Vermut 12h · ¡AUUUAUUU!">
   <title>🔊 BUBATRONIK_BRM · FRECUENCIA SANT SALVADOR · LIVE 24/7</title>
- 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
- 
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
     :root {
       --bg:       #05050a;
       --bg2:      #0b0b14;
@@ -53,7 +53,7 @@
       --fs-base:  13px;
       --ticker-h: 38px;
     }
- 
+
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       background: var(--bg);
@@ -63,20 +63,20 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
- 
+
     body::after {
       content: '';
       position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none; z-index: 9999; opacity: 0.6;
     }
- 
+
     .scanlines {
       position: fixed; inset: 0;
       background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 3px);
       pointer-events: none; z-index: 9998; mix-blend-mode: overlay;
     }
- 
+
     .bg-mesh {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background:
@@ -84,7 +84,7 @@
         radial-gradient(ellipse 60% 80% at 90% 80%, rgba(245,158,11,0.03) 0%, transparent 60%),
         radial-gradient(ellipse 40% 40% at 50% 50%, rgba(6,182,212,0.02) 0%, transparent 70%);
     }
- 
+
     /* TICKER */
     .ticker-wrap {
       position: fixed; top: 0; left: 0; right: 0;
@@ -115,9 +115,9 @@
       font-size: 12px; color: var(--bg); padding: 0 36px; font-weight: 700; letter-spacing: 1.5px;
     }
     @keyframes ticker-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
- 
+
     .page { position: relative; z-index: 1; padding-top: var(--ticker-h); max-width: 1800px; margin: 0 auto; }
- 
+
     /* HEADER */
     .station-header {
       display: grid; grid-template-columns: 1fr auto 1fr;
@@ -144,7 +144,7 @@
       font-size: var(--fs-xs); letter-spacing: 3px; color: var(--muted);
       text-transform: uppercase; margin-top: 2px;
     }
- 
+
     /* ON AIR */
     .onair-badge { display: flex; flex-direction: column; align-items: center; gap: 10px; }
     .onair-ring { position: relative; width: 88px; height: 88px; }
@@ -187,7 +187,7 @@
       font-size: 11px; letter-spacing: 3px; color: var(--red); font-weight: 700; text-transform: uppercase;
     }
     [data-status="offline"] .onair-status-label { color: var(--muted); }
- 
+
     .station-freq { text-align: right; }
     .freq-number {
       font-family: 'Bebas Neue', sans-serif;
@@ -196,7 +196,7 @@
     .freq-band { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 5px; color: var(--muted); margin-top: 4px; text-transform: uppercase; }
     .freq-clock { font-family: 'JetBrains Mono', monospace; font-size: var(--fs-xs); color: var(--muted2); margin-top: 8px; }
     .freq-listeners { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--amber4); margin-top: 6px; letter-spacing: 2px; }
- 
+
     /* NAV TABS */
     .nav-tabs {
       display: flex; border-bottom: 1px solid var(--border);
@@ -213,7 +213,7 @@
     }
     .nav-tab:hover { color: var(--amber2); }
     .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
- 
+
     /* ── ENLACE EXTERNO AL .INFO EN EL NAV ── */
     .nav-ext {
       font-family: 'Barlow Condensed', sans-serif;
@@ -226,7 +226,7 @@
     }
     .nav-ext:hover { color: var(--amber2); background: var(--glow-a); border-bottom-color: var(--amber4); }
     .nav-ext-icon { opacity: 0.7; font-size: 10px; }
- 
+
     /* ── BANNER .INFO (pequeño aviso contextual) ── */
     .info-site-banner {
       background: rgba(245,158,11,0.05); border: 1px solid var(--amber4);
@@ -242,13 +242,13 @@
     }
     .info-site-banner a:hover { background: var(--amber); color: var(--bg); }
     .info-site-banner-icon { font-size: 16px; flex-shrink: 0; }
- 
+
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
- 
+
     .main-grid { display: grid; grid-template-columns: 1fr 380px; min-height: calc(100vh - 220px); }
     .left-panel { border-right: 1px solid var(--border); display: flex; flex-direction: column; }
- 
+
     /* PLAYER SECTION */
     .player-section {
       padding: 28px 36px; border-bottom: 1px solid var(--border);
@@ -268,7 +268,7 @@
       font-family: 'Barlow Condensed', sans-serif; font-size: 13px; color: var(--amber2);
       letter-spacing: 1px; opacity: 0.85; transition: opacity 0.3s ease;
     }
- 
+
     /* PLAYER CARD */
     .player-card {
       background: var(--bg3); border: 1px solid var(--border2);
@@ -283,7 +283,7 @@
       width: 100%; height: 64px; border-radius: 6px;
       background: var(--bg); display: block; margin-bottom: 16px; border: 1px solid var(--border);
     }
- 
+
     /* MODO INDICADOR */
     .mode-indicator {
       display: flex; align-items: center; gap: 8px;
@@ -295,10 +295,10 @@
     .mode-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
     .mode-dot.live { background: var(--red); animation: blink-dot 12071962.2s step-start infinite; }
     .mode-dot.session { background: var(--green); }
- 
+
     /* FIX: AUDIO ELEMENT — src asignado dinámicamente en togglePlay() / selectTrack() */
     #audioPlayer { display: none; }
- 
+
     /* CONTROLS */
     .controls-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; }
     .ctrl-btn {
@@ -317,7 +317,7 @@
     .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(245,158,11,0.5); }
     .play-btn.is-playing { animation: pulse-play 15s ease-in-out infinite; }
     @keyframes pulse-play { 0%,100%{box-shadow:0 0 24px rgba(245,158,11,0.4)} 50%{box-shadow:0 0 48px rgba(245,158,11,0.7)} }
- 
+
     /* VOLUME */
     .volume-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
     .vol-icon { font-size: 13px; color: var(--muted); flex-shrink: 0; }
@@ -333,7 +333,7 @@
     input[type=range].vol-slider::-moz-range-thumb {
       width: 14px; height: 14px; border-radius: 50%; background: var(--amber); border: none; cursor: pointer;
     }
- 
+
     /* STREAM BTNS */
     .stream-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .btn-stream {
@@ -346,7 +346,7 @@
     .btn-stream:hover { transform: translateY(-2px); }
     .btn-stream.primary:hover { box-shadow: 0 4px 20px rgba(16,185,129,0.4); }
     .btn-stream.secondary:hover { border-color: var(--amber); background: var(--glow-a); }
- 
+
     /* EQ SECTION */
     .eq-section {
       padding: 20px 36px; border-bottom: 1px solid var(--border);
@@ -368,7 +368,7 @@
     .stream-meta { text-align: right; }
     .stream-meta-value { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--amber2); letter-spacing:1px; line-height:1; }
     .stream-meta-label { font-size:var(--fs-xs); color:var(--muted); letter-spacing:2px; margin-top:2px; }
- 
+
     /* PLAYLIST */
     .playlist-header {
       padding: 14px 36px; display: flex; justify-content: space-between; align-items: center;
@@ -397,7 +397,7 @@
     .playlist-scroll::-webkit-scrollbar-track { background: transparent; }
     .playlist-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
     .track-row {
-      display: grid; grid-template-columns: 44px 1fr 30px;
+      display: grid; grid-template-columns: 44px 1fr 30px 26px;
       align-items: center; padding: 10px 36px; gap: 12px;
       border-bottom: 1px solid rgba(34,34,58,0.4);
       cursor: pointer; transition: background 0.15s ease, border-left 0.15s ease, padding-left 0.15s ease;
@@ -406,14 +406,20 @@
     .track-row.active { background: rgba(245,158,11,0.1); border-left: 3px solid var(--amber); padding-left: 33px; }
     .track-num { font-size:var(--fs-xs); color:var(--muted2); letter-spacing:1px; text-align:right; font-weight:600; }
     .track-row.active .track-num { color: var(--amber); }
-    .track-info { display: flex; flex-direction: column; gap: 2px; }
+    .track-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .track-title { font-size:var(--fs-sm); color:var(--white); line-height:1.4; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .track-row.active .track-title { color: var(--amber2); }
     .track-artist { font-size:var(--fs-xs); color:var(--muted); letter-spacing:0.5px; }
     .track-icon { font-size:11px; color:var(--muted2); text-align:center; }
     .track-row.active .track-icon { color:var(--amber); animation:eq-wave-icon 26.8s ease-in-out infinite alternate; }
     @keyframes eq-wave-icon { from{opacity:0.5;transform:scale(0.9)} to{opacity:1;transform:scale(1.1)} }
- 
+    .track-yt {
+      font-size: 13px; text-align: center; opacity: 0.45; transition: opacity 0.15s ease, transform 0.15s ease;
+      cursor: pointer; border-radius: 4px; line-height: 1;
+    }
+    .track-yt:hover { opacity: 1; transform: scale(1.2); }
+    .track-row:hover .track-yt { opacity: 0.8; }
+
     /* SESSION TRACKS */
     .track-row.session-track { border-left: 2px solid rgba(16,185,129,0.3); }
     .track-row.session-track .track-num { color: var(--green); }
@@ -426,7 +432,7 @@
       background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3);
       white-space: nowrap; margin-top: 2px; display: inline-block;
     }
- 
+
     /* RIGHT PANEL */
     .right-panel {
       display: flex; flex-direction: column;
@@ -449,11 +455,11 @@
     .info-row:last-child { border-bottom: none; }
     .info-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
     .info-val { color:var(--white); font-weight:600; font-size:var(--fs-xs); text-align:right; display:flex; align-items:center; gap:6px; }
- 
+
     /* FIX: .live-dot offline ya NO parpadea */
     .live-dot { width:8px; height:8px; border-radius:50%; background:var(--red); animation:blink-dot 1.4s step-start infinite; display:inline-block; }
     [data-status="offline"] .live-dot { background:var(--muted2); animation: none; }
- 
+
     /* VIDEO CARD */
     .video-card { background:var(--bg3); border:1px solid var(--border2); border-radius:var(--radius); overflow:hidden; }
     .video-thumb {
@@ -487,7 +493,7 @@
       transition:all 0.2s; width:fit-content;
     }
     .video-link:hover { background:var(--amber); color:var(--bg); border-color:var(--amber); }
- 
+
     /* GENRE TAGS */
     .genre-tags { display:flex; flex-wrap:wrap; gap:6px; }
     .genre-tag {
@@ -497,7 +503,7 @@
     }
     .genre-tag:hover, .genre-tag.active { border-color:var(--amber); color:var(--amber); background:var(--glow-a); }
     .genre-tag.hot { border-color:var(--amber4); color:var(--amber2); background:rgba(245,158,11,0.04); }
- 
+
     /* SOCIAL LINKS */
     .social-links { display:flex; flex-direction:column; gap:8px; }
     .social-link {
@@ -512,7 +518,25 @@
     .social-link.info-link:hover { background: var(--amber); color: var(--bg); }
     .social-icon { font-size:15px; }
     .social-arrow { margin-left:auto; opacity:0.5; }
- 
+
+    .behind-signal {
+      margin-top: 18px; padding: 18px 20px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--bg3), var(--bg4)); border: 1px solid var(--border2);
+      border-left: 3px solid var(--amber4);
+    }
+    .behind-signal-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700;
+      letter-spacing: 1px; color: var(--white); margin-bottom: 12px;
+    }
+    .behind-signal-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .behind-signal-btn {
+      flex: 1; min-width: 150px; text-align: center; padding: 10px 14px; border-radius: 6px;
+      background: var(--bg2); border: 1px solid var(--border2); text-decoration: none; color: var(--muted);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s;
+    }
+    .behind-signal-btn:hover { border-color: var(--amber); color: var(--amber); background: var(--amber5); }
+
     /* PROG GRID */
     .prog-grid { display:flex; flex-direction:column; gap:10px; }
     .prog-row {
@@ -532,7 +556,7 @@
     .prog-badge.live { background:rgba(239,68,68,0.15); color:var(--red); border:1px solid rgba(239,68,68,0.3); }
     .prog-badge.rec  { background:rgba(16,185,129,0.1); color:var(--green); border:1px solid rgba(16,185,129,0.3); }
     .prog-badge.soon { background:rgba(245,197,24,0.1); color:var(--amber); border:1px solid var(--amber4); }
- 
+
     /* SESSIONS */
     .sessions-grid { display:flex; flex-direction:column; gap:0; }
     .session-row {
@@ -562,7 +586,7 @@
       border-bottom:1px solid var(--border); background:rgba(11,11,20,0.97); backdrop-filter:blur(8px);
     }
     .sessions-title { font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:3px; color:var(--amber); }
- 
+
     /* TEAM BUILDING */
     .tb-section { padding:36px 36px; border-bottom:1px solid var(--border); }
     .tb-headline {
@@ -587,12 +611,28 @@
     .tb-card-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--white); margin-bottom:8px; }
     .tb-card-desc { font-size:var(--fs-xs); color:var(--muted); line-height:1.7; letter-spacing:0.3px; }
     .manada-quote { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-style:italic; line-height:1.7; color:var(--white); border-left:3px solid var(--amber); padding-left:14px; opacity:0.85; }
- 
+
     /* FOOTER */
     .site-footer {
-      border-top:1px solid var(--border); padding:18px 40px;
-      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
-      background:rgba(5,5,10,0.9); backdrop-filter:blur(12px);
+      border-top:1px solid var(--border); background:rgba(5,5,10,0.9); backdrop-filter:blur(12px);
+      display:flex; flex-direction:column;
+    }
+    .footer-layers { display:flex; border-bottom:1px solid var(--border); }
+    .footer-layer {
+      flex:1; text-align:center; padding:12px 16px; text-decoration:none; color:var(--muted);
+      font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px;
+      text-transform:uppercase; border-right:1px solid var(--border); transition:all 0.2s; cursor:pointer;
+    }
+    .footer-layer:last-child { border-right:none; }
+    .footer-layer-tag {
+      display:block; font-size:8px; letter-spacing:1.5px; color:var(--muted2);
+      font-weight:400; margin-bottom:2px; text-transform:none;
+    }
+    .footer-layer:hover { background:var(--amber5); color:var(--amber); }
+    .footer-layer.active { color:var(--amber); background:var(--amber5); cursor:default; }
+    .footer-main {
+      padding:18px 40px; display:flex; justify-content:space-between;
+      align-items:center; flex-wrap:wrap; gap:16px;
     }
     .footer-brand {
       font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:3px;
@@ -612,7 +652,7 @@
     .footer-link.info-link:hover { background: var(--amber); color: var(--bg); }
     .footer-copy { font-size:var(--fs-xs); color:var(--muted2); letter-spacing:1px; }
     .footer-legal { font-size:var(--fs-xs); color:var(--muted2); letter-spacing:0.5px; line-height:1.6; }
- 
+
     /* TOAST */
     .toast-wrap { position:fixed; bottom:24px; right:24px; z-index:1000; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
     .toast {
@@ -624,13 +664,13 @@
     @keyframes toast-in { to{opacity:1;transform:translateY(0)} }
     .toast.out { animation:toast-out 0.3s ease forwards; }
     @keyframes toast-out { to{opacity:0;transform:translateY(10px)} }
- 
+
     .kbd-hint { position:fixed; bottom:24px; left:24px; font-size:var(--fs-xs); color:var(--muted2); font-family:'JetBrains Mono',monospace; letter-spacing:1px; pointer-events:none; }
     kbd { background:var(--bg3); border:1px solid var(--border2); border-radius:3px; padding:2px 5px; font-size:var(--fs-xs); }
- 
+
     .reveal { opacity:0; transform:translateY(16px); transition:opacity 0.4s ease, transform 0.4s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
- 
+
     /* RESPONSIVE */
     @media (max-width:1100px) {
       .main-grid { grid-template-columns:1fr 320px; }
@@ -652,7 +692,9 @@
       .playlist-header,.sessions-header { padding:12px 20px; }
       .track-row,.session-row { padding:9px 20px; }
       .tb-section { padding:24px 20px; }
-      .site-footer { padding:14px 20px; }
+      .footer-main { padding:14px 20px; }
+      .footer-layer { font-size:9px; letter-spacing:1px; padding:10px 6px; }
+      .footer-layer-tag { display:none; }
       .info-site-banner { margin: 10px 20px 0; }
     }
     @media (max-width:480px) {
@@ -673,7 +715,7 @@
   <div class="scanlines"></div>
   <div class="bg-mesh"></div>
   <div class="toast-wrap" id="toastWrap"></div>
- 
+
   <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-badge">
@@ -684,16 +726,17 @@
       <div class="ticker-track" id="tickerTrack"></div>
     </div>
   </div>
- 
+
   <div class="page">
     <!-- HEADER -->
     <header class="station-header">
       <div class="station-logo-block">
         <div class="station-logo">BUBATRONIK_BRM</div>
         <div class="station-subtitle">Frecuencia Sant Salvador</div>
+        <div class="station-tagline" style="color:var(--amber4);">Radio · Sesiones · En Directo</div>
         <div class="station-tagline">WorldMOS · AguaFlow · DPN-Game · © 2026</div>
       </div>
- 
+
       <div class="onair-badge">
         <div class="onair-ring">
           <svg class="onair-ring-svg" viewBox="0 0 116 116" xmlns="http://www.w3.org/2000/svg">
@@ -705,7 +748,7 @@
         </div>
         <div class="onair-status-label" id="onairLabel">▶ EMITIENDO EN VIVO</div>
       </div>
- 
+
       <div class="station-freq">
         <div class="freq-number">666.333</div>
         <div class="freq-band">Digital · Open Format · Stream</div>
@@ -713,14 +756,14 @@
         <div class="freq-listeners" id="freqListeners">● OYENTES: ---</div>
       </div>
     </header>
- 
+
     <!-- BANNER ENLACE AL .INFO — visible en el tab Radio -->
     <div class="info-site-banner" id="infoBanner">
       <span class="info-site-banner-icon">📋</span>
       <span>¿Quieres proponer un programa, colaborar o conocer la V2?</span>
       <a href="https://brm.worldmos.info" target="_blank" rel="noopener">INFO &amp; PROGRAMAS →</a>
     </div>
- 
+
     <!-- NAV TABS — con enlace externo al .info al final -->
     <nav class="nav-tabs" role="tablist">
       <button class="nav-tab active" data-tab="radio"       role="tab">📻 Radio</button>
@@ -733,7 +776,7 @@
         📋 INFO &amp; PROGS <span class="nav-ext-icon">↗</span>
       </a>
     </nav>
- 
+
     <!-- ══ TAB: RADIO ══ -->
     <div class="tab-panel active" id="tab-radio">
       <div class="main-grid">
@@ -747,57 +790,57 @@
             </div>
             <div class="now-playing-title" id="npTitle">BUBATRONIK_BRM EN VIVO</div>
             <div class="now-playing-artist" id="npArtist">Streaming en directo — Sant Salvador, Tarragona</div>
- 
+
             <div class="player-card">
               <canvas id="vizCanvas"></canvas>
               <!-- Audio — src asignado dinámicamente en JS al hacer click en Play -->
               <audio id="audioPlayer" preload="none" crossorigin="anonymous"></audio>
- 
+
               <!-- Indicador de modo (LIVE / SESIÓN / EN ESPERA) -->
               <div class="mode-indicator" id="modeIndicator">
                 <span class="mode-dot" id="modeDot"></span>
                 <span id="modeText">EN ESPERA — PULSA PLAY</span>
               </div>
- 
+
               <div class="controls-row">
                 <button class="ctrl-btn" id="btnPrev" title="Anterior (A)">⏮</button>
                 <button class="ctrl-btn play-btn" id="btnPlay" title="Play/Pause (Espacio)">▶</button>
                 <button class="ctrl-btn" id="btnNext" title="Siguiente (D)">⏭</button>
               </div>
- 
+
               <div class="volume-row">
                 <span class="vol-icon">🔈</span>
                 <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.01" value="0.8">
                 <span class="vol-label" id="volLabel">80%</span>
               </div>
- 
+
               <div class="stream-btns">
                 <button class="btn-stream primary" onclick="openNativePlayer()">🌐 Player Web Nativo</button>
                 <button class="btn-stream secondary" onclick="shareRadio()">📡 Compartir</button>
               </div>
             </div>
           </div>
- 
+
           <!-- EQ METERS -->
           <div class="eq-section">
             <div class="eq-bars" id="eqBars"></div>
             <div class="stream-meta">
-              <div class="stream-meta-value">709+</div>
+              <div class="stream-meta-value">1.397</div>
               <div class="stream-meta-label">TRACKS EN COLECCIÓN</div>
             </div>
           </div>
- 
+
           <!-- PLAYLIST -->
           <div class="playlist-header">
             <div class="playlist-title">📻 PLAYLIST BRM</div>
             <div class="playlist-search">
               <input type="text" id="searchInput" placeholder="Buscar track...">
-              <div class="badge" id="trackBadge">709+ TRACKS</div>
+              <div class="badge" id="trackBadge">1.397 TRACKS</div>
             </div>
           </div>
           <div class="playlist-scroll" id="playlistScroll"></div>
         </div>
- 
+
         <!-- RIGHT PANEL -->
         <div class="right-panel">
           <div class="r-section">
@@ -811,9 +854,9 @@
             <div class="info-row"><span class="info-label">Formato</span><span class="info-val">OPEN FORMAT</span></div>
             <div class="info-row"><span class="info-label">Ubicación</span><span class="info-val">📍 Sant Salvador, Tarragona</span></div>
             <div class="info-row"><span class="info-label">Oyentes</span><span class="info-val" id="listenerCount">---</span></div>
-            <div class="info-row"><span class="info-label">Colección</span><span class="info-val">709+ tracks</span></div>
+            <div class="info-row"><span class="info-label">Colección</span><span class="info-val">1.397 tracks</span></div>
           </div>
- 
+
           <div class="r-section">
             <div class="r-title">🎵 GÉNEROS<div class="r-title-line"></div></div>
             <div class="genre-tags" id="genreTags">
@@ -833,7 +876,7 @@
               <span class="genre-tag hot" data-genre="">Open Format</span>
             </div>
           </div>
- 
+
           <div class="r-section">
             <div class="r-title">🔗 CONECTA<div class="r-title-line"></div></div>
             <div class="social-links">
@@ -846,19 +889,25 @@
               <a class="social-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank" rel="noopener">
                 <span class="social-icon">💾</span> Archivo en Drive<span class="social-arrow">→</span>
               </a>
-              <!-- NUEVO: enlace al site .info -->
-              <a class="social-link info-link" href="https://brm.worldmos.info" target="_blank" rel="noopener">
-                <span class="social-icon">📋</span> Info &amp; Programas BRM<span class="social-arrow">↗</span>
-              </a>
               <a class="social-link" href="mailto:rubenrodriguez.f.93@gmail.com">
                 <span class="social-icon">📧</span> Contacto directo<span class="social-arrow">→</span>
               </a>
+            </div>
+
+            <!-- BRIDGE: qué hay detrás de la señal → .info -->
+            <div class="behind-signal">
+              <div class="behind-signal-title">¿Quieres saber qué hay detrás de la señal?</div>
+              <div class="behind-signal-links">
+                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-inicio" target="_blank" rel="noopener">📖 Conoce el manifiesto</a>
+                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-programas" target="_blank" rel="noopener">📅 Ver programas</a>
+                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-colabora" target="_blank" rel="noopener">🐺 Únete a la Manada</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
- 
+
     <!-- ══ TAB: SESIONES ══ -->
     <div class="tab-panel" id="tab-sessions">
       <div class="sessions-header reveal">
@@ -940,7 +989,7 @@
         <a class="btn-stream primary" style="display:inline-block;padding:12px 28px;text-decoration:none;border-radius:6px;" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener">💾 ABRIR ARCHIVO DRIVE</a>
       </div>
     </div>
- 
+
     <!-- ══ TAB: PROGRAMACIÓN ══ -->
     <div class="tab-panel" id="tab-programacion">
       <div style="display:grid;grid-template-columns:1fr 380px;min-height:60vh;">
@@ -950,7 +999,7 @@
             <div class="prog-grid">
               <div class="prog-row reveal">
                 <div><div class="prog-time">00–10:30</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">📻 RADIO 24/7 (ALEATORIO)</div><div class="prog-desc">709+ tracks en rotación Open Format. Sin algoritmos que decidan por ti. Shoutcast 128kbps vía Cloudflare Worker.</div><span class="prog-badge live">🔴 CONTINUO</span></div>
+                <div><div class="prog-name">📻 RADIO 24/7 (ALEATORIO)</div><div class="prog-desc">1.397 tracks en rotación Open Format. Sin algoritmos que decidan por ti. Shoutcast 128kbps vía Cloudflare Worker.</div><span class="prog-badge live">🔴 CONTINUO</span></div>
               </div>
               <div class="prog-row reveal">
                 <div><div class="prog-time">10:30</div><div class="prog-day">Diario</div></div>
@@ -1029,7 +1078,7 @@
         </div>
       </div>
     </div>
- 
+
     <!-- ══ TAB: LA MANADA ══ -->
     <div class="tab-panel" id="tab-manada">
       <div style="display:grid;grid-template-columns:1fr 380px;min-height:60vh;">
@@ -1080,7 +1129,7 @@
         </div>
       </div>
     </div>
- 
+
     <!-- ══ TAB: TEAM BUILDING ══ -->
     <div class="tab-panel" id="tab-teambuilding">
       <div class="tb-section reveal">
@@ -1115,28 +1164,40 @@
         </p>
       </div>
     </div>
- 
+
     <!-- FOOTER -->
     <footer class="site-footer">
-      <div>
-        <div class="footer-brand">BUBATRONIK_BRM · Frecuencia Sant Salvador</div>
-        <div class="footer-legal">LOB@-PULPO × DEVBU93 · WorldMOS · WORLD-MUNDO OS</div>
+      <!-- Las 3 capas: .info explica, .world hace sonar, Radiostream transporta la señal -->
+      <div class="footer-layers">
+        <a class="footer-layer" href="https://brm.worldmos.info" target="_blank" rel="noopener">
+          <span class="footer-layer-tag">Explica</span>BRM Info
+        </a>
+        <span class="footer-layer active" title="Estás aquí">
+          <span class="footer-layer-tag">Hace sonar</span>BRM Radio
+        </span>
+        <a class="footer-layer" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener">
+          <span class="footer-layer-tag">Transporta</span>Stream Nativo
+        </a>
       </div>
-      <div class="footer-links">
-        <a class="footer-link" href="https://worldmos.world" target="_blank">WorldMOS</a>
-        <a class="footer-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank">Instagram</a>
-        <a class="footer-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank">Drive</a>
-        <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
-        <!-- NUEVO: enlace .info en el footer -->
-        <a class="footer-link info-link" href="https://brm.worldmos.info" target="_blank" rel="noopener">📋 Info &amp; Programas</a>
+      <div class="footer-main">
+        <div>
+          <div class="footer-brand">BUBATRONIK_BRM · Frecuencia Sant Salvador</div>
+          <div class="footer-legal">LOB@-PULPO × DEVBU93 · WorldMOS · WORLD-MUNDO OS</div>
+        </div>
+        <div class="footer-links">
+          <a class="footer-link" href="https://worldmos.world" target="_blank">WorldMOS</a>
+          <a class="footer-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank">Instagram</a>
+          <a class="footer-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank">Drive</a>
+          <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
+        </div>
+        <div class="footer-copy">© 2026 · Sant Salvador, Tarragona, Catalunya, España<br>Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺</div>
       </div>
-      <div class="footer-copy">© 2026 · Sant Salvador, Tarragona, Catalunya, España<br>Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺</div>
     </footer>
- 
+
   </div><!-- /page -->
- 
+
   <div class="kbd-hint"><kbd>Space</kbd> Play · <kbd>A</kbd><kbd>D</kbd> Tracks</div>
- 
+
   <script>
   // ══════════════════════════════════════════════════════════════════════
   //  BUBATRONIK_BRM RADIO · v2026.08 · FRECUENCIA SANT SALVADOR
@@ -1165,7 +1226,7 @@
   //  8. NUEVO: en Team Building botón secundario al .info
   //  9. NUEVO: tab La Manada → "🐺 La Manada" (antes "🐺 INFO")
   // ══════════════════════════════════════════════════════════════════════
- 
+
   // ── TRACKS DATABASE ──────────────────────────────────────────────────
   const TRACKS = [
     {n:'F1', t:'Tech House Vibes', artist:'Mixkit · BRM Offline', genre:'tech house', audioSrc:'https://drive.google.com/uc?export=download&id=1nZeCQ9NWcypKw4xgj6gPtZ44-WSmY1ad'},
@@ -1273,16 +1334,1319 @@
     {n:'105', t:'Richie Hawtin — Contakt (Live)',              artist:'Richie Hawtin',      genre:'techno'},
     {n:'104', t:'Ben Klock — Subzero',                        artist:'Ben Klock',          genre:'techno'},
     {n:'103', t:'Marcel Dettmann — Track 8',                  artist:'Marcel Dettmann',    genre:'techno'},
-    {n:'+ 506', t:'... 506 tracks más en la colección BRM', artist:'BUBATRONIK COLLECTION · DRIVE → 709+ TOTAL', genre:''},
+    {n:'#1', t:'Drake - God\'s Plan', artist:'Drake', genre:''},
+    {n:'#2', t:'Future - Life Is Good (Official Music Video) ft. Drake', artist:'Future', genre:''},
+    {n:'#3', t:'YG - Go Loko ft. Tyga, Jon Z', artist:'YG', genre:''},
+    {n:'#4', t:'Soul King Brook 💀 YonkoBe - Soul King [AMV]', artist:'YonkoBe', genre:''},
+    {n:'#5', t:'YOHOHOHO – Brook Tribute | A Song For The Ones Who Never Came Home | One Piece', artist:'JoyB', genre:''},
+    {n:'#6', t:'Maria Becerra, Becky G, Myke Towers & Quevedo - Tu Piel (Music Video) Prod. By Juotropx', artist:'Juotropx', genre:''},
+    {n:'#7', t:'FARIANA x Ñengo Flow - Gangsta Love & Bellakiti (Video Oficial)', artist:'FARIANA', genre:''},
+    {n:'#8', t:'DADDY YANKEE || BZRP Music Sessions #0/66', artist:'Bizarrap y Daddy Yankee', genre:''},
+    {n:'#9', t:'GONZY - INSTINTO ANIMAL (Visualizer)', artist:'Gonzy', genre:''},
+    {n:'#10', t:'KEAN DYSSO & KristaFoxx - FANCY (VIP)', artist:'KEAN DYSSO', genre:''},
+    {n:'#11', t:'AGUSTITO REMIX - ORIGINAL ELIAS con ANTONIO CARMONA, MONCHO CHAVEA, LOS YAKIS Y LUCAS CARMONA', artist:'Original Elias', genre:''},
+    {n:'#12', t:'Nicky Jam || BZRP Music Sessions #41/66', artist:'Bizarrap', genre:''},
+    {n:'#13', t:'KAROL G - Tu Perfume (Video Oficial)', artist:'Luis Albert', genre:''},
+    {n:'#14', t:'PESO PLUMA || BZRP Music Sessions #55/66', artist:'Bizarrap', genre:''},
+    {n:'#15', t:'Farruko, Bad Bunny - La Cartera (Official Video)', artist:'Farruko', genre:''},
+    {n:'#16', t:'DON OMAR - SOY YO 👑 (El Regreso del Rey)', artist:'Aureowyrmlatin', genre:''},
+    {n:'#17', t:'BAD BUNNY ft. Chuwi - WELTiTA (Video Oficial) | DeBÍ TiRAR MáS FOToS', artist:'Bad Bunny', genre:''},
+    {n:'#18', t:'Tego Calderón - La Receta (Official Video)', artist:'Tego Calderón', genre:''},
+    {n:'#19', t:'Farruko, Victor Cardenas, Dj Adoni - El Incomprendido (Official Video)', artist:'Farruko', genre:''},
+    {n:'#20', t:'Daddy Yankee, Becky G - ME ENTERÉ (ft. God Music)', artist:'God Music', genre:''},
+    {n:'#21', t:'Don Omar, Residente - DON OMAR❌ RESIDENTE | FLOW HP 🦍 ( Official Video )', artist:'Don Omar', genre:''},
+    {n:'#22', t:'Ryan Castro - que te vaya bien (Video Oficial)', artist:'Ryan Castro', genre:''},
+    {n:'#23', t:'Santa fe klan x peso pluma x bad bunny - corazon de oro | Reggaeton | Trap corridos 2026', artist:'fuego perreo y 5 más', genre:''},
+    {n:'#24', t:'Imran Khan - Satisfya (Official Music Video)', artist:'imrankhanworld', genre:''},
+    {n:'#25', t:'Lil Uzi Vert, Quavo & Travis Scott - Go Off (from The Fate of the Furious: The Album) [MUSIC VIDEO]', artist:'LIL UZI VERT', genre:''},
+    {n:'#26', t:'Wiz Khalifa - Work Hard Play Hard [Music Video]', artist:'Wiz Khalifa', genre:''},
+    {n:'#27', t:'REINA (KRIMINAL) - Kapo (Video Oficial)', artist:'Kapo', genre:''},
+    {n:'#29', t:'TMNT: Shell Shock Music Video', artist:'FacePalmer', genre:''},
+    {n:'#30', t:'QUEVEDO - CaSiTa De MuÑeCaS 👑🇮🇨 (De Canarias Pal Mundo)', artist:'Aureowyrmlatin', genre:''},
+    {n:'#31', t:'Avicii\'s 2012 Coachella set-and the iconic LED giant head that he played atop. Photography by Rukes.', artist:'Avicii', genre:''},
+    {n:'#32', t:'Weed Makes Her Horny, Tequila Makes Her Mean', artist:'Cathouse Kings - Topic', genre:''},
+    {n:'#33', t:'Sigma - JUNGLE ft. Stefflon Don & Yung Saber (Lyric Video)', artist:'Sigma HQ', genre:''},
+    {n:'#34', t:'Kill Bill – Psycho Album Mix - Gorillaz Inspired AI Remix | Trip-Hop, Alt Hip-Hop', artist:'Deadwire', genre:''},
+    {n:'#35', t:'Sage The Gemini - Reverse (James Hype Remix) [Official Audio]', artist:'Sage the Gemini', genre:''},
+    {n:'#36', t:'Sage The Gemini - Buss It feat. Chris Brown (Official Audio)', artist:'Sage the Gemini', genre:''},
+    {n:'#37', t:'Sage the Gemini - Big Numbers [Official Audio]', artist:'Sage the Gemini', genre:''},
+    {n:'#38', t:'Sage the Gemini - Now & Later [Official Music Video]', artist:'Sage the Gemini', genre:''},
+    {n:'#39', t:'Sage The Gemini - Pilot [Official Music Video]', artist:'Sage the Gemini', genre:''},
+    {n:'#40', t:'Sage The Gemini - Come Get It [Official Audio]', artist:'Sage the Gemini', genre:''},
+    {n:'#41', t:'Tego Calderón, Ñengo Flow - Códigos De La Calle (Official Music Video)', artist:'Desde El Caserio TV y Punto Urbano', genre:''},
+    {n:'#42', t:'FYAHBWOY ❌ OTO BEATS - VOLVÍ', artist:'FYAHBWOY OFFICIAL y OTO Beats', genre:''},
+    {n:'#43', t:'Reality x Farruko - Por Si Muero Mañana REMIX (Official Video)', artist:'Reality y Farruko', genre:''},
+    {n:'#44', t:'John Gibbons - P.Y.T. (Pretty Young Thing) Music Video', artist:'The Vibe Guide', genre:''},
+    {n:'#45', t:'Sigala x Digital Farm Animals - Only One (Official Lyric Video)', artist:'Sigala', genre:''},
+    {n:'#46', t:'EN LA SANGRE 🩸- LANGUI ❌ GITANO ANTON = LA EXCEPCION Feat Irie Angel (Video Oficial)Prod LaDakostyle', artist:'Langui', genre:''},
+    {n:'#47', t:'😂 AL PAN, PAN Y AL VINO, VINO 🍷 | La Rumba Flamenca Más Divertida del Año | Canción de Humor 2026', artist:'OLÉ ESPAÑA', genre:''},
+    {n:'#48', t:'Cimafunk, Monsieur Périné - Catalina (Official Music Video)', artist:'Cimafunk', genre:''},
+    {n:'#49', t:'Camilo, Mau y Ricky - Rolex', artist:'Camilo', genre:''},
+    {n:'#50', t:'ldley -Mi cachito de cielo videoclip oficial', artist:'LdLey Oficial', genre:''},
+    {n:'#51', t:'Flamenco Urbano | mírala que guapa viene', artist:'Mia study music | Techno Flamenco Urbano', genre:''},
+    {n:'#52', t:'Me Importa Una Mierda', artist:'Miguel.ReyesMusic', genre:''},
+    {n:'#53', t:'Spice, Sean Paul & Shaggy - CRATE (Official Lyric Video)', artist:'Skyline Lyric Co.', genre:''},
+    {n:'#54', t:'NO AGUANTO EL TANGA 😂 | La Rumba Flamenca Más Graciosa del Mercadillo', artist:'OLÉ ESPAÑA', genre:''},
+    {n:'#55', t:'Guaynaa, India Martinez - El Payo (Official Video)', artist:'Guaynaa', genre:''},
+    {n:'#56', t:'Cierra Ramirez - Bad Boys (Official Video)', artist:'Cierra Ramirez', genre:''},
+    {n:'#57', t:'Sixto Rein - El Milagro', artist:'SixtoRein', genre:''},
+    {n:'#58', t:'Si me vuelves a elegir 🔥 Flamenco urbano', artist:'Mia study music | Techno Flamenco Urbano', genre:''},
+    {n:'#59', t:'Daddy Yankee - El Sacudón (Official Music Video)', artist:'Cervantes Sounds y MORAD GMR', genre:''},
+    {n:'#60', t:'Sinny & 7vvch - Petrunko (Numb: Slowed Remix)', artist:'Sinny', genre:''},
+    {n:'#61', t:'FISHER x KITA ALEXANDER - ATMOSPHERE [LYRIC VIDEO]', artist:'FISHER', genre:''},
+    {n:'#62', t:'Disco Lines & Maesic feat. Mason & Princess Superstar - Push It', artist:'Disco Lines', genre:''},
+    {n:'#63', t:'Nurkalyi X - 911 Sayber', artist:'VDJ Smile Club', genre:''},
+    {n:'#64', t:'Riton x Nightcrawlers - Friday ft. Mufasa & Hypeman (Dopamine Re-edit) [Official Video]', artist:'RitonTime', genre:''},
+    {n:'#65', t:'MK - Dior (London Popup Recap) ft. Chrystal', artist:'MK (Marc Kinchen)', genre:''},
+    {n:'#66', t:'Daddy Yankee – Tsunami (Official Music Video)', artist:'La Vibra Latina', genre:''},
+    {n:'#67', t:'Iggy Azalea ft. Tyga, 2 Chainz - Twerk The Room (Music Video)', artist:'9inetySix', genre:''},
+    {n:'#68', t:'Daddy Yankee – Rompe La Noche (Official Video)', artist:'JustinB Music y Apache music fans', genre:''},
+    {n:'#69', t:'EMINEM - A** Like That (TERMIK Remix)', artist:'HELLFXRMANCE', genre:''},
+    {n:'#70', t:'la sesión del verano.', artist:'ENYGMA', genre:''},
+    {n:'#71', t:'Rudimental & Major Lazer - Let Me Live (feat. Anne-Marie & Mr. Eazi) (Dance Video)', artist:'Major Lazer Official', genre:''},
+    {n:'#72', t:'Notion - Hooked (Official Lyric Video)', artist:'Spinnin\' Records', genre:''},
+    {n:'#73', t:'James Hype B2B Tita Lau live @ Cafe Mambo, Ibiza 2026, Sunset Ibiza Classics Mix', artist:'James Hype y Tita Lau', genre:''},
+    {n:'#74', t:'Max Manie - Sunday (KlangTherapeuten Remix)', artist:'TheSoundYouNeed', genre:''},
+    {n:'#75', t:'Milky Chance - Down By The River (FlicFlac Edit)', artist:'TheSoundYouNeed', genre:''},
+    {n:'#76', t:'Vance Joy - Riptide (FlicFlac Edit)', artist:'TheSoundYouNeed', genre:''},
+    {n:'#77', t:'Androma - Gunjule', artist:'TheSoundYouNeed', genre:''},
+    {n:'#78', t:'Macklemore - Wings (feat. Ryan Lewis) (Subtitulado español)', artist:'The Medizine', genre:''},
+    {n:'#79', t:'FALSALARMA - FULL TIME con TOSKO', artist:'Boa Música Urbana', genre:''},
+    {n:'#80', t:'Jax Jones - Instruction ft. Demi Lovato, Stefflon Don', artist:'Jax Jones', genre:''},
+    {n:'#81', t:'SJUR - What Do I Do', artist:'The Vibe Guide', genre:''},
+    {n:'#82', t:'Shiaoko - Buena Vibra (Videoclip Oficial)', artist:'SHIAOKO', genre:''},
+    {n:'#83', t:'ESPECTACULAR INTRO 6º ANIVERSARIO MAKINEROS 90\'s 2020', artist:'Makineros 90\'s', genre:''},
+    {n:'#84', t:'TANXUGUEIRAS & RAYDEN - Averno (Videoclip Oficial)', artist:'Tanxugueiras', genre:''},
+    {n:'#85', t:'Bad Bunny feat WAD DJ - Café Con Ron (Superbowl Édition)', artist:'Cédric DARMAYAN (WAD DJ)', genre:''},
+    {n:'#86', t:'Xema Fuentes, Arzadous, Carla Frigo - Mr. SAXOBEAT (Vídeo Oficial)', artist:'Xema Fuentes', genre:''},
+    {n:'#87', t:'Estopa, Yungberto - Bossanova (Yungberto Remix)', artist:'Estopa', genre:''},
+    {n:'#88', t:'Yo soy Español, Español, Español', artist:'Ave Fénix', genre:''},
+    {n:'#89', t:'David Bisbal x Jayxme x Monjez - Ave Maria (TECHNO)', artist:'Jayxme', genre:''},
+    {n:'#90', t:'BEÉLE - NO TIENE SENTIDO (LI4M REMIX) [FREE DOWNLOAD] #beele #techno #technoremix', artist:'LI4M', genre:''},
+    {n:'#91', t:'Like A Bunny', artist:'Release - Topic', genre:''},
+    {n:'#92', t:'Ladilla Rusa - Macaulay Culkin (VIDEOCLIP)', artist:'Ladilla Rusa', genre:''},
+    {n:'#93', t:'Parkineos - Saeta del Santo Ruido [VIDEO OFICIAL]', artist:'Parkineos', genre:''},
+    {n:'#94', t:'CACHÉ - MIAU (VIDEOCLIP OFICIAL)#puravidanene', artist:'CACHÉ y 2 más', genre:''},
+    {n:'#95', t:'El Columpio Asesino - Toro (I HATE MODELS speed up revival edit of André VII remix)', artist:'Mushroom Pillow', genre:''},
+    {n:'#96', t:'BOOM BOOM SHAKE THIS FLOOR (Club Mix)', artist:'Hyper State - Topic', genre:''},
+    {n:'#97', t:'Forget me', artist:'No Reasons', genre:''},
+    {n:'#98', t:'KASE.O - RINGUI DINGUI feat. SFDK (ANDRÉS CAMPO REMIX)', artist:'KaseO TV Oficial', genre:''},
+    {n:'#99', t:'Arde Bogotá - Los Perros (Andres Campo & K-Style Remix)', artist:'Arde Bogotá', genre:''},
+    {n:'#100', t:'Daddy Yankee - Imbatible (Official Music Video)', artist:'Ritmo Celestial', genre:''},
+    {n:'#101', t:'NADIE ME PARÓ 🔥 Flamenco Urbano 2026', artist:'ZUIR', genre:''},
+    {n:'#102', t:'🎵 España | Canción de la Copa Mundial 2026 🎵 La Roja Se Siente', artist:'GLORIA BLANCA', genre:''},
+    {n:'#103', t:'Ryan Castro, SOG, Selección Colombia - EL RITMO QUE NOS UNE (LETRA)', artist:'TED SAD', genre:''},
+    {n:'#104', t:'Kiko Rivera & Lucía De La Puerta - Divas (Videoclip Oficial)', artist:'Kiko Rivera Oficial', genre:''},
+    {n:'#105', t:'¡ESPAÑA ESTÁ EN LA FINAL DEL MUNDIAL! "La Roja No Cae" Eurobloke (Video Lyrics) #mundial #españa', artist:'EuroBloke', genre:''},
+    {n:'#106', t:'Beret, Estopa - Diablo (Videoclip Oficial)', artist:'BERET', genre:''},
+    {n:'#107', t:'Lucia De La Puerta x Jayxme - Si no te cuida (TECHNO REMIX)', artist:'Lucia De La Puerta', genre:''},
+    {n:'#108', t:'Lucia De La Puerta, Jayxme - Aire (Techno Remix)', artist:'Lucia De La Puerta', genre:''},
+    {n:'#109', t:'Alan Walker - Car Music Mix 2020 [Bass Boosted] [EDM Remix] [Fast & Furious - Need For Speed- CREW]', artist:'WolveriNE 1983', genre:''},
+    {n:'#110', t:'🏁 Battle Drift 🏁 | Car Music Mix 2020 (Bass Boosted) | Best EDM, BOUNCE, ELECTRO HOUSE', artist:'EDM ILY', genre:''},
+    {n:'#111', t:'David Guetta - Titanium (The Stickmen Project Remix)', artist:'The Stickmen Project', genre:''},
+    {n:'#112', t:'James Hype - Cascadas (con Sam Harper y Bobby Harvey) (RAMBA ZAMBA BIGROOM REMIX)', artist:'Ramba Zamba', genre:''},
+    {n:'#113', t:'Deorro - Five Hours (Static Video) [LE7ELS]', artist:'PRMD Music', genre:''},
+    {n:'#114', t:'Tomorrowland 2026 🔥 Martin Garrix, David Guetta, Tiësto, Timmy Trumpet, Armin van Buuren, W&W', artist:'Mainstage Nation', genre:''},
+    {n:'#115', t:'NATHY PELUSO - EROTIKA (Video Oficial)', artist:'NATHY PELUSO', genre:''},
+    {n:'#116', t:'Wolfskald - We\'ll Be Dancing Under the Moon (Official Epic Music Video)', artist:'Wolfskald', genre:''},
+    {n:'#117', t:'SOUNDYXI – Just Do It (Club Banger | Music) (Visualizer)', artist:'SOUNDYXI', genre:''},
+    {n:'#118', t:'LMFAO - Sorry For Party Rocking', artist:'LMFAOVEVO', genre:''},
+    {n:'#119', t:'BLAKE - LENGUA DE SERPIENTE [VIDEOCLIP OFICIAL]', artist:'BLAKE', genre:''},
+    {n:'#120', t:'Ñengo Flow & Tego Calderón - Los de Siempre (Official Music Video)', artist:'Desde El Caserio TV', genre:''},
+    {n:'#121', t:'HALO - Quevedo ft. La Pantera (Official Video)', artist:'Quevedo', genre:''},
+    {n:'#122', t:'daddy yankee - IMPARABLE (video oficial)', artist:'Latino Music Station', genre:''},
+    {n:'#123', t:'MR. MOONDIAL - Quevedo ft. Pitbull (Visualizer) | BUENAS NOCHES', artist:'Quevedo', genre:''},
+    {n:'#124', t:'Aventura, Bad Bunny - Volví (Video Oficial)', artist:'Romeo Santos', genre:''},
+    {n:'#125', t:'Daddy Yankee - El Sacudón (Official Music Video)', artist:'Ritmo Celestial y HYBE label Fans(하이브 팬들)', genre:''},
+    {n:'#126', t:'SOFI TUKKER - Barthelona (Official Music Video)', artist:'SOFI TUKKER', genre:''},
+    {n:'#127', t:'Shotta & El Jincho & Gordo Master - Vasilon', artist:'Shotta', genre:''},
+    {n:'#128', t:'Ptazeta, Farina - Trakatá', artist:'PtaZeta', genre:''},
+    {n:'#129', t:'ISRAEL B, C. TANGANA, LOWLIGHT - TRANQUILISIMO', artist:'ISRAEL B', genre:''},
+    {n:'#130', t:'Chucky73 || BZRP Music Sessions #43/66', artist:'Bizarrap', genre:''},
+    {n:'#131', t:'DON PATRICIO - Y A MÍ QUÉ? (Vídeo Oficial)', artist:'Don Patricio', genre:''},
+    {n:'#132', t:'GONZY - FRIKI (Official Video)', artist:'Gonzy', genre:''},
+    {n:'#133', t:'KAZE - GUAPA CABREÁ FT PTAZETA', artist:'KAZE', genre:''},
+    {n:'#134', t:'Avicii - Hey Brother (Avicii By Avicii)', artist:'Avicii', genre:''},
+    {n:'#135', t:'Avicii - SOS (Fan Memories Video) ft. Aloe Blacc', artist:'Avicii', genre:''},
+    {n:'#136', t:'Dubai\'s Hottest Party Vibes / Tori levett @Boatriders @technoandchill', artist:'BOATRIDERS y Tori Levett', genre:''},
+    {n:'#137', t:'Bakermat - Joy (with Ann Nesby) (Official Lyric Video)', artist:'Bakermat', genre:''},
+    {n:'#138', t:'TOBEHONEST & WELKER BR - Too Bright (Extended Mix)', artist:'Myth of NYX', genre:''},
+    {n:'#139', t:'Noire - Live @ Radio Intense Tarragona 15.03.2021 / Tech-House DJ Mix', artist:'Radio Intense', genre:''},
+    {n:'#140', t:'RELAJADITA | Main Floor - Gotec Club | 1H 1/2 | BOUNCE SET', artist:'Relajadita', genre:''},
+    {n:'#141', t:'Rascal Flatts - Life Is A Highway (Jesse Bloch Bootleg) [Official Cars Song] 👑 Rex Sounds', artist:'Rex Sounds', genre:''},
+    {n:'#142', t:'El Coleto y La Coletica - Angelito Ramire', artist:'Angelito Ramire', genre:''},
+    {n:'#143', t:'R3hab - Samurai (Go Hard) [Original Mix]', artist:'Spinnin\' Records', genre:''},
+    {n:'#144', t:'Wet', artist:'No Reasons', genre:''},
+    {n:'#145', t:'Chasing Abbey, HARLEE - Take Me To The Water (Official Music Video)', artist:'Spinnin\' Records', genre:''},
+    {n:'#146', t:'KSHMR & MEMBA - Bass Down Low (feat. DEV) [Trap Version] [Official Audio]', artist:'KSHMR y 2 más', genre:''},
+    {n:'#147', t:'Sick Individuals - Prime (Official Music Video)', artist:'Spinnin\' Records', genre:''},
+    {n:'#148', t:'Loud Luxury & Natalie Jane - UH OH! (Official Lyric Video)', artist:'Loud Luxury y Natalie Jane', genre:''},
+    {n:'#149', t:'DMNDS & Fallen Roses - Calabria | Extended Remix', artist:'Extended Music', genre:''},
+    {n:'#150', t:'Robin Schulz x Sigala feat. Zoe Wees - AM to PM', artist:'Robin Schulz y 2 más', genre:''},
+    {n:'#151', t:'Supafly, Luvstruck, Shayan - Stronger Than Before (Official Music Video)', artist:'Spinnin\' Records y 3 más', genre:''},
+    {n:'#152', t:'Oliver Heldens - Lady (Hear Me Tonight) [Official Music Video]', artist:'Oliver Heldens y Heldeep Records', genre:''},
+    {n:'#153', t:'Loreen Tattoo Remix (Styles AFRO House) Remix-2026 🔥🔥🔥', artist:'AFRO FIRE', genre:''},
+    {n:'#154', t:'TOMORROWLAND FESTIVAL 🎧 Vintage, Steve Aoki, Porter Robinson, Fisher, Calvin Harris, Alesso, R3HAB', artist:'Las Vegas ElectroVibe y Frozen Atmosphere', genre:''},
+    {n:'#155', t:'Kris Kross Amsterdam, Luísa Sonza, Willy William - My Oh My [Lyrics Video]', artist:'Cloud 9 Music y 2 más', genre:''},
+    {n:'#156', t:'Natalie La Rose - NOT NICE Ft Benjamin Fayah, SHAYE (Official Video)', artist:'Natalie La Rose y 2 más', genre:''},
+    {n:'#157', t:'🔥 Shenseea ft. Shaggy – Go Down Dehh (The Shaggy Show) | Reggae Music 2026 | 4K Lyrics Video 🔥', artist:'Roma Unversed', genre:''},
+    {n:'#158', t:'Jax Jones - Breathe ft. Ina Wroldsen', artist:'Jax Jones', genre:''},
+    {n:'#159', t:'KristaFoxx - Young & Rich', artist:'KristaFoxx', genre:''},
+    {n:'#160', t:'Tujamo x Azteck x INNA - Freak (Official Music video)', artist:'Smash The House', genre:''},
+    {n:'#161', t:'Sean Paul x INNA - Let It Talk To Me', artist:'Sean Paul', genre:''},
+    {n:'#162', t:'FREYVRA x Sirexa – Born in the North | Dark Viking Trap Freestyle Anthem (Official Music Video)', artist:'F R E Y V R A y Sirexa', genre:''},
+    {n:'#163', t:'Gabry Ponte - Easy On My Heart (Official Visualizer)', artist:'Gabry Ponte', genre:''},
+    {n:'#164', t:'TOPIC x Becky G - Sorry Papi (Official Music Video)', artist:'Topic y Becky G', genre:''},
+    {n:'#165', t:'Rave Like A Pirate: Epic Shanty Meets Techno', artist:'Oblivion Music', genre:''},
+    {n:'#166', t:'Sam Feldt, MC4D, VIZE, Aloe Blacc - Hey Son (MC4D Visualizer)', artist:'MC4D', genre:''},
+    {n:'#167', t:'The Woolpackers - Hillbilly Rock, Hillbilly Roll (Ripper Remix)', artist:'Ripper Unleashed', genre:''},
+    {n:'#168', t:'The Gambler (MDB Dance Cover) Bounce Bootleg🔥', artist:'MDB', genre:''},
+    {n:'#169', t:'TIPSY 🍻 | The Wildest Irish Pub Anthem You\'ll Ever Hear (Sing-Along Chaos)', artist:'Neon Theory', genre:''},
+    {n:'#170', t:'Shaboozey - A Bar Song (YUSSI Remix) (Free Download)', artist:'RELEVANT DNB', genre:''},
+    {n:'#171', t:'Tiësto - The Business (Official Music Video)', artist:'Tiësto', genre:''},
+    {n:'#172', t:'Life Is A Highway (DJ Casey Remix)', artist:'DJ CASEY', genre:''},
+    {n:'#173', t:'Armin van Buuren feat. Sharon den Adel - In And Out Of Love (Miss Cyanna Remix) | Trance 2026', artist:'Miss Cyanna', genre:''},
+    {n:'#174', t:'Tiësto - In My Memory (DJ Vegas Remix)', artist:'DJ Vegas', genre:''},
+    {n:'#175', t:'Zetazen - Y te acuerdas', artist:'Zetazen', genre:''},
+    {n:'#176', t:'Tinie Tempah - Girls Like ft. Zara Larsson (Official Video)', artist:'TINIE TEMPAH', genre:''},
+    {n:'#177', t:'Play Hard x No Broke Boys – David Guetta ft. Ne-Yo & Akon x Disco Lines & Tinashe (DEVANK MASHUP)', artist:'Devank°', genre:''},
+    {n:'#178', t:'Tinashe & Disco Lines - No Broke Boys (Live from LIV Beach Las Vegas)', artist:'Tinashe', genre:''},
+    {n:'#179', t:'Shakira, Burna Boy - Dai Dai (Official Video)', artist:'Shakira y 2 más', genre:''},
+    {n:'#180', t:'Saweetie - Best Friend (feat. Doja Cat) [Official Music Video]', artist:'Official Saweetie', genre:''},
+    {n:'#181', t:'3 Are Legend (Dimitri Vegas, Steve Aoki & Like Mike ) | Tomorrowland 2022 - WE3', artist:'Tomorrowland', genre:''},
+    {n:'#182', t:'La primavera trompetera', artist:'losdelinqüentestv', genre:''},
+    {n:'#183', t:'Low x Rock That Body (DJ CASEY Remix)', artist:'DJ CASEY', genre:''},
+    {n:'#184', t:'Megamix 1999', artist:'JordiCule Deverdad', genre:''},
+    {n:'#185', t:'RockFM - Álex Clavero El FrancotiraRock y los pingüinos moteros', artist:'RockFM', genre:''},
+    {n:'#186', t:'Jamás es tarde', artist:'Los Ecos de Cyrano - Topic', genre:''},
+    {n:'#187', t:'La voluntad callada', artist:'Los Ecos de Cyrano - Topic', genre:''},
+    {n:'#188', t:'MI DEMONIO ERES TU - Black Winter Rock – Cuando el Infierno Aprendió Mi Nombre.', artist:'Black Winter Rock', genre:''},
+    {n:'#189', t:'LA TABERNA TEMPLARIA 🍺✝️ | Himno Medieval Épico', artist:'Forjado en Fuego', genre:''},
+    {n:'#190', t:'AIM WIND X – Run「AMV 4K」', artist:'AIM WIND X y 2 más', genre:''},
+    {n:'#191', t:'¡Moriré de pie!', artist:'Invierno Crónico', genre:''},
+    {n:'#192', t:'Una Copa Con El Diablo // Dark Country en Español', artist:'SAN VENGANZA', genre:''},
+    {n:'#193', t:'NO ME SUBESTIMES... APRENDÍ A RESISTIR | Dark Country en Español', artist:'Acordes de la Noche', genre:''},
+    {n:'#194', t:'"Lobo y Pastor – Folk Metal Épico que Te Hará Sentir el Poder del Buen Pastor 🔥"', artist:'ALTAR DE ACERO OFICIAL', genre:''},
+    {n:'#195', t:'Ángel Errante — No cayó, no se fue… sigue caminando | Black Winter Rock.', artist:'Black Winter Rock', genre:''},
+    {n:'#196', t:'MUJERES DIVINAS - VICENTE FERNÁNDEZ | Cover Tributo Rock', artist:'MI CANAL MUSICAL - TRIBUTO ROCK', genre:''},
+    {n:'#197', t:'La llorona [Tributo Rock] Metal Cover - Sempiternia', artist:'Sempiternia Rock', genre:''},
+    {n:'#198', t:'ME TENGO MIEDO A MÍ 😈🔥 | COMPA DIABLO MUSIC', artist:'Compa Diablo Music', genre:''},
+    {n:'#199', t:'No Reces Por Mí | Dark Country en Español', artist:'Alma Rey', genre:''},
+    {n:'#200', t:'ROSALÍA × SHAKIRÁ — ACERO ⚔️ (Video Oficial AI)', artist:'Seraph Rhythm y 3 más', genre:''},
+    {n:'#201', t:'SOMOS NIETAS DE LAS BRUJAS | Poder femenino Brutal y Soberano | Dark Trap Ritual', artist:'Potens', genre:''},
+    {n:'#202', t:'FELICIA, Edward Maya, Vika Jigulina - Me Without U (Official Music Video)', artist:'FELICIA', genre:''},
+    {n:'#203', t:'Gabry Ponte, Steve Aoki, KEL - He\'s A Pirate (Save Me) [Official Visualizer]', artist:'Steve Aoki', genre:''},
+    {n:'#204', t:'The Universe Needs You', artist:'Sapajou - Topic', genre:''},
+    {n:'#205', t:'Arráncame las ganas - Duina del Mar', artist:'Duina Del Mar', genre:''},
+    {n:'#206', t:'Beéle - quédate (Letra)', artist:'Echolam', genre:''},
+    {n:'#207', t:'David Guetta & Sia - Beautiful People (Official Video)', artist:'David Guetta', genre:''},
+    {n:'#208', t:'R3HAB, INNA, Sash! – Rock My Body (Official Music Video)', artist:'Spinnin\' Records y R3HAB', genre:''},
+    {n:'#209', t:'Dj Goja - Mi Chico 🔥 (Official Video)', artist:'Dj Goja', genre:''},
+    {n:'#210', t:'Greeicy - Quiero + (Official Video)', artist:'Greeicy', genre:''},
+    {n:'#211', t:'Jovani x Chris Crone - I\'ll Fly With You (L\'Amour Toujours) [Official Video]', artist:'Jovani', genre:''},
+    {n:'#212', t:'Michael Jackson – Smooth Criminal (Techno Remix)', artist:'Warehouse District Techno', genre:''},
+    {n:'#213', t:'DJ Snake, Peso Pluma - Teka (Official Music Video)', artist:'DJ Snake', genre:''},
+    {n:'#214', t:'Topic x Becky G - Sorry Papi (Letra/Lyrics)', artist:'SoyLatino', genre:''},
+    {n:'#215', t:'NOMAN MIX - Timer (Original Mix)', artist:'NOMAN MIX y Mind Mix', genre:''},
+    {n:'#216', t:'Bonnie Tyler - Total Eclipse of the Heart | Symphonic Metal Cover ⚔️', artist:'Irene Belserion', genre:''},
+    {n:'#217', t:'DARK ARIA • EPIC VERSION / Remix | SOLO LEVELING', artist:'Akuro Soren', genre:''},
+    {n:'#218', t:'Fenrir', artist:'Norscan Warlord', genre:''},
+    {n:'#219', t:'Domsgard - Fenrir | When Ragnarök Comes | Fenrir\'s War Hymn', artist:'Domsgard', genre:''},
+    {n:'#220', t:'Jim Yosef, Level 8, Scarlett - Curse (Official Lyric Video)', artist:'Jim Yosef', genre:''},
+    {n:'#221', t:'VALHALLA RISING ⚔️🔥 Official Viking Battle Anthem (Cinematic Trap x Nordic Orchestral)', artist:'Draugr Frostvein', genre:''},
+    {n:'#222', t:'Oops!... I Did It Again | Epic Dark Gothic Orchestral Cover', artist:'Obsidian Symphony', genre:''},
+    {n:'#223', t:'Barbie Girl - AQUA | Epic Dark Gothic Orchestral Cover', artist:'Moon Lunar Cinematic', genre:''},
+    {n:'#224', t:'El sinpensar - Tech Dembow 🔥 | Tech House x Dembow', artist:'El SinPensar Official', genre:''},
+    {n:'#225', t:'Piggy Watt (Boom Boom Boom)', artist:'Piggy Watt', genre:''},
+    {n:'#226', t:'Baila Bruja, baila - Lunabia (Marcia Morales Montesinos)', artist:'Lunabia', genre:''},
+    {n:'#227', t:'LE RECÉ A DIOS, RESPONDIÓ EL DIABLO 💔😈 | VagoNocturno (Audio Oficial)', artist:'VagoNocturno', genre:''},
+    {n:'#228', t:'New Beat Order, KROMA & Seeko - Bad Boy | HARDSTYLE REMIX | VIRAL TIKTOK | HARD TECHNO', artist:'NEW BEAT ORDER', genre:''},
+    {n:'#229', t:'Welcome To Draven', artist:'Ferrvx', genre:''},
+    {n:'#230', t:'Ka Ma Ta (Hard Techno)', artist:'SitonicSA', genre:''},
+    {n:'#231', t:'Un Beso Y Una Flor (DJ Capde Remix) - Techno viral TikTok', artist:'DJ Capde', genre:''},
+    {n:'#232', t:'GTFU (Get The Fiddle Up)', artist:'Ferrvx', genre:''},
+    {n:'#233', t:'No me vengas con cuento💥Techno Flamenco #Miastudymusic', artist:'Mia study music | Techno Flamenco Urbano', genre:''},
+    {n:'#234', t:'Xema Fuentes, Try It, Eva Hevia - DEJA QUE MUEVA, MUEVA, MUEVA (Visualizer)', artist:'Xema Fuentes y 2 más', genre:''},
+    {n:'#235', t:'La Zowi - ORGASM (Adrián Mills & Selecta REMIX)', artist:'Selecta', genre:''},
+    {n:'#236', t:'La Gitana (Hard Techno Remix)', artist:'Ferrvx', genre:''},
+    {n:'#237', t:'La Loba (Hard Techno Remix)', artist:'Ferrvx', genre:''},
+    {n:'#238', t:'infernal melody... NekoSmile', artist:'NekoSmile', genre:''},
+    {n:'#239', t:'LEONIDAS - LA BOHÈME', artist:'Leonidas', genre:''},
+    {n:'#240', t:'TECHNO MIX HARD ⚡️EDM➕️RAVE💣 2026 💥Popular Songs💥 Car & Gym Music', artist:'Yoyo WR 🎵', genre:''},
+    {n:'#241', t:'Butch U - Like Me', artist:'Butch U Official', genre:''},
+    {n:'#242', t:'KladX - Taste Me (Deep House Car Mix)', artist:'KLADX MUSIC', genre:''},
+    {n:'#243', t:'Steve Void - Leave Her Johnny (Sea Shanty | Lyric Video) [Dance Fruits Release]', artist:'Dance Fruits', genre:''},
+    {n:'#244', t:'Dance dance dance with my hands. Bloody Mary (Melodic Techno)', artist:'F4ST', genre:''},
+    {n:'#245', t:'A TU VERA - Aaron Sevilla, Javi Torres, Alba Dreid & Ruben Hernández Trumpet', artist:'Aaron Sevilla', genre:''},
+    {n:'#246', t:'Shaku Shaku Club', artist:'DRAMzN - Topic', genre:''},
+    {n:'#247', t:'INNA - Morenito', artist:'INNA', genre:''},
+    {n:'#248', t:'Magalenha - SMYLZ (TECH HOUSE REMIX)', artist:'SMYLZ', genre:''},
+    {n:'#249', t:'THYPONYX - Kiss My Thighs (Axel F)', artist:'THYPONYX', genre:''},
+    {n:'#250', t:'FanEOne - Bre Petrunko (Car Video)', artist:'Starix', genre:''},
+    {n:'#251', t:'Permanent Imprint', artist:'F.R.K.', genre:''},
+    {n:'#252', t:'Alejandro Molinari - Vision (Badwolf Remix)', artist:'Alejandro Molinari', genre:''},
+    {n:'#253', t:'Deep Violin Vibes — Moonflower (Original Mix)', artist:'Deep Violin Vibes y 2 más', genre:''},
+    {n:'#254', t:'Flesh and Wire', artist:'Peter Axon', genre:''},
+    {n:'#255', t:'Dj Aligator - Ice Ice Baby (Visualizer)', artist:'Smash The House', genre:''},
+    {n:'#256', t:'HERZLIMIT - ONE FIRE | Ritual Tribal Techno 2026', artist:'HERZLIMIT', genre:''},
+    {n:'#257', t:'NORUA. - JUNGLE KING (CAR MIX)', artist:'NORUA.', genre:''},
+    {n:'#258', t:'LEONIDAS - FREQUENCY', artist:'Leonidas', genre:''},
+    {n:'#259', t:'TECHNO ● Voices In My Head x Insomnia (Stephani B Mashup)', artist:'Psycodelize Music', genre:''},
+    {n:'#260', t:'LEONIDAS - WHITE RABBIT', artist:'Leonidas', genre:''},
+    {n:'#261', t:'LEONIDAS - SATISFACTION', artist:'Leonidas', genre:''},
+    {n:'#262', t:'LEONIDAS - NO AMERICANO', artist:'Leonidas', genre:''},
+    {n:'#263', t:'Tujamo - Booty Bounce (Official Music Video)', artist:'Spinnin\' Records', genre:''},
+    {n:'#264', t:'Chocolate Puma feat. Colonel Red-Back Home (Noise Walkers Remix)', artist:'Best of Remix Official', genre:''},
+    {n:'#265', t:'QUINTINO x TIMMY TRUMPET x DA TWEKAZZ - EPIC (700K Mix Part2)', artist:'PARTY ROCKZZ', genre:''},
+    {n:'#266', t:'TIMMY TRUMPET x BENNY BANASSI x DIMATIK - LONG RANGER (HARDSTYLE MIX) HD HQ', artist:'PARTY ROCKZZ', genre:''},
+    {n:'#267', t:'Central Cee & Doja Cat - Talk Too Much (Audio) | (Type)', artist:'808 Records', genre:''},
+    {n:'#268', t:'7 VIDAS - Parkineos & Amygdala [VIDEOCLIP OFICIAL]', artist:'Parkineos y Amygdala', genre:''},
+    {n:'#269', t:'LOCOPLAYA - RICOTTA (VIDEO)', artist:'Locoplaya', genre:''},
+    {n:'#270', t:'DIEGOTE - LA CURIOSIDAD - Prod. PMP', artist:'Diegote', genre:''},
+    {n:'#271', t:'HARD GZ & REALITY - FELIZ CON POCO (PROD. NEURO)', artist:'HARD GZ', genre:''},
+    {n:'#272', t:'Sean Paul x Shenseea - "DUTTY WINE" | Modern Dancehall Pop Instrumental 2026', artist:'ALGORIDDIM', genre:''},
+    {n:'#273', t:'BAD BUNNY - Noche en Silencio (feat. DRAKE) [Music Video]', artist:'MUSICA DE LIBERTAD', genre:''},
+    {n:'#274', t:'Kapo, Romeo Santos - TE QUEDA BONITO (Video Oficial) | Lyric 2026', artist:'Central Music y Revo Music', genre:''},
+    {n:'#275', t:'sangiovanni, Aitana - mariposas', artist:'sangiovanni', genre:''},
+    {n:'#276', t:'OXEN - Amore Mio (Original Mix)', artist:'OXEN', genre:''},
+    {n:'#277', t:'NATHY PELUSO, Rawayana - MALPORTADA (Video Oficial)', artist:'NATHY PELUSO', genre:''},
+    {n:'#278', t:'Paul Kalkbrenner - Live at Tomorrowland 2022', artist:'Paul Kalkbrenner', genre:''},
+    {n:'#279', t:'Spektral @ Aqüeducte de les Ferreres / Pont del Diable (Tarragona) #technoset #djset #Spektral', artist:'SPEKTRAL Music', genre:''},
+    {n:'#280', t:'dj spektral @ techno set aquaducte de les ferreres, pont del diable, tarragona, spain ~2021_clip', artist:'sht antonov', genre:''},
+    {n:'#281', t:'Shine Agian - Rahul Bhoi (Official lyrical Video) | FIFA World Cup 2026', artist:'Uvalic Viktor', genre:''},
+    {n:'#282', t:'NO BATIDÃO - REMIX 4 VERSION🔥', artist:'Cover Vibe', genre:''},
+    {n:'#283', t:'HUNTR/X - HOW IT\'S DONE (from the "K-POP Demon Hunters" movie) - [ lyric / sub español ]', artist:'Julsitaa_', genre:''},
+    {n:'#284', t:'"Golden" Official Lyric Video | KPop Demon Hunters | Sony Animation', artist:'Sony Pictures Animation', genre:''},
+    {n:'#285', t:'Jennifer Lopez - Ain\'t Your Mama (Official Video)', artist:'Jennifer Lopez', genre:''},
+    {n:'#286', t:'Cardi B, Bad Bunny & J Balvin - I Like It [Official Music Video]', artist:'Cardi B', genre:''},
+    {n:'#287', t:'Justin Quiles, ChimbalaHD ZionLennox - Loco (Video Oficial)', artist:'Justin Quiles', genre:''},
+    {n:'#288', t:'Thalia, NATTI NATASHA - No Me Acuerdo (Official Video)', artist:'Thalia', genre:''},
+    {n:'#289', t:'Ryan Castro - Mujeriego 💋 (Vídeo Oficial)', artist:'Ryan Castro', genre:''},
+    {n:'#290', t:'Jennifer Lopez - El Anillo (Official Video)', artist:'Jennifer Lopez', genre:''},
+    {n:'#291', t:'LAS BRATZ (remix) - Aissa, Saiko, JC Reyes ft El bobe, Juseph, Nickzzy', artist:'A I S S A', genre:''},
+    {n:'#292', t:'Maikel Delacalle - \'O No \'Or Nah\' (Spanish Remix) (Official Music Video)', artist:'MAIKEL DELACALLE', genre:''},
+    {n:'#293', t:'BAD BUNNY - NO ME QUIERO CASAR (Visualizer) | nadie sabe lo que va a pasar mañana', artist:'Bad Bunny', genre:''},
+    {n:'#294', t:'BAD BUNNY x DRAKE - MÍA (Video Oficial)', artist:'Bad Bunny', genre:''},
+    {n:'#295', t:'Lirico En La Casa - El Motorcito (Video Oficial)', artist:'Lirico En La Casa', genre:''},
+    {n:'#296', t:'Karetta el Gucci, Omar Montes, RVFV & Chimbala - Fake Capo Remix (Video Oficial)', artist:'OMAR MONTES', genre:''},
+    {n:'#297', t:'Sean Paul, J Balvin - Contra La Pared', artist:'Sean Paul', genre:''},
+    {n:'#298', t:'Natti Natasha ❌ Ozuna - Criminal [Official Video]', artist:'NATTI NATASHA', genre:''},
+    {n:'#299', t:'RAKATA #TIKTOK - Original Elias x Moncho Chavea x Yotuel x C de cama', artist:'Original Elias', genre:''},
+    {n:'#300', t:'Junior Caldera¨PA LOS CHISMOSOS¨ JohnTheis MestizaOfficial. NeblinnaOfficial JP21oficial', artist:'Junior Caldera', genre:''},
+    {n:'#301', t:'La nueva escuela ft Omar Montes La rubia remix 2 (Lyric Video)', artist:'OMAR MONTES', genre:''},
+    {n:'#302', t:'LOMIIEL - HAY LUPITA ( VIDEO OFICIAL 4K )', artist:'Lomiiel', genre:''},
+    {n:'#303', t:'Bad Bunny - Tití Me Preguntó (Video Oficial) | Un Verano Sin Ti', artist:'Bad Bunny', genre:''},
+    {n:'#304', t:'RAPSUKLEI & HAZHE feat GREEN VALLEY - VEN', artist:'Rapsusklei y 2 más', genre:''},
+    {n:'#305', t:'Timmy Trumpet x Scooter – For Those About To Rave (Official Video)', artist:'Scooter', genre:''},
+    {n:'#306', t:'Cameron Whitcomb - Kingdom of Fear (Official Music Video)', artist:'Cameron Whitcomb', genre:''},
+    {n:'#307', t:'Flo Rida - Good Feeling [Official Video]', artist:'Flo Rida', genre:''},
+    {n:'#308', t:'MACKLEMORE & RYAN LEWIS - CAN\'T HOLD US FEAT. RAY DALTON (OFFICIAL MUSIC VIDEO)', artist:'Macklemore', genre:''},
+    {n:'#309', t:'Eminem feat. Avril Lavigne - Heavy', artist:'SadSphere', genre:''},
+    {n:'#310', t:'Rupatrupa - Luna Roja', artist:'Rupatrupa', genre:''},
+    {n:'#311', t:'Mr.Kilombo ft. Muerdo - "Tiempo al tiempo"', artist:'Mr.Kilombo', genre:''},
+    {n:'#312', t:'La Sra. Tomasa - El Colectivo ft Ahyvin Bruno, Sr. Wilson, Desiree Diouf & Marcio I Live Sessions #5', artist:'La Sra. Tomasa', genre:''},
+    {n:'#313', t:'SHARIF & LA SRA. TOMASA - CANTO PARA MI PUEBLO (Videoclip oficial)', artist:'SHARIF', genre:''},
+    {n:'#314', t:'Shotta - Sonrisas y Lágrimas', artist:'Shotta', genre:''},
+    {n:'#315', t:'ONE-LINE DirtyVejares KijoteRah CaironDhee Prod.by Wuilldafriqq DjRopo.', artist:'CaironDhee // InfektaMusic.', genre:''},
+    {n:'#316', t:'Timmy Trumpet x KSHMR x Mildenhaus - Ininna Tora [Official Audio]', artist:'KSHMR', genre:''},
+    {n:'#317', t:'GREEN VALLEY ft. FYAHBWOY - ESTAMOS READY (Videoclip oficial)', artist:'greenvalleyband', genre:''},
+    {n:'#318', t:'Sara de las Chuches x Omar Montes x RVFV - COMO VENGO (REMIX) (Video Oficial)', artist:'Sara de las Chuches', genre:''},
+    {n:'#319', t:'Gabry Ponte x LUM!X x Prezioso - Thunder (Dance Video)', artist:'Spinnin\' Records', genre:''},
+    {n:'#320', t:'Dollar Selmouni, Kaze, Kvinz - Deja que eso fluya', artist:'DOLLAR SELMOUNI', genre:''},
+    {n:'#321', t:'Tosko - Soñar (Videoclip)', artist:'Tosko Oficial', genre:''},
+    {n:'#322', t:'FYAHBWOY "MI MENSAJE" - PROD HEAVY ROOTS - VIDEO OFICIAL HD (2013)', artist:'FYAHBWOY OFFICIAL', genre:''},
+    {n:'#323', t:'KINGTANA - CHULERÍA DEL 15', artist:'KINGTANA', genre:''},
+    {n:'#324', t:'XXL', artist:'Blasfem', genre:''},
+    {n:'#325', t:'Young Gipsy ❌ El Langui - Un melón🍈 (Video Ofical) prod by Smarty', artist:'young gipsy y Langui', genre:''},
+    {n:'#326', t:'KINGTANA - CLASE G', artist:'KINGTANA', genre:''},
+    {n:'#327', t:'NADAL 015 - GAME MASTER (PROD. BLASFEM)', artist:'NADAL 015', genre:''},
+    {n:'#328', t:'KASE.O I Mucho Toy con Al2 El Aldeano I Prod. Harto Rodriguez (Video Oficial)', artist:'KaseO TV Oficial', genre:''},
+    {n:'#329', t:'Lola Indigo, Manuel Turizo - 1000COSAS (Official Video)', artist:'Lola Indigo', genre:''},
+    {n:'#330', t:'Becky G - EPA (Official Video)', artist:'Becky G', genre:''},
+    {n:'#331', t:'RVFV FT. OMAR MONTES, DAVILES DE NOVELDA - PRENDÍO REMIX (VIDEO OFICIAL)', artist:'RVFV', genre:''},
+    {n:'#332', t:'GÁLDAR & AL GOLPITO - Quevedo ft. Tonny Tun Tun, Nueva Línea (Official Video) | EL BAIFO', artist:'Quevedo', genre:''},
+    {n:'#333', t:'Open Till L8 - More Than Friends (Official Music Video)', artist:'Open Till L8', genre:''},
+    {n:'#334', t:'Gravagerz - We R Who We R (OFFICIAL LYRICS VIDEO)', artist:'Gravagerz', genre:''},
+    {n:'#335', t:'No More Sorries', artist:'Kid Kobe', genre:''},
+    {n:'#336', t:'Ian Asher & Olly Alexander (Years & Years) - Desire (Official Audio)', artist:'Ian Asher', genre:''},
+    {n:'#337', t:'Marnik x Naeleck - Boyz in Paris (with VINAI) (Official Video)', artist:'MARNIK', genre:''},
+    {n:'#338', t:'SFDK - presenta a ACCION SANCHEZ en FLOW DEL 15 con CAPAZ', artist:'Boa Música Urbana', genre:''},
+    {n:'#339', t:'GRECAS - Bad Voy (Escrito en la M-30)', artist:'GRECAS', genre:''},
+    {n:'#340', t:'VIDA GRIMEY 2 - SWAN FYAHBWOY, MORENO, DARMO, CHULITO CAMACHO, IVAN NIETO,CARMONA', artist:'GRIMEY MUSIC', genre:''},
+    {n:'#341', t:'-VIDA GRIMEY- Swan Fyahbwoy, Chulito Camacho, Darmo, Ivan Nieto, Carmona, Moreno', artist:'GRIMEY MUSIC', genre:''},
+    {n:'#342', t:'COSTA - Feat. NATOS Y WAOR - DEMONIOS Y BARES DE VIEJOS (OFFICIAL MUSIC VIDEO)', artist:'GRIMEY MUSIC', genre:''},
+    {n:'#343', t:'AYAX - EL CIRCO (PROD BLASFEM) | VIDEOCLIP', artist:'AYAX Y PROK', genre:''},
+    {n:'#344', t:'Ryan Castro, SOG - EL RITMO QUE NOS UNE (Letra/Lyrics)', artist:'jostland.', genre:''},
+    {n:'#345', t:'DIEGOTE - TU SILUETA (Vídeo Oficial)', artist:'Diegote', genre:''},
+    {n:'#346', t:'C. Tangana, NATHY PELUSO - Ateo (Video Oficial)', artist:'C. Tangana', genre:''},
+    {n:'#347', t:'Gnarls Barkley - Crazy (Official Video) [4K Remaster]', artist:'Gnarls Barkley Official', genre:''},
+    {n:'#348', t:'Imagine Dragons - Believer (Official Music Video)', artist:'ImagineDragons', genre:''},
+    {n:'#349', t:'Meghan Trainor - All About That Bass (Official Video)', artist:'Meghan Trainor', genre:''},
+    {n:'#350', t:'Clean Bandit - Rockabye (feat. Sean Paul & Anne-Marie) [Official Video]', artist:'Clean Bandit', genre:''},
+    {n:'#351', t:'Rihanna, Kanye West, Paul McCartney - FourFiveSeconds', artist:'Rihanna', genre:''},
+    {n:'#352', t:'Ed Sheeran & Justin Bieber - I Don\'t Care [Official Music Video]', artist:'Ed Sheeran', genre:''},
+    {n:'#353', t:'Bruno Mars - Gorilla (Official Music Video)', artist:'Bruno Mars', genre:''},
+    {n:'#354', t:'Mike Morato & kMx - Mambo HP (Mashup)', artist:'Mike Morato', genre:''},
+    {n:'#355', t:'Manu Chao – Me Gustas Tú (Letra)', artist:'Stay Retro', genre:''},
+    {n:'#356', t:'Alejandro Sanz, Shakira - Bésame (Video Oficial)', artist:'Alejandro Sanz', genre:''},
+    {n:'#357', t:'KAROL G, Peso Pluma - QLONA (Official Video) | Jet 41', artist:'Jet 41', genre:''},
+    {n:'#358', t:'Trueno, Randy, Bizarrap - JUNGLE (Video Oficial)', artist:'Trueno', genre:''},
+    {n:'#359', t:'Aitana - LAS BABYS (vídeo oficial)', artist:'Aitana', genre:''},
+    {n:'#360', t:'ROSALÍA - DESPECHÁ (Official Video)', artist:'ROSALÍA', genre:''},
+    {n:'#361', t:'KAROL G - Si Antes Te Hubiera Conocido | Coke Studio', artist:'KAROL G', genre:''},
+    {n:'#362', t:'W Sound 05 "LA PLENA" - Beéle, Westcol, Ovy On The Drums', artist:'W Sound', genre:''},
+    {n:'#363', t:'ALBERTO GAMBINO - LO QUE TÚ ME DAS', artist:'Alberto Gambino', genre:''},
+    {n:'#364', t:'El Taiger x El Happy x Dj Conds - Habla Matador', artist:'El Taiger y Dj Conds', genre:''},
+    {n:'#365', t:'Adrián González - La Novela', artist:'AdrianGonzalezVEVO', genre:''},
+    {n:'#366', t:'BOVSKI - LOL', artist:'BOVSKI', genre:''},
+    {n:'#367', t:'BOVSKI & Sam Harper - Secret Code', artist:'BOVSKI', genre:''},
+    {n:'#368', t:'We have a release date - missyelliot rave trance remix hardbounce boilerroom gotec', artist:'BOVSKI', genre:''},
+    {n:'#369', t:'KAZE - LA LLORADITA // LA LLORADITA_REMIX', artist:'KAZE', genre:''},
+    {n:'#370', t:'PROK - FRESAS CON NATA (PROD. DJ KERU)', artist:'AYAX Y PROK', genre:''},
+    {n:'#371', t:'Natos y Waor - CAMARÓN (Videoclip Oficial)', artist:'Natos y Waor', genre:''},
+    {n:'#372', t:'BUBATRONIK_BRM RADIO ON AIR !', artist:'BRM_BUBATRONIK_DRDB_DEVBU_BUBA', genre:''},
+    {n:'#373', t:'Lauryn Hill Blues Project – Street Soul Sessions | Neo Soul Hip Hop & Emotional (Inspired Tribute)', artist:'THUG ARCHIVES 90s', genre:''},
+    {n:'#374', t:'Becky G - PATRONA (Official Video)', artist:'Becky G', genre:''},
+    {n:'#375', t:'CUICA - Ptazeta X Quevedo (Official Video)', artist:'PtaZeta', genre:''},
+    {n:'#376', t:'PAM - Justin Quiles DaddyYankee ElAlfaElJefeTV (Video Oficial)', artist:'Justin Quiles', genre:''},
+    {n:'#377', t:'KAZE - RELAJATEEE', artist:'KAZE', genre:''},
+    {n:'#378', t:'Akapellah - Akapelinho (Prod. NeoBeats)(Official Video)', artist:'Akapellah', genre:''},
+    {n:'#379', t:'KAZE - COMPOSTELA 12 FT SHODA MONKAS', artist:'KAZE', genre:''},
+    {n:'#380', t:'Major Lazer - pAPi wiTH tOKisCha (Official Video)', artist:'Major Lazer Official', genre:''},
+    {n:'#381', t:'Snow Tha Product || BZRP Music Sessions #39/66', artist:'Bizarrap', genre:''},
+    {n:'#382', t:'MYKE TOWERS || BZRP Music Sessions #42/66', artist:'Bizarrap', genre:''},
+    {n:'#383', t:'Shallipopi, Rauw Alejandro - Laho III (Lyric Video)', artist:'Shallipopi', genre:''},
+    {n:'#384', t:'Burna Boy - NO STRESS [ Official music video]', artist:'Afro Nova', genre:''},
+    {n:'#385', t:'Dj Pimp & Bejo - TUTTI FRUTTI (Videoclip Oficial)', artist:'Dj Pimp', genre:''},
+    {n:'#386', t:'El Chojin ft. ZPU - Guapa (Video Oficial)', artist:'El Chojin', genre:''},
+    {n:'#387', t:'Kybba, Ryan Castro, Bad Gyal & TopBoy - SE LE VE (Video Oficial)', artist:'Kybba y 2 más', genre:''},
+    {n:'#388', t:'RAP CONTRA EL RACISMO', artist:'El Chojin', genre:''},
+    {n:'#389', t:'SFDK - Agua Pasá ft. Kaze (Video Oficial)', artist:'Sfdk Oficial', genre:''},
+    {n:'#390', t:'Myke Towers - Lala (Video Oficial)', artist:'Myke Towers', genre:''},
+    {n:'#391', t:'W Sound 09 "GODZILA" - J balvin, Westcol, Ovy On The Drums', artist:'W Sound', genre:''},
+    {n:'#392', t:'Kapo, Don Omar - LA PELIGROSA (Video Oficial) | Lyric', artist:'Central Music', genre:''},
+    {n:'#393', t:'Nach, Nanpa Básico - Todo Irá Bien (Video Oficial)', artist:'Nach', genre:''},
+    {n:'#394', t:'JUSEPH X CRUZ CAFUNÉ | MUCHOPERRO (Video Oficial)', artist:'Juseph', genre:''},
+    {n:'#395', t:'Cimafunk, Wampi - La Pomada (Official Music Video)', artist:'Cimafunk', genre:''},
+    {n:'#396', t:'Gonzy, Oliver Kid - LA CALMA (Official Video)', artist:'Gonzy', genre:''},
+    {n:'#397', t:'Gonzy, Maldy - PA QUE BAILE', artist:'Gonzy y MALDY', genre:''},
+    {n:'#398', t:'Blasterjaxx - Arriba', artist:'Blasterjaxx y Maxximize Records', genre:''},
+    {n:'#399', t:'Baby Dance - Scooby Doo Pa Pa (Music Video 4k HD)', artist:'Release Music Group', genre:''},
+    {n:'#400', t:'Funky Baby Dance - Ram Pam Pam Pam (Music Video 4k HD)', artist:'Vik4S', genre:''},
+    {n:'#401', t:'Gigi D\'Agostino Bla Bla Bla', artist:'zyxdance', genre:''},
+    {n:'#402', t:'EL MOMO FT. KASE.O - LA ÚLTIMA RONDA (Prod. Bombony Montana)', artist:'El Momo', genre:''},
+    {n:'#403', t:'PASA - La Excepción ❌ SFDK (Video Oficial)', artist:'Langui y Sfdk Oficial', genre:''},
+    {n:'#404', t:'HARD GZ X FERNANDOCOSTA - ROLAS (PROD. NOISESYSTEM)', artist:'HARD GZ', genre:''},
+    {n:'#405', t:'Evaluna Montaner - Me Liberé (Official Video)', artist:'Evaluna Montaner', genre:''},
+    {n:'#406', t:'Martin Solveig - Everybody', artist:'Martin Solveig', genre:''},
+    {n:'#407', t:'L-Gante X DT.Bilardo - MALIANTEO 420 (Volumen 2) - Cumbia 420', artist:'L-Gante', genre:''},
+    {n:'#408', t:'Gorillaz - Feel Good Inc. (Official Video)', artist:'Gorillaz', genre:''},
+    {n:'#409', t:'Mindflip - Run My Shit (Official Audio)', artist:'Mindflip', genre:''},
+    {n:'#410', t:'Naâman - Outta Road (Clip Officiel)', artist:'Naâman Official', genre:''},
+    {n:'#411', t:'Formula Six, Elvis Crespo, Miky Woodz - A Lo Mexicana (Official Music Video)', artist:'Formula Six y 2 más', genre:''},
+    {n:'#412', t:'Nelly Furtado - Say It Right (Official Music Video)', artist:'Nelly Furtado', genre:''},
+    {n:'#413', t:'YAILIN LA MAS VIRAL X JEY ONE X ALOFOKE MUSIC - VAI', artist:'AlofokeMusicSounds', genre:''},
+    {n:'#414', t:'Yolanda Be Cool & DCUP - We No Speak Americano (Official Video)', artist:'Sweat It Out', genre:''},
+    {n:'#415', t:'David Guetta & Chris Willis Feat. Fergie & LMFAO - Gettin\' Over You (Official Video)', artist:'David Guetta', genre:''},
+    {n:'#416', t:'RUN DMC, Jason Nevins - It\'s Like That (Official HD Video)', artist:'Run DMC', genre:''},
+    {n:'#417', t:'BENNETT - Seelenf*cker (Official Lyric Video)', artist:'BENNETT', genre:''},
+    {n:'#418', t:'Jet - Are You Gonna Be My Girl (Official Music Video)', artist:'Jet', genre:''},
+    {n:'#419', t:'SHAOLIN MONKEY & C.TERRIBLE - Another Battle (Prod. 1010!)', artist:'Shaolin Monkey y Socio Ejecutor', genre:''},
+    {n:'#420', t:'Sofia Reyes x Darell x Lalo Ebratt - Échalo Pa\' Ca [Official Music Video]', artist:'Sofia Reyes', genre:''},
+    {n:'#421', t:'Natti Natasha x Farina x Cazzu x La Duraca - Las Nenas [Official Video]', artist:'NATTI NATASHA', genre:''},
+    {n:'#422', t:'Spice Girls - Wannabe (Official Music Video)', artist:'Spice Girls', genre:''},
+    {n:'#423', t:'Seeed - Ding (official Video)', artist:'Seeed', genre:''},
+    {n:'#424', t:'The Chemical Brothers - Go (Official Music Video) ft. Q-Tip', artist:'The Chemical Brothers', genre:''},
+    {n:'#425', t:'Hamburguesa.', artist:'One-T Music', genre:''},
+    {n:'#426', t:'Skrillex & YoungMiko DURO ( Oficial Video ) /DjCaszperRemix', artist:'SantixGraphics', genre:''},
+    {n:'#427', t:'Jarina De Marco - Spell On You', artist:'Jarina De Marco', genre:''},
+    {n:'#428', t:'PALO - Babylon Boy (Video Oficial)', artist:'PALO', genre:''},
+    {n:'#429', t:'Blackstreet - No Diggity (Official Music Video) ft. Dr. Dre, Queen Pen', artist:'Blackstreet', genre:''},
+    {n:'#430', t:'mgk & Wiz Khalifa - girl next door (Official Music Video)', artist:'mgk y Wiz Khalifa', genre:''},
+    {n:'#431', t:'Kobo Town - One By One (Official Video)', artist:'Kobo Town', genre:''},
+    {n:'#432', t:'Pitbull x Lil Jon - Satalanaaa (Party On The Island)', artist:'Pitbull y LIL JON', genre:''},
+    {n:'#433', t:'Jessie Reyez, Boi-1da, Soccer Canada - I DARE YOU (TASTY) (Official Video)', artist:'Jessie Reyez', genre:''},
+    {n:'#434', t:'Seeed - Augenbling (official Video)', artist:'Seeed', genre:''},
+    {n:'#435', t:'Rumba a los 50 años', artist:'Soyimparr - Topic', genre:''},
+    {n:'#436', t:'AZEALIA BANKS - 212 FT. LAZY JAY', artist:'Azealia Banks', genre:''},
+    {n:'#437', t:'Anastacia - I\'m Outta Love (Official 4K Video)', artist:'Anastacia', genre:''},
+    {n:'#438', t:'Mis-Teeq - Scandalous (Official Video)', artist:'Alesha Dixon', genre:''},
+    {n:'#439', t:'The Chemical Brothers - Galvanize', artist:'The Chemical Brothers', genre:''},
+    {n:'#440', t:'LunchMoney Lewis - Bills (Official Video)', artist:'LunchMoney Lewis', genre:''},
+    {n:'#441', t:'Tinashe - Too Easy (Official Music Video)', artist:'Tinashe', genre:''},
+    {n:'#442', t:'Lilly Wood and The Prick - Prayer in C (Robin Schulz Remix) [Official Video]', artist:'Lilly Wood & The Prick', genre:''},
+    {n:'#443', t:'Ofenbach - Be Mine (Official Video)', artist:'Ofenbach', genre:''},
+    {n:'#444', t:'BENNETT - Vois sur ton chemin - DJ Holanda MONTAGEM CORAL Remix (Official Audio Video)', artist:'BENNETT', genre:''},
+    {n:'#445', t:'Campbell x Alcemist - Would You (go to bed with me?) - Official Video', artist:'Campbell', genre:''},
+    {n:'#446', t:'TRINIX x ANGÈLE - Moi… Lolita (Remix)', artist:'TRINIX', genre:''},
+    {n:'#447', t:'Jain - Come (Official Video)', artist:'JAIN', genre:''},
+    {n:'#448', t:'Lucky Luke - Cooler Than Me (Official Video)', artist:'Lithuania HQ', genre:''},
+    {n:'#449', t:'Kungs - Never Going Home (clip officiel)', artist:'Kungs', genre:''},
+    {n:'#450', t:'Pham - Movements (feat. Yung Fusion)', artist:'CloudKid', genre:''},
+    {n:'#451', t:'Eminem - Shake That (Official Music Video) ft. Nate Dogg', artist:'EminemMusic', genre:''},
+    {n:'#452', t:'Nas - I Can (Official HD Video)', artist:'Nas', genre:''},
+    {n:'#453', t:'Snoop Dogg - Little Square UBitchU (feat. Anitta) (Audio)', artist:'SnoopDoggTV', genre:''},
+    {n:'#454', t:'Major Lazer - Get Free ft. Amber of the Dirty Projectors', artist:'Major Lazer Official', genre:''},
+    {n:'#455', t:'The Avener, Phoebe Killdeer - Fade Out Lines (Official Music Video)', artist:'The Avener', genre:''},
+    {n:'#456', t:'Paul Kalkbrenner x Stromae - QUE CE SOIT CLAIR (Official Video)', artist:'Paul Kalkbrenner y Stromae', genre:''},
+    {n:'#457', t:'Ofenbach vs. Nick Waterhouse - Katchi (Official Video)', artist:'Ofenbach', genre:''},
+    {n:'#458', t:'Fedde Le Grand ft Ida Corr - Let Me Think About It [Official Music Video]', artist:'Fedde Le Grand', genre:''},
+    {n:'#459', t:'Kelis - Trick Me', artist:'iamkelis', genre:''},
+    {n:'#460', t:'Asaf Avidan, The Mojos - One Day / Reckoning Song (Videoclip Day Version)', artist:'Wankelmut Official', genre:''},
+    {n:'#461', t:'The Prince Karma - Later Bitches (Official Lyrics Video)', artist:'Happy Music', genre:''},
+    {n:'#462', t:'Purple Disco Machine - Devil In Me (feat. Joe Killington & Duane Harden) (Official Video)', artist:'Sweat It Out', genre:''},
+    {n:'#463', t:'Mr. Belt & Wezol - It\'s Not Right (But It\'s Ok) Lyrics', artist:'We Are Hypnotized', genre:''},
+    {n:'#464', t:'THE PRODIGY - BREATHE (THE STICKMEN PROJECT REMIX)', artist:'The Stickmen Project', genre:''},
+    {n:'#465', t:'Andruss - Frikitona', artist:'blanc', genre:''},
+    {n:'#466', t:'Best Tomorrowland 2026 🔥 Massano, Colyn, Korolova, CamelPhat | LIVE 90MIN', artist:'Festival Vibes Only', genre:''},
+    {n:'#467', t:'Losing My Religion (metal cover by Leo Moracchioli)', artist:'Frog Leap Studios', genre:''},
+    {n:'#468', t:'Cotton Eye Joe (metal cover by Leo Moracchioli)', artist:'Frog Leap Studios', genre:''},
+    {n:'#469', t:'Gangnam Style (metal cover by Leo Moracchioli)', artist:'Frog Leap Studios', genre:''},
+    {n:'#470', t:'The Rumjacks - An Irish Pub Song (Official Music Video)', artist:'The Rumjacks', genre:''},
+    {n:'#471', t:'Lemaitre - Closer (UK Version) ft. Jennie A.', artist:'LemaitreMusic', genre:''},
+    {n:'#472', t:'ATIKA PATUM - Atikapatum (Official Music Video)', artist:'ATIKA PATUM', genre:''},
+    {n:'#473', t:'System Of A Down - Chop Suey! (Official HD Video)', artist:'System Of A Down', genre:''},
+    {n:'#474', t:'Estopa - Como Camaron (Videoclip)', artist:'Estopa', genre:''},
+    {n:'#475', t:'Sweet Dreams + White Stripes Mashup | Pomplamoose ft. Sarah Dugas', artist:'PomplamooseMusic', genre:''},
+    {n:'#476', t:'Vigiland - Shots & Squats ft. Tham Sway', artist:'Vigilandrecords', genre:''},
+    {n:'#477', t:'Nina Simone, SOFI TUKKER - Sinnerman (Sofi Tukker Remix) [Animated Video]', artist:'Nina Simone', genre:''},
+    {n:'#478', t:'Jain - Makeba (Official Video)', artist:'JAIN', genre:''},
+    {n:'#479', t:'The Magic Key (Episode 3)', artist:'One-T Music', genre:''},
+    {n:'#480', t:'Fall Out Boy - Beat It (MTV Version) (Official Music Video) ft. John Mayer', artist:'Fall Out Boy', genre:''},
+    {n:'#481', t:'Dance Monkey (metal cover by Leo Moracchioli feat. Rabea & Hannah)', artist:'Frog Leap Studios', genre:''},
+    {n:'#482', t:'Estopa, Fito y Fitipaldis - Camiseta de Rokanrol (Video Oficial)', artist:'Estopa', genre:''},
+    {n:'#483', t:'MARLENA - Me sabe mal (videoclip oficial)', artist:'MARLENA', genre:''},
+    {n:'#484', t:'Bakermat - Ain\'t Nobody (feat. LaShun Pace) (Official Video)', artist:'Bakermat', genre:''},
+    {n:'#485', t:'Day \'n\' Nite', artist:'Kid Cudi', genre:''},
+    {n:'#486', t:'Halsey - You should be sad', artist:'Halsey', genre:''},
+    {n:'#487', t:'Yo Quiero un Sound - Nathy Peluso feat. River Stone Sound', artist:'NATHY PELUSO', genre:''},
+    {n:'#488', t:'Justin Quiles, robinschulz - AEIOU (Video Oficial)', artist:'Justin Quiles', genre:''},
+    {n:'#489', t:'NOVEMBER KID - you\'re the only place i need (Official Music Video)', artist:'NOVEMBER KID', genre:''},
+    {n:'#490', t:'AL GOLPITO - Quevedo ft. Nueva Línea (Visualizer) | EL BAIFO', artist:'Quevedo', genre:''},
+    {n:'#491', t:'LA GRACIOSA - Quevedo ft. Elvis Crespo (Official Video) | EL BAIFO', artist:'Quevedo', genre:''},
+    {n:'#492', t:'Mujeres (Remix) - Mozart La Para, Justin Quiles, Farruko, Jowell y Randy (Video Oficial)', artist:'MozartLaPara', genre:''},
+    {n:'#493', t:'El Taiger ft Chacal - Papelito ( remix ) ( Video Oficial )', artist:'El Taiger', genre:''},
+    {n:'#494', t:'Black Eyed Peas, Piso 21 - TODO BUENO (Audio)', artist:'Black Eyed Peas', genre:''},
+    {n:'#495', t:'Fuego, Manuel Turizo, Duki - Una Vaina Loca [Video Oficial]', artist:'Fuego', genre:''},
+    {n:'#496', t:'Arcangel, Bad Bunny - La Jumpa (Video Oficial) | SR. SANTOS', artist:'Arcangel', genre:''},
+    {n:'#497', t:'Dollar Selmouni & SFDK - CALLE', artist:'DOLLAR SELMOUNI', genre:''},
+    {n:'#498', t:'Lola Indigo, Rauw Alejandro, Lalo Ebratt - 4 besos', artist:'Lola Indigo', genre:''},
+    {n:'#499', t:'Chanel & Abraham Mateo - Clavaito (Amazon Music Performance)', artist:'Chanel Official', genre:''},
+    {n:'#500', t:'Si Esta Casa Hablara - Joel Santos Official', artist:'Joel Santos Official', genre:''},
+    {n:'#501', t:'Chayanne - Bailando Bachata (Official Video)', artist:'Chayanne', genre:''},
+    {n:'#502', t:'Doechii - What It Is (Block Boy) feat. Kodak Black [Official Video]', artist:'Doechii', genre:''},
+    {n:'#503', t:'LADY LESHURR FT LIONESS - WAY 2 REAL', artist:'Lady Leshurr', genre:''},
+    {n:'#504', t:'Lady Leshurr - #UNLESHED 4', artist:'Lady Leshurr', genre:''},
+    {n:'#505', t:'Lady Leshurr - 3AM In Brum', artist:'Lady Leshurr', genre:''},
+    {n:'#506', t:'Lady Leshurr - NOT GUILTY', artist:'Lady Leshurr', genre:''},
+    {n:'#507', t:'KINGTANA - "MEMENTO MORI" (Videoclip)', artist:'KINGTANA', genre:''},
+    {n:'#508', t:'KINGTANA - CLASE C', artist:'KINGTANA', genre:''},
+    {n:'#509', t:'FYAHBWOY ❌ OTO BEATS - QUE CADA PUTO DÍA SEA SÁBADO', artist:'FYAHBWOY OFFICIAL y OTO Beats', genre:''},
+    {n:'#510', t:'KINGTANA - MI MÚSICA NO ES UN PRODUCTO SOLO SENTIMIENTO', artist:'KINGTANA', genre:''},
+    {n:'#511', t:'MAYO - ECO (VIDEOCLIP)[VENENO]', artist:'Mayo 214 Madrid', genre:''},
+    {n:'#512', t:'KAZE - NO SOY TUYO', artist:'KAZE', genre:''},
+    {n:'#513', t:'BLAKE - EL DIARIO DEL LOCO (PROD. KANDAS) #ELDIARIODELOCO', artist:'BLAKE', genre:''},
+    {n:'#514', t:'MAYO - INCORREGIBLE (VIDEOCLIP)[CICATRICES]', artist:'Mayo 214 Madrid', genre:''},
+    {n:'#515', t:'FERNANDOCOSTA Ft ANTONY Z - CANDELA (Video Oficial)', artist:'FERNANDOCOSTA', genre:''},
+    {n:'#516', t:'KINGTANA - MENTIS ET CORDIS', artist:'KINGTANA', genre:''},
+    {n:'#517', t:'FYAHBWOY Feat SUKU (WARD21) - LUV DEM TING - OFFICIAL VIDEO HD', artist:'FYAHBWOY OFFICIAL', genre:''},
+    {n:'#518', t:'MAYO - MI CRUCIFIXIÓN (#FAMILIA) [Videoclip oficial]', artist:'Mayo 214 Madrid', genre:''},
+    {n:'#519', t:'KINGTANA - " VENI, VIDI, VICI " (Videoclip)', artist:'KINGTANA', genre:''},
+    {n:'#520', t:'CYPHER VOL6 PURE NEGGA SFDK FYAHBWOY CHUSTERFIELD KING MAGNETO LITTLE PEPE LEGENDARIO MISTAH GODEH', artist:'PURE NEGGA y OTO Beats', genre:''},
+    {n:'#521', t:'AYAX Y PROK, FOYONE, FERNANDOCOSTA - TOTAL 90 - (PROD BLASFEM, SCENO) VIDEOCLIP #JUGLARDELSIGLOXXI', artist:'AYAX Y PROK', genre:''},
+    {n:'#522', t:'RICKHO - ALLER À L\'ÉCOLE (OFFICIAL MUSIC VIDEO)', artist:'Rickho', genre:''},
+    {n:'#523', t:'FERNANDOCOSTA - MAMAHUEVO (Videoclip Oficial)', artist:'FERNANDOCOSTA', genre:''},
+    {n:'#524', t:'Dollar Selmouni & Lucas Otero - Colocón', artist:'DOLLAR SELMOUNI', genre:''},
+    {n:'#525', t:'KAZE - CÁLMATE - VIDEOCLIP [PROD. DJ FIGU]', artist:'KAZE', genre:''},
+    {n:'#526', t:'SOFIA GABANNA & HARD GZ- VIVIMOS DEPRISA (PROD. LUPITA´S FRIENDS)', artist:'Sofia Gabanna', genre:''},
+    {n:'#527', t:'NADAL 015 x FERNANDOCOSTA - SOY UN C4BRON (PROD.BLASFEM)', artist:'NADAL 015', genre:''},
+    {n:'#528', t:'Natos y Waor - KARMA ft. Cheb Rubën [Barras Bravas Vol.4]', artist:'Natos y Waor', genre:''},
+    {n:'#529', t:'Natos y Waor - LÁGRIMAS NEGRAS (Letra) [Martes 13]', artist:'Natos y Waor', genre:''},
+    {n:'#530', t:'FERNANDOCOSTA - PREFIERO ESTAR SOLO (Visualizer)', artist:'FERNANDOCOSTA', genre:''},
+    {n:'#531', t:'MAYO - ALEJANDRO (VIDEOCLIP)', artist:'Mayo 214 Madrid', genre:''},
+    {n:'#532', t:'Natos, Waor, Recycled J - NOSOTROS (Videoclip oficial) [Hijos de la Ruina Vol. 3]', artist:'Natos y Waor', genre:''},
+    {n:'#533', t:'BOOM BOOM CLAP - NIKONE (OFICIAL VIDEOCLIP)', artist:'NIKONE EPK', genre:''},
+    {n:'#534', t:'BLAKE - IDEALES [VIDEOCLIP OFICIAL] PROD. ZAIDBREAK', artist:'BLAKE', genre:''},
+    {n:'#535', t:'FERNANDOCOSTA - NARCOLEPSIA (PROD. CHICHOBEATS)', artist:'FERNANDOCOSTA', genre:''},
+    {n:'#536', t:'Natos, Waor, Recycled J - MÁS ALCOHOL (Videoclip oficial) [Hijos de la Ruina Vol. 3]', artist:'Natos y Waor', genre:''},
+    {n:'#537', t:'Natos y Waor - UNDERGROUND KINGS (Videoclip Oficial) [Cicatrices]', artist:'Natos y Waor', genre:''},
+    {n:'#538', t:'FERNANDOCOSTA FT DOLLAR - PA QUE LO GOCEN (PROD BLASFEM) | VIDEOCLIP', artist:'FERNANDOCOSTA', genre:''},
+    {n:'#539', t:'SFDK & Natos y Waor - Sin-Ceros', artist:'Sfdk Oficial', genre:''},
+    {n:'#540', t:'C. Tangana, Ed Maverick - Párteme La Cara', artist:'C. Tangana', genre:''},
+    {n:'#541', t:'Lia Kali - Cantaré | GALLERY SESSION', artist:'Gallery Sessions', genre:''},
+    {n:'#542', t:'Guitarricadelafuente - BABIECA! (Video Oficial)', artist:'Guitarricadelafuente', genre:''},
+    {n:'#543', t:'Calle 13 - La Perla (Long Version) ft. Rubén Blades, La Chilinga', artist:'elvecindariocalle13', genre:''},
+    {n:'#544', t:'C. Tangana, Kiko Veneno - Los Tontos', artist:'C. Tangana', genre:''},
+    {n:'#545', t:'C. Tangana, Paloma Mami - No Te Debí Besar (Video Oficial)', artist:'C. Tangana', genre:''},
+    {n:'#546', t:'BAD BUNNY x JHAY CORTEZ - DÁKITI (Video Oficial)', artist:'Bad Bunny', genre:''},
+    {n:'#547', t:'C. Tangana, Darell - Pronto Llegará (Video Oficial)', artist:'C. Tangana', genre:''},
+    {n:'#548', t:'C. Tangana - Antes de morirme feat. Rosalía (Video Oficial)', artist:'AgzTv', genre:''},
+    {n:'#549', t:'C. Tangana, Andrés Calamaro - Hong Kong (Video Oficial)', artist:'C. Tangana', genre:''},
+    {n:'#550', t:'C. Tangana, Niño de Elche - Un Veneno (Video Oficial)', artist:'C. Tangana', genre:''},
+    {n:'#551', t:'C. Tangana, Gipsy Kings, Nicolas Reyes, Tonino Baliardo - Ingobernable', artist:'C. Tangana', genre:''},
+    {n:'#552', t:'C. Tangana, Carín León, Adriel Favela - CAMBIA!', artist:'C. Tangana', genre:''},
+    {n:'#553', t:'C. Tangana - Demasiadas Mujeres (Video Oficial)', artist:'C. Tangana', genre:''},
+    {n:'#554', t:'VERDAD O NADA | Rap Flamenco Callejero 🔥 Superación, Caídas y Realidad', artist:'𝑀𝐴𝑋𝐼 & 𝑅𝑂𝑆𝐸', genre:''},
+    {n:'#555', t:'【70s Funk Hip Hop】198 Classic Funk × Modern Hip Hop Fusion | Funk Tribe Underground', artist:'Funk Tribe Underground', genre:''},
+    {n:'#556', t:'Lauryn Hill Blues Project – Soul Revolution Sessions | Neo Soul Hip Hop Experience(Inspired Tribute)', artist:'THUG ARCHIVES 90s', genre:''},
+    {n:'#557', t:'Sebastián Yatra, ELENA ROSE - Quererte Bonito (Official Video)', artist:'Sebastián Yatra', genre:''},
+    {n:'#558', t:'Nanpa Básico - Aprendí (Official Video)', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#559', t:'Nanpa Básico, Beéle - Hasta Aquí Llegué (Official Video)', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#561', t:'Los Lobos - La Bamba | Afro House Remix', artist:'Afro Diva', genre:''},
+    {n:'#562', t:'SHAKIRA - WAKA WAKA ( TOP afro house remix ) afro cover music l TRIBAL BASS NATION', artist:'Tribal Bass Nation', genre:''},
+    {n:'#563', t:'LAS KETCHUP - ASEREJE | Best Jazzy Afro House Remix | - Afro Groove -', artist:'AFRO GROOVE', genre:''},
+    {n:'#564', t:'MACARENA - Los Del Rio (Afro House Remix) | AFRO DIVA', artist:'Afro Diva', genre:''},
+    {n:'#565', t:'Busca Lo Más Vital - El Libro de la Selva (Cover Afro House Remix) | Jungle Vibes 2026', artist:'Ritmo Covers', genre:''},
+    {n:'#566', t:'Cristian ¡¡ Cristian¡¡ PARODIA DOBLAJE DE ANIMALES', artist:'PTP elinHP', genre:''},
+    {n:'#567', t:'QUE ANIMALES! (doblaje)', artist:'NANDOXTREMEJACKAS', genre:''},
+    {n:'#568', t:'Tito "El Bambino" ❌ Farruko - Temporal (Official Video)', artist:'Tito "El Bambino" y Farruko', genre:''},
+    {n:'#569', t:'Marshmello, Farruko - Esta Vida (Official Video)', artist:'Marshmello y Farruko', genre:''},
+    {n:'#570', t:'KAZE - LO MÍO [MARBELLA 3]', artist:'KAZE', genre:''},
+    {n:'#571', t:'KAZE - RECORD', artist:'KAZE', genre:''},
+    {n:'#572', t:'KAZE - CÓMETE MI ÉXITO (FT SHODA MONKAS)', artist:'KAZE', genre:''},
+    {n:'#573', t:'Nadie esperaba esta mezcla… Kisiera Yo Saber x Vino Tinto (Melendi vs Estopa Mashup)', artist:'Iván Concha', genre:''},
+    {n:'#574', t:'elbarriocantautor5120 Angel Malherido TECHNO REMIX by DaniDjStk', artist:'Dani Dj', genre:''},
+    {n:'#575', t:'No Es Excusa — EuroBloke | Rap Flamenco Vol.3', artist:'EuroBloke', genre:''},
+    {n:'#576', t:'De dónde salió - Funzo & Baby Loud (Video Oficial)', artist:'Funzo y 2 más', genre:''},
+    {n:'#577', t:'Veyrus - Soy Lo Que Soy', artist:'Veyrus La Amenaza Oficial', genre:''},
+    {n:'#578', t:'Ya No Me Importa Lo Que Digan de Mí (Official Lyric Video) | Mateo León', artist:'Mateo León - Soul & Blues', genre:''},
+    {n:'#579', t:'Romeo Santos, ROSALÍA - El Pañuelo | Bachata Dance | Magda & Valeria', artist:'Magda & Valeria', genre:''},
+    {n:'#580', t:'Pitbull, farruko, iamchino, ElAlfaElJefeTV x OmarCourtz - Ten (Music Video)', artist:'Pitbull', genre:''},
+    {n:'#581', t:'Baby Dance - Scooby Doo Pa Pa (Music Video 4k HD)', artist:'Vik4S', genre:''},
+    {n:'#582', t:'Gabry Ponte, Vicco - Viento', artist:'Gabry Ponte', genre:''},
+    {n:'#583', t:'BENNETT - Lullaby (Official Music Video)', artist:'BENNETT', genre:''},
+    {n:'#584', t:'Gabry Ponte - Exotica (Official Visualizer)', artist:'Gabry Ponte', genre:''},
+    {n:'#585', t:'Fantomel x KateLinnOfficial - Dame Un Grrr (Official Video)', artist:'Fantomel', genre:''},
+    {n:'#586', t:'Mawell - La Triple M (Video Oficial)', artist:'Mawell Oficial y LAUM MUSIC', genre:''},
+    {n:'#587', t:'El Taiger - La Cura ( Video Oficial )', artist:'El Taiger', genre:''},
+    {n:'#588', t:'El Taiger x Dj Conds - La Historia (Audio Oficial)', artist:'El Taiger y Dj Conds', genre:''},
+    {n:'#589', t:'Ahora Y Siempre - Quevedo | Deep House REMIX Fabi Boss', artist:'Fabi Boss', genre:''},
+    {n:'#590', t:'Beéle, Westcol, Ovy on the Drums - La Plena (Gabriele D\'Eramo Remix) [House]', artist:'SAMOGON RECORDS', genre:''},
+    {n:'#591', t:'BAD BUNNY - nOCHE rICA (feat. J BALVIN) [Music Video]', artist:'MUSICA DE LIBERTAD', genre:''},
+    {n:'#592', t:'Punto Parlante N°19 | TORNALL', artist:'Punto Parlante Radio y TORNALL', genre:''},
+    {n:'#593', t:'Rauw Alejandro - Déjame Entrar (Official Video)', artist:'Rauw Alejandro', genre:''},
+    {n:'#594', t:'Rauw Alejandro - Cosa Nuestra (Official Lyric Video)', artist:'Rauw Alejandro', genre:''},
+    {n:'#595', t:'Rauw Alejandro - Dando Vueltas (Official Video)', artist:'Rauw Alejandro', genre:''},
+    {n:'#596', t:'RAUW ALEJANDRO || BZRP Music Sessions #56/66', artist:'Bizarrap', genre:''},
+    {n:'#597', t:'YOUNG MIKO || BZRP Music Sessions #58/66', artist:'Bizarrap', genre:''},
+    {n:'#598', t:'QUEVEDO || BZRP Music Sessions #52/66', artist:'Bizarrap', genre:''},
+    {n:'#599', t:'Bad Bunny - WHERE SHE GOES (Video Oficial)', artist:'Bad Bunny', genre:''},
+    {n:'#600', t:'ARCANGEL || BZRP Music Sessions #54/66', artist:'Bizarrap', genre:''},
+    {n:'#601', t:'Ella Baila Sola - (Video Oficial) - Eslabon Armado y Peso Pluma - DEL Records 2023', artist:'DEL Records', genre:''},
+    {n:'#602', t:'PESO PLUMA - BZRP( Music Sessions #55 )', artist:'Letra Hall', genre:''},
+    {n:'#603', t:'B.o.B - Nothin\' On You (feat. Bruno Mars) [Official Video]', artist:'B.o.B', genre:''},
+    {n:'#604', t:'The Black Eyed Peas - Don\'t Phunk With My Heart', artist:'Black Eyed Peas', genre:''},
+    {n:'#605', t:'Gwen Stefani - Hollaback Girl (Official Music Video)', artist:'Gwen Stefani', genre:''},
+    {n:'#606', t:'The Black Eyed Peas - Pump It (Official Music Video)', artist:'Black Eyed Peas', genre:''},
+    {n:'#607', t:'Chris Brown - Gimme That Remix (Official HD Video) ft. Lil Wayne', artist:'Chris Brown', genre:''},
+    {n:'#608', t:'Chris Brown - Kiss Kiss (Feat. T-Pain) (Official HD Video) ft. T-Pain', artist:'Chris Brown', genre:''},
+    {n:'#609', t:'Ne-Yo - Mad [Official Video]', artist:'NE-YO', genre:''},
+    {n:'#610', t:'Ne-Yo - Closer [Official Video]', artist:'NE-YO', genre:''},
+    {n:'#611', t:'Ne-Yo - So Sick [Official Video]', artist:'NE-YO', genre:''},
+    {n:'#612', t:'Ne-Yo - One In A Million [Official Video]', artist:'NE-YO', genre:''},
+    {n:'#613', t:'Ozuna, David Guetta - Vocation (Visualizer Oficial) | COSMO', artist:'Ozuna', genre:''},
+    {n:'#614', t:'Bomba Estéreo, Rawayana, ASTROPICAL - Me Pasa (Piscis) (Official Video)', artist:'Bomba Estéreo', genre:''},
+    {n:'#615', t:'MHD || BZRP Music Sessions #44/66', artist:'Bizarrap', genre:''},
+    {n:'#616', t:'PROK - SALGO PA LA CALLE (PROD BLASFEM) VIDEOCLIP', artist:'AYAX Y PROK', genre:''},
+    {n:'#617', t:'Boza, Beéle - Qué Prefieres? (Official Video)', artist:'Boza Oficial', genre:''},
+    {n:'#618', t:'Jhayco - Dile (Homenaje) (Audio)', artist:'JHAYCO', genre:''},
+    {n:'#619', t:'Maluma - Peligrosa (Official Video)', artist:'Maluma', genre:''},
+    {n:'#620', t:'RAPSUSKLEI X LITTLE PEPE - CANDELA (Prod A. Sanchez)', artist:'Rapsusklei', genre:''},
+    {n:'#621', t:'C. Tangana, NATTI NATASHA - Viene y Va (Video Oficial)', artist:'C. Tangana', genre:''},
+    {n:'#622', t:'Beéle - LA PLENA 2 🌊 (Official Video) | 2026', artist:'WestEX', genre:''},
+    {n:'#623', t:'Beéle, Quevedo - Casi Algo (Video Oficial) | Lyric', artist:'FuegoVibe Music', genre:''},
+    {n:'#624', t:'Bruno Mars - Just The Way You Are (Official Music Video)', artist:'Bruno Mars', genre:''},
+    {n:'#625', t:'Fergie - Big Girls Don\'t Cry (Personal) (Official Music Video)', artist:'Fergie', genre:''},
+    {n:'#626', t:'Rihanna - Hate That I Love You ft. Ne-Yo', artist:'Rihanna', genre:''},
+    {n:'#627', t:'Loud Luxury - Sex Like Me', artist:'Selected.', genre:''},
+    {n:'#628', t:'MAGIC! - Rude (Official Video)', artist:'MAGIC!', genre:''},
+    {n:'#629', t:'Lady Leshurr - #UNLESHED (Panda Freestyle)', artist:'Lady Leshurr', genre:''},
+    {n:'#630', t:'So Sick vs Afrobeat Hits Part 2 (DJ R-LO Mashup Official)', artist:'R-LO', genre:''},
+    {n:'#631', t:'Ne-Yo - Miss Independent [Official Video]', artist:'NE-YO', genre:''},
+    {n:'#632', t:'Justin Bieber - Yukon (MH 00s Mario Edit)', artist:'Mike Harding Music', genre:''},
+    {n:'#633', t:'Mario - Let Me Love You (DubRocca Remix)', artist:'Selected.', genre:''},
+    {n:'#634', t:'Stromae - Te Quiero - Paul Kalkbrenner Remix (Live Version) | Cercle Odyssey', artist:'Cercle', genre:''},
+    {n:'#635', t:'JP Cooper - Call My Name (Gospel / Live)', artist:'JP Cooper', genre:''},
+    {n:'#636', t:'Alex Warren - Carry You Home (Official Wedding Video)', artist:'Alex Warren', genre:''},
+    {n:'#637', t:'ROSALÍA - TUYA (Official Video)', artist:'ROSALÍA', genre:''},
+    {n:'#638', t:'Cierra Ramirez - Faded (Official Video) ft. Baeza', artist:'Cierra Ramirez', genre:''},
+    {n:'#639', t:'David Guetta ft Justin Bieber - 2U - Choreography by Jojo Gomez & Donovan Okimura', artist:'Tim Milgram', genre:''},
+    {n:'#640', t:'False Confidence - Noah Kahan l Choreography by Sean Lew l Sean & Kaycee', artist:'Sean Lew', genre:''},
+    {n:'#641', t:'DUB FX & WOODNOTE | COME AGAIN | FEAT. PREZENCE', artist:'Dub FX y Prezence Music', genre:''},
+    {n:'#642', t:'Feel Good Inc. (metal cover by Leo Moracchioli)', artist:'Frog Leap Studios', genre:''},
+    {n:'#643', t:'Paul Kalkbrenner feat. Norma Jean Martine – Time To Dance (Official Video)', artist:'Paul Kalkbrenner', genre:''},
+    {n:'#644', t:'mamacita energy latina vibes playlist', artist:'Reina del Sol', genre:''},
+    {n:'#645', t:'SOUNDYXI – Congratulations | Club Banger Music Playlist MIX (Visualizer)', artist:'SOUNDYXI', genre:''},
+    {n:'#646', t:'The Big Push - Mambo No. 5 (Lou Bega Cover)', artist:'The Big Push', genre:''},
+    {n:'#647', t:'Farruko, Greeicy, Steve Aoki - YAPAQUE (Official Video)', artist:'Farruko y 2 más', genre:''},
+    {n:'#648', t:'Farruko Ft. Bad Bunny & Lary Over - Diabla (Remix) [Lyric Video]', artist:'Farruko', genre:''},
+    {n:'#649', t:'Farruko & Miky Woodz - Canam (Official Video)', artist:'Farruko', genre:''},
+    {n:'#650', t:'Xavi, Kapo – Bien Pedos (Official Video)', artist:'Xavi Oficial', genre:''},
+    {n:'#651', t:'Boza, Sech - Paris (Official Video)', artist:'Boza Oficial', genre:''},
+    {n:'#652', t:'Darell, Farruko - Caliente (LETRA)', artist:'RadioReggaeton', genre:''},
+    {n:'#653', t:'WIB3X - Diablo', artist:'WIB3X Official', genre:''},
+    {n:'#654', t:'Doechii - Anxiety (Dj Dark Remix)', artist:'Dj Dark', genre:''},
+    {n:'#655', t:'ELEXSANDOM x Grummel - Papasito (Official Visualizer)', artist:'Elexsandom', genre:''},
+    {n:'#656', t:'DISHYPE, 19Clouds, Kairy - NOARA (Official Video)', artist:'DISHYPE', genre:''},
+    {n:'#658', t:'Rap MASTERS Who Left It All On The Stage!', artist:'Mic Drop!', genre:''},
+    {n:'#659', t:'Boza, Beéle - Hasta Abajo (Official Video)', artist:'Boza Oficial y Beéle', genre:''},
+    {n:'#660', t:'TRFN - U DO (ft. Siadou)', artist:'TRFN', genre:''},
+    {n:'#661', t:'Paradise', artist:'TRFN', genre:''},
+    {n:'#662', t:'Rumor', artist:'TRFN', genre:''},
+    {n:'#663', t:'Aloha - Maluma X Beéle x Rauw Alejandro x Darell x Dj Luian & Mambo Kingz (Official Video)', artist:'Hear This Music', genre:''},
+    {n:'#664', t:'Lady Leshurr - New Freezer', artist:'Lady Leshurr', genre:''},
+    {n:'#665', t:'Lady Leshurr - Juice (Official Video)', artist:'Lady Leshurr', genre:''},
+    {n:'#666', t:'Dj Battle Ft. Lexy Panterra - Twerk Lesson [4K]', artist:'Djbattle', genre:''},
+    {n:'#667', t:'The Mask | Stanley Charms The Police | ClipZone: Comedy Callbacks', artist:'ClipZone: Comedy Callbacks', genre:''},
+    {n:'#668', t:'Don\'t Let the Man Get You Down! | School Of Rock', artist:'NOW COMEDY', genre:''},
+    {n:'#669', t:'Lesson In Rock | School Of Rock', artist:'NOW PLAYING', genre:''},
+    {n:'#670', t:'Mario - Skippin\'', artist:'YeahRightWalk', genre:''},
+    {n:'#671', t:'MOOSE\'S MOST ICONIC DANCE SCENES IN THE STEP UP MOVIE SERIES *IN ORDER* (played by Adam Sevani)', artist:'hazy', genre:''},
+    {n:'#672', t:'EL VIDEO QUE TODO DJ DEBERIA VER (movie scene: We are your friends)', artist:'ColaCuerno Entertainment', genre:''},
+    {n:'#673', t:'Gente De Zona - Se Le Pasa', artist:'Gente De Zona', genre:''},
+    {n:'#674', t:'TRFN x Noro - 1, 2 Step', artist:'TRFN', genre:''},
+    {n:'#675', t:'KALEO - Way Down We Go (Bandit Remix)', artist:'LivingBandit', genre:''},
+    {n:'#676', t:'Don Diablo - The Way I Are | Official Visualizer', artist:'Don Diablo', genre:''},
+    {n:'#677', t:'Avicii - Seek Bromance (Gravagerz REMIX)', artist:'Gravagerz', genre:''},
+    {n:'#678', t:'Mafia Flowz - Max Level [GANGSTER TRAP]', artist:'MAFIA FLOWZ', genre:''},
+    {n:'#679', t:'Ahora Y Siempre - Quevedo (Fan Remix)', artist:'Thefox 137', genre:''},
+    {n:'#680', t:'MINA | Hip Hop, R&B, Afrobeats, Classics + | ft. Binks | San Diego, CA', artist:'Noise Complaints', genre:''},
+    {n:'#681', t:'BABY GANG ❌ OMEGA - Tu Me Quieres (Prod. by Higashi ❌ Roberto Ferrante)', artist:'Baby Gang', genre:''},
+    {n:'#682', t:'Al2 El Aldeano - Pésima Conducta (con LETRA)', artist:'AL2 "El Aldeano"', genre:''},
+    {n:'#683', t:'BEJO, KASE.O & IGNATIUS FARRAY - Invirtiendo en la pérdida', artist:'B E J O', genre:''},
+    {n:'#684', t:'DOLLAR SELMOUNI | SELECTA Motorseries #09', artist:'Selecta', genre:''},
+    {n:'#685', t:'Lenier - Como Te Pago (Official Video)', artist:'Lenier', genre:''},
+    {n:'#686', t:'Nanpa Básico - Como Baja Sube (Visualizer)', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#687', t:'Alleh & Yorghaki - una noche (Letra)', artist:'Glim Latin', genre:''},
+    {n:'#688', t:'Feid, Rema - Bubalu (Official Video)', artist:'Feid', genre:''},
+    {n:'#689', t:'RVFV, Kikimoteleba - TIGINI REMIX (Video Oficial)', artist:'RVFV', genre:''},
+    {n:'#690', t:'Beéle - top diesel (Performance/Lyrics)', artist:'Beéle', genre:''},
+    {n:'#691', t:'Ryan Castro, Blaiz Fayah & Tribal Kush - BOMBASTIK (Video Oficial)', artist:'Ryan Castro', genre:''},
+    {n:'#692', t:'OE OE - Farruko, Louisbpm (Official Music Video)', artist:'Farruko', genre:''},
+    {n:'#693', t:'Nanpa Básico, Camilo - EAVEMARÍA (Versión Acústica)', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#694', t:'J Balvin – PQBL (Official Video)', artist:'J Balvin', genre:''},
+    {n:'#695', t:'LIA KALI - Alzo el vuelo (Video Oficial) prod. Toni Anzis', artist:'Lia Kali', genre:''},
+    {n:'#696', t:'Maluma, J Balvin - Gafas Negras (Official Video)', artist:'Maluma', genre:''},
+    {n:'#697', t:'Maluma - Mama Tetema (Official Video) ft. Rayvanny', artist:'Maluma', genre:''},
+    {n:'#698', t:'Farruko, Kafu Banton, El Roockie - GODMAN (Official Music Video)', artist:'Farruko', genre:''},
+    {n:'#699', t:'J Balvin, Omega - KLK (Official Video)', artist:'J Balvin', genre:''},
+    {n:'#700', t:'BLAKE - BRO BRO BRO (PROD. KANDAS)', artist:'BLAKE', genre:''},
+    {n:'#702', t:'X TI - Kapo x Feid (Video Oficial)', artist:'Kapo', genre:''},
+    {n:'#703', t:'HARD GZ - FLACO (Prod. Toni Anzis)', artist:'HARD GZ', genre:''},
+    {n:'#704', t:'Antony Z - UN PIKETON (Video Oficial)', artist:'ANTONY Z', genre:''},
+    {n:'#705', t:'Lia Kali, Toni Anzis - En La Cuerda Floja (Video Oficial)', artist:'Lia Kali', genre:''},
+    {n:'#706', t:'Queralt Lahoz, Lia Kali - BRINDO X LOS MIOS (Prod. Toni Anzis)', artist:'QUERALT LAHOZ', genre:''},
+    {n:'#707', t:'Dollar Selmouni - SALVAJE', artist:'DOLLAR SELMOUNI', genre:''},
+    {n:'#708', t:'TRIFUNOX - Dale Dale (HIT CLUB MIX)', artist:'DJ Trivux y TRIFUNOX', genre:''},
+    {n:'#709', t:'Hector Lavoe - Juanito Alimaña Afro House · Oscar Combo x Saavedra', artist:'OSCAR COMBO y SAAVEDRA', genre:''},
+    {n:'#710', t:'BUBATRONIK_BRM_RADIO_ONAIR!', artist:'Bubatronik', genre:''},
+    {n:'#711', t:'Tita Lau LIVE @ Get Closer, Miami, USA, Tech House / House', artist:'Tita Lau', genre:''},
+    {n:'#712', t:'Ryan Castro, Kybba - SENDÉ (Live Session) [Medellin, Comuna 13]', artist:'Ryan Castro', genre:''},
+    {n:'#713', t:'Gonzy - AUNQUE ME DUELA (Visualizer) (Official)', artist:'Gonzy', genre:''},
+    {n:'#714', t:'Gonzy - MAL AMIGA (Official)', artist:'Gonzy', genre:''},
+    {n:'#715', t:'GONZY - 10DE10 (Official Video)', artist:'Gonzy', genre:''},
+    {n:'#716', t:'Kybba, Ryan Castro, Sean Paul & Busy Signal - BA BA BAD REMIX (Video Oficial)', artist:'Ryan Castro y Kybba', genre:''},
+    {n:'#717', t:'Lorna - Papi Chulo (Joe Rok Afro House Remix)', artist:'AFRODIC', genre:''},
+    {n:'#718', t:'Danny Ocean - Babylona (Official Music Video)', artist:'Danny Ocean', genre:''},
+    {n:'#719', t:'Beéle - mad koknut (Performance/Lyrics)', artist:'Beéle', genre:''},
+    {n:'#720', t:'BELLAKEO (Video Oficial) - Peso Pluma, Anitta', artist:'Peso Pluma', genre:''},
+    {n:'#721', t:'Loco - Beéle [VIDEO OFICIAL]', artist:'Hear This Music', genre:''},
+    {n:'#722', t:'Boza, ELENA ROSE - orióN (Official Video)', artist:'Boza Oficial', genre:''},
+    {n:'#723', t:'Alleh & Yorghaki - una noche (visualizer)', artist:'Alleh', genre:''},
+    {n:'#724', t:'ELENA ROSE & Justin Quiles - COSITA LINDA', artist:'ELENA ROSE', genre:''},
+    {n:'#725', t:'W Sound, Beéle, Westcol, Ovy On The Drums - La Plena (Lyric Video) | CantoYo', artist:'CantoYo Video Lyrics', genre:''},
+    {n:'#726', t:'Prompto - OOWEE!', artist:'Prompto', genre:''},
+    {n:'#727', t:'Armin van Buuren feat. Lucky Lou - Sweet Escape (Official Lyric Video)', artist:'Armin van Buuren', genre:''},
+    {n:'#728', t:'Pedroz - NOT AFRAID (Extended Mix)', artist:'Myth of NYX', genre:''},
+    {n:'#729', t:'Lupage x Joe Kox - Poker Face | Car Music', artist:'Niza', genre:''},
+    {n:'#730', t:'STIM - accord (Official Lyric Video)', artist:'STIM', genre:''},
+    {n:'#731', t:'Swae Lee, NAV - NO CALL NO SHOW (Visualizer)', artist:'Swae Lee', genre:''},
+    {n:'#732', t:'Apashe - Human (ft. Wasiu)', artist:'Apashe', genre:''},
+    {n:'#733', t:'Party Favor - Wasabi (feat. Salvatore Ganacci) [Official Full Stream]', artist:'partyfavor', genre:''},
+    {n:'#734', t:'HEDEGAARD X Sanjin - badboysound (Official Audio)', artist:'Spinnin\' Records', genre:''},
+    {n:'#735', t:'Timmy Trumpet, Vion Konger - Safe and Sound (Visualiser)', artist:'Smash The House', genre:''},
+    {n:'#736', t:'Cosmic Gate – Exploration Of Space (Bass Surrender Rework)', artist:'Bass Surrender Official', genre:''},
+    {n:'#737', t:'Disturbed - The Sound Of Silence (CYRIL Remix) [Official Audio]', artist:'Spinnin\' Records y CYRIL', genre:''},
+    {n:'#738', t:'Discotronic - Tricky Disco (Medieval)', artist:'BLXODMXON', genre:''},
+    {n:'#739', t:'FOVOS - Freak In Me', artist:'FOVOS', genre:''},
+    {n:'#740', t:'Martin Garrix, R3HAB & Skytech - Voodoo', artist:'bassTap', genre:''},
+    {n:'#741', t:'Gabry Ponte X Blasterjaxx X 1 World - Now We Are Free [THOMM Remix]', artist:'Blasterjaxx y THOMM', genre:''},
+    {n:'#742', t:'Don\'t Stop The Music (with Shuhandz)', artist:'Shuhandz', genre:''},
+    {n:'#743', t:'Vini Vici, Timmy Trumpet, Niklas Dee - Party So Hard (Visualizer)', artist:'Smash The House', genre:''},
+    {n:'#744', t:'Tiësto, Dimitri Vegas & Like Mike and Gabry Ponte - Mockingbird (Medieval Festival Remix)', artist:'BLXODMXON', genre:''},
+    {n:'#745', t:'RESIDENTE || BZRP Music Sessions #49/66', artist:'Bizarrap', genre:''},
+    {n:'#746', t:'Seeko, New Beat Order, Anika & KROMA - Numb (Lyric Video)[Techno]', artist:'Future House Cloud', genre:''},
+    {n:'#747', t:'GET PUMPED (Eminem x 50 Cent x D12 Type Beat)', artist:'Trunxks Beatz', genre:''},
+    {n:'#748', t:'Maddix - Favela', artist:'Maddix', genre:''},
+    {n:'#749', t:'Lost Kings - RIGHT NOW', artist:'Lost Kings', genre:''},
+    {n:'#750', t:'Netta - Toy (Lukas G Remix)', artist:'Lukas G', genre:''},
+    {n:'#751', t:'No More Blah Blah', artist:'Vesanic - Topic', genre:''},
+    {n:'#752', t:'ero808 x NXSTY - CODEINE (Official Music Video)', artist:'ero808', genre:''},
+    {n:'#753', t:'Young Franco - Juice [Official Audio] ft. Pell', artist:'Young Franco', genre:''},
+    {n:'#754', t:'SOUNDYXI – Mmm... | Club Kpop Music (Visualizer)', artist:'SOUNDYXI', genre:''},
+    {n:'#755', t:'FiveStacks - In My Head (BASS BOOSTED)', artist:'MaxFiveBass', genre:''},
+    {n:'#756', t:'SOUNDYXI – Vroom-Vroom | Club Banger Song (Visualizer)', artist:'SOUNDYXI', genre:''},
+    {n:'#757', t:'SOUNDYXI – Survival | Trap Music (Visualizer)', artist:'SOUNDYXI', genre:''},
+    {n:'#758', t:'SÓ PRESSÃO (Extended)', artist:'SUKA.', genre:''},
+    {n:'#759', t:'Hot and Cold', artist:'TRFN', genre:''},
+    {n:'#760', t:'SOUNDYXI – Hula Hula (Club Banger| Music) (SOUNDYXI Official Music Video)', artist:'SOUNDYXI', genre:''},
+    {n:'#761', t:'SOUNDYXI – Congratulations | Club Banger Music (Visualizer)', artist:'SOUNDYXI', genre:''},
+    {n:'#762', t:'SOUNDYXI – Spin Me | Club Banger (Visualizer)', artist:'SOUNDYXI', genre:''},
+    {n:'#763', t:'Zak Abel - Unstable | Sofar London', artist:'Sofar Sounds', genre:''},
+    {n:'#764', t:'NOVEMBER KID - disfruto', artist:'NOVEMBER KID', genre:''},
+    {n:'#765', t:'Baiana (CloZee Remix)', artist:'CloZee', genre:''},
+    {n:'#766', t:'MEUTE - You & Me (Flume Remix)', artist:'MEUTE', genre:''},
+    {n:'#767', t:'Matisyahu - One Day - Spinner (HD)', artist:'usbzoso', genre:''},
+    {n:'#768', t:'City of the Sun - W.16th St. | Sofar Washington D.C.', artist:'Sofar Sounds', genre:''},
+    {n:'#769', t:'The Big Push - I Shot the Sheriff/Road to Zion/Hip Hop', artist:'The Big Push', genre:''},
+    {n:'#770', t:'La Sra. Tomasa - Se Formó ft Rapsusklei (Videoclip Oficial)', artist:'La Sra. Tomasa', genre:''},
+    {n:'#771', t:'Tacabro - Tacata (TCM Hardstyle Bootleg) | HQ Videoclip', artist:'HardstyleUp2Datez', genre:''},
+    {n:'#772', t:'Empire Of The Sun, southstar - We Are The People (southstar Remix) Official Visualizer', artist:'Southstar', genre:''},
+    {n:'#773', t:'Give it to Me (TikTok Trending Remix)', artist:'Sinny', genre:''},
+    {n:'#774', t:'Dimitri Vegas & Like Mike vs Armin van Buuren & W&W - Repeat After Me (Official Music Video)', artist:'Dimitri Vegas & Like Mike', genre:''},
+    {n:'#775', t:'Dimitri Vegas & Like Mike & Timmy Trumpet & Sub Zero Project - Move Your Body (Official Music Video)', artist:'Dimitri Vegas & Like Mike', genre:''},
+    {n:'#776', t:'REMA - Calm Down (TECHNO REMIX)', artist:'TECHNO ROCKZZ', genre:''},
+    {n:'#777', t:'Kid Cudi - Pursuit of Happiness (Steve Aoki Remix) - Project X (Official Music Video)', artist:'Best Party Videos', genre:''},
+    {n:'#778', t:'#SELFIE (Official Music Video) - The Chainsmokers', artist:'The Chainsmokers', genre:''},
+    {n:'#779', t:'Fergie - M.I.L.F. $', artist:'Fergie', genre:''},
+    {n:'#780', t:'DaBaby - ROCKSTAR (Audio) ft. Roddy Ricch', artist:'DaBaby', genre:''},
+    {n:'#781', t:'Sickick - Epic 50 Cent Mashup (Live)', artist:'SickickMusic', genre:''},
+    {n:'#782', t:'T.I. - Jefe (Official Video) ft. Meek Mill', artist:'T.I.', genre:''},
+    {n:'#783', t:'Kendrick Lamar - Not Like Us (Official Music Video)', artist:'Real OG', genre:''},
+    {n:'#784', t:'will.i.am - Feelin\' Myself ft. Miley Cyrus, Wiz Khalifa, French Montana', artist:'will i am', genre:''},
+    {n:'#785', t:'Jason Derulo - Wiggle feat. Snoop Dogg [Official Music Video]', artist:'Jason Derulo', genre:''},
+    {n:'#786', t:'DJ Snake, Lil Jon - Turn Down for What', artist:'DJ Snake', genre:''},
+    {n:'#787', t:'Mike Will feat. Miley Cyrus, Wiz Khalifa and Juicy J - 23 (IC\'s Trap Peakhour Monster)', artist:'TheDeejayIC', genre:''},
+    {n:'#788', t:'Stefflon Don - 16 Shots (Official Video)', artist:'Stefflon Don', genre:''},
+    {n:'#789', t:'MAJOR. - Love Me Olé (Official Video) ft. Kas', artist:'MAJOR.', genre:''},
+    {n:'#790', t:'Funzo - TABARCA (Video Oficial)', artist:'Funzo', genre:''},
+    {n:'#791', t:'FUNZO & BABY LOUD - JOVEN PARA SIEMPRE', artist:'Negative Cloud', genre:''},
+    {n:'#792', t:'Nikone - Mala Hierba (Videoclip Official)', artist:'NIKONE EPK', genre:''},
+    {n:'#793', t:'Lérica, Beret, Lalo Ebratt - Hamaca', artist:'Lérica', genre:''},
+    {n:'#794', t:'Chema Rivas, Juan Magan - Anda Suelta (Lyric Video)', artist:'Chema Rivas', genre:''},
+    {n:'#795', t:'FUNZO & BABY LOUD - PELO RIZAO', artist:'Negative Cloud', genre:''},
+    {n:'#796', t:'Fito & Fitipaldis - El monte de los aullidos (en directo Sesión Estudio Uno)', artist:'Fito&Fitipaldis', genre:''},
+    {n:'#797', t:'FUNZO & BABY LOUD - PALANTE', artist:'Negative Cloud', genre:''},
+    {n:'#798', t:'Funzo, Fyahbwoy - CHICA DE FUEGO (Video Oficial)', artist:'Funzo y FYAHBWOY OFFICIAL', genre:''},
+    {n:'#799', t:'KI/KI x Marlon Hoffstadt - Losing Control (Official Video)', artist:'Marlon Hoffstadt aka DJ Daddy Trance y KI / KI', genre:''},
+    {n:'#800', t:'BOVSKI - Low Again', artist:'BOVSKI', genre:''},
+    {n:'#801', t:'DJ TRIVUX - The Eyes Chico (Original Mix)', artist:'DJ Trivux', genre:''},
+    {n:'#802', t:'NIKONE & LIONWARE - SI VUELVES TARDE', artist:'NIKONE EPK', genre:''},
+    {n:'#803', t:'TRIFUNOX & ILIXOR - Bang Bang (Original Mix) | TOP CAR MIX 2026', artist:'DJ Trivux y 2 más', genre:''},
+    {n:'#804', t:'Al2 El Aldeano - Oxígeno ( Letra )', artist:'AL2 "El Aldeano"', genre:''},
+    {n:'#805', t:'Nonstop - Quevedo', artist:'Quevedo', genre:''},
+    {n:'#806', t:'Ricky Hombre Libre - Gente Bonita', artist:'Ricky Hombre Libre', genre:''},
+    {n:'#807', t:'Ahora Y Siempre - Quevedo, Linton', artist:'Quevedo', genre:''},
+    {n:'#808', t:'EL MOMO - FUNKY', artist:'Boa Música Urbana', genre:''},
+    {n:'#809', t:'Polo G - Angels In The Sky (Official Music Video)', artist:'Millennium Hit', genre:''},
+    {n:'#810', t:'DURO - Quevedo (Official Video) | BUENAS NOCHES', artist:'Quevedo', genre:''},
+    {n:'#811', t:'SCANDIC - Quevedo (Official Video)', artist:'Quevedo', genre:''},
+    {n:'#812', t:'BASSA - HABIBI (HARD TECHNO)', artist:'BASSA', genre:''},
+    {n:'#813', t:'Papaoutai - Stromae (Afro Soul Orchestral Cover TikTok by Mikeeysmind)', artist:'SLYME STREET y Afronomya', genre:''},
+    {n:'#814', t:'LumaWave Sounds - Fuego Rhythm (Lyrics Video) | Latin-Pop & Dancehall Fusion 2026', artist:'LumaWave Sounds', genre:''},
+    {n:'#815', t:'Not My Problem - Gravagerz, GRAHAM', artist:'Gravagerz', genre:''},
+    {n:'#816', t:'Ocho VIP (Laxter Hard Edit) [Lyric Video]', artist:'BEAUZ', genre:''},
+    {n:'#817', t:'Nicolas Julian - Sucker (Official Visualizer)', artist:'Nicolas Julian', genre:''},
+    {n:'#818', t:'LICK IT (Official Visualizer)', artist:'BEAUZ', genre:''},
+    {n:'#819', t:'Dimitri Vegas & Like Mike - Heroine [Live At Tomorrowland]', artist:'Smash The House', genre:''},
+    {n:'#820', t:'Hooked on the Bassline', artist:'Gabry Ponte', genre:''},
+    {n:'#821', t:'Bomba Estéreo - Soy Yo (Official Video)', artist:'Bomba Estéreo', genre:''},
+    {n:'#822', t:'Pont Aeri - Flying Free', artist:'CarlinhosX7', genre:''},
+    {n:'#823', t:'Creeds & Gonzi - FULL POWER (Official Music Video)', artist:'Gonzi y Creeds', genre:''},
+    {n:'#824', t:'Dimitri Vegas & Like Mike vs W&W & Moguai - Arcade Mammoth (Official Music Video)', artist:'Dimitri Vegas & Like Mike', genre:''},
+    {n:'#825', t:'Dimitri Vegas & Like Mike vs Ummet Ozcan - The Hum (Official Music Video)', artist:'Dimitri Vegas & Like Mike', genre:''},
+    {n:'#826', t:'Hardwell & Blasterjaxx - Beat Of The Drum', artist:'Hardwell', genre:''},
+    {n:'#827', t:'Creeds - Push Up (TikTok Remix) / The Matrix (Fight Scene)', artist:'itsAirLow', genre:''},
+    {n:'#828', t:'Dimitri Vegas & Like Mike & Marlon Hoffstadt & DJ Konik - Makina Time (Official Music Video)', artist:'Dimitri Vegas & Like Mike', genre:''},
+    {n:'#829', t:'ROSÉ & Bruno Mars - APT. (Official Music Video)', artist:'ROSÉ y Bruno Mars', genre:''},
+    {n:'#830', t:'Novah - Rave Kid', artist:'Novah y Tomorrowland Music', genre:''},
+    {n:'#831', t:'Ne-Yo, Bebe Rexha, Stefflon Don - PUSH BACK', artist:'NE-YO', genre:''},
+    {n:'#832', t:'Masego, Don Toliver - Mystery Lady', artist:'Masego', genre:''},
+    {n:'#833', t:'Santana - Maria Maria (Official Video) ft. The Product G&B', artist:'Santana', genre:''},
+    {n:'#834', t:'JNR CHOI, Sam Tompkins - TO THE MOON (Official Music Video)', artist:'JNR CHOI', genre:''},
+    {n:'#835', t:'Apashe & Alina Pash - Kyiv', artist:'Apashe', genre:''},
+    {n:'#836', t:'Eitetsu Hayashi - Fertility of the Sea (Taiko)', artist:'洗足学園音楽大学', genre:''},
+    {n:'#837', t:'Indian drum vs african drum', artist:'Ilm-o-Noor', genre:''},
+    {n:'#838', t:'Vera GRV - LA TARARA - (Official Video) prod. Toni Anzis.', artist:'Vera GRV', genre:''},
+    {n:'#839', t:'FRANK-T - La Gran Obra Maestra (versión Cover AI de Motown Soul de 1950) #soulhopai', artist:'SoulHop A.I.', genre:''},
+    {n:'#840', t:'RAP SOUL 2025 Violadores del Verso, SFDK, Morodo, Sharif, Al2 | Remix Especial #soulhopai', artist:'SoulHop A.I.', genre:''},
+    {n:'#841', t:'GRECAS - Vaqueros y mercurial (Escrito en la M-30)', artist:'GRECAS', genre:''},
+    {n:'#842', t:'GRECAS - UltraBakano (Escrito en la M-30)', artist:'GRECAS', genre:''},
+    {n:'#843', t:'FERNANDOCOSTA - GRECOFERNANDA FT GRECAS (Videoclip Oficial)', artist:'FERNANDOCOSTA y GRECAS', genre:''},
+    {n:'#844', t:'Danny Ocean x Sech - Priti (OFFICIAL VIDEO)', artist:'Danny Ocean y Sech', genre:''},
+    {n:'#845', t:'Omarion - Distance (Official Music Video)', artist:'Omarion', genre:''},
+    {n:'#846', t:'Tinie Tempah - Pass Out', artist:'TINIE TEMPAH', genre:''},
+    {n:'#850', t:'Wu Tang Clan - 90s Hip Hop Legends', artist:'THUG ARCHIVES 90s', genre:''},
+    {n:'#855', t:'Mina\'s Radio | EP. 003', artist:'MINA\'S RADIO', genre:''},
+    {n:'#893', t:'Guerreros del Pasado | Historia, poder y memoria – Verdad Sintética', artist:'Verdad Sintética', genre:''},
+    {n:'#894', t:'Águila y Jaguar | Guerreros Mexicas | Canción Histórica | Verdad Sintética', artist:'Verdad Sintética', genre:''},
+    {n:'#895', t:'Joss Favela, Luis R Conriquez - Con Todo Respetillo (Official Lyric Video)', artist:'Joss Favela', genre:''},
+    {n:'#896', t:'Al2 El Aldeano ft. Nanpa Basico - POR SI SE TE OLVIDA', artist:'AL2 "El Aldeano"', genre:''},
+    {n:'#897', t:'AYAX Y PROK - TOBLERONE (VIDEOCLIP) #JUGLARDELSIGLOXXI', artist:'AYAX Y PROK', genre:''},
+    {n:'#898', t:'Lil Dicky - Professional Rapper (Feat. Snoop Dogg)', artist:'Lil Dicky', genre:''},
+    {n:'#899', t:'Paulo Londra - Party Ft. A Boogie Wit da Hoodie (official Video)', artist:'Paulo Londra', genre:''},
+    {n:'#900', t:'50 Cent - We Locked In (Ft. Method Man & Redman) 2026', artist:'D2T US y Compton Bred Music', genre:''},
+    {n:'#901', t:'Busta Rhymes - Break Ya Neck (Official Video)', artist:'Busta Rhymes', genre:''},
+    {n:'#902', t:'Buraka Som Sistema - Kalemba (Wegue Wegue)', artist:'Zulu', genre:''},
+    {n:'#903', t:'Touch It (Remix) (Official Music Video)', artist:'Busta Rhymes', genre:''},
+    {n:'#904', t:'BEJO - PEROGRULLO (VIDÉO)', artist:'B E J O', genre:''},
+    {n:'#905', t:'El Chojin - Y Está Bien (Lyric Video)', artist:'El Chojin', genre:''},
+    {n:'#906', t:'El Chojin ft Dani Martín | 22- Déjales que hablen', artist:'El Chojin', genre:''},
+    {n:'#907', t:'PROK FT AYAX - CARMINA (VIDEOCLIP) #SERIO', artist:'AYAX Y PROK', genre:''},
+    {n:'#908', t:'RAPSUSKLEI - ABECEDARIO (TRACK 14 ORIGAMI)', artist:'Rapsusklei', genre:''},
+    {n:'#909', t:'SHARIF & NANPA BÁSICO - PA\' QUE MAMI NO LLORE (LYRIC VIDEO)', artist:'SHARIF', genre:''},
+    {n:'#910', t:'RAPSUSKLEI - 60 VECES POR MINUTO (TRACK 7 ORIGAMI)', artist:'Rapsusklei', genre:''},
+    {n:'#911', t:'SFDK - Señores en el Brunch ft. Kase.O', artist:'Sfdk Oficial', genre:''},
+    {n:'#912', t:'La vida - Aldeanos (con letra)', artist:'Andres Londoño', genre:''},
+    {n:'#913', t:'Al2 El Aldeano - Gracias', artist:'AL2 "El Aldeano"', genre:''},
+    {n:'#914', t:'Nanpa Básico - Oro Por Ti (Official Video)', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#915', t:'Nanpa Básico, Nach, ZPU, Soma - Desde El Fondo (Video Oficial)', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#916', t:'Al2 El Aldeano Ft. Rapsusklei - Julieta (Video Oficial)', artist:'AL2 "El Aldeano"', genre:''},
+    {n:'#917', t:'Nanpa Básico, Kany García - Duelo (Official Video)', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#918', t:'Nanpa Básico, Lia Kali, GARABATTO - Peor Que La Policía (Official Video) ft. PMP', artist:'Nanpa Basico Oficial', genre:''},
+    {n:'#919', t:'Beethoven 5th Symphony - CLASSICAL MUSIC (TECHNO REMIX)', artist:'ELPORTUMIXALL', genre:''},
+    {n:'#920', t:'Bach - Toccata And Fugue (Techno Mix)', artist:'DJ Guarja', genre:''},
+    {n:'#921', t:'Beethoven - Für Elise (Klutch Dubstep Trap Remix)', artist:'DubstepGutter', genre:''},
+    {n:'#922', t:'Wellerman X Carribean - Blade & Choir Cover', artist:'Blade & Choir', genre:''},
+    {n:'#924', t:'Warning: This Rhythm Builds Into Sacred Fire | MAHAKALAGNI', artist:'Jakes Jacob Beats', genre:''},
+    {n:'#925', t:'WARNING: YOUR PULSE WILL SYNC — It Overrides Free Will', artist:'Tribal Music Studio', genre:''},
+    {n:'#926', t:'El Trueno de los Clanes — Gaitas de Guerra de las Tierras Altas Desatadas', artist:'Mist & Drone', genre:''},
+    {n:'#927', t:'Les Twins | FRONTROW | World of Dance 2014 #WODHI', artist:'Official World of Dance', genre:''},
+    {n:'#928', t:'Step Up Revolution (2012 Movie) - Opening Sequence Official Teaser', artist:'Step Up Movie', genre:''},
+    {n:'#929', t:'Sister Act2 Get Up Offa That Thing HD', artist:'Taichi Mori', genre:''},
+    {n:'#930', t:'Sister Act 2 - 30 years ago and reunion 2024 Joyful Joyful', artist:'Sean Y', genre:''},
+    {n:'#931', t:'Bob Sinclar & Cutee B. Feat. Gary Pine & Dollarman - Sound Of Freedom', artist:'Embassy One', genre:''},
+    {n:'#932', t:'Yves LaRock - Rise Up', artist:'Embassy One', genre:''},
+    {n:'#933', t:'Clean Bandit - Rather Be ft. Jess Glynne [Official Video]', artist:'Clean Bandit', genre:''},
+    {n:'#934', t:'Chris Brown - Look At Me Now (Clean Version) ft. Lil Wayne, Busta Rhymes', artist:'Chris Brown', genre:''},
+    {n:'#935', t:'Outkast - Hey Ya! (Official HD Video)', artist:'Outkast', genre:''},
+    {n:'#936', t:'M.C. Hammer - U Can\'t Touch This', artist:'MC HAMMER', genre:''},
+    {n:'#937', t:'The Jackson 5 - ABC', artist:'Czikes', genre:''},
+    {n:'#938', t:'Vitas & Timmy Trumpet (Tomorrowland 2019)', artist:'VITAS', genre:''},
+    {n:'#939', t:'Steve Aoki & Delia | The Last Bella Ciao || Netflix', artist:'Steve Aoki', genre:''},
+    {n:'#940', t:'AC/DC - Thunderstruck (MOONLGHT Remix)', artist:'MOONLGHT', genre:''},
+    {n:'#941', t:'DVBBS & Borgeous - TSUNAMI (Original Mix)', artist:'Spinnin\' Records', genre:''},
+    {n:'#942', t:'Armin van Buuren - Blah Blah Blah (Official Lyric Video)', artist:'Armin van Buuren', genre:''},
+    {n:'#943', t:'Maroon 5 - Girls Like You ft. Cardi B (Volume 2) (Official Music Video)', artist:'Maroon 5', genre:''},
+    {n:'#944', t:'AL2 El Aldeano - Inocente (Recordpilacion Vol.2)', artist:'AL2 "El Aldeano"', genre:''},
+    {n:'#945', t:'SFDK - PRUEBALO (CANAL BOA)', artist:'Boa Música Urbana', genre:''},
+    {n:'#946', t:'Nach - Efectos Vocales', artist:'Nach', genre:''},
+    {n:'#947', t:'Toteking & Shotta - Muchas Gracias (Videoclip) ft. Swan Fyahbwoy', artist:'totekingshottaVEVO', genre:''},
+    {n:'#948', t:'Siempre hablando de mas - Fyahbwoy A.k.a El Chico de Fuego (VIDEO OFICIAL HD)', artist:'FYAHBWOY OFFICIAL', genre:''},
+    {n:'#949', t:'MALA JUNTERA - TU ERES PARA MI (OFICIAL)', artist:'Boa Música Urbana', genre:''},
+    {n:'#950', t:'DUO KIE - LAS DE PERDER con SFDK y FYAHBWOY', artist:'Boa Música Urbana', genre:''},
+    {n:'#951', t:'VIDA GRIMEY 1 y 2 Swan Fyahbwoy, Chulito Camacho, Darmo, Ivan Nieto, Carmona, Moreno HD', artist:'rafa muñoz molero', genre:''},
+    {n:'#952', t:'EL KANKA - QUE BELLO ES VIVIR (versión acústica)', artist:'SurClub TV', genre:''},
+    {n:'#953', t:'ESTO ES ESPAÑA - LOMO ft Xexu García', artist:'Sainzdeces', genre:''},
+    {n:'#954', t:'Apache - Ella Maneja Puro Style (ft. Morodo) [Vídeo Oficial]', artist:'Apache Las Minas', genre:''},
+    {n:'#955', t:'Akapellah, Al2 El Aldeano - Ni Con Money (Prod. by Faker) (Official Video)', artist:'Akapellah', genre:''},
+    {n:'#956', t:'Akapellah - Rueda De Prensa (Official Video)', artist:'Akapellah', genre:''},
+    {n:'#957', t:'Calle 13 - Cumbia de los Aburridos (Video)', artist:'elvecindariocalle13', genre:''},
+    {n:'#959', t:'HARD GZ & ANTONY Z - BARQUITO DE VELA', artist:'HARD GZ', genre:''},
+    {n:'#960', t:'Reality & Lia Kali - Amor De Barrio (Official Video) [Por Si Muero Mañana]', artist:'Reality y Lia Kali', genre:''},
+    {n:'#961', t:'El Chojin Ft. Rozalén - No es egoísmo (Vídeo oficial 2023)', artist:'El Chojin', genre:''},
+    {n:'#962', t:'MALA MIA (BOLEROMALANDRO)', artist:'Razz', genre:''},
+    {n:'#963', t:'Stromae - Santé (Official Video)', artist:'Stromae', genre:''},
+    {n:'#964', t:'Barbara Pravi - Voilà (Clip Officiel)', artist:'Barbara Pravi', genre:''},
+    {n:'#965', t:'Gregory Porter - Liquid Spirit (Claptone Remix)', artist:'Gregory Porter', genre:''},
+    {n:'#966', t:'MEUTE - Hey Hey (Dennis Ferrer Rework)', artist:'MEUTE', genre:''},
+    {n:'#967', t:'Lindsey Stirling & Pentatonix - Radioactive (Imagine Dragons Cover)', artist:'Lindsey Stirling', genre:''},
+    {n:'#968', t:'The Civil Wars - Billie Jean (Michael Jackson Cover)', artist:'LaundroMatinee', genre:''},
+    {n:'#969', t:'Bishop Briggs - River | Indie88 Black Box Sessions', artist:'Indie88', genre:''},
+    {n:'#970', t:'JP Cooper - Diamonds & Gold (Official Visualiser)', artist:'JP Cooper', genre:''},
+    {n:'#971', t:'Rayden - A Mi Yo de Ayer', artist:'RAYDEN', genre:''},
+    {n:'#972', t:'RAPSUSKLEI - EN BUSCA DE LA FELICIDAD (CON SUZANNA ABELLAN) (TRACK 13 ORIGAMI)', artist:'Rapsusklei', genre:''},
+    {n:'#973', t:'Dub Princess & Sneaky Dread - Soundboy', artist:'Aiichiro Uno', genre:''},
+    {n:'#974', t:'Måneskin - ZITTI E BUONI (Official Video – Sanremo & EUROVISION 2021 Winners)', artist:'Måneskin Official', genre:''},
+    {n:'#975', t:'Eddie Murphy - Red Light ft. Snoop Lion (Official Video)', artist:'Eddie Murphy', genre:''},
+    {n:'#976', t:'Moses Concas - Human Revolution', artist:'Moses Concas', genre:''},
+    {n:'#977', t:'Jay-Z & Kanye West - Ni**as In Paris (Explicit)', artist:'Kanye West', genre:''},
+    {n:'#978', t:'Samantha Barrón - Dibújame Feat. Nanpa Básico (Video Oficial)', artist:'Rich Vagos', genre:''},
+    {n:'#979', t:'Steve Aoki, Daddy Yankee, Play N Skillz & Elvis Crespo - Azukita (Official Video) [Ultra Music]', artist:'Ultra Records', genre:''},
+    {n:'#980', t:'Dimitri Vegas & Like Mike, Afro Bros, Sebastián Yatra - Boomshakalaka ft. Camilo, Emilia', artist:'Sebastián Yatra', genre:''},
+    {n:'#981', t:'Rebota Remix - Guaynaa / Nicky Jam / Farruko Feat Becky G & Sech', artist:'Guaynaa', genre:''},
+    {n:'#982', t:'Atomic Otro Way - Te De Campana (Video Oficial HD)', artist:'Atomic Otro Way', genre:''},
+    {n:'#983', t:'Bomba Estéreo & Will Smith - Fiesta (Remix) (Official Video)', artist:'Bomba Estéreo', genre:''},
+    {n:'#984', t:'Travis Scott - SIRENS', artist:'Travis Scott', genre:''},
+    {n:'#985', t:'Bow Wow - Fresh Az I\'m Iz (Remix) ft. J-Kwon, Jermaine Dupri', artist:'Bow Wow', genre:''},
+    {n:'#986', t:'Bow Wow, Fabolous, Fundisha, Jermaine Dupri - Basketball (Official Music Video)', artist:'Bow Wow', genre:''},
+    {n:'#987', t:'Kid Cudi - Pursuit Of Happiness(Steve Aoki Remix)', artist:'Ronathan From I.T', genre:''},
+    {n:'#988', t:'DJ Fresh VS Jay Fay ft. Ms Dynamite - Dibby Dibby Sound [Official Video]', artist:'DJ Fresh', genre:''},
+    {n:'#989', t:'Martin Garrix - Animals (Official Video)', artist:'STMPD RCRDS', genre:''},
+    {n:'#990', t:'Dimitri Vegas, Martin Garrix, Like Mike - Tremor (Official Music Video)', artist:'Spinnin\' Records', genre:''},
+    {n:'#991', t:'Skrillex & Rick Ross - Purple Lamborghini [Official Video]', artist:'Skrillex', genre:''},
+    {n:'#993', t:'Charly Black, Luis Fonsi - Party Animal', artist:'Charly Black World', genre:''},
+    {n:'#994', t:'DJ Antoine vs Timati feat. Kalenna - Welcome to St. Tropez (DJ Antoine vs Mad Mark Remix) [Lyrics]', artist:'Kontor.TV', genre:''},
+    {n:'#995', t:'Jennifer Lopez, Pitbull - On The Floor (Official Music Video)', artist:'Jennifer Lopez', genre:''},
+    {n:'#996', t:'Jessie J - Bang Bang ft. Ariana Grande, Nicki Minaj', artist:'Jessie J', genre:''},
+    {n:'#997', t:'P!nk - So What (Official Video)', artist:'P!NK', genre:''},
+    {n:'#998', t:'Avril Lavigne - What The Hell (Official Video)', artist:'Avril Lavigne', genre:''},
+    {n:'#999', t:'Simple Plan - Welcome To My Life (Official Video)', artist:'SimplePlan', genre:''},
+    {n:'#1000', t:'Green Day - American Idiot [Official Music Video] [4K Upgrade]', artist:'Green Day', genre:''},
+    {n:'#1001', t:'Timbaland - The Way I Are ft. Keri Hilson, D.O.E., Sebastian', artist:'Timbaland', genre:''},
+    {n:'#1002', t:'Ciara - Get Up (Official Video) ft. Chamillionaire', artist:'Ciara', genre:''},
+    {n:'#1003', t:'Kat DeLuna - Whine Up (Official Video) ft. Elephant Man', artist:'Kat Deluna', genre:''},
+    {n:'#1004', t:'Christina Aguilera, Lil\' Kim, Mya, P!nk - Lady Marmalade', artist:'Christina Aguilera', genre:''},
+    {n:'#1005', t:'The Pussycat Dolls - Buttons (Official Music Video) ft. Snoop Dogg', artist:'The Pussycat Dolls', genre:''},
+    {n:'#1006', t:'Flo Rida - Low (feat. T-Pain) [Official Video]', artist:'Flo Rida', genre:''},
+    {n:'#1007', t:'Rafa Pabon, Zion, Brray, Toño Rosario, Randy, Kiko El Crazy, Jon Z - A\'GÜIRO REMIX', artist:'Rafa Pabön', genre:''},
+    {n:'#1008', t:'Sech - Sal y Perrea (Video Oficial)', artist:'Sech', genre:''},
+    {n:'#1009', t:'Step Up 4: Revolution \'The Office MOB\' Dance HD', artist:'DivyaSindu', genre:''},
+    {n:'#1010', t:'David Guetta - Dangerous (Video oficial) con Sam Martin', artist:'David Guetta', genre:''},
+    {n:'#1011', t:'KASE.O - RINGUI DINGUI feat. SFDK (Prod. Acción Sanchez)', artist:'KaseO TV Oficial', genre:''},
+    {n:'#1012', t:'Little Pepe - Si Tú Supieras ft. Fyahbwoy', artist:'LITTLE PEPE', genre:''},
+    {n:'#1013', t:'PROK - COPA Y PURO (VIDEOCLIP) #SERIO', artist:'AYAX Y PROK', genre:''},
+    {n:'#1014', t:'Alberto Gambino feat. Noé - Acuerdáte de lo que importa', artist:'Alberto Gambino', genre:''},
+    {n:'#1015', t:'JP Cooper - The Reason Why ft. Stefflon Don, Banx & Ranx', artist:'JP Cooper', genre:''},
+    {n:'#1016', t:'Tash Sultana "Jungle" (Live) - California Roots 2018', artist:'California Roots', genre:''},
+    {n:'#1017', t:'JP Cooper - Let It Be (The Beatles Cover)', artist:'JP Cooper', genre:''},
+    {n:'#1018', t:'JP Cooper - Holy Water (Gospel Choir Version)', artist:'JP Cooper', genre:''},
+    {n:'#1019', t:'BOVSKI - Do it Again', artist:'BOVSKI y GOTTA MOVE', genre:''},
+    {n:'#1020', t:'BOVSKI - Only One', artist:'BOVSKI', genre:''},
+    {n:'#1021', t:'AYAX- BUKOWSKI (VIDEOCLIP)', artist:'AYAX Y PROK', genre:''},
+    {n:'#1022', t:'ALBERTO GAMBINO - RECUERDOS PARA TU MADRE (VIDEO)', artist:'Alberto Gambino', genre:''},
+    {n:'#1023', t:'FERNANDOCOSTA - BARCO A LA DERIVA (PROD. BLASFEM) | VIDEOCLIP', artist:'FERNANDOCOSTA', genre:''},
+    {n:'#1024', t:'Akapellah, Trueno - Parriba (Official Video)', artist:'Akapellah', genre:''},
+    {n:'#1025', t:'Akapellah - Como Mario (Prod. By Maffio)(Official Video)', artist:'Akapellah', genre:''},
+    {n:'#1026', t:'EL MOMO FT. ESTOPA - DE BARRIO (Prod. Bombony Montana)', artist:'El Momo', genre:''},
+    {n:'#1027', t:'PROK - MATRIX (VIDEOCLIP) #SERIO', artist:'AYAX Y PROK', genre:''},
+    {n:'#1028', t:'AYAX FT DOLLAR - GUAJIRO (PHONECLIP) #JUGLARDELSIGLOXXI', artist:'AYAX Y PROK', genre:''},
+    {n:'#1029', t:'Residente - This is Not America (Official Video) ft. Ibeyi', artist:'Residente', genre:''},
+    {n:'#1030', t:'KASE.O - TIRANOSAURIUS REX (Prod. Harto y Escandaloso Xpósito)', artist:'KaseO TV Oficial', genre:''},
+    {n:'#1031', t:'FERNANDOCOSTA - VIDA REAL (PROD. BLASFEM) VIDEOCLIP OFICIAL', artist:'FERNANDOCOSTA', genre:''},
+    {n:'#1032', t:'KASE.O - EL GORDO QUE LA PISA BIEN (Prod. Harto y Escandaloso Xpósito)', artist:'KaseO TV Oficial', genre:''},
+    {n:'#1033', t:'Rihanna - Desperado', artist:'JDreamer', genre:''},
+    {n:'#1034', t:'KAZE - KBRONES - ONE SHOT', artist:'KAZE', genre:''},
+    {n:'#1035', t:'PROK FT AL2 EL ALDEANO - LOS LOBOS (VIDEOCLIP)', artist:'AYAX Y PROK y AL2 "El Aldeano"', genre:''},
+    {n:'#1036', t:'2Pac & Miyagi - Other Position (DarK Boy Remix)', artist:'GANGSTER GANG', genre:''},
+    {n:'#1037', t:'DJ TRIVUX - HOT MIDNIGHT RIDE (Original Mix)', artist:'DJ Trivux', genre:''},
+    {n:'#1038', t:'Latinamerica', artist:'Raffa FL Music', genre:''},
+    {n:'#1039', t:'Ozzy Osbourne - Crazy Train (MVRK Remix)', artist:'Flow Trax', genre:''},
+    {n:'#1040', t:'Queen - We Will Rock You (TuneSquad Bootleg)', artist:'Ma Fo', genre:''},
+    {n:'#1041', t:'María Peláe - Remix Lola Flores, Residente y Rosalía (Cómo me las maravillaría yo)', artist:'María Peláe', genre:''},
+    {n:'#1042', t:'Sage The Gemini - Watchachacha [Official Audio]', artist:'Sage the Gemini', genre:''},
+    {n:'#1043', t:'Michael Jackson - Beat It (Amir Bootleg)', artist:'Ma Fo', genre:''},
+    {n:'#1044', t:'Green Day - Boulevard Of Broken Dreams (Seb Renzella Bootleg)', artist:'Chemical Energy Music', genre:''},
+    {n:'#1045', t:'Juan Alcaraz - Minions Bounce [Original Mix]', artist:'DVC', genre:''},
+    {n:'#1046', t:'PSYTRANCE - MARIO TIME (STACK REMIX) Super Mario Bros Main Theme', artist:'Psycodelize Music', genre:''},
+    {n:'#1047', t:'PSYTRANCE - The Pink Panther Theme Song (No Comment VS Jano Remix)', artist:'Psycodelize Music', genre:''},
+    {n:'#1048', t:'David Guetta Feat. Kid Cudi - Memories (Cat Dealers Remix) / Fast & Furious (Car Chase Scene)', artist:'itsAirLow', genre:''},
+    {n:'#1049', t:'NYA DE LA RUBIA & JUAN MAGÁN - No Se Puede Tener To (Lyric Video) Ft. Carlos Ares', artist:'Nya de la Rubia', genre:''},
+    {n:'#1050', t:'Christina Aguilera, Becky G, Nicki Nicole - Pa Mis Muchachas (Official Video) ft. NATHY PELUSO', artist:'Christina Aguilera', genre:''},
+    {n:'#1051', t:'Black Eyed Peas, J Balvin - RITMO (Bad Boys For Life) (Official Music Video)', artist:'Black Eyed Peas', genre:''},
+    {n:'#1052', t:'Major Lazer, The Flexican, FS Green & Busy Signal - Watch Out for This (Bumaye) [Official Video]', artist:'Major Lazer Official', genre:''},
+    {n:'#1053', t:'Farruko - NAZARENO (Official Video)', artist:'Farruko', genre:''},
+    {n:'#1055', t:'ChocQuibTown, Becky G - Que Me Baile (Official Video)', artist:'ChocQuibTown', genre:''},
+    {n:'#1056', t:'Becky G - Zooted (Official Video) ft. French Montana, Farruko', artist:'Becky G', genre:''},
+    {n:'#1057', t:'FYAHBWOY – TANTO POR TI (OFFICIAL VIDEO)', artist:'FYAHBWOY OFFICIAL', genre:''},
+    {n:'#1058', t:'Bruno Mars - Liquor Store Blues (feat. Damian Marley) (Official Music Video)', artist:'Bruno Mars', genre:''},
+    {n:'#1059', t:'Fugees - No Woman, No Cry (Official HD Video) ft. Stephen Marley', artist:'Fugees', genre:''},
+    {n:'#1060', t:'VANUPIÉ - ROCKADOWN - SUBWAY SESSION (FEAT. LIDIOP)', artist:'VanupieOfficiel', genre:''},
+    {n:'#1061', t:'FOYONE #RapSinCorte', artist:'FOYONE', genre:''},
+    {n:'#1062', t:'Two Feet - Go F*ck Yourself // DeadPool', artist:'Rhino TV', genre:''},
+    {n:'#1063', t:'Grits - Mi Vida Be Like/ Ohh Ahh (Remix ft. 2Pac & Xzibit - Tokyo Drift Version en Español)', artist:'Bigger Picture Productions', genre:''},
+    {n:'#1064', t:'Tokyo Drift - Six Days (4K)', artist:'Samdroid', genre:''},
+    {n:'#1065', t:'KEAN DYSSO - Give it to Me (TikTok Remix)', artist:'HELLFXRMANCE', genre:''},
+    {n:'#1066', t:'Street Kings Never Die [GANGSTER TRAP]', artist:'Trap Cartel Music', genre:''},
+    {n:'#1067', t:'HAKUNA MATATA (Afro-Asian Rave) | Lion King Experimental House', artist:'Dj Riflenij', genre:''},
+    {n:'#1068', t:'Trampsta - País Tropical (Music Video)', artist:'Trampsta', genre:''},
+    {n:'#1069', t:'Trampsta - Work (Video)', artist:'Trampsta', genre:''},
+    {n:'#1070', t:'Trampsta - Chunky (Old Dancing Movies Video)', artist:'Trampsta', genre:''},
+    {n:'#1071', t:'DJZRX - Not My Problem Funk (Sayfalse Remix) [Lyrics]', artist:'Phonk World', genre:''},
+    {n:'#1072', t:'Bad Bunny\'s Apple Music Super Bowl Halftime Show', artist:'NFL', genre:''},
+    {n:'#1073', t:'BEJO - A MI MANERA (PROD. COOKIN SOUL)', artist:'B E J O', genre:''},
+    {n:'#1074', t:'Social Experiment w/ MINA | Edits, Hip-Hop, R&B, Baile Funk, Amapiano, Miami Bass', artist:'Social Supply VA', genre:''},
+    {n:'#1075', t:'Can\'t Stop', artist:'Amazingblaze - Topic', genre:''},
+    {n:'#1076', t:'Arte Como Amante', artist:'Indira Paganotto', genre:''},
+    {n:'#1077', t:'Gipsy Queen', artist:'Indira Paganotto', genre:''},
+    {n:'#1078', t:'Indira Paganotto - CRUSH (Official Music Video)', artist:'Indira Paganotto', genre:''},
+    {n:'#1079', t:'Papaoutai (BASS DEMON x Mr Demon Techno Remix)', artist:'wannabebroken', genre:''},
+    {n:'#1080', t:'Bomba Estéreo - La Bilirrubina (Official Video)', artist:'Bomba Estéreo', genre:''},
+    {n:'#1081', t:'Bomba Estéreo - Internacionales (Official Video)', artist:'Bomba Estéreo', genre:''},
+    {n:'#1082', t:'EDE&Miguel Gil | La complicidad | PreParty Switch On Madrid 2018', artist:'Switch On Madrid', genre:''},
+    {n:'#1083', t:'Original Koffee - Toast (Official Video)', artist:'Original Koffee', genre:''},
+    {n:'#1084', t:'Tinie - Whoppa (feat. Sofia Reyes and Farina) [Official Video]', artist:'Sofia Reyes', genre:''},
+    {n:'#1085', t:'Doja Cat - Rules (Official Video)', artist:'Doja Cat', genre:''},
+    {n:'#1086', t:'Dillon Cooper - State of Elevation (Official Music Video)', artist:'The Dillon Cooper', genre:''},
+    {n:'#1087', t:'QUILATE feat CAPAZ, RAPSUSKLEI, SHABU ONE SHANT - CURIOSITY', artist:'SANTA SUERTE MUSIC', genre:''},
+    {n:'#1088', t:'NATHY PELUSO - NATIKILLAH', artist:'NATHY PELUSO', genre:''},
+    {n:'#1089', t:'Nathy Peluso - La Sandunguera', artist:'NATHY PELUSO', genre:''},
+    {n:'#1090', t:'Major Lazer - Diplomatico (feat. Guaynaa) [Official Music Video]', artist:'Major Lazer Official', genre:''},
+    {n:'#1091', t:'Sebastián Yatra, Manuel Turizo, Beéle - VAGABUNDO (Official Video)', artist:'Sebastián Yatra', genre:''},
+    {n:'#1092', t:'PTAZETA || BZRP Music Sessions #45/66', artist:'Bizarrap', genre:''},
+    {n:'#1093', t:'NATHY PELUSO || BZRP Music Sessions #36/66', artist:'Bizarrap', genre:''},
+    {n:'#1094', t:'Kidd Keo - MAMA (Official Video)', artist:'Kidd Keo', genre:''},
+    {n:'#1095', t:'Green Valley Feat.TOSKO Videoclip HD Oficial- Gente Real', artist:'greenvalleyband', genre:''},
+    {n:'#1096', t:'JUSEPH X QUEVEDO | YATEKOMO (Video Oficial)', artist:'Juseph', genre:''},
+    {n:'#1097', t:'Tego Calderon x Arcangel x Bad Bunny - CORONAMOS (Official Video)', artist:'URBAN FLOW LATAN', genre:''},
+    {n:'#1098', t:'Bad Bunny - CALLE Y CIELO (CANCION NUEVA)', artist:'MadBunny', genre:''},
+    {n:'#1099', t:'Nikone - Rain Rain Rain (Videoclip Official)', artist:'NIKONE EPK', genre:''},
+    {n:'#1100', t:'Malviviendo - SFDK (Videoclip Oficial)', artist:'malviviendo', genre:''},
+    {n:'#1101', t:'HARD GZ & DOLLAR - CAE LA NOCHE [PROD. KVINZ (VIDEOCLIP)]', artist:'HARD GZ', genre:''},
+    {n:'#1102', t:'AYAX - OCTUBRE | VIDEOCLIP', artist:'AYAX Y PROK', genre:''},
+    {n:'#1103', t:'AYAX Y PROK FT AKAPELLAH - DE GRANÁ A MARACAY | VIDEOCLIP (PROD BLASFEM)', artist:'AYAX Y PROK', genre:''},
+    {n:'#1104', t:'FOYONE ft. AYAX Y PROK - Tierra de Bandios [Prod. Blasfem] (Videoclip)', artist:'FOYONE', genre:''},
+    {n:'#1105', t:'HARD GZ - AFROHARD (Prod. BAGHIRA)', artist:'HARD GZ', genre:''},
+    {n:'#1106', t:'HARD GZ & GAROLO FT. AYAX Y PROK - CONEJO BLANCO [( PROD.BLASFEM) VIDEOCLIP]', artist:'HARD GZ', genre:''},
+    {n:'#1107', t:'HARD GZ & GAROLO - ARBOLES DE PIEDRA (VIDEOCLIP)', artist:'HARD GZ', genre:''},
+    {n:'#1108', t:'A$AP Rocky & $UICIDEBOY$, Pouya, GERM - PLAYA', artist:'GANGSTER GANG', genre:''},
+    {n:'#1109', t:'Dark Boy - Gangsta Track feat. Tupac & 50 Cent', artist:'Alex\'s List', genre:''},
+    {n:'#1110', t:'Timmy Trumpet & Savage - Freaks (Official Video)', artist:'SteveAATW', genre:''},
+    {n:'#1111', t:'Tyga - Ayy Macarena (Official Video)', artist:'Tyga', genre:''},
+    {n:'#1112', t:'No Fun Ft. Wynn (Official Lyric Video)', artist:'ThatsKramer', genre:''},
+    {n:'#1113', t:'Michael Jackson - They Don\'t Care About Us', artist:'Michael Jackson', genre:''},
+    {n:'#1114', t:'Bad Bunny ft. Chencho Corleone - Me Porto Bonito (Video Oficial) | Un Verano Sin Ti', artist:'Bad Bunny', genre:''},
+    {n:'#1115', t:'DaBaby - ROCKSTAR (Live From The BET Awards/2020) ft. Roddy Ricch', artist:'DaBaby', genre:''},
+    {n:'#1117', t:'Rihanna - Work (Explicit) ft. Drake', artist:'Rihanna', genre:''},
+    {n:'#1118', t:'Shakira - Soltera (Official Video)', artist:'Shakira', genre:''},
+    {n:'#1119', t:'Queen Omega, Little Lion Sound – No Love Dubplate (Official Lyric Video)', artist:'Queen Omega', genre:''},
+    {n:'#1120', t:'COSTA feat. BEBE - FICCIÓN - prod. MYGAL X (OFFICIAL MUSIC VIDEO)', artist:'GRIMEY MUSIC', genre:''},
+    {n:'#1121', t:'AYAX - ZINEDINE (PROD. HUECO PRODS) VIDEOCLIP', artist:'AYAX Y PROK', genre:''},
+    {n:'#1122', t:'HARD GZ & NIKONE - LO REAL (PROD.DUALY)', artist:'HARD GZ', genre:''},
+    {n:'#1123', t:'Dollar Selmouni ft. JC Reyes - No saben como vivo (Videoclip Oficial)', artist:'DOLLAR SELMOUNI', genre:''},
+    {n:'#1124', t:'Dollar Selmouni - Salud y dinero (Videoclip Oficial)', artist:'DOLLAR SELMOUNI', genre:''},
+    {n:'#1125', t:'Leiva - Caída Libre (Video Oficial) ft. Robe', artist:'Leiva', genre:''},
+    {n:'#1126', t:'El Chojin - El Mundo Sigue Girando (Video Oficial)', artist:'El Chojin', genre:''},
+    {n:'#1127', t:'Capaz - Dando la Nota ft. Kase.O', artist:'CapazVEVO', genre:''},
+    {n:'#1128', t:'Leiva - Como Si Fueras a Morir Mañana', artist:'Leiva', genre:''},
+    {n:'#1129', t:'Guitarricadelafuente - Agua y Mezcal (Vídeo Oficial)', artist:'Guitarricadelafuente', genre:''},
+    {n:'#1130', t:'Guitarricadelafuente - abc (Vídeo Oficial)', artist:'Guitarricadelafuente', genre:''},
+    {n:'#1131', t:'Pole. - Amor De Verbena ft. Dani Martin', artist:'POLE.', genre:''},
+    {n:'#1132', t:'La Maravillosa Orquesta del Alcohol - Héroes Del Sábado', artist:'La M.O.D.A', genre:''},
+    {n:'#1133', t:'Leiva - Gigante (Video Oficial)', artist:'Leiva', genre:''},
+    {n:'#1134', t:'C. Tangana - LATE CHECKOUT II', artist:'C. Tangana', genre:''},
+    {n:'#1135', t:'Ede - Lobas', artist:'Directo en Lavapies', genre:''},
+    {n:'#1136', t:'We Are Your Friends - Cole\'s Memories [Movie Version]', artist:'C P', genre:''},
+    {n:'#1137', t:'this is all my soul needs', artist:'Gravagerz', genre:''},
+    {n:'#1138', t:'LIZOT, Sonny Wern, 1 World, Dorrough Music - LA LA LA (Official Lyric Video)', artist:'LIZOT y Sonny Wern', genre:''},
+    {n:'#1139', t:'Dimitri Vegas & Like Mike & Tiësto & Dido & W&W - Thank You (Not So Bad) (Official video)', artist:'Dimitri Vegas & Like Mike', genre:''},
+    {n:'#1140', t:'Dimitri Vegas & Like Mike & W&W & Marnik – Yeah (Official Music Video)', artist:'Dimitri Vegas & Like Mike', genre:''},
+    {n:'#1141', t:'Hey Baby (Drop It To The Floor) (BASS DEMON x Mr Demon Techno Remix)', artist:'wannabebroken', genre:''},
+    {n:'#1142', t:'GDFR (BOVSKI Remix)', artist:'BOVSKI', genre:''},
+    {n:'#1143', t:'Alors on dance - BMW NIGHTS', artist:'a1iyevvsFx', genre:''},
+    {n:'#1144', t:'Yellow Claw - DJ Turn It Up [Official Full Stream]', artist:'Mad Decent', genre:''},
+    {n:'#1145', t:'GANGSTER IN JUNGLE - MY GANG (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1146', t:'GANGSTER IN JUNGLE - LONE WOLF (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1147', t:'DJ TRIVUX - Gas Pedal (Original Mix)', artist:'DJ Trivux', genre:''},
+    {n:'#1148', t:'ECHO NATION – Wolves Don\'t Sleep [GANGSTER TRAP]', artist:'ECHO NATION', genre:''},
+    {n:'#1149', t:'BEND & LOCK - Kybba x Blaiz Fayah – Dancehall Energy (Sean Paul Style)', artist:'DJ Nova Chill', genre:''},
+    {n:'#1150', t:'GANGSTER ON WHEELS - Play & Win', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1151', t:'DJ TRIVUX - ATMOSPHERE (Original Mix)', artist:'DJ Trivux', genre:''},
+    {n:'#1152', t:'ILIXOR & TRIFUNOX - BANG BANG (Original Mix)', artist:'ILIXOR MUSIC y TRIFUNOX', genre:''},
+    {n:'#1153', t:'Skrillex & Mr. Oizo - RATATA (KREAM Remix) ft. Missy Elliot', artist:'KREAM', genre:''},
+    {n:'#1154', t:'GANGSTER IN JUNGLE - CEO OF THE STREETS (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1155', t:'GANGSTER IN JUNGLE - KARMA (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1156', t:'GANGSTER IN JUNGLE - FAST and FURIOUS (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1157', t:'GANGSTER IN JUNGLE - LA FAMILIA (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1158', t:'GANGSTER IN JUNGLE - MONSTER MODE ON (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1159', t:'GANGSTER IN JUNGLE - INVINCIBLE (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1160', t:'GANGSTER IN JUNGLE - SUPERLIFE (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1161', t:'GANGSTER IN JUNGLE - NO SPEED LIMIT (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1162', t:'Major Lazer & Machel Montano - Champagne', artist:'Major Lazer Official y Machel Montano', genre:''},
+    {n:'#1163', t:'GANGSTER IN JUNGLE - WEEKEND (GANGSTER TRAP)', artist:'GANGSTER IN JUNGLE', genre:''},
+    {n:'#1164', t:'XENRO - Shockline (Original Mix)', artist:'XENRO', genre:''},
+    {n:'#1165', t:'Do you agree? ukgarage remix boilerroom trance', artist:'BOVSKI', genre:''},
+    {n:'#1166', t:'ECHO NATION – No Rules [GANGSTER TRAP]', artist:'ECHO NATION', genre:''},
+    {n:'#1167', t:'Gangster Music | Rockstar ft. 21 Savage (REMİX)', artist:'Gangsta Design', genre:''},
+    {n:'#1168', t:'Tiësto & Ava Max - The Motto (BL Official Remix) | CAR VIDEO 4K', artist:'BL Official', genre:''},
+    {n:'#1169', t:'J Balvin Willy William - Mi Gente (NORTKASH Remix)', artist:'Boosted Music', genre:''},
+    {n:'#1170', t:'Dj Kantik - Teriyaki Boyz - Tokyo Drift & Sean Paul - Temperature (Remix)', artist:'DJ Kantik', genre:''},
+    {n:'#1171', t:'KEAN DYSSO - Give it to Me (TikTok Techno Trending Remix)', artist:'HELLFXRMANCE', genre:''},
+    {n:'#1172', t:'KEAN DYSSO - Keep Rollin Sidewayz', artist:'KEAN DYSSO', genre:''},
+    {n:'#1173', t:'Unstoppable - Gangster (Original Mix)', artist:'Unstoppable Gangsta Music', genre:''},
+    {n:'#1174', t:'MXEEN - Black Monk | TikTok Trend The Fate of the Furious', artist:'MXEEN', genre:''},
+    {n:'#1175', t:'The Crew - Get Low [GMV]', artist:'KP7 Epic Videos', genre:''},
+    {n:'#1176', t:'Okean Elzy - Obijmy (Callmearco Remix) - Fast & Furious [Chase Scene] 4K', artist:'Aleks Born', genre:''},
+    {n:'#1177', t:'Lil Jon, 2Pac, Eminem & Ken Block - Fast Lane 2 (2023)', artist:'Van Tahoe', genre:''},
+    {n:'#1178', t:'tokyo drift remix AMV Ken Block', artist:'GLA ASSASSIN', genre:''},
+    {n:'#1179', t:'My humps my humps techno remix boilerroom rave', artist:'BOVSKI', genre:''},
+    {n:'#1180', t:'Always fun playing with Cloudy novah techno', artist:'Novah', genre:''},
+    {n:'#1181', t:'Mark Ronson ft.Bruno Mars - Uptown Funk (Dan Absent Remix)', artist:'Dan Absent', genre:''},
+    {n:'#1182', t:'Shaggy – Hey Sexy Lady ft. Brian & Tony Gold | Afro House Remix', artist:'RavemMusic', genre:''},
+    {n:'#1183', t:'MASKOVA - Feel (Original Mix)', artist:'MASKOVA', genre:''},
+    {n:'#1184', t:'Bad Bunny - ME QUEDA BIEN (Nuevo Hit 2026)', artist:'MadBunny', genre:''},
+    {n:'#1185', t:'GW - No Risk No Story [GANGSTER TRAP]', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1186', t:'NNF – Sexy', artist:'NN.F Studio', genre:''},
+    {n:'#1187', t:'FRHAD - Engine', artist:'Butch U Official', genre:''},
+    {n:'#1188', t:'BLACKVETTE - Blacked BMW', artist:'KEAN DYSSO', genre:''},
+    {n:'#1189', t:'Ishaia', artist:'Sylarz', genre:''},
+    {n:'#1190', t:'SNY - King Kong (Official Music Video)', artist:'SNY CLUB', genre:''},
+    {n:'#1191', t:'THE M.O.B (Original Version)', artist:'FLORÉN FLO Beats', genre:''},
+    {n:'#1192', t:'SNY - BIG BANG (Official Music Video)', artist:'SNY CLUB', genre:''},
+    {n:'#1193', t:'SNY - Control (Original Mix)', artist:'SNY CLUB', genre:''},
+    {n:'#1194', t:'MY GAME MY RULES | Gangster Trap Deep-House Hip-Hop Perfect For Car Rides', artist:'FLORÉN FLO Beats', genre:''},
+    {n:'#1195', t:'In the Trap We Trust [GANGSTER TRAP]', artist:'Trap Cartel Music', genre:''},
+    {n:'#1196', t:'Kings Don\'t Ask [GANGSTER TRAP]', artist:'Trap Cartel Music', genre:''},
+    {n:'#1197', t:'Masked Wolf - Astronaut In The Ocean (Soner Karaca Remix) | Car Music Video', artist:'Notyfi', genre:''},
+    {n:'#1198', t:'Axel Cooper, Fyex & JVLS - Shut Your Mouth (feat. PAIN)', artist:'OnlyBass', genre:''},
+    {n:'#1199', t:'VXY – I CAN [GANGSTER TRAP]', artist:'VXY GANGSTER', genre:''},
+    {n:'#1200', t:'VXY – BLESSINGS IN THE BASEMENT [GANGSTER TRAP]', artist:'VXY GANGSTER', genre:''},
+    {n:'#1201', t:'SNY - King is Back (Official Music Video)', artist:'SNY CLUB', genre:''},
+    {n:'#1202', t:'Gangsta Dreams (Shadow Bass King)', artist:'Shadow Bass King', genre:''},
+    {n:'#1203', t:'VXY – MY CODE [GANGSTER TRAP]', artist:'VXY GANGSTER', genre:''},
+    {n:'#1204', t:'SYNTHETIC - Hard Techno & Neo Rave', artist:'heinADT.', genre:''},
+    {n:'#1205', t:'BOVSKI - Left Me For Dead', artist:'BOVSKI', genre:''},
+    {n:'#1206', t:'KAZE - TA TO CLIN FT BETO', artist:'KAZE', genre:''},
+    {n:'#1207', t:'Travis Scott - Goosebumps (HVME Remix) | Car Music', artist:'Notyfi', genre:''},
+    {n:'#1208', t:'Directo Al Millon', artist:'La Conecta AI', genre:''},
+    {n:'#1209', t:'Should I drop this?! ukgarage suckerforpain remix boilerroom', artist:'BOVSKI', genre:''},
+    {n:'#1210', t:'Stromae - Alors On Danse (Coffee Afro House Remix)', artist:'Coffee Afro House', genre:''},
+    {n:'#1211', t:'Numb – Linkin Park | Afro House Remix', artist:'AFRO CODE', genre:''},
+    {n:'#1212', t:'Ricky Hombre Libre - Freedom (Videoclip)', artist:'Ricky Hombre Libre', genre:''},
+    {n:'#1213', t:'AVAION | For The Vibes (LIVE SET)', artist:'AVAION', genre:''},
+    {n:'#1214', t:'AVAION, RANI - SLOWLY (Official Video)', artist:'AVAION', genre:''},
+    {n:'#1216', t:'Myke Towers - Lala (Tech House Remix)', artist:'Diex : Music', genre:''},
+    {n:'#1217', t:'Kaoma – LAMBADA INSANE BASS DROP (Afro House Remix)', artist:'AFRO CODE', genre:''},
+    {n:'#1218', t:'2ŁØT & Aloe Blacc - Immortal (Steve Aoki Remix) [Official Lyric Video]', artist:'Steve Aoki', genre:''},
+    {n:'#1219', t:'GW - UNBREAKABLE [GANGSTER TRAP]', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1220', t:'GW - My Gang [GANGSTER TRAP]', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1221', t:'GW - Tears In My Eyes [GANGSTER TRAP]', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1222', t:'GW - Wolf Among Sheep [GANGSTER TRAP]', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1223', t:'Jee Tea - Blurred Party (Official Audio)', artist:'Jee Tea', genre:''},
+    {n:'#1224', t:'Fake Blood - I Think I Like It (We Are Your Friends Soundtrack)', artist:'YANNICK ZAEZ', genre:''},
+    {n:'#1225', t:'ACID', artist:'Novah', genre:''},
+    {n:'#1226', t:'SISTEM ERROR', artist:'GIØ - Topic', genre:''},
+    {n:'#1227', t:'WTF', artist:'Script - Topic', genre:''},
+    {n:'#1228', t:'ROSE & Bruno Mars - APT. (TPA Remix)', artist:'TPA', genre:''},
+    {n:'#1229', t:'Live My Life (JKR & RPM Remix)', artist:'JKR', genre:''},
+    {n:'#1230', t:'Noisestorm - Crab Rave [Monstercat Release]', artist:'Monstercat Instinct', genre:''},
+    {n:'#1231', t:'GW - Don\'t Play With Me [GANGSTER TRAP]', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1232', t:'GW - Power [GANGSTER TRAP]', artist:'GANGSTER ON WHEELS', genre:''},
+    {n:'#1233', t:'Stolen Dance (Hypertechno)', artist:'Macon', genre:''},
+    {n:'#1234', t:'Novah, Ceres - Papi', artist:'Novah', genre:''},
+    {n:'#1235', t:'Mahmut Orhan - And Go [REMIX]', artist:'Dim Angelo', genre:''},
+    {n:'#1236', t:'KAI', artist:'MOSKA', genre:''},
+    {n:'#1237', t:'PSYTRANCE - System Of A Down - Toxicity (Trampsta & Heavy Drop Remix)', artist:'Psycodelize Music', genre:''},
+    {n:'#1238', t:'Teddy Swims - Lose Control (Bonne Extended Remix)', artist:'Bonne Plus', genre:''},
+    {n:'#1239', t:'High all the time techno novah', artist:'Novah', genre:''},
+    {n:'#1240', t:'What is this MASHUP Novah? dj djane musicproducer', artist:'UFO Network y K4LEVRA', genre:''},
+    {n:'#1241', t:'ERFURT WAS HOT FULL SET ONLINE novah', artist:'Novah', genre:''},
+    {n:'#1242', t:'Best time in France novah', artist:'Novah', genre:''},
+    {n:'#1243', t:'Best place novah', artist:'Novah', genre:''},
+    {n:'#1244', t:'Heyy, you there novah', artist:'Novah', genre:''},
+    {n:'#1245', t:'Antes de que cuente diez - Fito & Fitipaldis (HARDSTYLE REMIX)', artist:'Empi', genre:''},
+    {n:'#1246', t:'Se lo que hicisteis - Melendi (TECHNO REMIX)', artist:'Empi', genre:''},
+    {n:'#1248', t:'Extremoduro - So Payaso (Juanfran La Clave & Andy Acedo Hype Techno Remix) HOMENAJE', artist:'Andy Acedo', genre:''},
+    {n:'#1249', t:'EXTREMODURO - La vereda de la puerta de atrás (LI4M short REMIX)', artist:'LI4M', genre:''},
+    {n:'#1250', t:'Benson Boone - Beautiful Things (Bonne Extended Remix)', artist:'Bonne Plus', genre:''},
+    {n:'#1251', t:'Basshunter - DotA (Blexxter & Stevxx Techno Remix 2.0)', artist:'Blexxter y Stevxx', genre:''},
+    {n:'#1252', t:'Habits (Stay High) (TECHNO KING Remix)', artist:'wannabebroken', genre:''},
+    {n:'#1253', t:'BRING ME TO LIFE (BOVSKI REMIX)', artist:'BOVSKI', genre:''},
+    {n:'#1254', t:'Sean Paul - No Lie ft. Dua Lipa (Lorcan x Jamie Remix)', artist:'FUTURISM', genre:''},
+    {n:'#1255', t:'Borderline', artist:'Ely Oaks', genre:''},
+    {n:'#1256', t:'House x Club Type Beat - Miami to LA | EDM Club Banger Instrumental', artist:'Klein Beats', genre:''},
+    {n:'#1258', t:'Bakermat & Goldfish feat. Marie Plassard - Games Continued', artist:'Bakermat', genre:''},
+    {n:'#1259', t:'Love All Day (feat. Leela D) (Extended Mix)', artist:'Kisch - Topic', genre:''},
+    {n:'#1260', t:'GANGSTA RULES | Perfect Soundtrack For Deep-House Trap Hip-Hop Car Rides', artist:'FLORÉN FLO Beats', genre:''},
+    {n:'#1261', t:'TRINIX - Rooftop Live Session (Paris)', artist:'TRINIX', genre:''},
+    {n:'#1262', t:'WE CAN\'T STOP (BOVSKI Remix) | OUT NOW', artist:'BOVSKI', genre:''},
+    {n:'#1263', t:'Fever', artist:'Bassline Club Vibes', genre:''},
+    {n:'#1264', t:'Valexus - Mirrors (Lyric Video)', artist:'Valexus', genre:''},
+    {n:'#1265', t:'Disco Lines & Tinashe - No Broke Boys (Official Audio)', artist:'Disco Lines', genre:''},
+    {n:'#1266', t:'Bad Bunny - Una Velita (Tech House Remix) | Xteven', artist:'Xteven', genre:''},
+    {n:'#1267', t:'Mel C x BOVSKI Never Be The Same Again', artist:'BOVSKI', genre:''},
+    {n:'#1268', t:'Justin Bieber - YUKON (Gravagerz REMIX)', artist:'Gravagerz', genre:''},
+    {n:'#1269', t:'Of Monsters and Men - Little Talks (Carter Walsh Remix)', artist:'NALYRO', genre:''},
+    {n:'#1270', t:'BL3SS x Gravagerz - Afters (Official Lyric Video)', artist:'BL3SS', genre:''},
+    {n:'#1271', t:'BL3SS x CamrinWatsin - KISSES (BOVSKI Remix)', artist:'BOVSKI', genre:''},
+    {n:'#1272', t:'Vibez', artist:'Xvnty - Topic', genre:''},
+    {n:'#1273', t:'Katy Perry - This is how we do (Gravagerz REMIX)', artist:'Gravagerz', genre:''},
+    {n:'#1274', t:'Cammy Barnes - Whiskey Roll (Levi Heron Remix) (Official Lyric Video)', artist:'Xploded Music', genre:''},
+    {n:'#1275', t:'BOVSKI - Key To My Heart', artist:'BOVSKI', genre:''},
+    {n:'#1276', t:'Major Lazer ft. Busy Signal & Kybba - GANGSTA (Live in Brussels)', artist:'Major Lazer Official', genre:''},
+    {n:'#1277', t:'Kim - Confidence (Gravagerz REMIX)', artist:'Gravagerz', genre:''},
+    {n:'#1279', t:'FISHER X bbyclose - Blackberries (Han Conscious Remix) [House]', artist:'SAMOGON RECORDS', genre:''},
+    {n:'#1280', t:'Disconnected', artist:'James Hype', genre:''},
+    {n:'#1281', t:'Tita Lau - The Madonna (Feels Like)', artist:'Tita Lau', genre:''},
+    {n:'#1282', t:'Loud Luxury and Bryce Vine - I\'m Not Alright [Official HD Audio]', artist:'Bryce Vine', genre:''},
+    {n:'#1283', t:'Olly James x Yosuf - The Way I Are (Official Lyric Video)', artist:'Xploded Music', genre:''},
+    {n:'#1284', t:'Noah Edwards - Set Fire To The Rain (Official Lyric Video)', artist:'Xploded Music', genre:''},
+    {n:'#1285', t:'NS Boulevard - Boy You Gotta (Official Lyric Video)', artist:'Xploded Music', genre:''},
+    {n:'#1286', t:'MENTIS x Abi Flynn - Heaven (Official Lyric Video)', artist:'Xploded Music', genre:''},
+    {n:'#1287', t:'Sluggy Beats - Don\'t Stop The Music (Official Lyric Video)', artist:'Xploded Music', genre:''},
+    {n:'#1288', t:'BOVSKI - Walk (feat. Kwabs)', artist:'BOVSKI', genre:''},
+    {n:'#1289', t:'Jilax - Calabria (Remix)', artist:'Jilax', genre:''},
+    {n:'#1290', t:'James Hype - Waterfalls (ft. Sam Harper & Bobby Harvey)', artist:'James Hype', genre:''},
+    {n:'#1291', t:'Blair Muir - REHAB (Official Lyric Video)', artist:'Xploded Music', genre:''},
+    {n:'#1292', t:'THYPONYX - Seven Nation Army', artist:'THYPONYX', genre:''},
+    {n:'#1293', t:'Trikk x MEUTE - Raiva (Acoustic Version) | Live at Pukkelpop 2025', artist:'MEUTE', genre:''},
+    {n:'#1294', t:'Ofenbach - Wasted Love (feat. Lagique) [Official Music Video]', artist:'Ofenbach', genre:''},
+    {n:'#1295', t:'Worry', artist:'SOULO', genre:''},
+    {n:'#1296', t:'AVAION - Pieces (Official Video)', artist:'AVAION', genre:''},
+    {n:'#1297', t:'Victor Demé - Djoon Maya (Synapson Remix)', artist:'Mon Diamant', genre:''},
+    {n:'#1298', t:'Route 94 - My Love (Official Video) ft. Jess Glynne', artist:'Route 94', genre:''},
+    {n:'#1299', t:'NOVEMBER KID - more than friends', artist:'NOVEMBER KID', genre:''},
+    {n:'#1300', t:'Boulevard Of Broken Dreams', artist:'NOVEMBER KID', genre:''},
+    {n:'#1301', t:'NOVEMBER KID - Voyage,voyage', artist:'NOVEMBER KID', genre:''},
+    {n:'#1302', t:'AYYBO & Discip - 4 Ya Mind', artist:'blanc', genre:''},
+    {n:'#1303', t:'Peking Duk - Fire', artist:'The Vibe Guide', genre:''},
+    {n:'#1304', t:'Bakermat - Work It Out (Official Visualizer)', artist:'Bakermat', genre:''},
+    {n:'#1305', t:'FKJ - So Much to Me', artist:'Roche Musique', genre:''},
+    {n:'#1306', t:'FKJ - Lying Together', artist:'Roche Musique', genre:''},
+    {n:'#1307', t:'A Gozar', artist:'Albert Delgado - Topic', genre:''},
+    {n:'#1308', t:'Nosi - So Good (Lyric Video)', artist:'NOSI', genre:''},
+    {n:'#1309', t:'oskar med k - Make Me Feel (Official Video)', artist:'oskar med k', genre:''},
+    {n:'#1310', t:'Mari Froes x TRINIX - Vaitimbora (Official Music Video)', artist:'Mari Froes', genre:''},
+    {n:'#1311', t:'LAGOS IN PARIS - Faya ft. ayisi (Official Music Video)', artist:'LAGOS IN PARIS', genre:''},
+    {n:'#1312', t:'AVAION - Keep On Dancing (Official Video)', artist:'AVAION', genre:''},
+    {n:'#1313', t:'AVAION - Call my name (Official Lyric Video)', artist:'AVAION', genre:''},
+    {n:'#1314', t:'Imagine Dragons - Shots (Gravagerz REMIX)', artist:'Gravagerz', genre:''},
+    {n:'#1315', t:'Franky Wah - Make Me Feel Free (Official Video)', artist:'Franky Wah', genre:''},
+    {n:'#1316', t:'Sonny Fodera, Jazzy, D.O.D - Somedays [Official Music Video]', artist:'Sonny Fodera', genre:''},
+    {n:'#1317', t:'Movin & Groovin', artist:'Sebastian Banks', genre:''},
+    {n:'#1318', t:'PAWSA - TOO COOL TO BE CARELESS', artist:'PAWSA', genre:''},
+    {n:'#1319', t:'John Summit - La Danza', artist:'John Summit', genre:''},
+    {n:'#1320', t:'Baianá (Original mix)', artist:'Release - Topic', genre:''},
+    {n:'#1321', t:'BAILA MI CUMBIA (Latin Tech House)', artist:'Romey - Topic', genre:''},
+    {n:'#1322', t:'Son Ilusiones - Los Chichos Afro House Remix, Oscar Combo x Juanfran La Clave', artist:'OSCAR COMBO', genre:''},
+    {n:'#1323', t:'Tom Santa - Rainfall (Praise You) | Official Lyric Video', artist:'Tom Santa', genre:''},
+    {n:'#1324', t:'Candela', artist:'Phebo - Topic', genre:''},
+    {n:'#1325', t:'J. Cole - G.O.M.D', artist:'J. Cole', genre:''},
+    {n:'#1326', t:'Tems - Me & U (SEVENTH Remix) [Afro House]', artist:'SEVENTH', genre:''},
+    {n:'#1327', t:'Mr. Probz - Space for Two | Red Bull Music Uncut', artist:'Mr. Probz', genre:''},
+    {n:'#1328', t:'Bakermat - One Day (Vandaag) (Videoclip)', artist:'Bakermat', genre:''},
+    {n:'#1329', t:'Khalid - Suncity (Official Audio) ft. Empress Of', artist:'Khalid', genre:''},
+    {n:'#1330', t:'Lola Young - Messy (NOVEMBER KID Remix)', artist:'NOVEMBER KID', genre:''},
+    {n:'#1331', t:'Omah Lay - soso (Official Music Video)', artist:'Omah Lay', genre:''},
+    {n:'#1332', t:'Omah Lay - Holy Ghost [Official Music Video]', artist:'Omah Lay', genre:''},
+    {n:'#1333', t:'Choco (feat. mike blue)', artist:'Verssace - Topic', genre:''},
+    {n:'#1334', t:'1da Banton - No Wahala (Official Video)', artist:'1da Banton', genre:''},
+    {n:'#1335', t:'To Build a Home - The Cinematic Orchestra', artist:'morriseythemonkey', genre:''},
+    {n:'#1336', t:'Cordae - RNP (feat. Anderson .Paak) [Official Lyric Video]', artist:'Cordae', genre:''},
+    {n:'#1337', t:'GoldLink - Zulu Screams (Official Video) ft. Maleek Berry, Bibi Bourelly', artist:'GoldLink', genre:''},
+    {n:'#1338', t:'Gravagerz - Chihiro (Official Music Video)', artist:'Gravagerz', genre:''},
+    {n:'#1339', t:'Jorja Smith - Be Honest (feat. Burna Boy)', artist:'Jorja Smith', genre:''},
+    {n:'#1340', t:'LAGOS IN PARIS - Afro G Western (Official Music Video)', artist:'LAGOS IN PARIS', genre:''},
+    {n:'#1341', t:'Congo to Cuba (Official Putumayo Version)', artist:'Putumayo', genre:''},
+    {n:'#1342', t:'LAGOS IN PARIS - Mali Spirit (Official Music Video)', artist:'LAGOS IN PARIS', genre:''},
+    {n:'#1343', t:'Quedate Luna', artist:'TRINIX', genre:''},
+    {n:'#1344', t:'Kish, JMANI - Dopamine (prod. GIVANO)', artist:'Kish', genre:''},
+    {n:'#1345', t:'Os Tincoãs - Deixa A Gira Girar (j g b edit)', artist:'millemon', genre:''},
+    {n:'#1346', t:'CKay ft. Olamide - WAHALA [Lyric Video]', artist:'CKay', genre:''},
+    {n:'#1347', t:'Shut up My Moms Calling (Sped up)', artist:'Hotel Ugly', genre:''},
+    {n:'#1348', t:'Figa de Guine\' Remix - Mari Froes x Kalipiano', artist:'KALIPIANO', genre:''},
+    {n:'#1349', t:'TRINIX x Rushawn - It\'s a beautiful day', artist:'TRINIX', genre:''},
   ];
- 
+
   // ── FIX: STREAM_URLS sin duplicado ───────────────────────────────────
   const STREAM_URLS = [
     'https://brm.rubenrodriguez-f-93.workers.dev/',
     'https://bubatronik.radiostream321.com/stream',
     'https://brm.rubenrodriguez-f-93.workers.dev/stream',
   ];
- 
+
+  // ── NUEVO v2026.08: playlist de origen en YouTube (1.380 vídeos) ──────
+  // Fuente real del catálogo. Hasta tener el export con los videoId exactos,
+  // cada track sin audioSrc enlaza a una búsqueda en YouTube (no a un
+  // vídeo adivinado) para no arriesgar enlaces rotos o equivocados.
+  const YT_PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLc5KM2_2P5GEwM0HdkRvfKds575jjhylu';
+  function ytLinkFor(track) {
+    if (track.youtubeId) return 'https://www.youtube.com/watch?v=' + track.youtubeId;
+    if (track.isPlaceholder) return YT_PLAYLIST_URL;
+    const q = (track.artist + ' ' + track.t).replace(/\s+/g, ' ').trim();
+    return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q);
+  }
+
   // ── STATE ─────────────────────────────────────────────────────────────
   let currentIdx    = 0;
   let isPlaying     = false;
@@ -1290,7 +2654,7 @@
   let streamAttempt = 0;
   let audioCtx = null, analyser = null, sourceNode = null, rafId = null;
   let activeGenre = '', searchQuery = '', filteredTracks = [...TRACKS];
- 
+
   const audio     = document.getElementById('audioPlayer');
   const btnPlay   = document.getElementById('btnPlay');
   const npTitle   = document.getElementById('npTitle');
@@ -1301,7 +2665,7 @@
   const ctx2d     = canvas.getContext('2d');
   const modeDot   = document.getElementById('modeDot');
   const modeText  = document.getElementById('modeText');
- 
+
   // Restaurar volumen guardado
   const savedVol = localStorage.getItem('brm_volume');
   if (savedVol !== null) {
@@ -1309,7 +2673,7 @@
     volSlider.value = savedVol;
     volLabel.textContent = Math.round(parseFloat(savedVol) * 100) + '%';
   } else { audio.volume = 0.8; }
- 
+
   // ── MODE INDICATOR ────────────────────────────────────────────────────
   function setModeIndicator(mode) {
     modeDot.className = 'mode-dot';
@@ -1323,15 +2687,15 @@
       modeText.textContent = 'EN ESPERA — PULSA PLAY';
     }
   }
- 
+
   // ── TICKER ────────────────────────────────────────────────────────────
   function initTicker() {
-    const text = '🎵 BUBATRONIK_BRM · FRECUENCIA SANT SALVADOR · OPEN FORMAT RADIO · LIVE 24/7 · VERMUT CADA DOMINGO 12H · 709+ TRACKS EN COLECCIÓN · INFO & PROGRAMAS EN brm.worldmos.info · WORLDMOS · AGUAFLOW · DPNGAME · LA MANADA SALVAJE · ¡AUUUAUUU! 🐺 · ';
+    const text = '🎵 BUBATRONIK_BRM · FRECUENCIA SANT SALVADOR · OPEN FORMAT RADIO · LIVE 24/7 · VERMUT CADA DOMINGO 12H · 1.397 TRACKS EN COLECCIÓN · INFO & PROGRAMAS EN brm.worldmos.info · WORLDMOS · AGUAFLOW · DPNGAME · LA MANADA SALVAJE · ¡AUUUAUUU! 🐺 · ';
     const full = text.repeat(5);
     const track = document.getElementById('tickerTrack');
     track.innerHTML = '<span>' + full + '</span><span>' + full + '</span>';
   }
- 
+
   // ── CLOCK ─────────────────────────────────────────────────────────────
   function initClock() {
     function tick() {
@@ -1342,7 +2706,7 @@
     }
     tick(); setInterval(tick, 1000);
   }
- 
+
   // ── EQ BARS ───────────────────────────────────────────────────────────
   function buildEqBars() {
     const c = document.getElementById('eqBars');
@@ -1352,7 +2716,7 @@
       c.appendChild(b);
     });
   }
- 
+
   // ── CANVAS VIZ ────────────────────────────────────────────────────────
   function resizeCanvas() {
     const r = canvas.getBoundingClientRect();
@@ -1360,7 +2724,7 @@
     canvas.height = r.height * (window.devicePixelRatio || 1);
     ctx2d.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
   }
- 
+
   function initAudioCtx() {
     if (audioCtx) return;
     try {
@@ -1371,7 +2735,7 @@
       sourceNode.connect(analyser); analyser.connect(audioCtx.destination);
     } catch(e) { console.warn('Web Audio API no disponible'); }
   }
- 
+
   function drawViz() {
     const w = canvas.getBoundingClientRect().width;
     const h = canvas.getBoundingClientRect().height;
@@ -1398,7 +2762,7 @@
     ctx2d.globalAlpha = 1;
     rafId = requestAnimationFrame(drawViz);
   }
- 
+
   function drawStaticBars(w, h) {
     const count = 40; const barW = (w / count) - 1;
     ctx2d.fillStyle = '#f59e0b';
@@ -1411,7 +2775,7 @@
     }
     ctx2d.globalAlpha = 1;
   }
- 
+
   // ── PLAYLIST ──────────────────────────────────────────────────────────
   function filterTracks() {
     const q = searchQuery.toLowerCase();
@@ -1421,7 +2785,7 @@
       return ms && mg;
     });
   }
- 
+
   function renderPlaylist() {
     const scroll = document.getElementById('playlistScroll');
     filterTracks();
@@ -1433,36 +2797,46 @@
       if (track.isSession) classes += ' session-track';
       row.className = classes;
       const extraInfo = track.isSession ? `<span class="playable-badge">▶ REPRODUCIBLE</span>` : '';
+      const showYtBtn = !track.audioSrc;
+      const ytTitle = track.isPlaceholder ? 'Abrir la playlist completa en YouTube' : 'Buscar esta canción en YouTube';
       row.innerHTML = `
         <div class="track-num">${track.n}</div>
         <div class="track-info">
           <div class="track-title" title="${track.t}">${track.t}</div>
           <div class="track-artist">${track.artist}${extraInfo}</div>
         </div>
-        <div class="track-icon">${isActive ? '♫' : (track.isSession ? '▶' : '·')}</div>`;
+        <div class="track-icon">${isActive ? '♫' : (track.isSession ? '▶' : '·')}</div>
+        <div class="track-yt" title="${ytTitle}" style="visibility:${showYtBtn ? 'visible' : 'hidden'}">🔎</div>`;
       row.addEventListener('click', () => selectTrack(idx));
+      const ytBtn = row.querySelector('.track-yt');
+      if (showYtBtn) {
+        ytBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          window.open(ytLinkFor(track), '_blank', 'noopener');
+        });
+      }
       scroll.appendChild(row);
     });
     document.getElementById('trackBadge').textContent =
-      (filteredTracks.length === TRACKS.length ? '709' : filteredTracks.length) + ' TRACKS';
+      (filteredTracks.length === TRACKS.length ? TRACKS.length : filteredTracks.length) + ' TRACKS';
   }
- 
+
   // ── SELECT TRACK ─────────────────────────────────────────────────────
   function selectTrack(idx) {
     currentIdx = idx;
     const track = filteredTracks[idx];
     if (!track) return;
- 
+
     npTitle.style.opacity = '0'; npArtist.style.opacity = '0';
     setTimeout(() => {
       npTitle.textContent  = track.t;
       npArtist.textContent = track.artist;
       npTitle.style.opacity = '1'; npArtist.style.opacity = '1';
     }, 200);
- 
+
     renderPlaylist();
     updateMediaSession(track);
- 
+
     if (track.audioSrc) {
       // Track con URL propia — reproducir directamente
       isSessionMode = true;
@@ -1489,7 +2863,7 @@
       }
     }
   }
- 
+
   // ── FIX: startLiveStream() — YA NO abre openNativePlayer() automáticamente ──
   function startLiveStream() {
     streamAttempt = 0;
@@ -1499,7 +2873,7 @@
     audio.play().catch(() => tryNextStream());
     // NOTA: openNativePlayer() eliminado — solo se llama desde el botón manual
   }
- 
+
   function tryNextStream() {
     streamAttempt++;
     if (streamAttempt < STREAM_URLS.length) {
@@ -1514,12 +2888,12 @@
       streamAttempt = 0;
     }
   }
- 
+
   // ── TOGGLE PLAY ───────────────────────────────────────────────────────
   async function togglePlay() {
     if (!audioCtx) initAudioCtx();
     if (audioCtx && audioCtx.state === 'suspended') await audioCtx.resume();
- 
+
     if (isPlaying) {
       audio.pause();
       audio.src = '';
@@ -1541,7 +2915,7 @@
       }
     }
   }
- 
+
   // ── AUDIO EVENTS ──────────────────────────────────────────────────────
   audio.addEventListener('play', () => {
     isPlaying = true;
@@ -1554,14 +2928,14 @@
       setModeIndicator('live');
     }
   });
- 
+
   audio.addEventListener('pause', () => {
     isPlaying = false;
     btnPlay.textContent = '▶';
     btnPlay.classList.remove('is-playing');
     document.body.classList.remove('is-playing-body');
   });
- 
+
   audio.addEventListener('ended', () => {
     isPlaying = false;
     btnPlay.textContent = '▶';
@@ -1570,7 +2944,7 @@
     setModeIndicator('idle');
     toast('✓ Reproducción finalizada');
   });
- 
+
   audio.addEventListener('error', () => {
     if (isSessionMode) {
       toast('⚠️ Error reproduciendo — abriendo en Drive...');
@@ -1579,7 +2953,7 @@
       tryNextStream();
     }
   });
- 
+
   // ── BUTTONS ───────────────────────────────────────────────────────────
   btnPlay.addEventListener('click', togglePlay);
   document.getElementById('btnPrev').addEventListener('click', () => {
@@ -1590,7 +2964,7 @@
     const next = (currentIdx + 1) % filteredTracks.length;
     selectTrack(next);
   });
- 
+
   // ── VOLUME ────────────────────────────────────────────────────────────
   volSlider.addEventListener('input', () => {
     const v = parseFloat(volSlider.value);
@@ -1598,12 +2972,12 @@
     localStorage.setItem('brm_volume', v);
     document.querySelector('.vol-icon').textContent = v === 0 ? '🔇' : v < 0.4 ? '🔉' : '🔊';
   });
- 
+
   // ── SEARCH ────────────────────────────────────────────────────────────
   document.getElementById('searchInput').addEventListener('input', e => {
     searchQuery = e.target.value; currentIdx = 0; renderPlaylist();
   });
- 
+
   // ── GENRE FILTER ──────────────────────────────────────────────────────
   document.getElementById('genreTags').addEventListener('click', e => {
     const tag = e.target.closest('.genre-tag'); if (!tag) return;
@@ -1614,7 +2988,7 @@
     currentIdx = 0; renderPlaylist();
     toast('🎵 Filtro: ' + (activeGenre || 'Todos los géneros'));
   });
- 
+
   // ── STREAM STATUS ─────────────────────────────────────────────────────
   function setOnline(listeners) {
     document.querySelector('html').dataset.status = 'online';
@@ -1632,7 +3006,7 @@
     document.getElementById('listenerCount').textContent = '0';
     document.getElementById('freqListeners').textContent = '● OYENTES: 0';
   }
- 
+
   // ── MEDIA SESSION ────────────────────────────────────────────────────
   function updateMediaSession(track) {
     if (!('mediaSession' in navigator)) return;
@@ -1649,7 +3023,7 @@
     navigator.mediaSession.setActionHandler('previoustrack', () => document.getElementById('btnPrev').click());
     navigator.mediaSession.setActionHandler('nexttrack', () => document.getElementById('btnNext').click());
   }
- 
+
   // ── SHARE & NATIVE ────────────────────────────────────────────────────
   async function shareRadio() {
     const data = {
@@ -1668,7 +3042,7 @@
   }
   function openNativePlayer() { window.open('https://bubatronik.radiostream321.com/', '_blank', 'noopener'); }
   function openSession(url) { window.open(url, '_blank', 'noopener'); }
- 
+
   // ── TOAST ─────────────────────────────────────────────────────────────
   function toast(msg, duration = 3500) {
     const wrap = document.getElementById('toastWrap');
@@ -1677,8 +3051,12 @@
     wrap.appendChild(el);
     setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 400); }, duration);
   }
- 
+
   // ── TAB NAVIGATION ────────────────────────────────────────────────────
+  function goToTab(id) {
+    const tab = document.querySelector('.nav-tab[data-tab="' + id + '"]');
+    if (tab) tab.click();
+  }
   document.querySelectorAll('.nav-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const id = tab.dataset.tab;
@@ -1692,16 +3070,21 @@
       if (banner) banner.style.display = (id === 'radio') ? 'flex' : 'none';
     });
   });
- 
+  // Si llegamos con #tab-xxx (p.ej. desde brm.worldmos.info), activar esa pestaña
+  (function() {
+    const h = (location.hash || '').replace('#tab-', '');
+    if (h) goToTab(h);
+  })();
+
   // ── REVEAL OBSERVER ───────────────────────────────────────────────────
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
- 
+
   function triggerReveal(scope) {
     (scope || document).querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
   }
- 
+
   // ── KEYBOARD SHORTCUTS ────────────────────────────────────────────────
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT') return;
@@ -1709,16 +3092,16 @@
     if (e.code === 'KeyA' || e.code === 'ArrowLeft') document.getElementById('btnPrev').click();
     if (e.code === 'KeyD' || e.code === 'ArrowRight') document.getElementById('btnNext').click();
   });
- 
+
   // ── TRANSITIONS ───────────────────────────────────────────────────────
   npTitle.style.transition  = 'opacity 0.2s ease';
   npArtist.style.transition = 'opacity 0.2s ease';
- 
+
   // ── STATUS POLLING ────────────────────────────────────────────────────
   const BRM_WORKER = 'https://brm.rubenrodriguez-f-93.workers.dev';
   let _liveStatus = false;
   let _npInterval = null;
- 
+
   function checkStatus() {
     fetch(BRM_WORKER + '/status', { cache: 'no-store' })
       .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -1736,7 +3119,7 @@
           .catch(() => { setOffline(); _liveStatus = false; });
       });
   }
- 
+
   function _updateRSection(d) {
     const rows = document.querySelectorAll('.info-row');
     rows.forEach(row => {
@@ -1751,7 +3134,7 @@
       if (lText === 'OYENTES') val.textContent = d.listeners != null ? d.listeners : '---';
     });
   }
- 
+
   function fetchNowPlaying() {
     if (!_liveStatus) return;
     fetch(BRM_WORKER + '/nowplaying', { cache: 'no-store' })
@@ -1772,11 +3155,11 @@
       })
       .catch(() => {});
   }
- 
+
   if (_npInterval) clearInterval(_npInterval);
   _npInterval = setInterval(fetchNowPlaying, 15000);
   setTimeout(fetchNowPlaying, 3000);
- 
+
   // ── INIT ──────────────────────────────────────────────────────────────
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
@@ -1790,7 +3173,7 @@
   checkStatus();
   setInterval(checkStatus, 30000);
   drawViz();
- 
+
   setTimeout(() => toast('📻 BUBATRONIK_BRM · Frecuencia Sant Salvador · Pulsa ▶ para escuchar'), 900);
   </script>
 </body>
