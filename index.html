@@ -593,6 +593,22 @@
     .session-meta { font-size:var(--fs-xs); color:var(--muted); letter-spacing:1px; }
     .session-meta span { color:var(--amber4); }
     .session-tags { display:flex; gap:5px; flex-wrap:wrap; margin-top:4px; }
+
+    /* ARCHIVO DE PROGRAMAS — Noticias / 22 Minutos / Debates / Nanas */
+    .archive-cat { background:var(--bg3); border:1px solid var(--border2); border-radius:10px; margin-bottom:16px; overflow:hidden; }
+    .archive-cat:hover { border-color:var(--amber4); }
+    .archive-cat-head { display:flex; align-items:center; gap:14px; padding:18px 20px; border-bottom:1px solid var(--border); }
+    .archive-cat-icon { font-size:26px; line-height:1; }
+    .archive-cat-name { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--white); }
+    .archive-cat-schedule { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--amber); margin-top:2px; }
+    .archive-cat-count { margin-left:auto; font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); border:1px solid var(--border2); padding:4px 10px; border-radius:20px; white-space:nowrap; }
+    .archive-cat-desc { padding:14px 20px 4px; font-size:var(--fs-xs); color:var(--muted); line-height:1.7; }
+    .archive-cat-episodes { padding:6px 0; }
+    .archive-cat .session-row { padding:12px 20px; }
+    .archive-cat .session-row:hover { padding-left:18px; }
+    .archive-empty { padding:22px 20px 26px; text-align:center; font-size:var(--fs-xs); color:var(--muted2); font-style:italic; line-height:1.7; }
+    .archive-play { flex-shrink:0; width:34px; height:34px; display:flex; align-items:center; justify-content:center; border:1px solid var(--border2); border-radius:8px; color:var(--amber); text-decoration:none; transition:all .2s; }
+    .archive-play:hover { background:var(--amber); color:var(--bg); }
     .session-tag {
       font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:1px;
       text-transform:uppercase; padding:2px 7px; border-radius:3px;
@@ -792,8 +808,6 @@
       <button class="nav-tab active" data-tab="radio"       role="tab">📻 Radio</button>
       <button class="nav-tab"        data-tab="sessions"    role="tab">🎛️ Sesiones</button>
       <button class="nav-tab"        data-tab="programacion" role="tab">📅 Programación</button>
-      <button class="nav-tab"        data-tab="manada"      role="tab">🐺 La Manada</button>
-      <button class="nav-tab"        data-tab="teambuilding" role="tab">🏢 Team Building</button>
       <!-- Enlace externo al site de info — se abre en nueva pestaña -->
       <a class="nav-ext" href="https://brm.worldmos.info" target="_blank" rel="noopener" title="Info & Programas — brm.worldmos.info">
         📋 INFO &amp; PROGS <span class="nav-ext-icon">↗</span>
@@ -924,7 +938,7 @@
               <div class="behind-signal-links">
                 <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-inicio" target="_blank" rel="noopener">📖 Conoce el manifiesto</a>
                 <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-programas" target="_blank" rel="noopener">📅 Ver programas</a>
-                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-colabora" target="_blank" rel="noopener">🐺 Únete a la Manada</a>
+                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-manada" target="_blank" rel="noopener">🐺 Únete a la Manada</a>
               </div>
             </div>
           </div>
@@ -1003,7 +1017,7 @@
         <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">21</div><div class="session-info"><div class="session-title">SESIÓN 21</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
         <div class="session-row reveal" style="cursor:default; opacity:0.5;">
           <div class="session-num" style="color:var(--muted);">22</div>
-          <div class="session-info"><div class="session-title">SESIÓN 22 — Próximamente</div><div class="session-meta">En preparación · Fecha TBD · ¡Atento al vermut!</div><div class="session-tags"><span class="session-tag">Próximo</span></div></div>
+          <div class="session-info"><div class="session-title">SESIÓN 35 — Próximamente</div><div class="session-meta">En preparación · Fecha TBD · ¡Atento al vermut!</div><div class="session-tags"><span class="session-tag">Próximo</span></div></div>
           <span class="session-action" style="opacity:0.4;cursor:default;">⏳ Soon</span>
         </div>
       </div>
@@ -1016,176 +1030,19 @@
 
     <!-- ══ TAB: PROGRAMACIÓN ══ -->
     <div class="tab-panel" id="tab-programacion">
-      <div style="display:grid;grid-template-columns:1fr 380px;min-height:60vh;">
-        <div style="border-right:1px solid var(--border);">
-          <div class="sessions-header reveal"><div class="sessions-title">📅 PARRILLA BUBATRONIK</div></div>
-          <div style="padding:28px 36px;">
-            <div class="prog-grid">
-              <div class="prog-row reveal">
-                <div><div class="prog-time">00–10:30</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">📻 RADIO 24/7 (ALEATORIO)</div><div class="prog-desc">1.397 tracks en rotación Open Format. Sin algoritmos que decidan por ti. Shoutcast 128kbps vía Cloudflare Worker.</div><span class="prog-badge live">🔴 CONTINUO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">10:30</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">📰 NOTICIAS</div><div class="prog-desc">Boletín de 3–5 min: mundo → Europa → España → Catalunya → Camp de Tarragona → Manada.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">11:00</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">🎙️ 22 MINUTOS</div><div class="prog-desc">Voces de la Manada, entidades y colectivos locales que quieren compartir algo.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row vermut reveal">
-                <div><div class="prog-time">12:00</div><div class="prog-day">Domingos</div></div>
-                <div><div class="prog-name">☀️ SESIÓN VERMUT</div><div class="prog-desc">El ritual sagrado de la comunidad. Música y buen rollo, sin agenda fija — clásicos, funk, soul y vermut obligatorio. En vivo desde Sant Salvador.</div><span class="prog-badge live">🔴 EN VIVO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">13:30</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">🖼️ CANCIONES DE IMÁGENES A MÚSICA</div><div class="prog-desc">Una imagen o momento descrito, convertido en canción.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">16:00</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">💬 DEBATE</div><div class="prog-desc">Mesa de opinión sobre el tema del día, propuesto por la Manada o la actualidad local.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">17:00</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">🎧 CANCIONES SUGERIDAS</div><div class="prog-desc">Selección musical pedida por los oyentes.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">18:00</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">⏰ RECORDATORIO 22 MINUTOS</div><div class="prog-desc">Resumen de los puntos clave del bloque de las 11h, para quien no pudo escucharlo.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">21:00</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">🌙 NANAS</div><div class="prog-desc">Música suave para cerrar el día.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">21:22</div><div class="prog-day">Diario</div></div>
-                <div><div class="prog-name">🎤 DE TARAREOS A CANCIONES</div><div class="prog-desc">Tarareos enviados por la Manada, transformados en canción completa.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">∞</div><div class="prog-day">Variable</div></div>
-                <div><div class="prog-name">🎛️ SESIONES NUMERADAS</div><div class="prog-desc">Sesiones largas (4–6h), multigenero, sin pausa. Ambiente real de barrio. 21 sesiones grabadas y disponibles en Drive.</div><span class="prog-badge rec">🟢 GRABADO / DRIVE</span></div>
-              </div>
-              <div class="prog-row reveal">
-                <div><div class="prog-time">TBD</div><div class="prog-day">Especial</div></div>
-                <div><div class="prog-name">🎉 FIESTAS</div><div class="prog-desc">Eventos especiales de comunidad y team building. Sesión en directo + ambiente colectivo. Para equipos reales que se unen por algo que les gusta.</div><span class="prog-badge soon">🟡 PRÓXIMO</span></div>
-              </div>
-            </div>
-            <div style="margin-top:14px;font-size:var(--fs-xs);color:var(--muted);line-height:1.7;">
-              Ficha completa de cada programa (duración, contenido, producción) en
-              <a href="https://brm.worldmos.info" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;font-weight:700;">brm.worldmos.info ↗</a>
-            </div>
-          </div>
+      <div style="padding:36px;">
+        <div class="sessions-header reveal"><div class="sessions-title">📼 ARCHIVO DE PROGRAMAS</div></div>
+        <div style="max-width:680px;margin:14px 0 28px;font-family:'Barlow Condensed',sans-serif;font-size:14px;line-height:1.9;color:var(--muted);">
+          Grabaciones de Noticias, 22 Minutos, Debates y Nanas — para escuchar o descargar en cuanto se estrenen.
+          Horario completo y ficha de cada programa, en
+          <a href="https://brm.worldmos.info#tab-programas" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;font-weight:700;">brm.worldmos.info ↗</a>.
+          ¿Sesiones largas ya grabadas? Están en la pestaña <a href="#" onclick="goToTab('sessions'); return false;" style="color:var(--amber);text-decoration:none;font-weight:700;">🎛️ Sesiones</a>.
         </div>
-        <div style="padding:24px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);">
-          <div class="r-section" style="padding:0 0 22px 0;border-bottom:1px solid var(--border);margin-bottom:22px;">
-            <div class="r-title">☀️ PRÓXIMO VERMUT<div class="r-title-line"></div></div>
-            <div style="background:var(--bg3);border:1px solid var(--amber4);border-radius:8px;padding:16px;text-align:center;">
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--amber);letter-spacing:2px;">DOMINGO</div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;">12:00h · Sant Salvador</div>
-              <div style="font-size:var(--fs-xs);color:var(--muted2);margin-top:10px;line-height:1.6;">Abre el stream · Sirve el vermut · Disfruta. Sin excusas, sin algoritmos.</div>
-            </div>
-          </div>
-          <div class="r-section" style="padding:0;margin-bottom:22px;border-bottom:1px solid var(--border);padding-bottom:22px;">
-            <div class="r-title">📻 GÉNEROS DEL VERMUT<div class="r-title-line"></div></div>
-            <div class="genre-tags" style="margin-top:4px;">
-              <span class="genre-tag hot">Clásicos</span><span class="genre-tag hot">Funk</span><span class="genre-tag hot">Soul</span>
-              <span class="genre-tag hot">Rock</span><span class="genre-tag">Jazz</span><span class="genre-tag">Blues</span>
-              <span class="genre-tag">Pop 80s</span><span class="genre-tag hot">Buena onda</span>
-            </div>
-          </div>
-          <!-- NUEVO: enlace a proponer programa en .info -->
-          <div class="r-section" style="padding:0;">
-            <div class="r-title">📋 ¿PROPONER PROGRAMA?<div class="r-title-line"></div></div>
-            <p style="font-size:var(--fs-xs);color:var(--muted);line-height:1.8;margin-bottom:12px;">Rellena el formulario en el site de info y programas para proponer tu idea.</p>
-            <a href="https://brm.worldmos.info" target="_blank" rel="noopener" style="display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);text-decoration:none;border:1px solid var(--amber4);padding:8px 16px;border-radius:4px;transition:all 0.2s;">📋 IR A INFO &amp; PROGRAMAS →</a>
-          </div>
+        <div id="archiveCategories" class="reveal"><!-- JS: renderArchive() rellena aquí --></div>
+        <div style="margin-top:8px;padding:16px 20px;background:var(--bg3);border:1px solid var(--border2);border-left:3px solid var(--amber4);border-radius:0 8px 8px 0;font-size:var(--fs-xs);color:var(--muted);line-height:1.8;">
+          ¿Tienes una idea para uno de estos programas, o quieres proponer uno nuevo? Ve a
+          <a href="https://brm.worldmos.info#tab-colabora" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;font-weight:700;">brm.worldmos.info → COLABORA ↗</a>.
         </div>
-      </div>
-    </div>
-
-    <!-- ══ TAB: LA MANADA ══ -->
-    <div class="tab-panel" id="tab-manada">
-      <div style="display:grid;grid-template-columns:1fr 380px;min-height:60vh;">
-        <div style="border-right:1px solid var(--border);padding:36px 36px;">
-          <div class="tb-headline reveal">BUBATRONIK</div>
-          <div class="tb-sub reveal">Real · Sin etiquetas · Camp de Tarragona y el mundo</div>
-          <div class="manada-quote reveal" style="font-size:17px;margin-bottom:28px;border-left-width:4px;">"A sonreír y divertirse. Para tod@s los que gusten y quieran. A bombazo limpio, sin etiquetas, sin preocupaciones.<br><br>La música es el hilo conductor. El vermut de los domingos es el ritual. Las sesiones largas crean el vínculo.<br><br>¡AUUUAUUU! 🐺"</div>
-          <div class="tb-cards reveal">
-            <div class="tb-card"><span class="tb-icon">📍</span><div class="tb-card-title">Raíces en Sant Salvador</div><div class="tb-card-desc">Nacida en Sant Salvador (Tarragona, Catalunya), con vocación de comunidad real que conecta Camp de Tarragona con el resto del mundo sin perder la identidad local.</div></div>
-            <div class="tb-card"><span class="tb-icon">🎵</span><div class="tb-card-title">No es una radio de fondo</div><div class="tb-card-desc">Es un espacio vivo. La música no la decide ningún algoritmo — la decide la manada. Rock, funk, rap, soul, techno, afrobeats... lo que pida el momento.</div></div>
-            <div class="tb-card"><span class="tb-icon">☀️</span><div class="tb-card-title">El Vermut como ritual</div><div class="tb-card-desc">Cada domingo a las 12h, vermut obligatorio. No es opcional. Es el pegamento social que convierte el stream en comunidad real.</div></div>
-            <div class="tb-card"><span class="tb-icon">🌍</span><div class="tb-card-title">Local y Global</div><div class="tb-card-desc">Arraigo local en Tarragona, alcance global via stream. La manada extendida escucha desde cualquier parte del mundo, pero el corazón sigue en Sant Salvador.</div></div>
-          </div>
-          <div class="r-title" style="margin-top:32px;margin-bottom:16px;">🔗 ÚNETE <div class="r-title-line"></div></div>
-          <div class="social-links">
-            <a class="social-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener"><span class="social-icon">📸</span> Instagram — Noticias y sesiones en directo<span class="social-arrow">→</span></a>
-            <a class="social-link" href="mailto:rubenrodriguez.f.93@gmail.com"><span class="social-icon">📧</span> Contacto directo con Rubén (BRM/DEVBU93)<span class="social-arrow">→</span></a>
-            <!-- NUEVO: enlace al .info desde La Manada -->
-            <a class="social-link info-link" href="https://brm.worldmos.info" target="_blank" rel="noopener"><span class="social-icon">📋</span> Proponer programa / Colaborar<span class="social-arrow">↗</span></a>
-          </div>
-        </div>
-        <div style="padding:24px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);">
-          <div class="r-section" style="padding:0 0 22px 0;border-bottom:1px solid var(--border);margin-bottom:22px;">
-            <div class="r-title">🐺 NODO PRINCIPAL<div class="r-title-line"></div></div>
-            <div class="info-row"><span class="info-label">Creador</span><span class="info-val">Rubén · BRM / DEVBU93</span></div>
-            <div class="info-row"><span class="info-label">Sistema</span><span class="info-val">WORLD-MUNDO OS</span></div>
-            <div class="info-row"><span class="info-label">Nodo</span><span class="info-val">Lob@-Pulpo × ROCE SYNC</span></div>
-            <div class="info-row"><span class="info-label">Alias</span><span class="info-val">LOB@-PULPO · BUBA · DRDB</span></div>
-            <div class="info-row"><span class="info-label">Sede</span><span class="info-val">📍 Sant Salvador, Tarragona</span></div>
-            <!-- NUEVO: enlace al .info en el sidebar de La Manada -->
-            <div class="info-row">
-              <span class="info-label">Info &amp; Progs.</span>
-              <span class="info-val">
-                <a href="https://brm.worldmos.info" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;font-weight:700;">brm.worldmos.info ↗</a>
-              </span>
-            </div>
-          </div>
-          <div class="r-section" style="padding:0;margin-top:0;">
-            <div class="r-title">⚡ STACK TÉCNICO<div class="r-title-line"></div></div>
-            <div class="info-row"><span class="info-label">Stream</span><span class="info-val">Shoutcast · 128kbps</span></div>
-            <div class="info-row"><span class="info-label">Proxy</span><span class="info-val">Cloudflare Worker</span></div>
-            <div class="info-row"><span class="info-label">Web</span><span class="info-val">GitHub Pages</span></div>
-            <div class="info-row"><span class="info-label">Radio</span><span class="info-val">brm.worldmos.world</span></div>
-            <div class="info-row"><span class="info-label">Info</span><span class="info-val">brm.worldmos.info</span></div>
-            <div class="info-row"><span class="info-label">DNS</span><span class="info-val">GoDaddy CNAME</span></div>
-            <div class="info-row"><span class="info-label">CI/CD</span><span class="info-val">GitHub Actions</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ══ TAB: TEAM BUILDING ══ -->
-    <div class="tab-panel" id="tab-teambuilding">
-      <div class="tb-section reveal">
-        <div class="tb-headline">TEAM BUILDING REAL</div>
-        <div class="tb-sub">La herramienta de cohesión que ninguna consultora puede replicar</div>
-        <p class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--muted);line-height:1.8;max-width:700px;margin-bottom:32px;letter-spacing:0.5px;">BRM_Bubatronik no es un proveedor de team building al uso. Es un espacio vivo donde la música hace el trabajo que los PowerPoints jamás consiguieron: crear ambiente de equipo real, sin forzarlo, sin actividades vacías.</p>
-        <div class="tb-cards reveal">
-          <div class="tb-card"><span class="tb-icon">🎶</span><div class="tb-card-title">La música hace el trabajo</div><div class="tb-card-desc">Sesión en directo de 4–6h mientras el equipo trabaja, celebra o simplemente comparte tiempo. La gente se une por algo que le gusta, no por obligación corporativa.</div></div>
-          <div class="tb-card"><span class="tb-icon">🌍</span><div class="tb-card-title">Equipos dispersos geográficamente</div><div class="tb-card-desc">Ideal para empresas con equipos en múltiples países. El stream funciona como hilo conductor común que atraviesa fronteras sin billetes de avión.</div></div>
-          <div class="tb-card"><span class="tb-icon">🎉</span><div class="tb-card-title">Eventos de empresa que se recuerdan</div><div class="tb-card-desc">Fiesta de empresa con sesión BRM en directo = recuerdo real, no PowerPoint. La manada crea ambiente; la consultora solo lo cobra.</div></div>
-          <div class="tb-card"><span class="tb-icon">☀️</span><div class="tb-card-title">El Vermut como protocolo</div><div class="tb-card-desc">Domingo 12h, vermut obligatorio para el equipo, sesión en vivo. Es el ritual más sencillo y efectivo de cohesión que existe. Y sin consultora de por medio.</div></div>
-          <div class="tb-card"><span class="tb-icon">🎙️</span><div class="tb-card-title">Alternativa a lo vacío</div><div class="tb-card-desc">Kata Bowling, paintball, escape rooms — ya los ha visto todo el mundo. Una sesión de 6h de música real, en buena compañía, crea vínculos duraderos.</div></div>
-          <div class="tb-card"><span class="tb-icon">📧</span><div class="tb-card-title">Contacta para tu evento</div><div class="tb-card-desc">¿Tu empresa necesita cohesión real? Hablemos. Sesión en directo, vermut corporativo, o sesión grabada para vuestros eventos.</div></div>
-        </div>
-        <div style="margin-top:36px;padding:24px;background:var(--bg3);border:1px solid var(--amber4);border-radius:12px;max-width:600px;" class="reveal">
-          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;">¿Quieres BRM en tu evento?</div>
-          <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.7;margin-bottom:16px;">Contacta directamente con Rubén para hablar de sesiones, eventos corporativos o colaboraciones con la manada.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a class="btn-stream primary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="mailto:rubenrodriguez.f.93@gmail.com">📧 CONTACTAR A RUBÉN</a>
-            <a class="btn-stream secondary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="https://brm.worldmos.info" target="_blank" rel="noopener">📋 INFO &amp; PROGRAMAS</a>
-          </div>
-        </div>
-      </div>
-      <div style="padding:24px 36px 36px;border-top:1px solid var(--border);">
-        <div class="r-title" style="margin-bottom:12px;">⚖️ ASPECTOS LEGALES<div class="r-title-line"></div></div>
-        <p style="font-size:var(--fs-xs);color:var(--muted);line-height:1.8;max-width:700px;">
-          <strong style="color:var(--white);">Propiedad:</strong> Rubén — BRM_Bubatronik, marca registrable · WORLD-MUNDO OS.<br>
-          <strong style="color:var(--white);">Derechos musicales:</strong> Gestión SGAE/AGEDI para emisión legal en España; licencia de streaming según plataforma.<br>
-          <strong style="color:var(--white);">Datos oyentes:</strong> Mínimos, RGPD compliant, sin tracking agresivo.<br>
-          <strong style="color:var(--white);">Contenido propio (mezclas, sesiones):</strong> Derechos del DJ/creador protegidos.<br>
-          <strong style="color:var(--white);">Emisión:</strong> Radio online comunitaria y cultural — vocación de comunidad real, Camp de Tarragona.
-        </p>
       </div>
     </div>
 
@@ -1269,112 +1126,22 @@
   // ══════════════════════════════════════════════════════════════════════
 
   // ── TRACKS DATABASE ──────────────────────────────────────────────────
+  // ── ARCHIVO DE PROGRAMAS (Noticias · 22 Minutos · Debates · Nanas) ──────
+  // Vacío por ahora (honesto: ninguno de los 4 programas ha grabado episodios
+  // todavía — ver parrilla en brm.worldmos.info, están marcados "🟡 Próximo").
+  // Para publicar un episodio real, añade un objeto al array 'episodes'
+  // correspondiente, ej.:
+  //   { title: 'Noticias 12 de agosto', date: '12 ago 2026', duration: '4:32',
+  //     driveUrl: 'https://drive.google.com/...' }
+  // y renderArchive() lo pinta solo, sin tocar nada más.
+  const ARCHIVE = {
+    noticias:  { icon: '📰', name: 'Noticias',   schedule: '10:30 · Diario', desc: 'Boletín de 3–5 min: mundo → Europa → España → Catalunya → Camp de Tarragona → Manada.', episodes: [] },
+    minutos22: { icon: '🎙️', name: '22 Minutos', schedule: '11:00 · Diario', desc: 'Voces de la Manada, entidades y colectivos locales que quieren compartir algo.', episodes: [] },
+    debates:   { icon: '💬', name: 'Debates',    schedule: '16:00 · Diario', desc: 'Mesa de opinión sobre el tema del día, propuesto por la Manada o la actualidad local.', episodes: [] },
+    nanas:     { icon: '🌙', name: 'Nanas',      schedule: '21:00 · Diario', desc: 'Música suave para cerrar el día.', episodes: [] },
+  };
+
   const TRACKS = [
-    {n:'F1', t:'Tech House Vibes', artist:'Mixkit · BRM Offline', genre:'techno', audioSrc:'https://drive.google.com/uc?export=download&id=1nZeCQ9NWcypKw4xgj6gPtZ44-WSmY1ad'},
-    {n:'F2', t:'Latin Lovers', artist:'Mixkit · BRM Offline', genre:'', audioSrc:'https://drive.google.com/uc?export=download&id=19M27LblPynDxkQ0AOKuaniCiLFPiKwYA'},
-    {n:'F3', t:'Hip Hop Groove', artist:'Mixkit · BRM Offline', genre:'hip hop', audioSrc:'https://drive.google.com/uc?export=download&id=1CmIc3Fro5RswXS9aDycIK9nIBzQ8eywf'},
-    {n:'F4', t:'Gimme That Groove', artist:'Mixkit · BRM Offline', genre:'soul', audioSrc:'https://drive.google.com/uc?export=download&id=1tWP7wac8BJ4J-q3rtoj4Ha-k0HGC6ArK'},
-    {n:'F5', t:'Deep Urban', artist:'Mixkit · BRM Offline', genre:'deep house', audioSrc:'https://drive.google.com/uc?export=download&id=1qrMvuEL-_vuqi-uLpASEIWgnf2BSFKed'},
-    {n:'F6', t:'Complicated Beats', artist:'Mixkit · BRM Offline', genre:'electronic', audioSrc:'https://drive.google.com/uc?export=download&id=1dXnJjJtybw4fjn56_djC-a3ADXU_pixK'},
-    {n:'★',   t:'Carlos Vecino — Tema especial BRM Radio',     artist:'Carlos Vecino',      genre:'folk'},
-    {n:'200', t:'Xican — Nueva Tierra',                        artist:'Xican',              genre:'electronic'},
-    {n:'199', t:'Pop Smoke ft. Khaligraph Jones — SHWATY',     artist:'Pop Smoke',          genre:'hip hop'},
-    {n:'198', t:'ZHU — One Minute To Midnight',                artist:'ZHU',                genre:'deep house'},
-    {n:'197', t:'G-HUN — BABA YAGA',                          artist:'G-HUN',              genre:'techno'},
-    {n:'196', t:'In Da Club — Old Soul Version (1950s)',        artist:'50 Cent Cover',      genre:'soul'},
-    {n:'195', t:'BOVSKI, PET3RPUNX — SCARS',                   artist:'BOVSKI & Co.',       genre:'techno'},
-    {n:'194', t:'EMMY — Dancing All Alone (BOVSKI Remix)',      artist:'EMMY',               genre:'electronic'},
-    {n:'193', t:'WILD',                                        artist:'Desconocido',        genre:'electronic'},
-    {n:'192', t:'Vive Hoy — Pop Emocional',                    artist:'Pop Emocional AI',   genre:'soul'},
-    {n:'191', t:'Marwán & Nach — 5 Gramos de Resentimiento',   artist:'Marwán · Nach',      genre:'hip hop'},
-    {n:'190', t:'BLAKE ft. Al2 El Aldeano — GOD SCHOOL',       artist:'BLAKE · Al2',        genre:'hip hop'},
-    {n:'189', t:'Madre — Soul Emocional',                      artist:'Soul AI',            genre:'soul'},
-    {n:'188', t:'Antoine Clamaran — Gold',                     artist:'Antoine Clamaran',   genre:'deep house'},
-    {n:'187', t:'Avicii — For A Better Day',                   artist:'Avicii',             genre:'electronic'},
-    {n:'186', t:'Fritz & Paul Kalkbrenner — Sky and Sand',     artist:'Fritz & Paul K',     genre:'electronic'},
-    {n:'185', t:'Robin Schulz — Sugar ft. Francesco Yates',    artist:'Robin Schulz',       genre:'deep house'},
-    {n:'184', t:'DJs From Mars — Avicii Tribute Megamashup',   artist:'DJs From Mars',      genre:'electronic'},
-    {n:'183', t:'KASE.O — SALUD Y LIBERTAD ft. FOYONE',        artist:'KASE.O · FOYONE',    genre:'rap'},
-    {n:'182', t:'SHO-HAI — TE PONE BIEN con KASE.O',           artist:'SHO-HAI · KASE.O',   genre:'rap'},
-    {n:'181', t:'Fito & Fitipaldis — Quiero gritar',           artist:'Fito & Fitipaldis',  genre:'rock'},
-    {n:'180', t:'Billy Gibbons — La Grange',                   artist:'Billy Gibbons',      genre:'rock'},
-    {n:'179', t:'Eiffel 65 — Blue (Da Ba Dee)',                artist:'Eiffel 65',          genre:'eurodance'},
-    {n:'178', t:'Culture Beat — Mr. Vain',                     artist:'Culture Beat',       genre:'eurodance'},
-    {n:'177', t:'Snap! — Rhythm is a Dancer',                  artist:'Snap!',              genre:'eurodance'},
-    {n:'176', t:'Rnbstylerz — Like Wooh Wooh (Remix)',         artist:'Rnbstylerz',         genre:'electronic'},
-    {n:'175', t:'Solitario — Barra libre de barras',           artist:'Solitario',          genre:'rap'},
-    {n:'174', t:'Mägo de Oz — Hasta Que El Cuerpo Aguante',   artist:'Mägo de Oz',         genre:'rock'},
-    {n:'173', t:'El Vals del Obrero',                          artist:'Anónimo',            genre:'folk'},
-    {n:'172', t:'Paseo',                                       artist:'Desconocido',        genre:'electronic'},
-    {n:'171', t:'Fito & Fitipaldis — La casa por el tejado',   artist:'Fito & Fitipaldis',  genre:'rock'},
-    {n:'170', t:'Matador — Los Fabulosos Cadillacs',           artist:'Los Fabulosos Cadillacs', genre:'rock'},
-    {n:'169', t:'Hablaron de mí — Woundsmusic',               artist:'Woundsmusic',        genre:'soul'},
-    {n:'168', t:'Lo Aprendí de Tu Frío — Soul',               artist:'Soul AI',            genre:'soul'},
-    {n:'167', t:'PAPÁ — Loba Negra',                          artist:'Loba Negra',         genre:'soul'},
-    {n:'166', t:'NO ES PARA MENTES PEQUEÑAS — BLUES',         artist:'Blues Oscuro AI',    genre:'blues'},
-    {n:'165', t:'TOTEKING — Ni de Ellos ni de Ellas',         artist:'TOTEKING',           genre:'rap'},
-    {n:'164', t:'KASE.O & CAPAZ — Pan caliente',              artist:'KASE.O · CAPAZ',     genre:'rap'},
-    {n:'163', t:'SFDK — Esclavos (Neo Soul Cover)',            artist:'SFDK',               genre:'neo soul'},
-    {n:'162', t:'Macaco — Atreverse a Vivir',                 artist:'Macaco',             genre:'folk'},
-    {n:'161', t:"Mina's Radio — EP. 003",                     artist:"Mina's Radio",       genre:'deep house'},
-    {n:'160', t:'Vengaboys — Boom Boom Boom!! (Hardstyle)',   artist:'Vengaboys',          genre:'hardstyle'},
-    {n:'159', t:'TRIFUNOX — TIKI TIKI (TOP CAR MIX)',         artist:'TRIFUNOX',           genre:'electronic'},
-    {n:'158', t:'Reel 2 Real — I Like To Move It (REMIX)',    artist:'Reel 2 Real',        genre:'eurodance'},
-    {n:'157', t:'KULTØ — Darbuka Pulse (Drum Tribal)',        artist:'KULTØ',              genre:'afro'},
-    {n:'156', t:"Mr. Lonely — 1950's Soul Version",           artist:'Old Soul AI',        genre:'soul'},
-    {n:'155', t:'Wu Tang Clan — Protect Ya Neck / C.R.E.A.M.', artist:'Wu Tang Clan',     genre:'hip hop'},
-    {n:'154', t:'Black Pumas — Colors (Live Abbey Road)',      artist:'Black Pumas',        genre:'neo soul'},
-    {n:'153', t:'FKJ & Masego — Tadow',                       artist:'FKJ · Masego',       genre:'neo soul'},
-    {n:'152', t:'Delinquent Habits — CALIFORNIA',             artist:'Delinquent Habits',  genre:'hip hop'},
-    {n:'151', t:'Kendrick Lamar — HUMBLE.',                   artist:'Kendrick Lamar',     genre:'hip hop'},
-    {n:'150', t:'J Dilla — Donuts (Medley)',                  artist:'J Dilla',            genre:'hip hop'},
-    {n:'149', t:'Massive Attack — Teardrop',                  artist:'Massive Attack',     genre:'electronic'},
-    {n:'148', t:'Portishead — Glory Box',                     artist:'Portishead',         genre:'electronic'},
-    {n:'147', t:'Bonobo — Kong',                              artist:'Bonobo',             genre:'electronic'},
-    {n:'146', t:'Moderat — Bad Kingdom',                      artist:'Moderat',            genre:'electronic'},
-    {n:'145', t:'Trentemøller — Miss You',                    artist:'Trentemøller',       genre:'electronic'},
-    {n:'144', t:'Aphex Twin — Avril 14th',                    artist:'Aphex Twin',         genre:'electronic'},
-    {n:'143', t:'Four Tet — Angel Echoes',                    artist:'Four Tet',           genre:'electronic'},
-    {n:'142', t:'DJ Shadow — Midnight in a Perfect World',    artist:'DJ Shadow',          genre:'hip hop'},
-    {n:'141', t:'MF DOOM — Madvillainy Medley',               artist:'Madvillain',         genre:'hip hop'},
-    {n:'140', t:'The Roots — You Got Me',                     artist:'The Roots',          genre:'hip hop'},
-    {n:'139', t:'Erykah Badu — On & On',                     artist:'Erykah Badu',        genre:'neo soul'},
-    {n:'138', t:"D'Angelo — Untitled (How Does It Feel)",     artist:"D'Angelo",           genre:'neo soul'},
-    {n:'137', t:'Lauryn Hill — Ex-Factor',                    artist:'Lauryn Hill',        genre:'neo soul'},
-    {n:'136', t:'Outkast — Rosa Parks',                       artist:'Outkast',            genre:'hip hop'},
-    {n:'135', t:'Amy Winehouse — Back to Black',              artist:'Amy Winehouse',      genre:'soul'},
-    {n:'134', t:'Sharon Jones — 100 Days 100 Nights',         artist:'Sharon Jones',       genre:'soul'},
-    {n:'133', t:'Charles Bradley — Changes',                  artist:'Charles Bradley',    genre:'soul'},
-    {n:'132', t:'Leon Bridges — Coming Home',                 artist:'Leon Bridges',       genre:'soul'},
-    {n:'131', t:'Gary Clark Jr. — Bright Lights',             artist:'Gary Clark Jr.',     genre:'blues'},
-    {n:'130', t:'Jack White — Ball and Biscuit',              artist:'Jack White',         genre:'blues'},
-    {n:'129', t:'Alabama Shakes — Hold On',                   artist:'Alabama Shakes',     genre:'rock'},
-    {n:'128', t:'Rodrigo y Gabriela — Tamacun',               artist:'Rodrigo y Gabriela', genre:'folk'},
-    {n:'127', t:'Orishas — A Lo Cubano',                      artist:'Orishas',            genre:'afro'},
-    {n:'126', t:'Buena Vista Social Club — Chan Chan',         artist:'Buena Vista Social Club', genre:'folk'},
-    {n:'125', t:'Ibrahim Maalouf — Illusions',                artist:'Ibrahim Maalouf',    genre:'afro'},
-    {n:'124', t:'Aya Nakamura — Djadja',                      artist:'Aya Nakamura',       genre:'afro'},
-    {n:'123', t:'Burna Boy — Last Last',                      artist:'Burna Boy',          genre:'afro'},
-    {n:'122', t:'Wizkid — Ojuelegba',                         artist:'Wizkid',             genre:'afro'},
-    {n:'121', t:'Afrobeats Compilation BRM Mix Vol.1',         artist:'BRM Selección',      genre:'afro'},
-    {n:'120', t:'Disclosure — Latch ft. Sam Smith',            artist:'Disclosure',         genre:'deep house'},
-    {n:'119', t:'Bicep — Glue',                               artist:'Bicep',              genre:'deep house'},
-    {n:'118', t:'Peggy Gou — (It Goes Like) Nanana',          artist:'Peggy Gou',          genre:'deep house'},
-    {n:'117', t:'Jamie xx — Gosh',                            artist:'Jamie xx',           genre:'deep house'},
-    {n:'116', t:'Joy Orbison — Hyph Mngo',                    artist:'Joy Orbison',        genre:'deep house'},
-    {n:'115', t:'Solomun — Velo',                             artist:'Solomun',            genre:'deep house'},
-    {n:'114', t:'Tale Of Us — Numb',                          artist:'Tale Of Us',         genre:'techno'},
-    {n:'113', t:'Charlotte de Witte — Doppler',               artist:'Charlotte de Witte', genre:'techno'},
-    {n:'112', t:'Amelie Lens — Forever',                      artist:'Amelie Lens',        genre:'techno'},
-    {n:'111', t:'SPFDJ — 1210',                               artist:'SPFDJ',              genre:'techno'},
-    {n:'110', t:'Objekt — Ganzfeld',                          artist:'Objekt',             genre:'techno'},
-    {n:'109', t:'Surgeon — Magneze',                          artist:'Surgeon',            genre:'techno'},
-    {n:'108', t:'Jeff Mills — The Bells',                     artist:'Jeff Mills',         genre:'techno'},
-    {n:'107', t:'Underground Resistance — Seawolf',           artist:'Underground Resistance', genre:'techno'},
-    {n:'106', t:'Plastikman — Spastik',                       artist:'Plastikman',         genre:'techno'},
-    {n:'105', t:'Richie Hawtin — Contakt (Live)',              artist:'Richie Hawtin',      genre:'techno'},
-    {n:'104', t:'Ben Klock — Subzero',                        artist:'Ben Klock',          genre:'techno'},
-    {n:'103', t:'Marcel Dettmann — Track 8',                  artist:'Marcel Dettmann',    genre:'techno'},
     {n:'#1', t:'Drake - God\'s Plan', artist:'Drake', genre:''},
     {n:'#2', t:'Future - Life Is Good (Official Music Video) ft. Drake', artist:'Future', genre:''},
     {n:'#3', t:'YG - Go Loko ft. Tyga, Jon Z', artist:'YG', genre:''},
@@ -2667,6 +2434,111 @@
     {n:'#1347', t:'Shut up My Moms Calling (Sped up)', artist:'Hotel Ugly', genre:''},
     {n:'#1348', t:'Figa de Guine\' Remix - Mari Froes x Kalipiano', artist:'KALIPIANO', genre:''},
     {n:'#1349', t:'TRINIX x Rushawn - It\'s a beautiful day', artist:'TRINIX', genre:''},
+    {n:'F1', t:'Tech House Vibes', artist:'Mixkit · BRM Offline', genre:'techno', audioSrc:'https://drive.google.com/uc?export=download&id=1nZeCQ9NWcypKw4xgj6gPtZ44-WSmY1ad'},
+    {n:'F2', t:'Latin Lovers', artist:'Mixkit · BRM Offline', genre:'', audioSrc:'https://drive.google.com/uc?export=download&id=19M27LblPynDxkQ0AOKuaniCiLFPiKwYA'},
+    {n:'F3', t:'Hip Hop Groove', artist:'Mixkit · BRM Offline', genre:'hip hop', audioSrc:'https://drive.google.com/uc?export=download&id=1CmIc3Fro5RswXS9aDycIK9nIBzQ8eywf'},
+    {n:'F4', t:'Gimme That Groove', artist:'Mixkit · BRM Offline', genre:'soul', audioSrc:'https://drive.google.com/uc?export=download&id=1tWP7wac8BJ4J-q3rtoj4Ha-k0HGC6ArK'},
+    {n:'F5', t:'Deep Urban', artist:'Mixkit · BRM Offline', genre:'deep house', audioSrc:'https://drive.google.com/uc?export=download&id=1qrMvuEL-_vuqi-uLpASEIWgnf2BSFKed'},
+    {n:'F6', t:'Complicated Beats', artist:'Mixkit · BRM Offline', genre:'electronic', audioSrc:'https://drive.google.com/uc?export=download&id=1dXnJjJtybw4fjn56_djC-a3ADXU_pixK'},
+    {n:'★',   t:'Carlos Vecino — Tema especial BRM Radio',     artist:'Carlos Vecino',      genre:'folk'},
+    {n:'200', t:'Xican — Nueva Tierra',                        artist:'Xican',              genre:'electronic'},
+    {n:'199', t:'Pop Smoke ft. Khaligraph Jones — SHWATY',     artist:'Pop Smoke',          genre:'hip hop'},
+    {n:'198', t:'ZHU — One Minute To Midnight',                artist:'ZHU',                genre:'deep house'},
+    {n:'197', t:'G-HUN — BABA YAGA',                          artist:'G-HUN',              genre:'techno'},
+    {n:'196', t:'In Da Club — Old Soul Version (1950s)',        artist:'50 Cent Cover',      genre:'soul'},
+    {n:'195', t:'BOVSKI, PET3RPUNX — SCARS',                   artist:'BOVSKI & Co.',       genre:'techno'},
+    {n:'194', t:'EMMY — Dancing All Alone (BOVSKI Remix)',      artist:'EMMY',               genre:'electronic'},
+    {n:'193', t:'WILD',                                        artist:'Desconocido',        genre:'electronic'},
+    {n:'192', t:'Vive Hoy — Pop Emocional',                    artist:'Pop Emocional AI',   genre:'soul'},
+    {n:'191', t:'Marwán & Nach — 5 Gramos de Resentimiento',   artist:'Marwán · Nach',      genre:'hip hop'},
+    {n:'190', t:'BLAKE ft. Al2 El Aldeano — GOD SCHOOL',       artist:'BLAKE · Al2',        genre:'hip hop'},
+    {n:'189', t:'Madre — Soul Emocional',                      artist:'Soul AI',            genre:'soul'},
+    {n:'188', t:'Antoine Clamaran — Gold',                     artist:'Antoine Clamaran',   genre:'deep house'},
+    {n:'187', t:'Avicii — For A Better Day',                   artist:'Avicii',             genre:'electronic'},
+    {n:'186', t:'Fritz & Paul Kalkbrenner — Sky and Sand',     artist:'Fritz & Paul K',     genre:'electronic'},
+    {n:'185', t:'Robin Schulz — Sugar ft. Francesco Yates',    artist:'Robin Schulz',       genre:'deep house'},
+    {n:'184', t:'DJs From Mars — Avicii Tribute Megamashup',   artist:'DJs From Mars',      genre:'electronic'},
+    {n:'183', t:'KASE.O — SALUD Y LIBERTAD ft. FOYONE',        artist:'KASE.O · FOYONE',    genre:'rap'},
+    {n:'182', t:'SHO-HAI — TE PONE BIEN con KASE.O',           artist:'SHO-HAI · KASE.O',   genre:'rap'},
+    {n:'181', t:'Fito & Fitipaldis — Quiero gritar',           artist:'Fito & Fitipaldis',  genre:'rock'},
+    {n:'180', t:'Billy Gibbons — La Grange',                   artist:'Billy Gibbons',      genre:'rock'},
+    {n:'179', t:'Eiffel 65 — Blue (Da Ba Dee)',                artist:'Eiffel 65',          genre:'eurodance'},
+    {n:'178', t:'Culture Beat — Mr. Vain',                     artist:'Culture Beat',       genre:'eurodance'},
+    {n:'177', t:'Snap! — Rhythm is a Dancer',                  artist:'Snap!',              genre:'eurodance'},
+    {n:'176', t:'Rnbstylerz — Like Wooh Wooh (Remix)',         artist:'Rnbstylerz',         genre:'electronic'},
+    {n:'175', t:'Solitario — Barra libre de barras',           artist:'Solitario',          genre:'rap'},
+    {n:'174', t:'Mägo de Oz — Hasta Que El Cuerpo Aguante',   artist:'Mägo de Oz',         genre:'rock'},
+    {n:'173', t:'El Vals del Obrero',                          artist:'Anónimo',            genre:'folk'},
+    {n:'172', t:'Paseo',                                       artist:'Desconocido',        genre:'electronic'},
+    {n:'171', t:'Fito & Fitipaldis — La casa por el tejado',   artist:'Fito & Fitipaldis',  genre:'rock'},
+    {n:'170', t:'Matador — Los Fabulosos Cadillacs',           artist:'Los Fabulosos Cadillacs', genre:'rock'},
+    {n:'169', t:'Hablaron de mí — Woundsmusic',               artist:'Woundsmusic',        genre:'soul'},
+    {n:'168', t:'Lo Aprendí de Tu Frío — Soul',               artist:'Soul AI',            genre:'soul'},
+    {n:'167', t:'PAPÁ — Loba Negra',                          artist:'Loba Negra',         genre:'soul'},
+    {n:'166', t:'NO ES PARA MENTES PEQUEÑAS — BLUES',         artist:'Blues Oscuro AI',    genre:'blues'},
+    {n:'165', t:'TOTEKING — Ni de Ellos ni de Ellas',         artist:'TOTEKING',           genre:'rap'},
+    {n:'164', t:'KASE.O & CAPAZ — Pan caliente',              artist:'KASE.O · CAPAZ',     genre:'rap'},
+    {n:'163', t:'SFDK — Esclavos (Neo Soul Cover)',            artist:'SFDK',               genre:'neo soul'},
+    {n:'162', t:'Macaco — Atreverse a Vivir',                 artist:'Macaco',             genre:'folk'},
+    {n:'161', t:"Mina's Radio — EP. 003",                     artist:"Mina's Radio",       genre:'deep house'},
+    {n:'160', t:'Vengaboys — Boom Boom Boom!! (Hardstyle)',   artist:'Vengaboys',          genre:'hardstyle'},
+    {n:'159', t:'TRIFUNOX — TIKI TIKI (TOP CAR MIX)',         artist:'TRIFUNOX',           genre:'electronic'},
+    {n:'158', t:'Reel 2 Real — I Like To Move It (REMIX)',    artist:'Reel 2 Real',        genre:'eurodance'},
+    {n:'157', t:'KULTØ — Darbuka Pulse (Drum Tribal)',        artist:'KULTØ',              genre:'afro'},
+    {n:'156', t:"Mr. Lonely — 1950's Soul Version",           artist:'Old Soul AI',        genre:'soul'},
+    {n:'155', t:'Wu Tang Clan — Protect Ya Neck / C.R.E.A.M.', artist:'Wu Tang Clan',     genre:'hip hop'},
+    {n:'154', t:'Black Pumas — Colors (Live Abbey Road)',      artist:'Black Pumas',        genre:'neo soul'},
+    {n:'153', t:'FKJ & Masego — Tadow',                       artist:'FKJ · Masego',       genre:'neo soul'},
+    {n:'152', t:'Delinquent Habits — CALIFORNIA',             artist:'Delinquent Habits',  genre:'hip hop'},
+    {n:'151', t:'Kendrick Lamar — HUMBLE.',                   artist:'Kendrick Lamar',     genre:'hip hop'},
+    {n:'150', t:'J Dilla — Donuts (Medley)',                  artist:'J Dilla',            genre:'hip hop'},
+    {n:'149', t:'Massive Attack — Teardrop',                  artist:'Massive Attack',     genre:'electronic'},
+    {n:'148', t:'Portishead — Glory Box',                     artist:'Portishead',         genre:'electronic'},
+    {n:'147', t:'Bonobo — Kong',                              artist:'Bonobo',             genre:'electronic'},
+    {n:'146', t:'Moderat — Bad Kingdom',                      artist:'Moderat',            genre:'electronic'},
+    {n:'145', t:'Trentemøller — Miss You',                    artist:'Trentemøller',       genre:'electronic'},
+    {n:'144', t:'Aphex Twin — Avril 14th',                    artist:'Aphex Twin',         genre:'electronic'},
+    {n:'143', t:'Four Tet — Angel Echoes',                    artist:'Four Tet',           genre:'electronic'},
+    {n:'142', t:'DJ Shadow — Midnight in a Perfect World',    artist:'DJ Shadow',          genre:'hip hop'},
+    {n:'141', t:'MF DOOM — Madvillainy Medley',               artist:'Madvillain',         genre:'hip hop'},
+    {n:'140', t:'The Roots — You Got Me',                     artist:'The Roots',          genre:'hip hop'},
+    {n:'139', t:'Erykah Badu — On & On',                     artist:'Erykah Badu',        genre:'neo soul'},
+    {n:'138', t:"D'Angelo — Untitled (How Does It Feel)",     artist:"D'Angelo",           genre:'neo soul'},
+    {n:'137', t:'Lauryn Hill — Ex-Factor',                    artist:'Lauryn Hill',        genre:'neo soul'},
+    {n:'136', t:'Outkast — Rosa Parks',                       artist:'Outkast',            genre:'hip hop'},
+    {n:'135', t:'Amy Winehouse — Back to Black',              artist:'Amy Winehouse',      genre:'soul'},
+    {n:'134', t:'Sharon Jones — 100 Days 100 Nights',         artist:'Sharon Jones',       genre:'soul'},
+    {n:'133', t:'Charles Bradley — Changes',                  artist:'Charles Bradley',    genre:'soul'},
+    {n:'132', t:'Leon Bridges — Coming Home',                 artist:'Leon Bridges',       genre:'soul'},
+    {n:'131', t:'Gary Clark Jr. — Bright Lights',             artist:'Gary Clark Jr.',     genre:'blues'},
+    {n:'130', t:'Jack White — Ball and Biscuit',              artist:'Jack White',         genre:'blues'},
+    {n:'129', t:'Alabama Shakes — Hold On',                   artist:'Alabama Shakes',     genre:'rock'},
+    {n:'128', t:'Rodrigo y Gabriela — Tamacun',               artist:'Rodrigo y Gabriela', genre:'folk'},
+    {n:'127', t:'Orishas — A Lo Cubano',                      artist:'Orishas',            genre:'afro'},
+    {n:'126', t:'Buena Vista Social Club — Chan Chan',         artist:'Buena Vista Social Club', genre:'folk'},
+    {n:'125', t:'Ibrahim Maalouf — Illusions',                artist:'Ibrahim Maalouf',    genre:'afro'},
+    {n:'124', t:'Aya Nakamura — Djadja',                      artist:'Aya Nakamura',       genre:'afro'},
+    {n:'123', t:'Burna Boy — Last Last',                      artist:'Burna Boy',          genre:'afro'},
+    {n:'122', t:'Wizkid — Ojuelegba',                         artist:'Wizkid',             genre:'afro'},
+    {n:'121', t:'Afrobeats Compilation BRM Mix Vol.1',         artist:'BRM Selección',      genre:'afro'},
+    {n:'120', t:'Disclosure — Latch ft. Sam Smith',            artist:'Disclosure',         genre:'deep house'},
+    {n:'119', t:'Bicep — Glue',                               artist:'Bicep',              genre:'deep house'},
+    {n:'118', t:'Peggy Gou — (It Goes Like) Nanana',          artist:'Peggy Gou',          genre:'deep house'},
+    {n:'117', t:'Jamie xx — Gosh',                            artist:'Jamie xx',           genre:'deep house'},
+    {n:'116', t:'Joy Orbison — Hyph Mngo',                    artist:'Joy Orbison',        genre:'deep house'},
+    {n:'115', t:'Solomun — Velo',                             artist:'Solomun',            genre:'deep house'},
+    {n:'114', t:'Tale Of Us — Numb',                          artist:'Tale Of Us',         genre:'techno'},
+    {n:'113', t:'Charlotte de Witte — Doppler',               artist:'Charlotte de Witte', genre:'techno'},
+    {n:'112', t:'Amelie Lens — Forever',                      artist:'Amelie Lens',        genre:'techno'},
+    {n:'111', t:'SPFDJ — 1210',                               artist:'SPFDJ',              genre:'techno'},
+    {n:'110', t:'Objekt — Ganzfeld',                          artist:'Objekt',             genre:'techno'},
+    {n:'109', t:'Surgeon — Magneze',                          artist:'Surgeon',            genre:'techno'},
+    {n:'108', t:'Jeff Mills — The Bells',                     artist:'Jeff Mills',         genre:'techno'},
+    {n:'107', t:'Underground Resistance — Seawolf',           artist:'Underground Resistance', genre:'techno'},
+    {n:'106', t:'Plastikman — Spastik',                       artist:'Plastikman',         genre:'techno'},
+    {n:'105', t:'Richie Hawtin — Contakt (Live)',              artist:'Richie Hawtin',      genre:'techno'},
+    {n:'104', t:'Ben Klock — Subzero',                        artist:'Ben Klock',          genre:'techno'},
+    {n:'103', t:'Marcel Dettmann — Track 8',                  artist:'Marcel Dettmann',    genre:'techno'},
   ];
 
   // ── FIX: STREAM_URLS sin duplicado ───────────────────────────────────
