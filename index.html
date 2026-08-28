@@ -800,7 +800,7 @@
     <!-- NAV TABS — con enlace externo al .info al final -->
     <nav class="nav-tabs" role="tablist">
       <button class="nav-tab active" data-tab="radio"       role="tab">📻 Reproductor</button>
-      <button class="nav-tab"        data-tab="programacion" role="tab">📅 Programación</button>
+      <button class="nav-tab"        data-tab="programacion" role="tab">📅 ARCHIVO DE PROGRAMAS</button>
       <!-- Enlace externo al site de info — se abre en nueva pestaña -->
       <a class="nav-ext" href="https://brm.worldmos.info" target="_blank" rel="noopener" title="Info & Programas — brm.worldmos.info">
         📋 INFO &amp; PROGS <span class="nav-ext-icon">↗</span>
@@ -872,22 +872,28 @@
 
         <!-- RIGHT PANEL -->
         <div class="right-panel">
-          <div class="r-section">
-            <div class="r-title">📡 ESTADO EN VIVO<div class="r-title-line"></div></div>
-            <div class="info-row">
-              <span class="info-label">Emisión</span>
-              <span class="info-val"><span class="live-dot"></span><span id="statusText">Verificando...</span></span>
-            </div>
-            <div class="info-row"><span class="info-label">Servidor</span><span class="info-val">Shoutcast · MIXX</span></div>
-            <div class="info-row"><span class="info-label">Bitrate</span><span class="info-val">128 kbps · MP3</span></div>
-            <div class="info-row"><span class="info-label">Formato</span><span class="info-val">OPEN FORMAT</span></div>
-            <div class="info-row"><span class="info-label">Ubicación</span><span class="info-val">📍 Sant Salvador, Tarragona</span></div>
-            <div class="info-row"><span class="info-label">Oyentes</span><span class="info-val" id="listenerCount">---</span></div>
-            <div class="info-row"><span class="info-label">Colección</span><span class="info-val">1.397 tracks</span></div>
-          </div>
+                    <div class="r-section">
+                      <div class="r-title">🔗 CONECTA<div class="r-title-line"></div></div>
+                      <div class="social-links">
+                        <a class="social-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener">
+                          <span class="social-icon">📸</span> @bubatronik_brm<span class="social-arrow">→</span>
+                        </a>
+                        <a class="social-link" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">
+                          <span class="social-icon">🌐</span> Radio en Directo <span class="social-arrow">→</span>
+                        </a>
+                      </div>
 
+            <!-- BRIDGE: qué hay detrás de la señal → .info 
+            <div class="behind-signal">
+              <div class="behind-signal-title">¿Quieres saber qué hay detrás de la señal?</div>
+              <div class="behind-signal-links">
+                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-inicio" target="_blank" rel="noopener">📖 Conoce el manifiesto</a>
+                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-programas" target="_blank" rel="noopener">📅 Ver programas</a>
+              </div>
+            </div>-->
+          </div>
           <div class="r-section">
-            <div class="r-title">🎵 GÉNEROS<div class="r-title-line"></div></div>
+            <div class="r-title">🎵 GÉNEROS (AL SELECCIONAR FILTRA LISTA)<div class="r-title-line"></div></div>
             <div class="genre-tags" id="genreTags">
               <span class="genre-tag hot" data-genre="hip hop">Hip Hop</span>
               <span class="genre-tag hot" data-genre="soul">Soul</span>
@@ -907,28 +913,18 @@
             </div>
           </div>
 
-          <div class="r-section">
-            <div class="r-title">🔗 CONECTA<div class="r-title-line"></div></div>
-            <div class="social-links">
-              <a class="social-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener">
-                <span class="social-icon">📸</span> @bubatronik_brm<span class="social-arrow">→</span>
-              </a>
-              <a class="social-link" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">
-                <span class="social-icon">🌐</span> Radio en Directo <span class="social-arrow">→</span>
-              </a>
-              <a class="social-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank" rel="noopener">
-                <span class="social-icon">💾</span> Archivo en Drive<span class="social-arrow">→</span>
-              </a>
+         <div class="r-section">
+            <div class="r-title">📡 ESTADO RADIO EN VIVO<div class="r-title-line"></div></div>
+            <div class="info-row">
+              <span class="info-label">Emisión</span>
+              <span class="info-val"><span class="live-dot"></span><span id="statusText">Verificando...</span></span>
             </div>
-
-            <!-- BRIDGE: qué hay detrás de la señal → .info -->
-            <div class="behind-signal">
-              <div class="behind-signal-title">¿Quieres saber qué hay detrás de la señal?</div>
-              <div class="behind-signal-links">
-                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-inicio" target="_blank" rel="noopener">📖 Conoce el manifiesto</a>
-                <a class="behind-signal-btn" href="https://brm.worldmos.info#tab-programas" target="_blank" rel="noopener">📅 Ver programas</a>
-              </div>
-            </div>
+            <div class="info-row"><span class="info-label">Servidor</span><span class="info-val">Shoutcast · MIXX</span></div>
+            <div class="info-row"><span class="info-label">Bitrate</span><span class="info-val">128 kbps · MP3</span></div>
+            <div class="info-row"><span class="info-label">Formato</span><span class="info-val">OPEN FORMAT</span></div>
+            <div class="info-row"><span class="info-label">Ubicación</span><span class="info-val">📍 Sant Salvador, Tarragona</span></div>
+            <div class="info-row"><span class="info-label">Oyentes</span><span class="info-val" id="listenerCount">---</span></div>
+            <div class="info-row"><span class="info-label">Colección</span><span class="info-val">1.397 tracks</span></div>
           </div>
         </div>
       </div>
@@ -952,7 +948,6 @@
       </div>
       </div>
           <!-- ══ TAB: SESIONES ══ -->
-        <div class="tab-panel" id="tab-sessions">
           <div class="sessions-header reveal">
             <div class="sessions-title">🎛️ ARCHIVO DE SESIONES</div>
             <div class="badge">SESIONES · DRIVE</div>
@@ -1011,8 +1006,6 @@
               <span class="session-action" style="opacity:0.4;cursor:default;">⏳ Soon</span>
             </div>
           </div>
-        </div>
-
     </div>
 
     <!-- FOOTER -->
@@ -1022,9 +1015,6 @@
         <a class="footer-layer" href="https://brm.worldmos.info" target="_blank" rel="noopener">
           <span class="footer-layer-tag">Explica</span>BUBATRONIK Info
         </a>
-        <span class="footer-layer active" title="Estás aquí">
-          <span class="footer-layer-tag">Hace sonar</span>BUBATRONIK Reproductor
-        </span>
         <a class="footer-layer" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">
           <span class="footer-layer-tag">Transporta</span>BUBATRONIK Radio
         </a>
@@ -1037,8 +1027,11 @@
           <div class="footer-brand">BUBATRONIK_RADIO · Frecuencia Sant Salvador</div>
           <div class="footer-legal"> DEVBU93 · WORLD-MUNDO OS</div>
         </div>
-        <div class="footer-links">
-          <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
+        <div class="footer-links"> 
+        <span class="footer-layer active" title="Estás aquí">
+          <span class="footer-layer-tag">Hace sonar</span>BUBATRONIK Reproductor
+        </span>
+        <!--  <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>-->
         </div>
         <div class="footer-copy">© 2026 · Sant Salvador, Tarragona, Catalunya, España<br>Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺</div>
       </div>
