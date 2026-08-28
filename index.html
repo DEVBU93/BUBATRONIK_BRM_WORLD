@@ -796,9 +796,7 @@
       </div>
     </header>
 
-    <!-- BANNER ENLACE AL .INFO — visible en el tab Radio -->
-    <div class="info-site-banner" id="infoBanner">
-    </div>
+    <!-- BANNER ENLACE AL .INFO — visible en el tab Radio <div class="info-site-banner" id="infoBanner"></div>-->
     <!-- NAV TABS — con enlace externo al .info al final -->
     <nav class="nav-tabs" role="tablist">
       <button class="nav-tab active" data-tab="radio"       role="tab">📻 Reproductor</button>
@@ -1028,10 +1026,10 @@
           <span class="footer-layer-tag">Explica</span>BUBATRONIK Info
         </a>
         <span class="footer-layer active" title="Estás aquí">
-          <span class="footer-layer-tag">Hace sonar</span>BUBATRONIK Radio
+          <span class="footer-layer-tag">Hace sonar</span>BUBATRONIK Reproductor
         </span>
         <a class="footer-layer" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">
-          <span class="footer-layer-tag">Transporta</span>Stream Nativo
+          <span class="footer-layer-tag">Transporta</span>BUBATRONIK Radio
         </a>
         <a class="footer-layer" href="https://brm.worldmos.info" target="_blank" rel="noopener">
           <span class="footer-layer-tag">Informa</span>BUBATRONIK Emergencias
@@ -1040,10 +1038,9 @@
       <div class="footer-main">
         <div>
           <div class="footer-brand">BUBATRONIK_RADIO · Frecuencia Sant Salvador</div>
-          <div class="footer-legal">LOB@-PULPO × DEVBU93 · WorldMOS · WORLD-MUNDO OS</div>
+          <div class="footer-legal"> DEVBU93 · WORLD-MUNDO OS</div>
         </div>
         <div class="footer-links">
-          <a class="footer-link" href="https://worldmos.world" target="_blank">WorldMOS</a>
           <a class="footer-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank">Instagram</a>
           <a class="footer-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank">Drive</a>
           <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
@@ -3214,50 +3211,5 @@
 
   setTimeout(() => toast('📻 BUBATRONIK_BRM · Frecuencia Sant Salvador · Pulsa ▶ para escuchar'), 900);
   </script>
-  <!-- Reproductor de radio -->
-<div id="radio-player" style="position:fixed;bottom:20px;right:20px;background:#101d30;border:1px solid #223550;border-radius:18px;padding:16px;box-shadow:0 12px 35px rgba(0,0,0,0.45);z-index:9999;max-width:320px;">
-  <div style="display:flex;align-items:center;gap:12px;">
-    <button id="play-pause" style="background:#57d5ff;color:#08111f;border:none;border-radius:9999px;width:48px;height:48px;font-size:20px;cursor:pointer;">▶</button>
-    <div style="flex:1;">
-      <div style="font-weight:700;color:#e9f1ff;font-size:14px;">Radio Bubatronik BRM</div>
-      <div id="status" style="font-size:12px;color:#9eb1cd;">Listo para reproducir</div>
-    </div>
-    <a href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener" style="background:#101d30;border:1px solid #223550;color:#57d5ff;padding:6px 12px;border-radius:10px;font-size:12px;text-decoration:none;">Web Externa</a>
-  </div>
-  <audio id="audio-stream" preload="none">
-    <source src="AQUI_TU_URL_DEL_STREAM" type="audio/mpeg">
-  </audio>
-</div>
-
-<script>
-(function() {
-  const audio = document.getElementById('audio-stream');
-  const playBtn = document.getElementById('play-pause');
-  const status = document.getElementById('status');
-  let isPlaying = false;
-
-  playBtn.addEventListener('click', () => {
-    if (isPlaying) {
-      audio.pause();
-      playBtn.textContent = '▶';
-      status.textContent = 'Pausado';
-      isPlaying = false;
-    } else {
-      audio.play();
-      playBtn.textContent = '⏸';
-      status.textContent = 'Reproduciendo...';
-      isPlaying = true;
-    }
-  });
-
-  audio.addEventListener('playing', () => {
-    status.textContent = 'En directo · brm.worldmos.world';
-  });
-
-  audio.addEventListener('error', () => {
-    status.textContent = 'Error al cargar el stream';
-  });
-})();
-</script>
 </body>
 </html>
