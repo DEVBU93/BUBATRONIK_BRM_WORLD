@@ -800,7 +800,6 @@
     <!-- NAV TABS — con enlace externo al .info al final -->
     <nav class="nav-tabs" role="tablist">
       <button class="nav-tab active" data-tab="radio"       role="tab">📻 Reproductor</button>
-      <button class="nav-tab"        data-tab="sessions"    role="tab">🎛️ Sesiones</button>
       <button class="nav-tab"        data-tab="programacion" role="tab">📅 Programación</button>
       <!-- Enlace externo al site de info — se abre en nueva pestaña -->
       <a class="nav-ext" href="https://brm.worldmos.info" target="_blank" rel="noopener" title="Info & Programas — brm.worldmos.info">
@@ -920,9 +919,6 @@
               <a class="social-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank" rel="noopener">
                 <span class="social-icon">💾</span> Archivo en Drive<span class="social-arrow">→</span>
               </a>
-              <a class="social-link" href="mailto:rubenrodriguez.f.93@gmail.com">
-                <span class="social-icon">📧</span> Contacto directo<span class="social-arrow">→</span>
-              </a>
             </div>
 
             <!-- BRIDGE: qué hay detrás de la señal → .info -->
@@ -938,73 +934,7 @@
       </div>
     </div>
 
-    <!-- ══ TAB: SESIONES ══ -->
-    <div class="tab-panel" id="tab-sessions">
-      <div class="sessions-header reveal">
-        <div class="sessions-title">🎛️ ARCHIVO DE SESIONES</div>
-        <div class="badge">SESIONES · DRIVE</div>
-      </div>
-      <div class="sessions-grid">
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">01</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 1</div>
-            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Rock</span><span class="session-tag">Funk</span><span class="session-tag">Rap</span><span class="session-tag">Multigenero</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Drive</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">02</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 2</div>
-            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Hip Hop</span><span class="session-tag">Soul</span><span class="session-tag">Electronic</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Drive</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">03</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 3</div>
-            <div class="session-meta">2026 · <span>4.96 GB</span> · ~6h · Sant Salvador, Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
-          <div class="session-num">04</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 4</div>
-            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/file/d/1UXUfIPvNzD6yKpGkcFILxqmeNQgg9yaU/view')">
-          <div class="session-num">05</div>
-          <div class="session-info">
-            <div class="session-title">SESIÓN 5</div>
-            <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
-            <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
-          </div>
-          <a class="session-action" href="https://drive.google.com/file/d/1UXUfIPvNzD6yKpGkcFILxqmeNQgg9yaU/view" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
-        </div>
-        <!-- Sesiones 06 – 21 todas apuntan al folder general -->
-        <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">06</div><div class="session-info"><div class="session-title">SESIÓN 6</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
- <div class="session-row reveal" style="cursor:default; opacity:0.5;">
-          <div class="session-num" style="color:var(--muted);">35</div>
-          <div class="session-info"><div class="session-title">SESIÓN 35 — Próximamente</div><div class="session-meta">En preparación · Fecha TBD · ¡Atento al vermut!</div><div class="session-tags"><span class="session-tag">Próximo</span></div></div>
-          <span class="session-action" style="opacity:0.4;cursor:default;">⏳ Soon</span>
-        </div>
-      </div>
-      <div class="tb-section reveal">
-        <div class="r-title" style="margin-bottom:20px;">💾 ARCHIVO COMPLETO EN DRIVE<div class="r-title-line"></div></div>
-        <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.8;margin-bottom:20px;">Las sesiones grabadas de BRM_Bubatronik están disponibles en Google Drive. Sin anuncios, sin algoritmos, sin suscripciones — acceso libre para toda la manada.</p>
-        <a class="btn-stream primary" style="display:inline-block;padding:12px 28px;text-decoration:none;border-radius:6px;" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener">💾 ABRIR ARCHIVO DRIVE</a>
-      </div>
-    </div>
-
+    
     <!-- ══ TAB: PROGRAMACIÓN ══ -->
     <div class="tab-panel" id="tab-programacion">
       <div style="padding:36px;">
@@ -1015,7 +945,74 @@
           ¿Tienes una idea para uno de estos programas, o quieres proponer uno nuevo? Ve a
           <a href="https://brm.worldmos.info#tab-colabora" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;font-weight:700;">brm.worldmos.info → COLABORA ↗</a>.
         </div>
+       <div class="tb-section reveal">
+        <div class="r-title" style="margin-bottom:20px;">💾 ARCHIVO COMPLETO EN DRIVE<div class="r-title-line"></div></div>
+        <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.8;margin-bottom:20px;">Las sesiones grabadas de BRM_Bubatronik están disponibles en Google Drive. Sin anuncios, sin algoritmos, sin suscripciones — acceso libre para toda la manada.</p>
+        <a class="btn-stream primary" style="display:inline-block;padding:12px 28px;text-decoration:none;border-radius:6px;" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener">💾 ABRIR ARCHIVO DRIVE</a>
       </div>
+      </div>
+          <!-- ══ TAB: SESIONES ══ -->
+        <div class="tab-panel" id="tab-sessions">
+          <div class="sessions-header reveal">
+            <div class="sessions-title">🎛️ ARCHIVO DE SESIONES</div>
+            <div class="badge">SESIONES · DRIVE</div>
+          </div>
+          <div class="sessions-grid">
+            <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
+              <div class="session-num">01</div>
+              <div class="session-info">
+                <div class="session-title">SESIÓN 1</div>
+                <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
+                <div class="session-tags"><span class="session-tag">Rock</span><span class="session-tag">Funk</span><span class="session-tag">Rap</span><span class="session-tag">Multigenero</span></div>
+              </div>
+              <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Drive</a>
+            </div>
+            <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
+              <div class="session-num">02</div>
+              <div class="session-info">
+                <div class="session-title">SESIÓN 2</div>
+                <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
+                <div class="session-tags"><span class="session-tag">Hip Hop</span><span class="session-tag">Soul</span><span class="session-tag">Electronic</span></div>
+              </div>
+              <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Drive</a>
+            </div>
+            <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
+              <div class="session-num">03</div>
+              <div class="session-info">
+                <div class="session-title">SESIÓN 3</div>
+                <div class="session-meta">2026 · <span>4.96 GB</span> · ~6h · Sant Salvador, Tarragona 43130</div>
+                <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
+              </div>
+              <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
+            </div>
+            <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')">
+              <div class="session-num">04</div>
+              <div class="session-info">
+                <div class="session-title">SESIÓN 4</div>
+                <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
+                <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
+              </div>
+              <a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
+            </div>
+            <div class="session-row reveal" onclick="openSession('https://drive.google.com/file/d/1UXUfIPvNzD6yKpGkcFILxqmeNQgg9yaU/view')">
+              <div class="session-num">05</div>
+              <div class="session-info">
+                <div class="session-title">SESIÓN 5</div>
+                <div class="session-meta">2026 · Archivo Drive · Multi-género · Sant Salvador, Tarragona 43130</div>
+                <div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span><span class="session-tag">Ambient de barrio</span></div>
+              </div>
+              <a class="session-action" href="https://drive.google.com/file/d/1UXUfIPvNzD6yKpGkcFILxqmeNQgg9yaU/view" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a>
+            </div>
+            <!-- Sesiones 06 – 21 todas apuntan al folder general -->
+            <div class="session-row reveal" onclick="openSession('https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr')"><div class="session-num">06</div><div class="session-info"><div class="session-title">SESIÓN 6</div><div class="session-meta">2026 · Archivo Drive · Multi-género</div><div class="session-tags"><span class="session-tag">Open Format</span><span class="session-tag">Sesión larga</span></div></div><a class="session-action" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Ver</a></div>
+             <div class="session-row reveal" style="cursor:default; opacity:0.5;">
+              <div class="session-num" style="color:var(--muted);">35</div>
+              <div class="session-info"><div class="session-title">SESIÓN 35 — Próximamente</div><div class="session-meta">En preparación · Fecha TBD · ¡Atento al vermut!</div><div class="session-tags"><span class="session-tag">Próximo</span></div></div>
+              <span class="session-action" style="opacity:0.4;cursor:default;">⏳ Soon</span>
+            </div>
+          </div>
+        </div>
+
     </div>
 
     <!-- FOOTER -->
@@ -1041,8 +1038,6 @@
           <div class="footer-legal"> DEVBU93 · WORLD-MUNDO OS</div>
         </div>
         <div class="footer-links">
-          <a class="footer-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank">Instagram</a>
-          <a class="footer-link" href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg" target="_blank">Drive</a>
           <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
         </div>
         <div class="footer-copy">© 2026 · Sant Salvador, Tarragona, Catalunya, España<br>Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺</div>
