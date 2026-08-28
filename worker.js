@@ -1,78 +1,76 @@
-**
- * BRM STREAM PROXY - Cloudflare Worker v2026.11
- * HTTPS wrapper + Status API para el stream Shoutcast BUBATRONIK_BRM RADIO
- * Frecuencia Sant Salvador - Sant Salvador, Tarragona, Catalunya
+/* BRM STREAM PROXY - Cloudflare Worker (hardened)
+ * - Timeouts for upstream fetches
+ * - Restrictive CORS: only allow configured origins, add Vary: Origin
+ * - Strict YouTube ID validation (11 chars)
+ * - Robust error handling and JSON responses
+ * - Cache /yt-videoids with Cache API (6h)
  *
- * NUEVO v2026.11:
- *   - Endpoint /yt-videoids: resuelve los videoId reales de la playlist de YouTube
- *     vía YouTube Data API v3 (requiere secret YOUTUBE_API_KEY). Sustituye la
- *     necesidad de exportar CSV de Google Takeout — se sincroniza solo.
- *
- * CORRECCIONES v2026.10:
- *   - Fix declaracion duplicada de const _real / const cur en /nowplaying
- *   - Fix regex en isYouTubeId (escape correcto de \s)
- *   - Fix parsePlayed regex (sin doble-escape innecesario)
+ * Maintainer: Rubén (DEVBU93) — do NOT store secrets in source. Use wrangler secret put YOUTUBE_API_KEY
  */
- 
+
 const STREAM_BASE = 'http://uk3freenew.listen2myradio.com:14387';
 const STREAM_URL  = STREAM_BASE + '/;';
 const STATION     = 'BUBATRONIK_BRM - Frecuencia Sant Salvador';
- 
+
+// Whitelist of allowed origins for CORS (production should contain only real domains)
 const ALLOWED_ORIGINS = [
   'https://brm.worldmos.world',
   'https://worldmos.world',
   'https://aguaflow.worldmos.world',
   'https://devbu.worldmos.world',
-  'https://devbu93.github.io',
-  'http://localhost:3000',
-  'http://localhost:4000',
-  'http://localhost:5500',
-  'http://127.0.0.1:5500',
-  'http://127.0.0.1:3000',
+  'https://devbu93.github.io'
+  // localhost entries intentionally omitted for production. Add them only in development.
 ];
- 
+
 function getCorsHeaders(origin) {
-  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  if (!origin) return { 'Vary': 'Origin' };
+  if (!ALLOWED_ORIGINS.includes(origin)) {
+    // Do not expose CORS to unauthorized origins
+    return { 'Vary': 'Origin' };
+  }
   return {
-    'Access-Control-Allow-Origin':   allowed,
-    'Access-Control-Allow-Methods':  'GET, HEAD, OPTIONS',
-    'Access-Control-Allow-Headers':  'Range, Content-Type, Icy-MetaData',
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+    'Access-Control-Allow-Headers': 'Range, Content-Type, Icy-MetaData',
     'Access-Control-Expose-Headers': 'Content-Type, Content-Length, icy-name, icy-genre, icy-br, icy-metaint',
-    'Access-Control-Max-Age':        '86400',
+    'Access-Control-Max-Age': '86400',
+    'Vary': 'Origin'
   };
 }
- 
-async function fetchWithTimeout(url, options, ms) {
+
+async function fetchWithTimeout(url, options = {}, ms = 8000) {
   const ctrl = new AbortController();
   const tid = setTimeout(() => ctrl.abort(), ms);
   try {
     const res = await fetch(url, { ...options, signal: ctrl.signal });
     clearTimeout(tid);
     return res;
-  } catch(e) {
+  } catch (e) {
     clearTimeout(tid);
     throw e;
   }
 }
- 
+
 function fixEncoding(str) {
   try {
     const bytes = new Uint8Array(str.split('').map(c => c.charCodeAt(0) & 0xff));
     return new TextDecoder('utf-8').decode(bytes);
-  } catch(_) { return str; }
+  } catch (_) { return str; }
 }
- 
+
+// YouTube videoId validation: canonical ID length is 11 characters
 function isYouTubeId(s) {
-  return /^-?\s*[A-Za-z0-9_-]{6,15}$/.test(s.trim());
+  if (typeof s !== 'string') return false;
+  return /^[A-Za-z0-9_-]{11}$/.test(s.trim());
 }
- 
+
 function cleanSong(raw) {
   let s = fixEncoding(raw).trim();
   if (s.startsWith('- ')) s = s.slice(2).trim();
   s = s.replace(/\s*Current Song\s*$/i, '').trim();
   return s;
 }
- 
+
 function parse7html(text) {
   const stripped = text.replace(/<[^>]+>/g, '').trim();
   const parts = stripped.split(',');
@@ -88,15 +86,15 @@ function parse7html(text) {
   }
   return {
     live: streamStatus === 1,
-    currentListeners: parseInt(parts[0], 10),
-    peakListeners:    parseInt(parts[2], 10),
-    maxListeners:     parseInt(parts[3], 10),
-    uniqueListeners:  parseInt(parts[4], 10),
-    bitrate:          parseInt(parts[5], 10),
+    currentListeners: parseInt(parts[0], 10) || 0,
+    peakListeners:    parseInt(parts[2], 10) || 0,
+    maxListeners:     parseInt(parts[3], 10) || 0,
+    uniqueListeners:  parseInt(parts[4], 10) || 0,
+    bitrate:          parseInt(parts[5], 10) || 0,
     song, artist, title,
   };
 }
- 
+
 function parsePlayed(html) {
   const rows = [];
   const trRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
@@ -131,7 +129,7 @@ function parsePlayed(html) {
   }
   return rows;
 }
- 
+
 export default {
   async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '';
@@ -140,11 +138,11 @@ export default {
       'User-Agent': 'Mozilla/5.0 (compatible; BRM-Radio/2026)',
       'Accept':     'text/plain,text/html,*/*'
     };
- 
+
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: getCorsHeaders(origin) });
     }
- 
+
     // /status
     if (url.pathname === '/status') {
       try {
@@ -167,40 +165,25 @@ export default {
           headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
         });
       } catch (err) {
-        return new Response(JSON.stringify({
-          status: 'offline', live: false, error: String(err), ts: new Date().toISOString()
-        }), {
+        return new Response(JSON.stringify({ status: 'offline', live: false, error: String(err), ts: new Date().toISOString() }), {
           headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
         });
       }
     }
- 
-    // /yt-videoids — resuelve los videoId REALES de la playlist de YouTube vía la API
-    // oficial de datos (YouTube Data API v3), en el mismo orden que la playlist.
-    // Requiere el secret YOUTUBE_API_KEY (Google Cloud Console → YouTube Data API v3 →
-    // Credentials → API Key). Coste: ~1 unidad de cuota por página de 50 vídeos — la
-    // playlist completa (1.349 vídeos) sale por ~27 unidades, muy por debajo de las
-    // 10.000/día gratuitas. Cacheado 6h para no gastar cuota en cada visita.
-    //
-    // v2026.11.1 — pide también 'snippet' para tener position y title EXPLÍCITOS de la
-    // API, en vez de asumir que el orden del array de respuesta es la posición real.
-    // Si reordenas o borras vídeos de la playlist de YouTube, la posición puede
-    // desplazarse — con position explícito, el frontend puede detectar ese desajuste
-    // en vez de asignar el videoId equivocado a una canción (ver syncYoutubeIdsFromWorker).
+
+    // /yt-videoids — use YouTube Data API v3, cached 6h
     if (url.pathname === '/yt-videoids') {
       const PLAYLIST_ID = 'PLc5KM2_2P5GEwM0HdkRvfKds575jjhylu';
       const cache = caches.default;
       const cacheKey = new Request(url.toString(), request);
       const cached = await cache.match(cacheKey);
       if (cached) return cached;
- 
+
       if (!env.YOUTUBE_API_KEY) {
-        const resp = new Response(JSON.stringify({
-          ok: false, error: 'YOUTUBE_API_KEY no configurada en el Worker (wrangler secret put YOUTUBE_API_KEY)',
-        }), { status: 200, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) } });
+        const resp = new Response(JSON.stringify({ ok: false, error: 'YOUTUBE_API_KEY not configured (wrangler secret put YOUTUBE_API_KEY)' }), { status: 200, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) } });
         return resp;
       }
- 
+
       try {
         const items = [];
         let pageToken = '';
@@ -209,47 +192,34 @@ export default {
           const apiUrl = 'https://www.googleapis.com/youtube/v3/playlistItems'
             + '?part=snippet,contentDetails&maxResults=50&playlistId=' + PLAYLIST_ID
             + '&key=' + env.YOUTUBE_API_KEY
-            + (pageToken ? '&pageToken=' + pageToken : '');
-          const res = await fetchWithTimeout(apiUrl, {}, 8000);
+            + (pageToken ? '&pageToken=' + encodeURIComponent(pageToken) : '');
+          const res = await fetchWithTimeout(apiUrl, { headers: { 'Accept': 'application/json' } }, 8000);
           if (!res.ok) throw new Error('YouTube API HTTP ' + res.status);
           const data = await res.json();
           (data.items || []).forEach(it => {
             const videoId = it.contentDetails?.videoId;
-            if (!videoId) return; // vídeo borrado/privado: sin id útil, se omite
-            items.push({
-              position: it.snippet?.position, // 0-indexed, EXPLÍCITO de la API
-              videoId,
-              title: it.snippet?.title || '',
-            });
+            if (!videoId) return; // missing (deleted/private)
+            items.push({ position: it.snippet?.position, videoId, title: it.snippet?.title || '' });
           });
           pageToken = data.nextPageToken || '';
           pages++;
-        } while (pageToken && pages < 30); // 30 páginas · 50 = hasta 1500 vídeos
- 
-        const resp = new Response(JSON.stringify({
-          ok: true, playlistId: PLAYLIST_ID, count: items.length, items, ts: new Date().toISOString(),
-        }), {
-          headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'public, max-age=21600', // 6h — el propio Worker cachea con esto
-            ...getCorsHeaders(origin),
-          },
+        } while (pageToken && pages < 30);
+
+        const resp = new Response(JSON.stringify({ ok: true, playlistId: PLAYLIST_ID, count: items.length, items, ts: new Date().toISOString() }), {
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=21600', ...getCorsHeaders(origin) }
         });
         ctx.waitUntil(cache.put(cacheKey, resp.clone()));
         return resp;
       } catch (err) {
-        return new Response(JSON.stringify({ ok: false, error: String(err) }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) },
-        });
+        return new Response(JSON.stringify({ ok: false, error: String(err) }), { status: 200, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) } });
       }
     }
- 
+
     // /nowplaying
     if (url.pathname === '/nowplaying') {
       try {
         const [r7, rp] = await Promise.allSettled([
-          fetchWithTimeout(STREAM_BASE + '/7.html',      { headers: hdrs }, 5000),
+          fetchWithTimeout(STREAM_BASE + '/7.html', { headers: hdrs }, 5000),
           fetchWithTimeout(STREAM_BASE + '/played.html', { headers: hdrs }, 5000),
         ]);
         const t7   = (r7.status === 'fulfilled' && r7.value.ok) ? await r7.value.text() : '0,0,0,0,0,0,';
@@ -265,27 +235,17 @@ export default {
             : _raw;
         return new Response(JSON.stringify({
           live:    stat.live,
-          current: {
-            song:   cur.song   || stat.song,
-            artist: cur.artist || stat.artist,
-            title:  cur.title  || stat.title,
-          },
+          current: { song: cur.song || stat.song, artist: cur.artist || stat.artist, title: cur.title || stat.title },
           listeners: stat.currentListeners,
           bitrate:   stat.bitrate,
           history:   history.slice(0, 10),
           ts:        new Date().toISOString(),
-        }), {
-          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
-        });
+        }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
       } catch (err) {
-        return new Response(JSON.stringify({
-          live: false, current: { song: '', artist: '', title: '' }, listeners: 0, error: String(err)
-        }), {
-          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
-        });
+        return new Response(JSON.stringify({ live: false, current: { song: '', artist: '', title: '' }, listeners: 0, error: String(err) }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
       }
     }
- 
+
     // /health (legacy)
     if (url.pathname === '/health') {
       let listeners = null;
@@ -296,25 +256,19 @@ export default {
           if (d) listeners = d.currentListeners;
         }
       } catch(_) {}
-      return new Response(JSON.stringify({
-        status: 'ok', station: STATION, proxy: STREAM_URL, listeners, ts: new Date().toISOString()
-      }), {
-        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) }
-      });
+      return new Response(JSON.stringify({ status: 'ok', station: STATION, proxy: STREAM_URL, listeners, ts: new Date().toISOString() }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', ...getCorsHeaders(origin) } });
     }
- 
-    // Default: proxy del stream de audio
+
+    // Default: proxy del stream de audio (con timeout)
     try {
       const up_h = new Headers();
       up_h.set('User-Agent', 'Mozilla/5.0 BRM-Proxy/2026');
       up_h.set('Icy-MetaData', '1');
       const range = request.headers.get('Range');
       if (range) up_h.set('Range', range);
-      const upstream = await fetch(STREAM_URL, { method: 'GET', headers: up_h });
-      if (!upstream.ok && upstream.status !== 200) {
-        return new Response(JSON.stringify({ error: 'Stream no disponible', status: upstream.status }), {
-          status: 502, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) }
-        });
+      const upstream = await fetchWithTimeout(STREAM_URL, { method: 'GET', headers: up_h }, 10000);
+      if (!upstream.ok) {
+        return new Response(JSON.stringify({ error: 'Stream not available', status: upstream.status }), { status: 502, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) } });
       }
       const rh = new Headers();
       ['content-type','icy-name','icy-genre','icy-url','icy-br','icy-sr','icy-metaint','icy-pub','icy-description','transfer-encoding','content-length']
@@ -328,9 +282,7 @@ export default {
       Object.entries(getCorsHeaders(origin)).forEach(([k, v]) => rh.set(k, v));
       return new Response(upstream.body, { status: upstream.status, headers: rh });
     } catch (err) {
-      return new Response(JSON.stringify({ error: 'Error de proxy', message: String(err) }), {
-        status: 500, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) }
-      });
+      return new Response(JSON.stringify({ error: 'Proxy error', message: String(err) }), { status: 500, headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) } });
     }
   },
 };
