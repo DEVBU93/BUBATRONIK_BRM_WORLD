@@ -142,6 +142,51 @@ export default {
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: getCorsHeaders(origin) });
     }
+    // /drive-audio/:fileId — same-origin proxy para audio público de Drive.
+    // El navegador bloquea Drive directo en <audio crossorigin>; el Worker
+    // sigue la redirección y devuelve el WAV con rangos y CORS controlados.
+    if (url.pathname.startsWith('/drive-audio/')) {
+      const fileId = url.pathname.slice('/drive-audio/'.length).trim();
+      if (!/^[A-Za-z0-9_-]{20,80}$/.test(fileId)) {
+        return new Response(JSON.stringify({ error: 'Invalid Drive file ID' }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json', ...getCorsHeaders(origin) }
+        });
+      }
+      try {
+        const upHeaders = new Headers({
+          'User-Agent': 'Mozilla/5.0 BRM-Drive-Audio/2026',
+          'Accept': 'audio/*,application/octet-stream;q=0.9,*/*;q=0.1'
+        });
+        const range = request.headers.get('Range');
+        if (range) upHeaders.set('Range', range);
+        const driveUrl = 'https://drive.usercontent.google.com/download?id=' + encodeURIComponent(fileId) + '&export=download';
+        const upstream = await fetchWithTimeout(driveUrl, { method: request.method, headers: upHeaders, redirect: 'follow' }, 15000);
+        const type = upstream.headers.get('content-type') || '';
+        if (!upstream.ok || type.includes('text/html')) {
+          return new Response(JSON.stringify({ error: 'Drive audio unavailable', status: upstream.status }), {
+            status: 502,
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...getCorsHeaders(origin) }
+          });
+        }
+        const responseHeaders = new Headers();
+        ['content-type', 'content-length', 'content-range', 'accept-ranges', 'etag', 'last-modified']
+          .forEach(name => { const value = upstream.headers.get(name); if (value) responseHeaders.set(name, value); });
+        if (!responseHeaders.get('content-type')) responseHeaders.set('content-type', 'audio/wav');
+        responseHeaders.set('Cache-Control', 'public, max-age=3600');
+        responseHeaders.set('X-BRM-Audio-Source', 'Google-Drive');
+        Object.entries(getCorsHeaders(origin)).forEach(([key, value]) => responseHeaders.set(key, value));
+        return new Response(request.method === 'HEAD' ? null : upstream.body, {
+          status: upstream.status,
+          headers: responseHeaders
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: 'Drive proxy error', message: String(err) }), {
+          status: 502,
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...getCorsHeaders(origin) }
+        });
+      }
+    }
 
     // /status
     if (url.pathname === '/status') {
