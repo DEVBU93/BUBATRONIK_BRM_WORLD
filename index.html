@@ -2790,10 +2790,41 @@
       audio.load();
       audio.play().catch(() => tryNextStream());
     } else {
-      toast('⚠️ Stream offline — abriendo player nativo...');
-      setOffline();
-      setTimeout(openNativePlayer, 2000);
+      // Fallo controlado: seguimos en .world, sin abrir nada.
+      // Si hay audios de Drive disponibles, usamos el primero como fallback.
+      const fallback = TRACKS.find(track => track.audioSrc);
       streamAttempt = 0;
+      setOffline();
+
+      if (!fallback) {
+        playbackRequested = false;
+        audio.pause();
+        audio.removeAttribute('src');
+        audio.load();
+        setModeIndicator('idle');
+        toast('⚠️ Stream no disponible. Prueba de nuevo más tarde.');
+        return;
+      }
+
+      isSessionMode = true;
+      npTitle.textContent = fallback.t;
+      npArtist.textContent = fallback.artist;
+      updateMediaSession(fallback);
+
+      audio.src = fallback.audioSrc;
+      audio.load();
+      audio.play()
+        .then(() => {
+          setModeIndicator('session');
+          toast('▶ Directo offline · sonando archivo BRM desde Drive');
+        })
+        .catch(() => {
+          playbackRequested = false;
+          audio.removeAttribute('src');
+          audio.load();
+          setModeIndicator('idle');
+          toast('⚠️ No se pudo cargar el directo ni el audio de respaldo.');
+        });
     }
   }
 
