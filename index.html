@@ -941,6 +941,21 @@
           ¿Tienes una idea para uno de estos programas, o quieres proponer uno nuevo? Ve a
           <a href="https://brm.worldmos.info#tab-colabora" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:none;font-weight:700;">brm.worldmos.info → COLABORA ↗</a>.
         </div>
+        <!-- ARCHIVOS DE PROGRAMACIÓN (integrado en index.html) -->
+<section id="seccionProgramacion" style="display:none; padding: var(--space-8);">
+  <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Archivos de programación</h2>
+
+  <div style="margin-bottom: var(--space-4); display:flex; gap: var(--space-2); flex-wrap: wrap;">
+    <button class="genre-tag hot" data-cat="todos">Todos</button>
+    <button class="genre-tag" data-cat="sesiones">Sesiones + Vermouth</button>
+    <button class="genre-tag" data-cat="nanas">Nanas</button>
+    <button class="genre-tag" data-cat="noticias">Noticias</button>
+    <button class="genre-tag" data-cat="debate">Debate</button>
+    <button class="genre-tag" data-cat="otros">Otros</button>
+  </div>
+
+  <div id="programacionList" style="display: grid; gap: var(--space-3);"></div>
+</section>
        <div class="tb-section reveal">
         <div class="r-title" style="margin-bottom:20px;">💾 ARCHIVO COMPLETO EN DRIVE<div class="r-title-line"></div></div>
         <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.8;margin-bottom:20px;">Las sesiones grabadas de BRM_Bubatronik están disponibles en Google Drive. Sin anuncios, sin algoritmos, sin suscripciones — acceso libre para toda la manada.</p>
@@ -3138,6 +3153,19 @@
   function normTitleForMatch(s) {
     return (s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
   }
+    let PROGRAMACION_TRACKS = [];
+
+async function loadProgramacionTracks() {
+  try {
+    const res = await fetch('./programacion-tracks.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    PROGRAMACION_TRACKS = await res.json();
+    console.log('BRM: ' + PROGRAMACION_TRACKS.length + ' tracks de programación cargados');
+    renderProgramacion();
+  } catch (e) {
+    // silencioso: programacion-tracks.json no existe todavía
+  }
+}
   async function loadRealYoutubeIds() {
     try {
       const res = await fetch('./youtube-ids.json', { cache: 'no-store' });
@@ -3233,6 +3261,7 @@
   checkStatus();
   setInterval(checkStatus, 30000);
   drawViz();
+  loadProgramacionTracks();
   loadRealYoutubeIds();
   syncYoutubeIdsFromWorker();
 
