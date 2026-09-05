@@ -881,6 +881,7 @@
               <span class="genre-tag" data-genre="folk">Folk</span>
               <span class="genre-tag" data-genre="neo soul">Neo Soul</span>
               <span class="genre-tag" data-genre="hardstyle">Hardstyle</span>
+              <span class="genre-tag" data-genre="drive">Audio Drive</span>
               <span class="genre-tag hot" data-genre="">Open Format</span>
               </div>
               <div class="badge" id="trackBadge">1.397 TRACKS</div>
@@ -1103,6 +1104,13 @@
   };
 
   const TRACKS = [
+    // Audios reales del Drive público de BUBATRONIK. Verificados como audio/wav,
+// con CORS público y soporte de byte ranges para reproducción en navegador.
+    {n:'D1', t:'0guitar-devbuproducer',  artist:'DEVBU Producer · Drive', genre:'drive rock',       isSession:true, audioSrc:'https://brm.rubenrodriguez-f-93.workers.dev/drive-audio/1raI-iAjXq2W8Y3Oj7VQSYuIJRqU1kU5g'},
+    {n:'D2', t:'0NONSTOP-DEVBUPRODUCER', artist:'DEVBU Producer · Drive', genre:'drive electronic', isSession:true, audioSrc:'https://brm.rubenrodriguez-f-93.workers.dev/drive-audio/1Er5PK1KGpUEe4cgs4Ol4rPA_Svsl6TEA'},
+    {n:'D3', t:'06520-devbuproducer',    artist:'DEVBU Producer · Drive', genre:'drive',            isSession:true, audioSrc:'https://brm.rubenrodriguez-f-93.workers.dev/drive-audio/1g41yE7EyzzwArKzH4lMxWcckDood2Nsp'},
+    {n:'D4', t:'0230520-devbuproducer',  artist:'DEVBU Producer · Drive', genre:'drive',            isSession:true, audioSrc:'https://brm.rubenrodriguez-f-93.workers.dev/drive-audio/1zErs5L7gRef3gZmsFRkEZ3g2WzDIsHjX'},
+    {n:'D5', t:'0240520-devbuproducer',  artist:'DEVBU Producer · Drive', genre:'drive',            isSession:true, audioSrc:'https://brm.rubenrodriguez-f-93.workers.dev/drive-audio/1CMpd_bvCLPeVShElV-gA145yPLQstkbS'},
     {n:'#1', t:'Drake - God\'s Plan', artist:'Drake', genre:''},
     {n:'#2', t:'Future - Life Is Good (Official Music Video) ft. Drake', artist:'Future', genre:''},
     {n:'#3', t:'YG - Go Loko ft. Tyga, Jon Z', artist:'YG', genre:''},
@@ -2585,6 +2593,7 @@
   // ── EQ BARS ───────────────────────────────────────────────────────────
   function buildEqBars() {
     const c = document.getElementById('eqBars');
+    if (!c) return; // La sección EQ está desactivada en el HTML actual.
     [18,28,40,36,24,40,32,16,36,40,28,20,36,28,40,24,32,40,18,36,28,40,32,16,24,40,36,20,28,40].forEach(h => {
       const b = document.createElement('div');
       b.className = 'eq-bar'; b.style.height = h + 'px';
